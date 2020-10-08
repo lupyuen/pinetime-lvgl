@@ -1,7 +1,7 @@
 # Info about this package.
 [package]
 name          = "pinetime-lvgl"
-version       = "1.0.1"
+version       = "1.0.2"
 authors       = ["Lee Lup Yuen <luppy@appkaki.com>"]
 edition       = "2018"
 description   = "LVGL Bindings for Mynewt on PineTime Smart Watch"
@@ -14,8 +14,8 @@ license       = "Apache-2.0"
 
 # External Rust libraries used by this module.  See crates.io.
 [dependencies]
-pinetime-macros = "1.0.1"  # Safe Wrapper Macros for Mynewt on PineTime Smart Watch: https://crates.io/crates/pinetime-macros
-pinetime-mynewt = "1.0.1"  # Mynewt Bindings for PineTime Smart Watch: https://crates.io/crates/pinetime-mynewt
+pinetime-macros = "1.0.2"  # Safe Wrapper Macros for Mynewt on PineTime Smart Watch: https://crates.io/crates/pinetime-macros
+pinetime-mynewt = "1.0.2"  # Mynewt Bindings for PineTime Smart Watch: https://crates.io/crates/pinetime-mynewt
 cortex-m        = { version = "0.6.2", features = [ "inline-asm" ] }  # Arm Cortex-M utilities: https://crates.io/crates/cortex-m
 cortex-m-semihosting = "0.3.5"  # Semihosting for ARM Cortex-M processors: https://crates.io/crates/cortex-m-semihosting
 cstr_core       = "0.1.2"  # String utilities from cstr_core library: https://crates.io/crates/cstr_core

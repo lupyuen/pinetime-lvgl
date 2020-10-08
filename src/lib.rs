@@ -7,6 +7,9 @@
 
 extern crate macros as lvgl_macros;  //  Import Procedural Macros from `macros` library
 
+#[cfg(feature = "mynewt_os")]     //  If building for Mynewt OS...
+pub use mynewt;                   //  Export Mynewt API
+
 #[allow(unused_imports)]          //  Allow unused imports
 pub mod core;                     //  Lvgl Core API. Export folder `core` as Rust module `lvgl::core`
 
@@ -83,7 +86,7 @@ pub mod result {
 /// Represents a null-terminated string, suitable for passing to Lvgl APIs as `* const char`.
 /// The string could be a null-terminated byte string created in Rust, or a pointer to a null-terminated string returned by C.
 /// Pointer may be null.
-#[cfg(feature = "riot_os")]    //  If building for RIOT OS...
+#[cfg(feature = "riot_os")] //  If building for RIOT OS...
 #[derive(Clone, Copy)]      //  Strn may be copied
 pub struct Strn {
     /// Either a byte string terminated with null, or a pointer to a null-terminated string
@@ -91,7 +94,7 @@ pub struct Strn {
 }
 
 /// Either a byte string or a string pointer
-#[cfg(feature = "riot_os")]    //  If building for RIOT OS...
+#[cfg(feature = "riot_os")] //  If building for RIOT OS...
 #[derive(Clone, Copy)]      //  StrnRep may be copied
 #[repr(u8)]
 pub enum StrnRep {
@@ -101,7 +104,7 @@ pub enum StrnRep {
     CStr(*const u8),
 }
 
-#[cfg(feature = "riot_os")]    //  If building for RIOT OS...
+#[cfg(feature = "riot_os")] //  If building for RIOT OS...
 impl Strn {
     /// Create a new `Strn` with a byte string. Fail if the last byte is not zero.
     /// ```
@@ -199,23 +202,23 @@ impl Strn {
 }
 
 ///  Allow threads to share Strn, since it is static.
-#[cfg(feature = "riot_os")]    //  If building for RIOT OS...
+#[cfg(feature = "riot_os")] //  If building for RIOT OS...
 unsafe impl Send for Strn {}
 
 ///  Allow threads to share Strn, since it is static.
-#[cfg(feature = "riot_os")]    //  If building for RIOT OS...
+#[cfg(feature = "riot_os")] //  If building for RIOT OS...
 unsafe impl Sync for Strn {}
 
 ///  Declare a pointer that will be used by C functions to return a value
-#[cfg(feature = "riot_os")]    //  If building for RIOT OS...
+#[cfg(feature = "riot_os")] //  If building for RIOT OS...
 pub type Out<T> = &'static mut T;
 
 ///  Declare a `void *` pointer that will be passed to C functions
-#[cfg(feature = "riot_os")]    //  If building for RIOT OS...
+#[cfg(feature = "riot_os")] //  If building for RIOT OS...
 pub type Ptr = *mut ::cty::c_void;
 
 ///  Declare a `NULL` pointer that will be passed to C functions
-#[cfg(feature = "riot_os")]    //  If building for RIOT OS...
+#[cfg(feature = "riot_os")] //  If building for RIOT OS...
 pub const NULL: Ptr = ::core::ptr::null_mut();
 
 pub type Ptr = *mut core::obj::lv_obj_t;
