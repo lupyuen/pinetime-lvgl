@@ -42,6 +42,7 @@ function generate_bindings() {
         -o $tmpexpandpath \
         $headerfile \
         -- \
+        -Ibaselibc/include/ \
         $gcc_options
 
     # Change extern "C"
@@ -119,7 +120,7 @@ generate_bindings_core
 #  generate_bindings_misc
 
 #  Generate bindings for lv_objx
-####generate_bindings_objx
+generate_bindings_objx
 
 #  TODO: Generate bindings for lv_themes
 #  generate_bindings_themes
