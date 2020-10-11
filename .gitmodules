@@ -1,0 +1,3 @@
+[submodule "pinetime_lvgl_mynewt"]
+	path = pinetime_lvgl_mynewt
+	url = https://gitlab.com/lupyuen/pinetime_lvgl_mynewt
