@@ -9,3 +9,13 @@ Refer to the article...
 ["Bluetooth Time Sync, Rust Watch Faces and LVGL on PineTime Mynewt"](https://lupyuen.github.io/pinetime-rust-mynewt/articles/timesync)
 
 See [`src`](src) for more details.
+
+To publish to crates.io...
+
+```bash
+cargo package --list --allow-dirty
+
+cargo publish --dry-run --allow-dirty
+
+cargo publish    
+```

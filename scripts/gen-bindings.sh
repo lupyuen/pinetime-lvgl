@@ -8,21 +8,27 @@ set -e  #  Exit when any command fails.
 set -x  #  Echo all commands.
 export RUST_BACKTRACE=1  #  Show Rust errors.
 
+#  Define the library name
+libname=lvgl
+headerprefix=pinetime_lvgl_mynewt
+
+#  TODO: Sync gcc options with https://github.com/AppKaki/lvgl-wasm/blob/mynewt/mynewt/Makefile
+gcc_options= -g -I $headerprefix/src/lv_core -D LV_USE_DEMO_WIDGETS
+
 function generate_bindings() {
     #  Generate bindings for the module.
     local libname=$1     # Library name e.g. lvgl
     local modname=$2     # Module name e.g. core
     local submodname=$3  # Submodule name e.g. obj
-    local headerfile=$4  # Header file e.g. apps/pinetime/bin/pkg/pinetime/lvgl/src/lv_core/lv_obj.h
+    local headerfile=$4  # Header file e.g. pinetime_lvgl_mynewt/src/lv_core/lv_obj.h
     shift 4
     local whitelist="$@" # Whitelist Options: --raw-line, --blacklist-item, --whitelist-function, --whitelist-type, --whitelist-var
     echo "whitelist=$whitelist"
 
-    local expandpath=rust/$libname/src/$modname/$submodname.rs
-    local tmpexpandpath=rust/$libname/src/$modname/$submodname.tmp
+    local expandpath=src/$modname/$submodname.rs
+    local tmpexpandpath=src/$modname/$submodname.tmp
 
-    #  Generate Rust bindings for the expanded macros, based on `make --trace --jobs=1`.
-    #  To generate Rust bindings for `static inline` functions: `-Dstatic="" -Dinline=""`.
+    #  Generate Rust bindings
     #  TODO: Ensure that output folder has been created
     bindgen \
         --verbose \
@@ -36,129 +42,7 @@ function generate_bindings() {
         -o $tmpexpandpath \
         $headerfile \
         -- \
-        -Dstatic="" \
-        -Dinline="" \
-        -Ibaselibc/include/ \
-        -Iapps/pinetime/bin/pkg/pinetime/ \
-        -Iapps/pinetime  \
-        -DDEVELHELP \
-        -Werror  \
-        -DCPU_FAM_NRF52 \
-        -mlittle-endian \
-        -ffunction-sections \
-        -fdata-sections \
-        -fno-builtin \
-        -fshort-enums \
-        -ggdb \
-        -g3 \
-        -DCPU_MODEL_NRF52832XXAA  \
-        -DCPU_ARCH_CORTEX_M4F  \
-        -DRIOT_BOARD=BOARD_PINETIME  \
-        -DRIOT_CPU=CPU_NRF52  \
-        -DRIOT_MCU=MCU_NRF52 \
-        -std=c99 \
-        -fno-common \
-        -DLV_CONF_INCLUDE_SIMPLE  \
-        -DLV_LVGL_H_INCLUDE_SIMPLE  \
-        -DNIMBLE_CFG_CONTROLLER=1  \
-        -DMYNEWT_VAL_OS_CPUTIME_FREQ=32768  \
-        -DMYNEWT_VAL_BLE_SM_LEGACY=0  \
-        -DMYNEWT_VAL_BLE_SM_SC=1  \
-        -DMYNEWT_VAL_BLE_SM_MITM=1  \
-        -DMYNEWT_VAL_BLE_SM_BONDING=1  \
-        -DMYNEWT_VAL_BLE_SM_MAX_PROCS=1  \
-        -DMYNEWT_VAL_BLE_GATT_MAX_PROCS=8  \
-        -DMYNEWT_VAL_BLE_L2CAP_MAX_CHANS=8  \
-        -DMYNEWT_VAL_BLE_L2CAP_COC_MAX_NUM=1  \
-        -DMYNEWT_VAL_BLE_STORE_MAX_BONDS=5 \
-        -DMYNEWT_VAL_BLE_SM_OUR_KEY_DIST=0x6  \
-        -DMYNEWT_VAL_BLE_SM_THEIR_KEY_DIST=0x6  \
-        -DMYNEWT_VAL_MSYS_1_BLOCK_COUNT=32  \
-        -DMYNEWT_VAL_MSYS_1_BLOCK_SIZE=292  \
-        -DMYNEWT_VAL_BLE_EXT_ADV_MAX_SIZE=31  \
-        -DMYNEWT_VAL_BLE_MAX_CONNECTIONS=1  \
-        -DMYNEWT_VAL_BLE_MAX_PERIODIC_SYNCS=5 \
-        -DMYNEWT_VAL_BLE_MULTI_ADV_INSTANCES=5  \
-        -DMYNEWT_VAL_BLE_STORE_MAX_CCCDS=8  \
-        -DMYNEWT_VAL_BLE_MAX_PERIODIC_SYNCS=5 \
-        -DMYNEWT_VAL_BLE_MULTI_ADV_INSTANCES=5  \
-        -DMYNEWT_VAL_BLE_LL_CFG_FEAT_LE_ENCRYPTION=1  \
-        -DMYNEWT_VAL_BLE_LL_CFG_FEAT_LL_PRIVACY=1  \
-        -DMYNEWT_VAL_BLE_LL_CFG_FEAT_DATA_LEN_EXT=1  \
-        -DMYNEWT_VAL_BLE_LL_CFG_FEAT_LL_EXT_ADV=1  \
-        -DMYNEWT_VAL_BLE_LL_SCHED_SCAN_AUX_PDU_LEN=41  \
-        -DMYNEWT_VAL_BLE_LL_SCHED_SCAN_SYNC_PDU_LEN=32  \
-        -DMYNEWT_VAL_BLE_SM_IO_CAP=BLE_HS_IO_DISPLAY_YESNO  \
-        -DNIMBLE_HOST_STACKSIZE=3072  \
-        -DVFS_FILE_BUFFER_SIZE=84  \
-        -DVFS_DIR_BUFFER_SIZE=52  \
-        -include 'apps/pinetime/bin/pinetime/riotbuild/riotbuild.h'   \
-        -isystem /usr/local/Cellar/arm-none-eabi-gcc/7-2018-q2-update/gcc/arm-none-eabi/include/newlib-nano  \
-        -Iapps/pinetime/../../modules/include  \
-        -Iapps/pinetime/../../modules/bleman/include  \
-        -Iapps/pinetime/../../modules/gui/include  \
-        -Iapps/pinetime/../../modules/controller/include  \
-        -Iapps/pinetime/../../modules/fonts/include  \
-        -Iapps/pinetime/../../modules/hal/include  \
-        -Iapps/pinetime/../../modules/storage/include  \
-        -Iapps/pinetime/../../modules/util/include  \
-        -Iapps/pinetime/../../modules/widget/include  \
-        -Iapps/pinetime/../../widgets/home_time/include  \
-        -Iapps/pinetime/../../widgets/menu_tiles/include  \
-        -Iapps/pinetime/../../widgets/sysinfo/include  \
-        -Iapps/pinetime/../../widgets/face_notification/include  \
-        -Iapps/pinetime/../../widgets/face_sports/include  \
-        -IRIOT/core/include  \
-        -IRIOT/drivers/include  \
-        -IRIOT/sys/include  \
-        -IRIOT/boards/pinetime/include  \
-        -IRIOT/boards/common/nrf52/include  \
-        -IRIOT/cpu/nrf52/include  \
-        -IRIOT/cpu/nrf5x_common/include  \
-        -IRIOT/cpu/cortexm_common/include  \
-        -IRIOT/cpu/cortexm_common/include/vendor  \
-        -IRIOT/sys/libc/include  \
-        -Iapps/pinetime/bin/pkg/pinetime/littlefs  \
-        -Iapps/pinetime/bin/pkg/pinetime/lvgl  \
-        -IRIOT/pkg/nimble/contrib/include  \
-        -Iapps/pinetime/bin/pkg/pinetime/nimble/nimble/include  \
-        -Iapps/pinetime/bin/pkg/pinetime/nimble/porting/npl/riot/include  \
-        -Iapps/pinetime/bin/pkg/pinetime/nimble/porting/nimble/include  \
-        -Iapps/pinetime/bin/pkg/pinetime/nimble/nimble/controller/include  \
-        -Iapps/pinetime/bin/pkg/pinetime/nimble/nimble/drivers/nrf52/include  \
-        -Iapps/pinetime/bin/pkg/pinetime/nimble/nimble/host/include  \
-        -Iapps/pinetime/bin/pkg/pinetime/nimble/nimble/host/store/ram/include  \
-        -Iapps/pinetime/bin/pkg/pinetime/nimble/nimble/host/util/include  \
-        -Iapps/pinetime/bin/pkg/pinetime/nimble/ext/tinycrypt/include  \
-        -Iapps/pinetime/bin/pkg/pinetime/nimble/nimble/transport/ram/include  \
-        -Iapps/pinetime/bin/pkg/pinetime/nimble/nimble/host/services/gap/include  \
-        -Iapps/pinetime/bin/pkg/pinetime/nimble/nimble/host/services/gatt/include  \
-        -Iapps/pinetime/../../modules/include  \
-        -Iapps/pinetime/../../modules/bleman/include  \
-        -Iapps/pinetime/../../modules/gui/include  \
-        -Iapps/pinetime/../../modules/controller/include  \
-        -Iapps/pinetime/../../modules/fonts/include  \
-        -Iapps/pinetime/../../modules/hal/include  \
-        -Iapps/pinetime/../../modules/storage/include  \
-        -Iapps/pinetime/../../modules/util/include  \
-        -Iapps/pinetime/../../modules/widget/include  \
-        -Iapps/pinetime/../../widgets/home_time/include  \
-        -Iapps/pinetime/../../widgets/menu_tiles/include  \
-        -Iapps/pinetime/../../widgets/sysinfo/include  \
-        -Iapps/pinetime/../../widgets/face_notification/include  \
-        -Iapps/pinetime/../../widgets/face_sports/include  \
-        -Iapps/pinetime/../../modules/bleman/include  \
-        -Iapps/pinetime/../../modules/gui/include  \
-        -Iapps/pinetime/../../modules/controller/include  \
-        -Iapps/pinetime/../../modules/fonts/include  \
-        -Iapps/pinetime/../../modules/hal/include  \
-        -Iapps/pinetime/../../modules/storage/include  \
-        -Iapps/pinetime/../../modules/util/include  \
-        -Iapps/pinetime/../../modules/widget/include  \
-        -IRIOT/sys/posix/include  \
-        -IRIOT/drivers/cst816s/include  \
-        -IRIOT/drivers/ili9341/include  \
-        -DEND_OF_OPTIONS
+        $gcc_options
 
     # Change extern "C"
     # to     #[lvgl_macros::safe_wrap(attr)] extern "C"
@@ -181,16 +65,11 @@ function generate_bindings() {
     rm $tmpexpandpath
 }
 
-#  Define the library name
-libname=lvgl
-headerprefix=libs
-srclib=pinetime_lvgl_mynewt
-
 function generate_bindings_core() {
     #  Add whitelist and blacklist for for lv_core/lv_obj
     local modname=core
     local submodname=obj
-    local headerfile=$headerprefix/$headerprefix/src/lv_$modname/lv_$submodname.h
+    local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
     local whitelistname=lv_
     local whitelist=`cat << EOF
         --raw-line use \
@@ -208,7 +87,7 @@ function generate_bindings_objx() {
     #  Add whitelist and blacklist for for lv_objx/lv_label
     local modname=objx
     local submodname=label
-    local headerfile=$headerprefix/$headerprefix/src/lv_$modname/lv_$submodname.h
+    local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
     local whitelistname=lv_label
     local whitelist=`cat << EOF
         --raw-line use \
@@ -227,199 +106,25 @@ EOF
 #  Generate bindings for lv_core
 generate_bindings_core
 
-#draw
-#font
-#hal
-#misc
+#  TODO: Generate bindings for lv_draw
+#  generate_bindings_draw
+
+#  TODO: Generate bindings for lv_font
+#  generate_bindings_font
+
+#  TODO: Generate bindings for lv_hal
+#  generate_bindings_hal
+
+#  TODO: Generate bindings for lv_misc
+#  generate_bindings_misc
 
 #  Generate bindings for lv_objx
-generate_bindings_objx
+####generate_bindings_objx
 
-#themes
+#  TODO: Generate bindings for lv_themes
+#  generate_bindings_themes
 
 exit
-
-#  TODO: Adapt for LVGL
-function NOTUSED_generate_bindings_hw() {
-    #  Generate bindings for hw/*
-    #  libname: sensor
-    local libname=$1
-    #  srcname: sensor
-    local srcname=$2
-    #  prefixname: sensor
-    local prefixname=$3
-    if [ "$libname" == 'sensor' ]; then
-        #  modname looks like hw/sensor/bindings.rs
-        local modname=hw/$libname/bindings
-        #  libdir looks like hw/sensor
-        local libdir=hw/$libname
-        #  libcmd looks like
-        #  bin/targets/bluepill_my_sensor/app/hw/sensor/repos/apache-mynewt-core/hw/sensor/src/sensor.o.cmd
-        local libcmd=bin/targets/*_my_sensor/app/$libdir/repos/apache-mynewt-core/$libdir/src/$srcname.o.cmd
-    elif [ "$libname" == 'hal' ]; then
-        #  modname looks like hw/hal.rs
-        local modname=hw/$libname
-        #  libdir looks like hw/hal
-        local libdir=hw/$libname
-        #  libcmd looks like
-        #  bin/targets/nrf52_my_sensor/app/libs/mynewt_rust/libs/mynewt_rust/src/hal.o.cmd
-        local libcmd=bin/targets/*_my_sensor/app/libs/mynewt_rust/libs/mynewt_rust/src/$srcname.o.cmd
-    else
-        #  modname looks like hw/xxx.rs
-        local modname=hw/$libname
-        #  libdir looks like hw/xxx
-        local libdir=hw/$libname
-        #  libcmd looks like
-        #  bin/targets/bluepill_my_sensor/app/hw/sensor/repos/apache-mynewt-core/hw/sensor/src/sensor.o.cmd
-        local libcmd=bin/targets/*_my_sensor/app/$libdir/repos/apache-mynewt-core/$libdir/src/$srcname.o.cmd
-    fi
-    #  Add whitelist and blacklist.
-    local whitelist=`cat << EOF
-        --raw-line use \
-        --raw-line super::*; \
-        --blacklist-item     os_callout \
-        --blacklist-item     os_dev	\
-        --blacklist-item     os_dev_handlers \
-        --blacklist-item     os_event \
-        --blacklist-item     os_eventq \
-        --blacklist-item     os_memblock \
-        --blacklist-item     os_mempool \
-        --blacklist-item     os_mutex \
-        --blacklist-item     os_sanity_check \
-        --blacklist-item     os_task \
-        --blacklist-item     os_timeval \
-        --blacklist-item     os_timezone \
-        --whitelist-function (?i)${prefixname}.* \
-        --whitelist-type     (?i)${prefixname}.* \
-        --whitelist-var      (?i)${prefixname}.*
-EOF
-`
-    generate_bindings $libname $modname $libdir $libcmd $whitelist
-}
-
-#  Sample gcc command from `make --trace --jobs=1`
-arm-none-eabi-gcc \
-    -DRIOT_FILE_RELATIVE=\"/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pkg/pinetime/lvgl/src/lv_objx/lv_label.c\" \
-    -DRIOT_FILE_NOPATH=\"lv_label.c\" \
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime 
-    -DPINETIME_VERSION=\"6145f3d\" 
-    -DDEVELHELP -Werror 
-    -DCPU_FAM_NRF52 -mno-thumb
-    -interwork -mcpu=cortex-m4 -mlittle-endian -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -ffunction-sections -fdata-sections -fno-builtin -fshort-enums -ggdb -g3 -Os 
-    -DCPU_MODEL_NRF52832XXAA 
-    -DCPU_ARCH_CORTEX_M4F 
-    -DRIOT_APPLICATION=\"PineTime\" 
-    -DBOARD_PINETIME=\"pinetime\" 
-    -DRIOT_BOARD=BOARD_PINETIME 
-    -DCPU_NRF52=\"nrf52\" 
-    -DRIOT_CPU=CPU_NRF52 
-    -DMCU_NRF52=\"nrf52\" 
-    -DRIOT_MCU=MCU_NRF52 -std=c99 -fno-common -Wall -Wextra -Wmissing
-    -include-dirs -fno-delete-null-pointer-checks -fdiagnostics-color -Wstrict-prototypes -Wold-style-definition -gz -Wformat=2 -Wformat-overflow -Wformat-truncation -Wno-pedantic -Wno-unused-parameter -Wno-sign-compare -Wno-cast-function-type 
-    -DLV_CONF_INCLUDE_SIMPLE 
-    -DLV_LVGL_H_INCLUDE_SIMPLE 
-    -DNIMBLE_CFG_CONTROLLER=1 
-    -DMYNEWT_VAL_OS_CPUTIME_FREQ=32768 
-    -DMYNEWT_VAL_BLE_SM_LEGACY=0 
-    -DMYNEWT_VAL_BLE_SM_SC=1 
-    -DMYNEWT_VAL_BLE_SM_MITM=1 
-    -DMYNEWT_VAL_BLE_SM_BONDING=1 
-    -DMYNEWT_VAL_BLE_SM_MAX_PROCS=1 
-    -DMYNEWT_VAL_BLE_GATT_MAX_PROCS=8 
-    -DMYNEWT_VAL_BLE_L2CAP_MAX_CHANS=8 
-    -DMYNEWT_VAL_BLE_L2CAP_COC_MAX_NUM=1 
-    -DMYNEWT_VAL_BLE_STORE_MAX_BONDS=5 
-    -DMYNEWT_VAL_BLE_SM_OUR_KEY_DIST=0x6 
-    -DMYNEWT_VAL_BLE_SM_THEIR_KEY_DIST=0x6 
-    -DMYNEWT_VAL_MSYS_1_BLOCK_COUNT=32 
-    -DMYNEWT_VAL_MSYS_1_BLOCK_SIZE=292 
-    -DMYNEWT_VAL_BLE_EXT_ADV_MAX_SIZE=31 
-    -DMYNEWT_VAL_BLE_MAX_CONNECTIONS=1 
-    -DMYNEWT_VAL_BLE_MAX_PERIODIC_SYNCS=5 
-    -DMYNEWT_VAL_BLE_MULTI_ADV_INSTANCES=5 
-    -DMYNEWT_VAL_BLE_STORE_MAX_CCCDS=8 
-    -DMYNEWT_VAL_BLE_MAX_PERIODIC_SYNCS=5 
-    -DMYNEWT_VAL_BLE_MULTI_ADV_INSTANCES=5 
-    -DMYNEWT_VAL_BLE_LL_CFG_FEAT_LE_ENCRYPTION=1 
-    -DMYNEWT_VAL_BLE_LL_CFG_FEAT_LL_PRIVACY=1 
-    -DMYNEWT_VAL_BLE_LL_CFG_FEAT_DATA_LEN_EXT=1 
-    -DMYNEWT_VAL_BLE_LL_CFG_FEAT_LL_EXT_ADV=1 
-    -DMYNEWT_VAL_BLE_LL_SCHED_SCAN_AUX_PDU_LEN=41 
-    -DMYNEWT_VAL_BLE_LL_SCHED_SCAN_SYNC_PDU_LEN=32 
-    -DMYNEWT_VAL_BLE_SM_IO_CAP=BLE_HS_IO_DISPLAY_YESNO 
-    -DNIMBLE_HOST_STACKSIZE=3072 
-    -DVFS_FILE_BUFFER_SIZE=84 
-    -DVFS_DIR_BUFFER_SIZE=52 
-    -include '/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime/riotbuild/riotbuild.h'  
-    -isystem /usr/local/Cellar/arm-none-eabi-gcc/7-2018-q2-update/gcc/arm-none-eabi/include/newlib-nano 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/bleman/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/gui/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/controller/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/fonts/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/hal/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/storage/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/util/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/widget/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../widgets/home_time/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../widgets/menu_tiles/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../widgets/sysinfo/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../widgets/face_notification/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../widgets/face_sports/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/RIOT/core/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/RIOT/drivers/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/RIOT/sys/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/RIOT/boards/pinetime/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/RIOT/boards/common/nrf52/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/RIOT/cpu/nrf52/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/RIOT/cpu/nrf5x_common/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/RIOT/cpu/cortexm_common/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/RIOT/cpu/cortexm_common/include/vendor 
-    -I/Users/Luppy/PineTime/PineTime-apps/RIOT/sys/libc/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pkg/pinetime/littlefs 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pkg/pinetime/lvgl 
-    -I/Users/Luppy/PineTime/PineTime-apps/RIOT/pkg/nimble/contrib/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pkg/pinetime/nimble/nimble/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pkg/pinetime/nimble/porting/npl/riot/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pkg/pinetime/nimble/porting/nimble/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pkg/pinetime/nimble/nimble/controller/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pkg/pinetime/nimble/nimble/drivers/nrf52/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pkg/pinetime/nimble/nimble/host/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pkg/pinetime/nimble/nimble/host/store/ram/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pkg/pinetime/nimble/nimble/host/util/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pkg/pinetime/nimble/ext/tinycrypt/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pkg/pinetime/nimble/nimble/transport/ram/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pkg/pinetime/nimble/nimble/host/services/gap/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pkg/pinetime/nimble/nimble/host/services/gatt/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/bleman/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/gui/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/controller/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/fonts/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/hal/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/storage/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/util/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/widget/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../widgets/home_time/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../widgets/menu_tiles/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../widgets/sysinfo/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../widgets/face_notification/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../widgets/face_sports/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/bleman/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/gui/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/controller/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/fonts/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/hal/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/storage/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/util/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/../../modules/widget/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/RIOT/sys/posix/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/RIOT/drivers/cst816s/include 
-    -I/Users/Luppy/PineTime/PineTime-apps/RIOT/drivers/ili9341/include 
-    -MQ '/Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime/lvgl_objx/lv_label.o' 
-    -MD -MP -c 
-    -o /Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pinetime/lvgl_objx/lv_label.o 
-    /Users/Luppy/PineTime/PineTime-apps/apps/pinetime/bin/pkg/pinetime/lvgl/src/lv_objx/lv_label.c
 
 → bindgen --help
 bindgen 0.49.2
