@@ -13,7 +13,7 @@ libname=lvgl
 headerprefix=pinetime_lvgl_mynewt
 
 #  TODO: Sync gcc options with https://github.com/AppKaki/lvgl-wasm/blob/mynewt/mynewt/Makefile
-gcc_options= -g -I $headerprefix/src/lv_core -D LV_USE_DEMO_WIDGETS
+gcc_options=" -g -I $headerprefix/src/lv_core -D LV_USE_DEMO_WIDGETS"
 
 function generate_bindings() {
     #  Generate bindings for the module.
