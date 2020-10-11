@@ -84,9 +84,10 @@ EOF
     generate_bindings $libname $modname $submodname $headerfile $whitelist
 }
 
-function generate_bindings_objx() {
-    #  Add whitelist and blacklist for for lv_objx/lv_label
-    local modname=objx
+function generate_bindings_widgets() {
+    #  Add whitelist and blacklist for for lv_widgets/lv_label
+    #  TODO: Handle other widgets
+    local modname=widgets
     local submodname=label
     local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
     local whitelistname=lv_label
@@ -100,7 +101,7 @@ function generate_bindings_objx() {
         --blacklist-item     lv_style_t
 EOF
 `
-    #  Generate the bindings for lv_objx/lv_label: libname, modname, submodname, headerfile, whitelist
+    #  Generate the bindings for lv_widgets/lv_label: libname, modname, submodname, headerfile, whitelist
     generate_bindings $libname $modname $submodname $headerfile $whitelist
 }
 
@@ -119,8 +120,8 @@ generate_bindings_core
 #  TODO: Generate bindings for lv_misc
 #  generate_bindings_misc
 
-#  Generate bindings for lv_objx
-generate_bindings_objx
+#  Generate bindings for lv_widgets
+generate_bindings_widgets
 
 #  TODO: Generate bindings for lv_themes
 #  generate_bindings_themes

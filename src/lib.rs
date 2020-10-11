@@ -19,7 +19,7 @@ pub mod core;                     //  Lvgl Core API. Export folder `core` as Rus
 //  TODO: pub mod misc;           //  Lvgl Misc API. Export folder `misc` as Rust module `lvgl::misc`
 
 #[allow(unused_imports)]          //  Allow unused imports
-pub mod objx;                     //  Lvgl Objx API. Export folder `objx` as Rust module `lvgl::objx`
+pub mod widgets;                  //  Lvgl Widgets API. Export folder `widgets` as Rust module `lvgl::widgets`
 
 //  TODO: pub mod themes;         //  Lvgl Themes API. Export folder `themes` as Rust module `lvgl::themes`
 

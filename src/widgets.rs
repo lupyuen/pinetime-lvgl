@@ -1,4 +1,4 @@
-//! LVGL Objx API for Rust
+//! LVGL Widgets API for Rust
 
 #[cfg(feature = "mynewt_os")]     //  If building for Mynewt OS...
 use mynewt::{                     //  Use Mynewt types
@@ -22,8 +22,8 @@ use crate::{
     },
 };
 
-/// Contains Rust bindings for LVGL Objx API `lv_objx`
+/// Contains Rust bindings for LVGL Objx API `lv_widgets`
 #[allow(non_camel_case_types)]    //  Allow type names to have non-camel case
 #[allow(non_upper_case_globals)]  //  Allow globals to have lowercase letters
 #[allow(unused_imports)]          //  Allow unused imports
-pub mod label;                    //  Export `objx/label.rs` as Rust module `lvgl::objx::label`
+pub mod label;                    //  Export `widgets/label.rs` as Rust module `lvgl::widgets::label`

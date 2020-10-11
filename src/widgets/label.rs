@@ -136,172 +136,8 @@ pub const LV_LABEL_DOT_NUM: u32 = 3;
 pub const LV_LABEL_POS_LAST: u32 = 65535;
 pub const LV_LABEL_TEXT_SEL_OFF: u32 = 65535;
 pub type lv_coord_t = i16;
-pub type lv_font_user_data_t = *mut ::cty::c_void;
 pub type lv_obj_user_data_t = *mut ::cty::c_void;
-#[doc = " Describes the properties of a glyph."]
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_font_glyph_dsc_t {
-    #[doc = "< The glyph needs this space. Draw the next glyph after this width. 8 bit integer, 4 bit fractional"]
-    pub adv_w: u16,
-    #[doc = "< Width of the glyph's bounding box"]
-    pub box_w: u8,
-    #[doc = "< Height of the glyph's bounding box"]
-    pub box_h: u8,
-    #[doc = "< x offset of the bounding box"]
-    pub ofs_x: i8,
-    #[doc = "< y offset of the bounding box"]
-    pub ofs_y: i8,
-    #[doc = "< Bit-per-pixel: 1, 2, 4, 8"]
-    pub bpp: u8,
-}
-#[doc = " Describe the properties of a font"]
-#[repr(C)]
-pub struct _lv_font_struct {
-    #[doc = " Get a glyph's  descriptor from a font"]
-    pub get_glyph_dsc: ::core::option::Option<
-        unsafe extern "C" fn(
-            arg1: *const _lv_font_struct,
-            arg2: *mut lv_font_glyph_dsc_t,
-            letter: u32,
-            letter_next: u32,
-        ) -> bool,
-    >,
-    #[doc = " Get a glyph's bitmap from a font"]
-    pub get_glyph_bitmap: ::core::option::Option<
-        unsafe extern "C" fn(arg1: *const _lv_font_struct, arg2: u32) -> *const u8,
-    >,
-    #[doc = "< The real line height where any text fits"]
-    pub line_height: u8,
-    #[doc = "< Base line measured from the top of the line_height"]
-    pub base_line: u8,
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-    #[doc = "< Store implementation specific or run_time data or caching here"]
-    pub dsc: *mut ::cty::c_void,
-    #[doc = "< Custom user data for font."]
-    pub user_data: lv_font_user_data_t,
-}
-impl Default for _lv_font_struct {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-impl _lv_font_struct {
-    #[inline]
-    pub fn subpx(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 2u8) as u8) }
-    }
-    #[inline]
-    pub fn set_subpx(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(0usize, 2u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn new_bitfield_1(subpx: u8) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
-            Default::default();
-        __bindgen_bitfield_unit.set(0usize, 2u8, {
-            let subpx: u8 = unsafe { ::core::mem::transmute(subpx) };
-            subpx as u64
-        });
-        __bindgen_bitfield_unit
-    }
-}
-pub type lv_font_t = _lv_font_struct;
-#[repr(C)]
-pub struct lv_color16_t {
-    pub ch: __BindgenUnionField<lv_color16_t__bindgen_ty_1>,
-    pub full: __BindgenUnionField<u16>,
-    pub bindgen_union_field: u16,
-}
-#[repr(C)]
-#[repr(align(2))]
-#[derive(Default)]
-pub struct lv_color16_t__bindgen_ty_1 {
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
-}
-impl lv_color16_t__bindgen_ty_1 {
-    #[inline]
-    pub fn green_h(&self) -> u16 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 3u8) as u16) }
-    }
-    #[inline]
-    pub fn set_green_h(&mut self, val: u16) {
-        unsafe {
-            let val: u16 = ::core::mem::transmute(val);
-            self._bitfield_1.set(0usize, 3u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn red(&self) -> u16 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 5u8) as u16) }
-    }
-    #[inline]
-    pub fn set_red(&mut self, val: u16) {
-        unsafe {
-            let val: u16 = ::core::mem::transmute(val);
-            self._bitfield_1.set(3usize, 5u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn blue(&self) -> u16 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 5u8) as u16) }
-    }
-    #[inline]
-    pub fn set_blue(&mut self, val: u16) {
-        unsafe {
-            let val: u16 = ::core::mem::transmute(val);
-            self._bitfield_1.set(8usize, 5u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn green_l(&self) -> u16 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(13usize, 3u8) as u16) }
-    }
-    #[inline]
-    pub fn set_green_l(&mut self, val: u16) {
-        unsafe {
-            let val: u16 = ::core::mem::transmute(val);
-            self._bitfield_1.set(13usize, 3u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn new_bitfield_1(
-        green_h: u16,
-        red: u16,
-        blue: u16,
-        green_l: u16,
-    ) -> __BindgenBitfieldUnit<[u8; 2usize], u8> {
-        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 2usize], u8> =
-            Default::default();
-        __bindgen_bitfield_unit.set(0usize, 3u8, {
-            let green_h: u16 = unsafe { ::core::mem::transmute(green_h) };
-            green_h as u64
-        });
-        __bindgen_bitfield_unit.set(3usize, 5u8, {
-            let red: u16 = unsafe { ::core::mem::transmute(red) };
-            red as u64
-        });
-        __bindgen_bitfield_unit.set(8usize, 5u8, {
-            let blue: u16 = unsafe { ::core::mem::transmute(blue) };
-            blue as u64
-        });
-        __bindgen_bitfield_unit.set(13usize, 3u8, {
-            let green_l: u16 = unsafe { ::core::mem::transmute(green_l) };
-            green_l as u64
-        });
-        __bindgen_bitfield_unit
-    }
-}
-impl Default for lv_color16_t {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-pub type lv_color_t = lv_color16_t;
-pub type lv_opa_t = u8;
+pub type lv_res_t = u8;
 #[doc = " Represents a point on the screen."]
 #[repr(C)]
 #[derive(Default)]
@@ -318,135 +154,461 @@ pub struct lv_area_t {
     pub x2: lv_coord_t,
     pub y2: lv_coord_t,
 }
-pub type lv_border_part_t = u8;
-pub type lv_shadow_type_t = u8;
-#[doc = " Object background."]
+pub type lv_align_t = u8;
 #[repr(C)]
-pub struct lv_style_t__bindgen_ty_1 {
-    #[doc = "< Object's main background color."]
-    pub main_color: lv_color_t,
-    #[doc = "< Second color. If not equal to `main_color` a gradient will be drawn for the background."]
-    pub grad_color: lv_color_t,
-    #[doc = "< Object's corner radius. You can use #LV_RADIUS_CIRCLE if you want to draw a circle."]
-    pub radius: lv_coord_t,
-    #[doc = "< Object's opacity (0-255)."]
-    pub opa: lv_opa_t,
-    pub border: lv_style_t__bindgen_ty_1__bindgen_ty_1,
-    pub shadow: lv_style_t__bindgen_ty_1__bindgen_ty_2,
-    pub padding: lv_style_t__bindgen_ty_1__bindgen_ty_3,
+pub struct lv_style_list_t {
+    pub style_list: *mut *mut lv_style_t,
+    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u8>,
+    pub __bindgen_padding_0: u32,
 }
-#[repr(C)]
-pub struct lv_style_t__bindgen_ty_1__bindgen_ty_1 {
-    #[doc = "< Border color"]
-    pub color: lv_color_t,
-    #[doc = "< Border width"]
-    pub width: lv_coord_t,
-    #[doc = "< Which borders to draw"]
-    pub part: lv_border_part_t,
-    #[doc = "< Border opacity."]
-    pub opa: lv_opa_t,
-}
-impl Default for lv_style_t__bindgen_ty_1__bindgen_ty_1 {
+impl Default for lv_style_list_t {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
     }
 }
-#[repr(C)]
-pub struct lv_style_t__bindgen_ty_1__bindgen_ty_2 {
-    pub color: lv_color_t,
-    pub width: lv_coord_t,
-    #[doc = "< Which parts of the shadow to draw"]
-    pub type_: lv_shadow_type_t,
-}
-impl Default for lv_style_t__bindgen_ty_1__bindgen_ty_2 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_style_t__bindgen_ty_1__bindgen_ty_3 {
-    pub top: lv_coord_t,
-    pub bottom: lv_coord_t,
-    pub left: lv_coord_t,
-    pub right: lv_coord_t,
-    pub inner: lv_coord_t,
-}
-impl Default for lv_style_t__bindgen_ty_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[doc = " Style for text drawn by this object."]
-#[repr(C)]
-pub struct lv_style_t__bindgen_ty_2 {
-    #[doc = "< Text color"]
-    pub color: lv_color_t,
-    #[doc = "< Text selection background color."]
-    pub sel_color: lv_color_t,
-    pub font: *const lv_font_t,
-    #[doc = "< Space between letters"]
-    pub letter_space: lv_coord_t,
-    #[doc = "< Space between lines (vertical)"]
-    pub line_space: lv_coord_t,
-    #[doc = "< Text opacity"]
-    pub opa: lv_opa_t,
-}
-impl Default for lv_style_t__bindgen_ty_2 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[repr(C)]
-pub struct lv_style_t__bindgen_ty_3 {
-    #[doc = "< Color to recolor the image with"]
-    pub color: lv_color_t,
-    #[doc = "< Opacity of recoloring (0 means no recoloring)"]
-    pub intense: lv_opa_t,
-    #[doc = "< Opacity of whole image"]
-    pub opa: lv_opa_t,
-}
-impl Default for lv_style_t__bindgen_ty_3 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[repr(C)]
-pub struct lv_style_t__bindgen_ty_4 {
-    pub color: lv_color_t,
-    pub width: lv_coord_t,
-    pub opa: lv_opa_t,
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-}
-impl Default for lv_style_t__bindgen_ty_4 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-impl lv_style_t__bindgen_ty_4 {
+impl lv_style_list_t {
     #[inline]
-    pub fn rounded(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u8) }
+    pub fn style_cnt(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 6u8) as u32) }
     }
     #[inline]
-    pub fn set_rounded(&mut self, val: u8) {
+    pub fn set_style_cnt(&mut self, val: u32) {
         unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(0usize, 1u8, val as u64)
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(0usize, 6u8, val as u64)
         }
     }
     #[inline]
-    pub fn new_bitfield_1(rounded: u8) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
+    pub fn has_local(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_has_local(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(6usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn has_trans(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_has_trans(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(7usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn skip_trans(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_skip_trans(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(8usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn ignore_trans(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_ignore_trans(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(9usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn valid_cache(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_valid_cache(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(10usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn ignore_cache(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_ignore_cache(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(11usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn radius_zero(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_radius_zero(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(12usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn opa_scale_cover(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(13usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_opa_scale_cover(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(13usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn clip_corner_off(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(14usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_clip_corner_off(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(14usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn transform_all_zero(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(15usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_transform_all_zero(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(15usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn pad_all_zero(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(16usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_pad_all_zero(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(16usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn blend_mode_all_normal(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(17usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_blend_mode_all_normal(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(17usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn bg_opa_transp(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(18usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_bg_opa_transp(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(18usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn bg_opa_cover(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(19usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_bg_opa_cover(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(19usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn bg_grad_dir_none(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(20usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_bg_grad_dir_none(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(20usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn border_width_zero(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(21usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_border_width_zero(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(21usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn border_side_full(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(22usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_border_side_full(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(22usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn border_post_off(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(23usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_border_post_off(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(23usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn outline_width_zero(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(24usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_outline_width_zero(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(24usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn pattern_img_null(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(25usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_pattern_img_null(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(25usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn shadow_width_zero(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(26usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_shadow_width_zero(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(26usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn value_txt_str(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(27usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_value_txt_str(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(27usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn img_recolor_opa_transp(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(28usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_img_recolor_opa_transp(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(28usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn text_space_zero(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(29usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_text_space_zero(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(29usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn text_decor_none(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(30usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_text_decor_none(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(30usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn text_font_normal(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(31usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_text_font_normal(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(31usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn new_bitfield_1(
+        style_cnt: u32,
+        has_local: u32,
+        has_trans: u32,
+        skip_trans: u32,
+        ignore_trans: u32,
+        valid_cache: u32,
+        ignore_cache: u32,
+        radius_zero: u32,
+        opa_scale_cover: u32,
+        clip_corner_off: u32,
+        transform_all_zero: u32,
+        pad_all_zero: u32,
+        blend_mode_all_normal: u32,
+        bg_opa_transp: u32,
+        bg_opa_cover: u32,
+        bg_grad_dir_none: u32,
+        border_width_zero: u32,
+        border_side_full: u32,
+        border_post_off: u32,
+        outline_width_zero: u32,
+        pattern_img_null: u32,
+        shadow_width_zero: u32,
+        value_txt_str: u32,
+        img_recolor_opa_transp: u32,
+        text_space_zero: u32,
+        text_decor_none: u32,
+        text_font_normal: u32,
+    ) -> __BindgenBitfieldUnit<[u8; 4usize], u8> {
+        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 4usize], u8> =
             Default::default();
-        __bindgen_bitfield_unit.set(0usize, 1u8, {
-            let rounded: u8 = unsafe { ::core::mem::transmute(rounded) };
-            rounded as u64
+        __bindgen_bitfield_unit.set(0usize, 6u8, {
+            let style_cnt: u32 = unsafe { ::core::mem::transmute(style_cnt) };
+            style_cnt as u64
+        });
+        __bindgen_bitfield_unit.set(6usize, 1u8, {
+            let has_local: u32 = unsafe { ::core::mem::transmute(has_local) };
+            has_local as u64
+        });
+        __bindgen_bitfield_unit.set(7usize, 1u8, {
+            let has_trans: u32 = unsafe { ::core::mem::transmute(has_trans) };
+            has_trans as u64
+        });
+        __bindgen_bitfield_unit.set(8usize, 1u8, {
+            let skip_trans: u32 = unsafe { ::core::mem::transmute(skip_trans) };
+            skip_trans as u64
+        });
+        __bindgen_bitfield_unit.set(9usize, 1u8, {
+            let ignore_trans: u32 = unsafe { ::core::mem::transmute(ignore_trans) };
+            ignore_trans as u64
+        });
+        __bindgen_bitfield_unit.set(10usize, 1u8, {
+            let valid_cache: u32 = unsafe { ::core::mem::transmute(valid_cache) };
+            valid_cache as u64
+        });
+        __bindgen_bitfield_unit.set(11usize, 1u8, {
+            let ignore_cache: u32 = unsafe { ::core::mem::transmute(ignore_cache) };
+            ignore_cache as u64
+        });
+        __bindgen_bitfield_unit.set(12usize, 1u8, {
+            let radius_zero: u32 = unsafe { ::core::mem::transmute(radius_zero) };
+            radius_zero as u64
+        });
+        __bindgen_bitfield_unit.set(13usize, 1u8, {
+            let opa_scale_cover: u32 = unsafe { ::core::mem::transmute(opa_scale_cover) };
+            opa_scale_cover as u64
+        });
+        __bindgen_bitfield_unit.set(14usize, 1u8, {
+            let clip_corner_off: u32 = unsafe { ::core::mem::transmute(clip_corner_off) };
+            clip_corner_off as u64
+        });
+        __bindgen_bitfield_unit.set(15usize, 1u8, {
+            let transform_all_zero: u32 = unsafe { ::core::mem::transmute(transform_all_zero) };
+            transform_all_zero as u64
+        });
+        __bindgen_bitfield_unit.set(16usize, 1u8, {
+            let pad_all_zero: u32 = unsafe { ::core::mem::transmute(pad_all_zero) };
+            pad_all_zero as u64
+        });
+        __bindgen_bitfield_unit.set(17usize, 1u8, {
+            let blend_mode_all_normal: u32 =
+                unsafe { ::core::mem::transmute(blend_mode_all_normal) };
+            blend_mode_all_normal as u64
+        });
+        __bindgen_bitfield_unit.set(18usize, 1u8, {
+            let bg_opa_transp: u32 = unsafe { ::core::mem::transmute(bg_opa_transp) };
+            bg_opa_transp as u64
+        });
+        __bindgen_bitfield_unit.set(19usize, 1u8, {
+            let bg_opa_cover: u32 = unsafe { ::core::mem::transmute(bg_opa_cover) };
+            bg_opa_cover as u64
+        });
+        __bindgen_bitfield_unit.set(20usize, 1u8, {
+            let bg_grad_dir_none: u32 = unsafe { ::core::mem::transmute(bg_grad_dir_none) };
+            bg_grad_dir_none as u64
+        });
+        __bindgen_bitfield_unit.set(21usize, 1u8, {
+            let border_width_zero: u32 = unsafe { ::core::mem::transmute(border_width_zero) };
+            border_width_zero as u64
+        });
+        __bindgen_bitfield_unit.set(22usize, 1u8, {
+            let border_side_full: u32 = unsafe { ::core::mem::transmute(border_side_full) };
+            border_side_full as u64
+        });
+        __bindgen_bitfield_unit.set(23usize, 1u8, {
+            let border_post_off: u32 = unsafe { ::core::mem::transmute(border_post_off) };
+            border_post_off as u64
+        });
+        __bindgen_bitfield_unit.set(24usize, 1u8, {
+            let outline_width_zero: u32 = unsafe { ::core::mem::transmute(outline_width_zero) };
+            outline_width_zero as u64
+        });
+        __bindgen_bitfield_unit.set(25usize, 1u8, {
+            let pattern_img_null: u32 = unsafe { ::core::mem::transmute(pattern_img_null) };
+            pattern_img_null as u64
+        });
+        __bindgen_bitfield_unit.set(26usize, 1u8, {
+            let shadow_width_zero: u32 = unsafe { ::core::mem::transmute(shadow_width_zero) };
+            shadow_width_zero as u64
+        });
+        __bindgen_bitfield_unit.set(27usize, 1u8, {
+            let value_txt_str: u32 = unsafe { ::core::mem::transmute(value_txt_str) };
+            value_txt_str as u64
+        });
+        __bindgen_bitfield_unit.set(28usize, 1u8, {
+            let img_recolor_opa_transp: u32 =
+                unsafe { ::core::mem::transmute(img_recolor_opa_transp) };
+            img_recolor_opa_transp as u64
+        });
+        __bindgen_bitfield_unit.set(29usize, 1u8, {
+            let text_space_zero: u32 = unsafe { ::core::mem::transmute(text_space_zero) };
+            text_space_zero as u64
+        });
+        __bindgen_bitfield_unit.set(30usize, 1u8, {
+            let text_decor_none: u32 = unsafe { ::core::mem::transmute(text_decor_none) };
+            text_decor_none as u64
+        });
+        __bindgen_bitfield_unit.set(31usize, 1u8, {
+            let text_font_normal: u32 = unsafe { ::core::mem::transmute(text_font_normal) };
+            text_font_normal as u64
         });
         __bindgen_bitfield_unit
     }
 }
-pub type lv_res_t = u8;
 #[doc = " Dummy type to make handling easier"]
 pub type lv_ll_node_t = u8;
 #[doc = " Description of a linked list"]
@@ -461,16 +623,18 @@ impl Default for lv_ll_t {
         unsafe { ::core::mem::zeroed() }
     }
 }
+pub type lv_drag_dir_t = u8;
 pub type lv_bidi_dir_t = u8;
 pub type lv_design_mode_t = u8;
+pub type lv_design_res_t = u8;
 #[doc = " The design callback is used to draw the object on the screen."]
 #[doc = " It accepts the object, a mask area, and the mode in which to draw the object."]
 pub type lv_design_cb_t = ::core::option::Option<
     unsafe extern "C" fn(
         obj: *mut _lv_obj_t,
-        mask_p: *const lv_area_t,
+        clip_area: *const lv_area_t,
         mode: lv_design_mode_t,
-    ) -> bool,
+    ) -> lv_design_res_t,
 >;
 pub type lv_event_t = u8;
 #[doc = " @brief Event callback."]
@@ -486,9 +650,8 @@ pub type lv_signal_cb_t = ::core::option::Option<
         param: *mut ::cty::c_void,
     ) -> lv_res_t,
 >;
-pub type lv_align_t = u8;
 #[repr(C)]
-pub struct lv_reailgn_t {
+pub struct lv_realign_t {
     pub base: *const _lv_obj_t,
     pub xofs: lv_coord_t,
     pub yofs: lv_coord_t,
@@ -496,12 +659,12 @@ pub struct lv_reailgn_t {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
     pub __bindgen_padding_0: u16,
 }
-impl Default for lv_reailgn_t {
+impl Default for lv_realign_t {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
     }
 }
-impl lv_reailgn_t {
+impl lv_realign_t {
     #[inline]
     pub fn auto_realign(&self) -> u8 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u8) }
@@ -514,11 +677,11 @@ impl lv_reailgn_t {
         }
     }
     #[inline]
-    pub fn origo_align(&self) -> u8 {
+    pub fn mid_align(&self) -> u8 {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u8) }
     }
     #[inline]
-    pub fn set_origo_align(&mut self, val: u8) {
+    pub fn set_mid_align(&mut self, val: u8) {
         unsafe {
             let val: u8 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
@@ -527,7 +690,7 @@ impl lv_reailgn_t {
     #[inline]
     pub fn new_bitfield_1(
         auto_realign: u8,
-        origo_align: u8,
+        mid_align: u8,
     ) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
             Default::default();
@@ -536,51 +699,51 @@ impl lv_reailgn_t {
             auto_realign as u64
         });
         __bindgen_bitfield_unit.set(1usize, 1u8, {
-            let origo_align: u8 = unsafe { ::core::mem::transmute(origo_align) };
-            origo_align as u64
+            let mid_align: u8 = unsafe { ::core::mem::transmute(mid_align) };
+            mid_align as u64
         });
         __bindgen_bitfield_unit
     }
 }
-pub type lv_drag_dir_t = u8;
+pub type lv_state_t = u8;
 pub type lv_obj_t = _lv_obj_t;
 #[doc = "< Expand the object size to the text size"]
-pub const LV_LABEL_LONG_EXPAND: _bindgen_ty_22 = 0;
+pub const LV_LABEL_LONG_EXPAND: _bindgen_ty_32 = 0;
 #[doc = "< Keep the object width, break the too long lines and expand the object"]
 #[doc = "height"]
-pub const LV_LABEL_LONG_BREAK: _bindgen_ty_22 = 1;
+pub const LV_LABEL_LONG_BREAK: _bindgen_ty_32 = 1;
 #[doc = "< Keep the size and write dots at the end if the text is too long"]
-pub const LV_LABEL_LONG_DOT: _bindgen_ty_22 = 2;
+pub const LV_LABEL_LONG_DOT: _bindgen_ty_32 = 2;
 #[doc = "< Keep the size and roll the text back and forth"]
-pub const LV_LABEL_LONG_SROLL: _bindgen_ty_22 = 3;
+pub const LV_LABEL_LONG_SROLL: _bindgen_ty_32 = 3;
 #[doc = "< Keep the size and roll the text circularly"]
-pub const LV_LABEL_LONG_SROLL_CIRC: _bindgen_ty_22 = 4;
+pub const LV_LABEL_LONG_SROLL_CIRC: _bindgen_ty_32 = 4;
 #[doc = "< Keep the size and crop the text out of it"]
-pub const LV_LABEL_LONG_CROP: _bindgen_ty_22 = 5;
+pub const LV_LABEL_LONG_CROP: _bindgen_ty_32 = 5;
 #[doc = " Long mode behaviors. Used in 'lv_label_ext_t'"]
-pub type _bindgen_ty_22 = u8;
+pub type _bindgen_ty_32 = u32;
 pub type lv_label_long_mode_t = u8;
 #[doc = "< Align text to left"]
-pub const LV_LABEL_ALIGN_LEFT: _bindgen_ty_23 = 0;
+pub const LV_LABEL_ALIGN_LEFT: _bindgen_ty_33 = 0;
 #[doc = "< Align text to center"]
-pub const LV_LABEL_ALIGN_CENTER: _bindgen_ty_23 = 1;
+pub const LV_LABEL_ALIGN_CENTER: _bindgen_ty_33 = 1;
 #[doc = "< Align text to right"]
-pub const LV_LABEL_ALIGN_RIGHT: _bindgen_ty_23 = 2;
+pub const LV_LABEL_ALIGN_RIGHT: _bindgen_ty_33 = 2;
 #[doc = "< Use LEFT or RIGHT depending on the direction of the text (LTR/RTL)"]
-pub const LV_LABEL_ALIGN_AUTO: _bindgen_ty_23 = 3;
+pub const LV_LABEL_ALIGN_AUTO: _bindgen_ty_33 = 3;
 #[doc = " Label align policy"]
-pub type _bindgen_ty_23 = u8;
+pub type _bindgen_ty_33 = u32;
 pub type lv_label_align_t = u8;
 #[doc = " Data of label"]
 #[repr(C)]
 pub struct lv_label_ext_t {
     pub text: *mut ::cty::c_char,
     pub dot: lv_label_ext_t__bindgen_ty_1,
-    pub dot_end: u16,
-    pub offset: lv_point_t,
+    pub dot_end: u32,
     pub anim_speed: u16,
+    pub offset: lv_point_t,
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
-    pub __bindgen_padding_0: [u16; 3usize],
+    pub __bindgen_padding_0: u32,
 }
 #[repr(C)]
 pub struct lv_label_ext_t__bindgen_ty_1 {
@@ -655,25 +818,14 @@ impl lv_label_ext_t {
         }
     }
     #[inline]
-    pub fn body_draw(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_body_draw(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(8usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
     pub fn dot_tmp_alloc(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u8) }
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u8) }
     }
     #[inline]
     pub fn set_dot_tmp_alloc(&mut self, val: u8) {
         unsafe {
             let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(9usize, 1u8, val as u64)
+            self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
     #[inline]
@@ -683,7 +835,6 @@ impl lv_label_ext_t {
         align: u8,
         recolor: u8,
         expand: u8,
-        body_draw: u8,
         dot_tmp_alloc: u8,
     ) -> __BindgenBitfieldUnit<[u8; 2usize], u8> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 2usize], u8> =
@@ -709,20 +860,16 @@ impl lv_label_ext_t {
             expand as u64
         });
         __bindgen_bitfield_unit.set(8usize, 1u8, {
-            let body_draw: u8 = unsafe { ::core::mem::transmute(body_draw) };
-            body_draw as u64
-        });
-        __bindgen_bitfield_unit.set(9usize, 1u8, {
             let dot_tmp_alloc: u8 = unsafe { ::core::mem::transmute(dot_tmp_alloc) };
             dot_tmp_alloc as u64
         });
         __bindgen_bitfield_unit
     }
 }
-pub const LV_LABEL_STYLE_MAIN: _bindgen_ty_24 = 0;
+pub const LV_LABEL_PART_MAIN: _bindgen_ty_34 = 0;
 #[doc = " Label styles"]
-pub type _bindgen_ty_24 = u8;
-pub type lv_label_style_t = u8;
+pub type _bindgen_ty_34 = u32;
+pub type lv_label_part_t = u8;
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Create a label objects"]
     #[doc = " - __`par`__: pointer to an object, it will be the parent of the new label"]
@@ -743,19 +890,11 @@ pub type lv_label_style_t = u8;
     pub fn lv_label_set_text_fmt(label: *mut lv_obj_t, fmt: *const ::cty::c_char, ...);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set a new text for a label from a character array. The array don't has to be '\\0' terminated."]
-    #[doc = " Memory will be allocated to store the array by the label."]
-    #[doc = " - __`label`__: pointer to a label object"]
-    #[doc = " - __`array`__: array of characters or NULL to refresh the label"]
-    #[doc = " - __`size`__: the size of 'array' in bytes"]
-    pub fn lv_label_set_array_text(label: *mut lv_obj_t, array: *const ::cty::c_char, size: u16);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Set a static text. It will not be saved by the label so the 'text' variable"]
     #[doc = " has to be 'alive' while the label exist."]
     #[doc = " - __`label`__: pointer to a label object"]
     #[doc = " - __`text`__: pointer to a text. NULL to refresh with the current text."]
-    pub fn lv_label_set_static_text(label: *mut lv_obj_t, text: *const ::cty::c_char);
+    pub fn lv_label_set_text_static(label: *mut lv_obj_t, text: *const ::cty::c_char);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Set the behavior of the label with longer text then the object size"]
@@ -778,39 +917,22 @@ pub type lv_label_style_t = u8;
     pub fn lv_label_set_recolor(label: *mut lv_obj_t, en: bool);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set the label to draw (or not draw) background specified in its style's body"]
-    #[doc = " - __`label`__: pointer to a label object"]
-    #[doc = " - __`en`__: true: draw body; false: don't draw body"]
-    pub fn lv_label_set_body_draw(label: *mut lv_obj_t, en: bool);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Set the label's animation speed in LV_LABEL_LONG_SROLL/SCROLL_CIRC modes"]
     #[doc = " - __`label`__: pointer to a label object"]
     #[doc = " - __`anim_speed`__: speed of animation in px/sec unit"]
     pub fn lv_label_set_anim_speed(label: *mut lv_obj_t, anim_speed: u16);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set the style of an label"]
-    #[doc = " - __`label`__: pointer to an label object"]
-    #[doc = " - __`type`__: which style should be get (can be only `LV_LABEL_STYLE_MAIN`)"]
-    #[doc = " - __`style`__: pointer to a style"]
-    pub fn lv_label_set_style(
-        label: *mut lv_obj_t,
-        type_: lv_label_style_t,
-        style: *const lv_style_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " @brief Set the selection start index."]
     #[doc = " - __`label`__: pointer to a label object."]
     #[doc = " - __`index`__: index to set. `LV_LABEL_TXT_SEL_OFF` to select nothing."]
-    pub fn lv_label_set_text_sel_start(label: *mut lv_obj_t, index: u16);
+    pub fn lv_label_set_text_sel_start(label: *mut lv_obj_t, index: u32);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " @brief Set the selection end index."]
     #[doc = " - __`label`__: pointer to a label object."]
     #[doc = " - __`index`__: index to set. `LV_LABEL_TXT_SEL_OFF` to select nothing."]
-    pub fn lv_label_set_text_sel_end(label: *mut lv_obj_t, index: u16);
+    pub fn lv_label_set_text_sel_end(label: *mut lv_obj_t, index: u32);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the text of a label"]
@@ -837,12 +959,6 @@ pub type lv_label_style_t = u8;
     pub fn lv_label_get_recolor(label: *const lv_obj_t) -> bool;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the body draw attribute"]
-    #[doc = " - __`label`__: pointer to a label object"]
-    #[doc = " Return: true: draw body; false: don't draw body"]
-    pub fn lv_label_get_body_draw(label: *const lv_obj_t) -> bool;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the label's animation speed in LV_LABEL_LONG_ROLL and SCROLL modes"]
     #[doc = " - __`label`__: pointer to a label object"]
     #[doc = " Return: speed of animation in px/sec unit"]
@@ -854,7 +970,7 @@ pub type lv_label_style_t = u8;
     #[doc = " - __`index`__: index of the letter [0 ... text length]. Expressed in character index, not byte"]
     #[doc = " index (different in UTF-8)"]
     #[doc = " - __`pos`__: store the result here (E.g. index = 0 gives 0;0 coordinates)"]
-    pub fn lv_label_get_letter_pos(label: *const lv_obj_t, index: u16, pos: *mut lv_point_t);
+    pub fn lv_label_get_letter_pos(label: *const lv_obj_t, index: u32, pos: *mut lv_point_t);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the index of letter on a relative point of a label"]
@@ -862,34 +978,29 @@ pub type lv_label_style_t = u8;
     #[doc = " - __`pos`__: pointer to point with coordinates on a the label"]
     #[doc = " Return: the index of the letter on the 'pos_p' point (E.g. on 0;0 is the 0. letter)"]
     #[doc = " Expressed in character index and not byte index (different in UTF-8)"]
-    pub fn lv_label_get_letter_on(label: *const lv_obj_t, pos: *mut lv_point_t) -> u16;
+    pub fn lv_label_get_letter_on(label: *const lv_obj_t, pos: *mut lv_point_t) -> u32;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Check if a character is drawn under a point."]
     #[doc = " - __`label`__: Label object"]
-    #[doc = " - __`pos`__: Point to check for characte under"]
+    #[doc = " - __`pos`__: Point to check for character under"]
     #[doc = " Return: whether a character is drawn under the point"]
     pub fn lv_label_is_char_under_pos(label: *const lv_obj_t, pos: *mut lv_point_t) -> bool;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the style of an label object"]
-    #[doc = " - __`label`__: pointer to an label object"]
-    #[doc = " - __`type`__: which style should be get (can be only `LV_LABEL_STYLE_MAIN`)"]
-    #[doc = " Return: pointer to the label's style"]
-    pub fn lv_label_get_style(label: *const lv_obj_t, type_: lv_label_style_t)
-        -> *const lv_style_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " @brief Get the selection start index."]
     #[doc = " - __`label`__: pointer to a label object."]
     #[doc = " Return: selection start index. `LV_LABEL_TXT_SEL_OFF` if nothing is selected."]
-    pub fn lv_label_get_text_sel_start(label: *const lv_obj_t) -> u16;
+    pub fn lv_label_get_text_sel_start(label: *const lv_obj_t) -> u32;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " @brief Get the selection end index."]
     #[doc = " - __`label`__: pointer to a label object."]
     #[doc = " Return: selection end index. `LV_LABEL_TXT_SEL_OFF` if nothing is selected."]
-    pub fn lv_label_get_text_sel_end(label: *const lv_obj_t) -> u16;
+    pub fn lv_label_get_text_sel_end(label: *const lv_obj_t) -> u32;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_label_get_style(label: *mut lv_obj_t, type_: u8) -> *mut lv_style_list_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Insert a text to the label. The label text can not be static."]
