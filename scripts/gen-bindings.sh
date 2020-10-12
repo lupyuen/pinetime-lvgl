@@ -54,6 +54,8 @@ function generate_bindings() {
     # Change @code{...} to ```
     # Change @endcode to ```
     # Change @note to __Note:__
+    # Change pub const LV_LABEL_LONG_BREAK: _bindgen_ty_32 = 1;
+    # to     pub const LV_LABEL_LONG_BREAK: lv_label_long_mode_t = 1;
     cat $tmpexpandpath \
         | sed 's/^extern "C" /#[lvgl_macros::safe_wrap(attr)] extern "C" /' \
         | sed 's/@param \([^ ][^ ]*\) /- __`\1`__: /' \
@@ -62,6 +64,7 @@ function generate_bindings() {
         | sed 's/@code/```/' \
         | sed 's/@endcode/```/' \
         | sed 's/@note/__Note:__/' \
+        | sed 's/\(pub const LV_LABEL_LONG_[^ ][^ ]*\): _[^ ]* /\1: lv_label_long_mode_t /' \
         >$expandpath
     rm $tmpexpandpath
 }
