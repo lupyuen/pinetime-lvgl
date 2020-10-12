@@ -4,18 +4,22 @@ This crate contains LVGL Bindings used by the PineTime Watch Face Framework: [`p
 
 Check out a sample watch face created with this framework: [`barebones-watchface`](https://crates.io/crates/barebones-watchface)
 
+The LVGL Bindings are compatible with PineTime Mynewt Firmware [`pinetime-rust-mynewt`](https://github.com/lupyuen/pinetime-rust-mynewt) and with PineTime WebAssembly Simulator [`lvgl-wasm`](https://github.com/AppKaki/lvgl-wasm/tree/mynewt)
+
 Refer to the article...
 
 ["Bluetooth Time Sync, Rust Watch Faces and LVGL on PineTime Mynewt"](https://lupyuen.github.io/pinetime-rust-mynewt/articles/timesync)
 
-See [`src`](src) for more details.
-
-To publish to crates.io...
+To generate bindings and publish to crates.io...
 
 ```bash
+scripts/gen-bindings.sh
+
 cargo package --list --allow-dirty
 
 cargo publish --dry-run --allow-dirty
 
 cargo publish    
 ```
+
+See [`src`](src) for more details.

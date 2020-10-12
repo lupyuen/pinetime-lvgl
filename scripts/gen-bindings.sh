@@ -54,6 +54,10 @@ function generate_bindings() {
     # Change @code{...} to ```
     # Change @endcode to ```
     # Change @note to __Note:__
+    # Change pub const LV_ALIGN_CENTER: _bindgen_ty_3 = 0;
+    # to     pub const LV_ALIGN_CENTER: lv_align_t = 0;
+    # Change pub const LV_LABEL_ALIGN_CENTER: _bindgen_ty_33 = 1;
+    # to     pub const LV_LABEL_ALIGN_CENTER: lv_label_align_t = 1;
     # Change pub const LV_LABEL_LONG_BREAK: _bindgen_ty_32 = 1;
     # to     pub const LV_LABEL_LONG_BREAK: lv_label_long_mode_t = 1;
     cat $tmpexpandpath \
@@ -64,6 +68,8 @@ function generate_bindings() {
         | sed 's/@code/```/' \
         | sed 's/@endcode/```/' \
         | sed 's/@note/__Note:__/' \
+        | sed 's/\(pub const LV_ALIGN_[^ ][^ ]*\): _[^ ]* /\1: lv_align_t /' \
+        | sed 's/\(pub const LV_LABEL_ALIGN_[^ ][^ ]*\): _[^ ]* /\1: lv_label_align_t /' \
         | sed 's/\(pub const LV_LABEL_LONG_[^ ][^ ]*\): _[^ ]* /\1: lv_label_long_mode_t /' \
         >$expandpath
     rm $tmpexpandpath
