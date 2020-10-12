@@ -126,6 +126,12 @@ generate_bindings_widgets
 #  TODO: Generate bindings for lv_themes
 #  generate_bindings_themes
 
+#  Expand the safe wrapper macros
+cargo rustc -- -Z unstable-options --pretty expanded >logs/expanded.rs
+
+#  Build the bindings
+cargo build
+
 exit
 
 → bindgen --help
