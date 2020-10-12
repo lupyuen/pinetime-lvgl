@@ -22,7 +22,7 @@ use crate::{
     },
 };
 
-/// Contains Rust bindings for LVGL Objx API `lv_widgets`
+/// Contains Rust bindings for LVGL Widgets API `lv_widgets`
 #[allow(non_camel_case_types)]    //  Allow type names to have non-camel case
 #[allow(non_upper_case_globals)]  //  Allow globals to have lowercase letters
 #[allow(unused_imports)]          //  Allow unused imports
