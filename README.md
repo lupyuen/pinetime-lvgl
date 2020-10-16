@@ -8,7 +8,7 @@ The LVGL Bindings are compatible with PineTime Mynewt Firmware [`pinetime-rust-m
 
 Refer to the article...
 
-["Bluetooth Time Sync, Rust Watch Faces and LVGL on PineTime Mynewt"](https://lupyuen.github.io/pinetime-rust-mynewt/articles/timesync)
+["Create Your Own PineTime Watch Face in Rust... And Publish on crates.io"](https://lupyuen.github.io/pinetime-rust-mynewt/articles/watchface)
 
 To generate bindings and publish to crates.io...
 
