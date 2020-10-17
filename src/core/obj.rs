@@ -6522,9 +6522,6 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_obj_get_style_value_str(obj: *const lv_obj_t, part: u8) -> *const ::cty::c_char;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_value_str(
         obj: *mut lv_obj_t,
         part: u8,

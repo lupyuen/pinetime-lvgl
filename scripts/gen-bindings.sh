@@ -82,12 +82,14 @@ function generate_bindings_core() {
     local submodname=obj
     local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
     local whitelistname=lv_
+    #  TODO: Fix lifetime parameter for lv_obj_get_style_value_str
     local whitelist=`cat << EOF
         --raw-line use \
         --raw-line super::*; \
         --whitelist-function (?i)${whitelistname}.* \
         --whitelist-type     (?i)${whitelistname}.* \
-        --whitelist-var      (?i)${whitelistname}.*
+        --whitelist-var      (?i)${whitelistname}.* \
+        --blacklist-item     lv_obj_get_style_value_str
 EOF
 `
     #  Generate the bindings for lv_core/lv_obj: libname, modname, submodname, headerfile, whitelist

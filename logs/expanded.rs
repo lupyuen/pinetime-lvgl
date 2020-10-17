@@ -15220,24 +15220,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn get_style_value_str(obj: *const lv_obj_t, part: u8)
-         -> MynewtResult<Strn> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_obj_get_style_value_str(obj: *const lv_obj_t,
-                                                  part: u8)
-                -> *const ::cty::c_char;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_obj_get_style_value_str(obj as *const lv_obj_t,
-                                               part as u8);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(Strn::from_cstr(result_value as *const u8))
-            }
-        }
         pub fn set_style_local_value_str(obj: *mut lv_obj_t, part: u8,
                                          state: lv_state_t, value: &Strn)
          -> MynewtResult<()> {
