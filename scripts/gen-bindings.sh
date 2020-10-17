@@ -96,6 +96,25 @@ EOF
     generate_bindings $libname $modname $submodname $headerfile $whitelist
 }
 
+function generate_bindings_themes() {
+    #  Add whitelist and blacklist for for lv_themes/lv_theme
+    local modname=themes
+    local submodname=theme
+    local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
+    local whitelistname=lv_theme
+    local whitelist=`cat << EOF
+        --raw-line use \
+        --raw-line super::*; \
+        --whitelist-function (?i)${whitelistname}.* \
+        --whitelist-type     (?i)${whitelistname}.* \
+        --blacklist-item     _lv_obj_t \
+        --blacklist-item     lv_style_t
+EOF
+`
+    #  Generate the bindings for lv_themes/lv_theme: libname, modname, submodname, headerfile, whitelist
+    generate_bindings $libname $modname $submodname $headerfile $whitelist
+}
+
 function generate_bindings_widgets() {
     #  Add whitelist and blacklist for for lv_widgets/lv_label
     #  TODO: Handle other widgets
@@ -123,8 +142,8 @@ generate_bindings_core
 #  TODO: Generate bindings for lv_draw
 #  generate_bindings_draw
 
-#  Generate bindings for lv_font
-####generate_bindings_font
+#  TODO: Generate bindings for lv_font
+#  generate_bindings_font
 
 #  TODO: Generate bindings for lv_hal
 #  generate_bindings_hal
@@ -133,7 +152,7 @@ generate_bindings_core
 #  generate_bindings_misc
 
 #  Generate bindings for lv_themes
-####generate_bindings_themes
+generate_bindings_themes
 
 #  Generate bindings for lv_widgets
 generate_bindings_widgets
