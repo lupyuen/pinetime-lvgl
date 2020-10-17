@@ -1090,6 +1090,73 @@ pub mod core {
                 Ok(())
             }
         }
+        #[doc = " Copy an area"]
+        #[doc = " - __`dest`__: pointer to the destination area"]
+        #[doc = " - __`src`__: pointer to the source area"]
+        pub fn area_copy(dest: *mut lv_area_t, src: *const lv_area_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Copy an area"]
+                #[doc = " - __`dest`__: pointer to the destination area"]
+                #[doc = " - __`src`__: pointer to the source area"]
+                pub fn lv_area_copy(dest: *mut lv_area_t,
+                                    src: *const lv_area_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_area_copy(dest as *mut lv_area_t, src as *const lv_area_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Get the width of an area"]
+        #[doc = " - __`area_p`__: pointer to an area"]
+        #[doc = " Return: the width of the area (if x1 == x2 -> width = 1)"]
+        pub fn area_get_width(area_p: *const lv_area_t)
+         -> MynewtResult<lv_coord_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Get the width of an area"]
+                #[doc = " - __`area_p`__: pointer to an area"]
+                #[doc =
+                  " Return: the width of the area (if x1 == x2 -> width = 1)"]
+                pub fn lv_area_get_width(area_p: *const lv_area_t)
+                -> lv_coord_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_area_get_width(area_p as *const lv_area_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc = " Get the height of an area"]
+        #[doc = " - __`area_p`__: pointer to an area"]
+        #[doc = " Return: the height of the area (if y1 == y2 -> height = 1)"]
+        pub fn area_get_height(area_p: *const lv_area_t)
+         -> MynewtResult<lv_coord_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Get the height of an area"]
+                #[doc = " - __`area_p`__: pointer to an area"]
+                #[doc =
+                  " Return: the height of the area (if y1 == y2 -> height = 1)"]
+                pub fn lv_area_get_height(area_p: *const lv_area_t)
+                -> lv_coord_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_area_get_height(area_p as *const lv_area_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
         #[doc = " Set the width of an area"]
         #[doc = " - __`area_p`__: pointer to an area"]
         #[doc =
@@ -1363,6 +1430,30 @@ pub mod core {
                     lv_font_get_glyph_width(font as *const lv_font_t,
                                             letter as u32,
                                             letter_next as u32);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc =
+          " Get the line height of a font. All characters fit into this height"]
+        #[doc = " - __`font_p`__: pointer to a font"]
+        #[doc = " Return: the height of a font"]
+        pub fn font_get_line_height(font_p: *const lv_font_t)
+         -> MynewtResult<lv_coord_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Get the line height of a font. All characters fit into this height"]
+                #[doc = " - __`font_p`__: pointer to a font"]
+                #[doc = " Return: the height of a font"]
+                pub fn lv_font_get_line_height(font_p: *const lv_font_t)
+                -> lv_coord_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_font_get_line_height(font_p as *const lv_font_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(result_value)
             }
@@ -1768,6 +1859,258 @@ pub mod core {
         }
         #[doc = "! @cond Doxygen_Suppress"]
         pub type lv_opa_t = u8;
+        #[doc = " GLOBAL PROTOTYPES"]
+        pub fn color_to1(color: lv_color_t) -> MynewtResult<u8> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " GLOBAL PROTOTYPES"]
+                pub fn lv_color_to1(color: lv_color_t)
+                -> u8;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value = lv_color_to1(color as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn color_to8(color: lv_color_t) -> MynewtResult<u8> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_color_to8(color: lv_color_t)
+                -> u8;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value = lv_color_to8(color as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn color_to16(color: lv_color_t) -> MynewtResult<u16> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_color_to16(color: lv_color_t)
+                -> u16;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value = lv_color_to16(color as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn color_to32(color: lv_color_t) -> MynewtResult<u32> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_color_to32(color: lv_color_t)
+                -> u32;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value = lv_color_to32(color as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc = " Mix two colors with a given ratio."]
+        #[doc =
+          " - __`c1`__: the first color to mix (usually the foreground)"]
+        #[doc =
+          " - __`c2`__: the second color to mix (usually the background)"]
+        #[doc =
+          " - __`mix`__: The ratio of the colors. 0: full `c2`, 255: full `c1`, 127: half `c1` and half`c2`"]
+        #[doc = " Return: the mixed color"]
+        pub fn color_mix(c1: lv_color_t, c2: lv_color_t, mix: u8)
+         -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Mix two colors with a given ratio."]
+                #[doc =
+                  " - __`c1`__: the first color to mix (usually the foreground)"]
+                #[doc =
+                  " - __`c2`__: the second color to mix (usually the background)"]
+                #[doc =
+                  " - __`mix`__: The ratio of the colors. 0: full `c2`, 255: full `c1`, 127: half `c1` and half`c2`"]
+                #[doc = " Return: the mixed color"]
+                pub fn lv_color_mix(c1: lv_color_t, c2: lv_color_t, mix: u8)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_color_mix(c1 as lv_color_t, c2 as lv_color_t,
+                                 mix as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn color_premult(c: lv_color_t, mix: u8, out: *mut u16)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_color_premult(c: lv_color_t, mix: u8,
+                                        out: *mut u16);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_color_premult(c as lv_color_t, mix as u8, out as *mut u16);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc =
+          " Mix two colors with a given ratio. It runs faster then `lv_color_mix` but requires some pre computation."]
+        #[doc =
+          " - __`c1`__: The first color. Should be preprocessed with `lv_color_premult(c1)`"]
+        #[doc =
+          " - __`c2`__: The second color. As it is no pre computation required on it"]
+        #[doc =
+          " - __`mix`__: The ratio of the colors. 0: full `c2`, 255: full `c1`, 127: half `c1` and half `c2`."]
+        #[doc = "            Should be modified like mix = `255 - mix`"]
+        #[doc = " Return: the mixed color"]
+        #[doc = " __Note:__ 255 won't give clearly `c1`."]
+        pub fn color_mix_premult(premult_c1: *mut u16, c2: lv_color_t,
+                                 mix: u8) -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Mix two colors with a given ratio. It runs faster then `lv_color_mix` but requires some pre computation."]
+                #[doc =
+                  " - __`c1`__: The first color. Should be preprocessed with `lv_color_premult(c1)`"]
+                #[doc =
+                  " - __`c2`__: The second color. As it is no pre computation required on it"]
+                #[doc =
+                  " - __`mix`__: The ratio of the colors. 0: full `c2`, 255: full `c1`, 127: half `c1` and half `c2`."]
+                #[doc =
+                  "            Should be modified like mix = `255 - mix`"]
+                #[doc = " Return: the mixed color"]
+                #[doc = " __Note:__ 255 won't give clearly `c1`."]
+                pub fn lv_color_mix_premult(premult_c1: *mut u16,
+                                            c2: lv_color_t, mix: u8)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_color_mix_premult(premult_c1 as *mut u16,
+                                         c2 as lv_color_t, mix as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc =
+          " Mix two colors. Both color can have alpha value. It requires ARGB888 colors."]
+        #[doc = " - __`bg_color`__: background color"]
+        #[doc = " - __`bg_opa`__: alpha of the background color"]
+        #[doc = " - __`fg_color`__: foreground color"]
+        #[doc = " - __`fg_opa`__: alpha of the foreground color"]
+        #[doc = " - __`res_color`__: the result color"]
+        #[doc = " - __`res_opa`__: the result opacity"]
+        pub fn color_mix_with_alpha(bg_color: lv_color_t, bg_opa: lv_opa_t,
+                                    fg_color: lv_color_t, fg_opa: lv_opa_t,
+                                    res_color: *mut lv_color_t,
+                                    res_opa: *mut lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Mix two colors. Both color can have alpha value. It requires ARGB888 colors."]
+                #[doc = " - __`bg_color`__: background color"]
+                #[doc = " - __`bg_opa`__: alpha of the background color"]
+                #[doc = " - __`fg_color`__: foreground color"]
+                #[doc = " - __`fg_opa`__: alpha of the foreground color"]
+                #[doc = " - __`res_color`__: the result color"]
+                #[doc = " - __`res_opa`__: the result opacity"]
+                pub fn lv_color_mix_with_alpha(bg_color: lv_color_t,
+                                               bg_opa: lv_opa_t,
+                                               fg_color: lv_color_t,
+                                               fg_opa: lv_opa_t,
+                                               res_color: *mut lv_color_t,
+                                               res_opa: *mut lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_color_mix_with_alpha(bg_color as lv_color_t,
+                                        bg_opa as lv_opa_t,
+                                        fg_color as lv_color_t,
+                                        fg_opa as lv_opa_t,
+                                        res_color as *mut lv_color_t,
+                                        res_opa as *mut lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Get the brightness of a color"]
+        #[doc = " - __`color`__: a color"]
+        #[doc = " Return: the brightness [0..255]"]
+        pub fn color_brightness(color: lv_color_t) -> MynewtResult<u8> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Get the brightness of a color"]
+                #[doc = " - __`color`__: a color"]
+                #[doc = " Return: the brightness [0..255]"]
+                pub fn lv_color_brightness(color: lv_color_t)
+                -> u8;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value = lv_color_brightness(color as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn color_make(r: u8, g: u8, b: u8) -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_color_make(r: u8, g: u8, b: u8)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value = lv_color_make(r as u8, g as u8, b as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn color_hex(c: u32) -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_color_hex(c: u32)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value = lv_color_hex(c as u32);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn color_hex3(c: u32) -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_color_hex3(c: u32)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value = lv_color_hex3(c as u32);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
         #[doc = "! @cond Doxygen_Suppress"]
         #[doc = "!"]
         pub fn color_fill(buf: *mut lv_color_t, color: lv_color_t,
@@ -2099,6 +2442,355 @@ pub mod core {
                 Ok(())
             }
         }
+        #[doc = " Set a variable to animate"]
+        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+        #[doc = " - __`var`__: pointer to a variable to animate"]
+        pub fn anim_set_var(a: *mut lv_anim_t, var: Ptr) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Set a variable to animate"]
+                #[doc =
+                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+                #[doc = " - __`var`__: pointer to a variable to animate"]
+                pub fn lv_anim_set_var(a: *mut lv_anim_t,
+                                       var: *mut ::cty::c_void);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_anim_set_var(a as *mut lv_anim_t,
+                                var as *mut ::cty::c_void);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Set a function to animate `var`"]
+        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+        #[doc = " - __`exec_cb`__: a function to execute during animation"]
+        #[doc = "                LittelvGL's built-in functions can be used."]
+        #[doc = "                E.g. lv_obj_set_x"]
+        pub fn anim_set_exec_cb(a: *mut lv_anim_t,
+                                exec_cb: lv_anim_exec_xcb_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Set a function to animate `var`"]
+                #[doc =
+                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+                #[doc =
+                  " - __`exec_cb`__: a function to execute during animation"]
+                #[doc =
+                  "                LittelvGL's built-in functions can be used."]
+                #[doc = "                E.g. lv_obj_set_x"]
+                pub fn lv_anim_set_exec_cb(a: *mut lv_anim_t,
+                                           exec_cb: lv_anim_exec_xcb_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_anim_set_exec_cb(a as *mut lv_anim_t,
+                                    exec_cb as lv_anim_exec_xcb_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Set the duration of an animation"]
+        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+        #[doc =
+          " - __`duration`__: duration of the animation in milliseconds"]
+        pub fn anim_set_time(a: *mut lv_anim_t, duration: u32)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Set the duration of an animation"]
+                #[doc =
+                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+                #[doc =
+                  " - __`duration`__: duration of the animation in milliseconds"]
+                pub fn lv_anim_set_time(a: *mut lv_anim_t, duration: u32);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_anim_set_time(a as *mut lv_anim_t, duration as u32);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Set a delay before starting the animation"]
+        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+        #[doc = " - __`delay`__: delay before the animation in milliseconds"]
+        pub fn anim_set_delay(a: *mut lv_anim_t, delay: u32)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Set a delay before starting the animation"]
+                #[doc =
+                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+                #[doc =
+                  " - __`delay`__: delay before the animation in milliseconds"]
+                pub fn lv_anim_set_delay(a: *mut lv_anim_t, delay: u32);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_anim_set_delay(a as *mut lv_anim_t, delay as u32);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Set the start and end values of an animation"]
+        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+        #[doc = " - __`start`__: the start value"]
+        #[doc = " - __`end`__: the end value"]
+        pub fn anim_set_values(a: *mut lv_anim_t, start: lv_anim_value_t,
+                               end: lv_anim_value_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Set the start and end values of an animation"]
+                #[doc =
+                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+                #[doc = " - __`start`__: the start value"]
+                #[doc = " - __`end`__: the end value"]
+                pub fn lv_anim_set_values(a: *mut lv_anim_t,
+                                          start: lv_anim_value_t,
+                                          end: lv_anim_value_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_anim_set_values(a as *mut lv_anim_t,
+                                   start as lv_anim_value_t,
+                                   end as lv_anim_value_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc =
+          " Similar to `lv_anim_set_exec_cb` but `lv_anim_custom_exec_cb_t` receives"]
+        #[doc = " `lv_anim_t * ` as its first parameter instead of `void *`."]
+        #[doc =
+          " This function might be used when LVGL is binded to other languages because"]
+        #[doc =
+          " it's more consistent to have `lv_anim_t *` as first parameter."]
+        #[doc =
+          " The variable to animate can be stored in the animation's `user_sata`"]
+        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+        #[doc = " - __`exec_cb`__: a function to execute."]
+        pub fn anim_set_custom_exec_cb(a: *mut lv_anim_t,
+                                       exec_cb: lv_anim_custom_exec_cb_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Similar to `lv_anim_set_exec_cb` but `lv_anim_custom_exec_cb_t` receives"]
+                #[doc =
+                  " `lv_anim_t * ` as its first parameter instead of `void *`."]
+                #[doc =
+                  " This function might be used when LVGL is binded to other languages because"]
+                #[doc =
+                  " it's more consistent to have `lv_anim_t *` as first parameter."]
+                #[doc =
+                  " The variable to animate can be stored in the animation's `user_sata`"]
+                #[doc =
+                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+                #[doc = " - __`exec_cb`__: a function to execute."]
+                pub fn lv_anim_set_custom_exec_cb(a: *mut lv_anim_t,
+                                                  exec_cb:
+                                                      lv_anim_custom_exec_cb_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_anim_set_custom_exec_cb(a as *mut lv_anim_t,
+                                           exec_cb as
+                                               lv_anim_custom_exec_cb_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Set the path (curve) of the animation."]
+        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+        #[doc =
+          " - __`path_cb`__: a function the get the current value of the animation."]
+        #[doc =
+          "                The built in functions starts with `lv_anim_path_...`"]
+        pub fn anim_set_path(a: *mut lv_anim_t, path: *const lv_anim_path_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Set the path (curve) of the animation."]
+                #[doc =
+                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+                #[doc =
+                  " - __`path_cb`__: a function the get the current value of the animation."]
+                #[doc =
+                  "                The built in functions starts with `lv_anim_path_...`"]
+                pub fn lv_anim_set_path(a: *mut lv_anim_t,
+                                        path: *const lv_anim_path_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_anim_set_path(a as *mut lv_anim_t,
+                                 path as *const lv_anim_path_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc =
+          " Set a function call when the animation really starts (considering `delay`)"]
+        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+        #[doc =
+          " - __`start_cb`__: a function call when the animation starts"]
+        pub fn anim_set_start_cb(a: *mut lv_anim_t,
+                                 start_cb: lv_anim_ready_cb_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Set a function call when the animation really starts (considering `delay`)"]
+                #[doc =
+                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+                #[doc =
+                  " - __`start_cb`__: a function call when the animation starts"]
+                pub fn lv_anim_set_start_cb(a: *mut lv_anim_t,
+                                            start_cb: lv_anim_ready_cb_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_anim_set_start_cb(a as *mut lv_anim_t,
+                                     start_cb as lv_anim_ready_cb_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Set a function call when the animation is ready"]
+        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+        #[doc =
+          " - __`ready_cb`__: a function call when the animation is ready"]
+        pub fn anim_set_ready_cb(a: *mut lv_anim_t,
+                                 ready_cb: lv_anim_ready_cb_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Set a function call when the animation is ready"]
+                #[doc =
+                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+                #[doc =
+                  " - __`ready_cb`__: a function call when the animation is ready"]
+                pub fn lv_anim_set_ready_cb(a: *mut lv_anim_t,
+                                            ready_cb: lv_anim_ready_cb_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_anim_set_ready_cb(a as *mut lv_anim_t,
+                                     ready_cb as lv_anim_ready_cb_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc =
+          " Make the animation to play back to when the forward direction is ready"]
+        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+        #[doc =
+          " - __`time`__: the duration of the playback animation in in milliseconds. 0: disable playback"]
+        pub fn anim_set_playback_time(a: *mut lv_anim_t, time: u16)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Make the animation to play back to when the forward direction is ready"]
+                #[doc =
+                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+                #[doc =
+                  " - __`time`__: the duration of the playback animation in in milliseconds. 0: disable playback"]
+                pub fn lv_anim_set_playback_time(a: *mut lv_anim_t,
+                                                 time: u16);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_anim_set_playback_time(a as *mut lv_anim_t, time as u16);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc =
+          " Make the animation to play back to when the forward direction is ready"]
+        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+        #[doc =
+          " - __`delay`__: delay in milliseconds before starting the playback animation."]
+        pub fn anim_set_playback_delay(a: *mut lv_anim_t, delay: u16)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Make the animation to play back to when the forward direction is ready"]
+                #[doc =
+                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+                #[doc =
+                  " - __`delay`__: delay in milliseconds before starting the playback animation."]
+                pub fn lv_anim_set_playback_delay(a: *mut lv_anim_t,
+                                                  delay: u16);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_anim_set_playback_delay(a as *mut lv_anim_t, delay as u16);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Make the animation repeat itself."]
+        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+        #[doc =
+          " - __`cnt`__: repeat count or `LV_ANIM_REPEAT_INFINITE` for infinite repetition. 0: to disable repetition."]
+        pub fn anim_set_repeat_count(a: *mut lv_anim_t, cnt: u16)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Make the animation repeat itself."]
+                #[doc =
+                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+                #[doc =
+                  " - __`cnt`__: repeat count or `LV_ANIM_REPEAT_INFINITE` for infinite repetition. 0: to disable repetition."]
+                pub fn lv_anim_set_repeat_count(a: *mut lv_anim_t, cnt: u16);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_anim_set_repeat_count(a as *mut lv_anim_t, cnt as u16);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Set a delay before repeating the animation."]
+        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+        #[doc =
+          " - __`delay`__: delay in milliseconds before repeating the animation."]
+        pub fn anim_set_repeat_delay(a: *mut lv_anim_t, delay: u16)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Set a delay before repeating the animation."]
+                #[doc =
+                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+                #[doc =
+                  " - __`delay`__: delay in milliseconds before repeating the animation."]
+                pub fn lv_anim_set_repeat_delay(a: *mut lv_anim_t,
+                                                delay: u16);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_anim_set_repeat_delay(a as *mut lv_anim_t, delay as u16);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
         #[doc = " Create an animation"]
         #[doc =
           " - __`a`__: an initialized 'anim_t' variable. Not required after call."]
@@ -2116,6 +2808,89 @@ pub mod core {
                 lv_anim_start(a as *mut lv_anim_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
+            }
+        }
+        #[doc = " Initialize an animation path"]
+        #[doc = " - __`path`__: pointer to path"]
+        pub fn anim_path_init(path: *mut lv_anim_path_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Initialize an animation path"]
+                #[doc = " - __`path`__: pointer to path"]
+                pub fn lv_anim_path_init(path: *mut lv_anim_path_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_anim_path_init(path as *mut lv_anim_path_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Set a callback for a path"]
+        #[doc = " - __`path`__: pointer to an initialized path"]
+        #[doc = " - __`cb`__: the callback"]
+        pub fn anim_path_set_cb(path: *mut lv_anim_path_t,
+                                cb: lv_anim_path_cb_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Set a callback for a path"]
+                #[doc = " - __`path`__: pointer to an initialized path"]
+                #[doc = " - __`cb`__: the callback"]
+                pub fn lv_anim_path_set_cb(path: *mut lv_anim_path_t,
+                                           cb: lv_anim_path_cb_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_anim_path_set_cb(path as *mut lv_anim_path_t,
+                                    cb as lv_anim_path_cb_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Set a user data for a path"]
+        #[doc = " - __`path`__: pointer to an initialized path"]
+        #[doc = " - __`user_data`__: pointer to the user data"]
+        pub fn anim_path_set_user_data(path: *mut lv_anim_path_t,
+                                       user_data: Ptr) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Set a user data for a path"]
+                #[doc = " - __`path`__: pointer to an initialized path"]
+                #[doc = " - __`user_data`__: pointer to the user data"]
+                pub fn lv_anim_path_set_user_data(path: *mut lv_anim_path_t,
+                                                  user_data:
+                                                      *mut ::cty::c_void);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_anim_path_set_user_data(path as *mut lv_anim_path_t,
+                                           user_data as *mut ::cty::c_void);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Get a delay before starting the animation"]
+        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+        #[doc = " Return: delay before the animation in milliseconds"]
+        pub fn anim_get_delay(a: *mut lv_anim_t) -> MynewtResult<i32> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Get a delay before starting the animation"]
+                #[doc =
+                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+                #[doc = " Return: delay before the animation in milliseconds"]
+                pub fn lv_anim_get_delay(a: *mut lv_anim_t)
+                -> i32;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value = lv_anim_get_delay(a as *mut lv_anim_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
             }
         }
         #[doc =
@@ -2181,6 +2956,57 @@ pub mod core {
                 let result_value =
                     lv_anim_get(var as *mut ::cty::c_void,
                                 exec_cb as lv_anim_exec_xcb_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc =
+          " Delete an animation by getting the animated variable from `a`."]
+        #[doc = " Only animations with `exec_cb` will be deleted."]
+        #[doc =
+          " This function exists because it's logical that all anim. functions receives an"]
+        #[doc =
+          " `lv_anim_t` as their first parameter. It's not practical in C but might make"]
+        #[doc =
+          " the API more consequent and makes easier to generate bindings."]
+        #[doc = " - __`a`__: pointer to an animation."]
+        #[doc =
+          " - __`exec_cb`__: a function pointer which is animating 'var',"]
+        #[doc =
+          "           or NULL to ignore it and delete all the animations of 'var"]
+        #[doc =
+          " Return: true: at least 1 animation is deleted, false: no animation is deleted"]
+        pub fn anim_custom_del(a: *mut lv_anim_t,
+                               exec_cb: lv_anim_custom_exec_cb_t)
+         -> MynewtResult<bool> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Delete an animation by getting the animated variable from `a`."]
+                #[doc = " Only animations with `exec_cb` will be deleted."]
+                #[doc =
+                  " This function exists because it's logical that all anim. functions receives an"]
+                #[doc =
+                  " `lv_anim_t` as their first parameter. It's not practical in C but might make"]
+                #[doc =
+                  " the API more consequent and makes easier to generate bindings."]
+                #[doc = " - __`a`__: pointer to an animation."]
+                #[doc =
+                  " - __`exec_cb`__: a function pointer which is animating 'var',"]
+                #[doc =
+                  "           or NULL to ignore it and delete all the animations of 'var"]
+                #[doc =
+                  " Return: true: at least 1 animation is deleted, false: no animation is deleted"]
+                pub fn lv_anim_custom_del(a: *mut lv_anim_t,
+                                          exec_cb: lv_anim_custom_exec_cb_t)
+                -> bool;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_anim_custom_del(a as *mut lv_anim_t,
+                                       exec_cb as lv_anim_custom_exec_cb_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(result_value)
             }
@@ -4119,6 +4945,24 @@ pub mod core {
                                    list_src as *const lv_style_list_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
+            }
+        }
+        pub fn style_list_get_style(list: *mut lv_style_list_t, id: u8)
+         -> MynewtResult<*mut lv_style_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_list_get_style(list: *mut lv_style_list_t,
+                                               id: u8)
+                -> *mut lv_style_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_style_list_get_style(list as *mut lv_style_list_t,
+                                            id as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
             }
         }
         #[doc =
@@ -10912,6 +11756,5909 @@ pub mod core {
                     lv_obj_get_local_style(obj as *mut lv_obj_t, part as u8);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(result_value)
+            }
+        }
+        pub fn get_style_radius(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_radius(obj: *const lv_obj_t, part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_radius(obj as *const lv_obj_t,
+                                            part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_radius(obj: *mut lv_obj_t, part: u8,
+                                      state: lv_state_t,
+                                      value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_radius(obj: *mut lv_obj_t,
+                                                     part: u8,
+                                                     state: lv_state_t,
+                                                     value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_radius(obj as *mut lv_obj_t,
+                                              part as u8, state as lv_state_t,
+                                              value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_radius(style: *mut lv_style_t, state: lv_state_t,
+                                value: lv_style_int_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_radius(style: *mut lv_style_t,
+                                           state: lv_state_t,
+                                           value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_radius(style as *mut lv_style_t,
+                                    state as lv_state_t,
+                                    value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_clip_corner(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<bool> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_clip_corner(obj: *const lv_obj_t,
+                                                    part: u8)
+                -> bool;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_clip_corner(obj as *const lv_obj_t,
+                                                 part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_clip_corner(obj: *mut lv_obj_t, part: u8,
+                                           state: lv_state_t, value: bool)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_clip_corner(obj: *mut lv_obj_t,
+                                                          part: u8,
+                                                          state: lv_state_t,
+                                                          value: bool);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_clip_corner(obj as *mut lv_obj_t,
+                                                   part as u8,
+                                                   state as lv_state_t,
+                                                   value as bool);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_clip_corner(style: *mut lv_style_t,
+                                     state: lv_state_t, value: bool)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_clip_corner(style: *mut lv_style_t,
+                                                state: lv_state_t,
+                                                value: bool);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_clip_corner(style as *mut lv_style_t,
+                                         state as lv_state_t, value as bool);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_size(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_size(obj: *const lv_obj_t, part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_size(obj as *const lv_obj_t, part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_size(obj: *mut lv_obj_t, part: u8,
+                                    state: lv_state_t, value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_size(obj: *mut lv_obj_t,
+                                                   part: u8,
+                                                   state: lv_state_t,
+                                                   value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_size(obj as *mut lv_obj_t, part as u8,
+                                            state as lv_state_t,
+                                            value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_size(style: *mut lv_style_t, state: lv_state_t,
+                              value: lv_style_int_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_size(style: *mut lv_style_t,
+                                         state: lv_state_t,
+                                         value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_size(style as *mut lv_style_t,
+                                  state as lv_state_t,
+                                  value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_transform_width(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_transform_width(obj: *const lv_obj_t,
+                                                        part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_transform_width(obj as *const lv_obj_t,
+                                                     part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_transform_width(obj: *mut lv_obj_t, part: u8,
+                                               state: lv_state_t,
+                                               value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_transform_width(obj:
+                                                                  *mut lv_obj_t,
+                                                              part: u8,
+                                                              state:
+                                                                  lv_state_t,
+                                                              value:
+                                                                  lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_transform_width(obj as *mut lv_obj_t,
+                                                       part as u8,
+                                                       state as lv_state_t,
+                                                       value as
+                                                           lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_transform_width(style: *mut lv_style_t,
+                                         state: lv_state_t,
+                                         value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_transform_width(style: *mut lv_style_t,
+                                                    state: lv_state_t,
+                                                    value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_transform_width(style as *mut lv_style_t,
+                                             state as lv_state_t,
+                                             value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_transform_height(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_transform_height(obj: *const lv_obj_t,
+                                                         part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_transform_height(obj as *const lv_obj_t,
+                                                      part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_transform_height(obj: *mut lv_obj_t, part: u8,
+                                                state: lv_state_t,
+                                                value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_transform_height(obj:
+                                                                   *mut lv_obj_t,
+                                                               part: u8,
+                                                               state:
+                                                                   lv_state_t,
+                                                               value:
+                                                                   lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_transform_height(obj as *mut lv_obj_t,
+                                                        part as u8,
+                                                        state as lv_state_t,
+                                                        value as
+                                                            lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_transform_height(style: *mut lv_style_t,
+                                          state: lv_state_t,
+                                          value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_transform_height(style: *mut lv_style_t,
+                                                     state: lv_state_t,
+                                                     value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_transform_height(style as *mut lv_style_t,
+                                              state as lv_state_t,
+                                              value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_transform_angle(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_transform_angle(obj: *const lv_obj_t,
+                                                        part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_transform_angle(obj as *const lv_obj_t,
+                                                     part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_transform_angle(obj: *mut lv_obj_t, part: u8,
+                                               state: lv_state_t,
+                                               value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_transform_angle(obj:
+                                                                  *mut lv_obj_t,
+                                                              part: u8,
+                                                              state:
+                                                                  lv_state_t,
+                                                              value:
+                                                                  lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_transform_angle(obj as *mut lv_obj_t,
+                                                       part as u8,
+                                                       state as lv_state_t,
+                                                       value as
+                                                           lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_transform_angle(style: *mut lv_style_t,
+                                         state: lv_state_t,
+                                         value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_transform_angle(style: *mut lv_style_t,
+                                                    state: lv_state_t,
+                                                    value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_transform_angle(style as *mut lv_style_t,
+                                             state as lv_state_t,
+                                             value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_transform_zoom(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_transform_zoom(obj: *const lv_obj_t,
+                                                       part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_transform_zoom(obj as *const lv_obj_t,
+                                                    part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_transform_zoom(obj: *mut lv_obj_t, part: u8,
+                                              state: lv_state_t,
+                                              value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_transform_zoom(obj:
+                                                                 *mut lv_obj_t,
+                                                             part: u8,
+                                                             state:
+                                                                 lv_state_t,
+                                                             value:
+                                                                 lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_transform_zoom(obj as *mut lv_obj_t,
+                                                      part as u8,
+                                                      state as lv_state_t,
+                                                      value as
+                                                          lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_transform_zoom(style: *mut lv_style_t,
+                                        state: lv_state_t,
+                                        value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_transform_zoom(style: *mut lv_style_t,
+                                                   state: lv_state_t,
+                                                   value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_transform_zoom(style as *mut lv_style_t,
+                                            state as lv_state_t,
+                                            value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_opa_scale(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_opa_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_opa_scale(obj: *const lv_obj_t,
+                                                  part: u8)
+                -> lv_opa_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_opa_scale(obj as *const lv_obj_t,
+                                               part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_opa_scale(obj: *mut lv_obj_t, part: u8,
+                                         state: lv_state_t, value: lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_opa_scale(obj: *mut lv_obj_t,
+                                                        part: u8,
+                                                        state: lv_state_t,
+                                                        value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_opa_scale(obj as *mut lv_obj_t,
+                                                 part as u8,
+                                                 state as lv_state_t,
+                                                 value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_opa_scale(style: *mut lv_style_t, state: lv_state_t,
+                                   value: lv_opa_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_opa_scale(style: *mut lv_style_t,
+                                              state: lv_state_t,
+                                              value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_opa_scale(style as *mut lv_style_t,
+                                       state as lv_state_t,
+                                       value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_pad_top(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_pad_top(obj: *const lv_obj_t,
+                                                part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_pad_top(obj as *const lv_obj_t,
+                                             part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_pad_top(obj: *mut lv_obj_t, part: u8,
+                                       state: lv_state_t,
+                                       value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_pad_top(obj: *mut lv_obj_t,
+                                                      part: u8,
+                                                      state: lv_state_t,
+                                                      value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_pad_top(obj as *mut lv_obj_t,
+                                               part as u8,
+                                               state as lv_state_t,
+                                               value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_pad_top(style: *mut lv_style_t, state: lv_state_t,
+                                 value: lv_style_int_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_pad_top(style: *mut lv_style_t,
+                                            state: lv_state_t,
+                                            value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_pad_top(style as *mut lv_style_t,
+                                     state as lv_state_t,
+                                     value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_pad_bottom(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_pad_bottom(obj: *const lv_obj_t,
+                                                   part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_pad_bottom(obj as *const lv_obj_t,
+                                                part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_pad_bottom(obj: *mut lv_obj_t, part: u8,
+                                          state: lv_state_t,
+                                          value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_pad_bottom(obj: *mut lv_obj_t,
+                                                         part: u8,
+                                                         state: lv_state_t,
+                                                         value:
+                                                             lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_pad_bottom(obj as *mut lv_obj_t,
+                                                  part as u8,
+                                                  state as lv_state_t,
+                                                  value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_pad_bottom(style: *mut lv_style_t, state: lv_state_t,
+                                    value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_pad_bottom(style: *mut lv_style_t,
+                                               state: lv_state_t,
+                                               value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_pad_bottom(style as *mut lv_style_t,
+                                        state as lv_state_t,
+                                        value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_pad_left(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_pad_left(obj: *const lv_obj_t,
+                                                 part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_pad_left(obj as *const lv_obj_t,
+                                              part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_pad_left(obj: *mut lv_obj_t, part: u8,
+                                        state: lv_state_t,
+                                        value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_pad_left(obj: *mut lv_obj_t,
+                                                       part: u8,
+                                                       state: lv_state_t,
+                                                       value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_pad_left(obj as *mut lv_obj_t,
+                                                part as u8,
+                                                state as lv_state_t,
+                                                value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_pad_left(style: *mut lv_style_t, state: lv_state_t,
+                                  value: lv_style_int_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_pad_left(style: *mut lv_style_t,
+                                             state: lv_state_t,
+                                             value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_pad_left(style as *mut lv_style_t,
+                                      state as lv_state_t,
+                                      value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_pad_right(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_pad_right(obj: *const lv_obj_t,
+                                                  part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_pad_right(obj as *const lv_obj_t,
+                                               part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_pad_right(obj: *mut lv_obj_t, part: u8,
+                                         state: lv_state_t,
+                                         value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_pad_right(obj: *mut lv_obj_t,
+                                                        part: u8,
+                                                        state: lv_state_t,
+                                                        value:
+                                                            lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_pad_right(obj as *mut lv_obj_t,
+                                                 part as u8,
+                                                 state as lv_state_t,
+                                                 value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_pad_right(style: *mut lv_style_t, state: lv_state_t,
+                                   value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_pad_right(style: *mut lv_style_t,
+                                              state: lv_state_t,
+                                              value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_pad_right(style as *mut lv_style_t,
+                                       state as lv_state_t,
+                                       value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_pad_inner(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_pad_inner(obj: *const lv_obj_t,
+                                                  part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_pad_inner(obj as *const lv_obj_t,
+                                               part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_pad_inner(obj: *mut lv_obj_t, part: u8,
+                                         state: lv_state_t,
+                                         value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_pad_inner(obj: *mut lv_obj_t,
+                                                        part: u8,
+                                                        state: lv_state_t,
+                                                        value:
+                                                            lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_pad_inner(obj as *mut lv_obj_t,
+                                                 part as u8,
+                                                 state as lv_state_t,
+                                                 value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_pad_inner(style: *mut lv_style_t, state: lv_state_t,
+                                   value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_pad_inner(style: *mut lv_style_t,
+                                              state: lv_state_t,
+                                              value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_pad_inner(style as *mut lv_style_t,
+                                       state as lv_state_t,
+                                       value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_margin_top(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_margin_top(obj: *const lv_obj_t,
+                                                   part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_margin_top(obj as *const lv_obj_t,
+                                                part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_margin_top(obj: *mut lv_obj_t, part: u8,
+                                          state: lv_state_t,
+                                          value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_margin_top(obj: *mut lv_obj_t,
+                                                         part: u8,
+                                                         state: lv_state_t,
+                                                         value:
+                                                             lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_margin_top(obj as *mut lv_obj_t,
+                                                  part as u8,
+                                                  state as lv_state_t,
+                                                  value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_margin_top(style: *mut lv_style_t, state: lv_state_t,
+                                    value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_margin_top(style: *mut lv_style_t,
+                                               state: lv_state_t,
+                                               value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_margin_top(style as *mut lv_style_t,
+                                        state as lv_state_t,
+                                        value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_margin_bottom(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_margin_bottom(obj: *const lv_obj_t,
+                                                      part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_margin_bottom(obj as *const lv_obj_t,
+                                                   part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_margin_bottom(obj: *mut lv_obj_t, part: u8,
+                                             state: lv_state_t,
+                                             value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_margin_bottom(obj:
+                                                                *mut lv_obj_t,
+                                                            part: u8,
+                                                            state: lv_state_t,
+                                                            value:
+                                                                lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_margin_bottom(obj as *mut lv_obj_t,
+                                                     part as u8,
+                                                     state as lv_state_t,
+                                                     value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_margin_bottom(style: *mut lv_style_t,
+                                       state: lv_state_t,
+                                       value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_margin_bottom(style: *mut lv_style_t,
+                                                  state: lv_state_t,
+                                                  value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_margin_bottom(style as *mut lv_style_t,
+                                           state as lv_state_t,
+                                           value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_margin_left(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_margin_left(obj: *const lv_obj_t,
+                                                    part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_margin_left(obj as *const lv_obj_t,
+                                                 part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_margin_left(obj: *mut lv_obj_t, part: u8,
+                                           state: lv_state_t,
+                                           value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_margin_left(obj: *mut lv_obj_t,
+                                                          part: u8,
+                                                          state: lv_state_t,
+                                                          value:
+                                                              lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_margin_left(obj as *mut lv_obj_t,
+                                                   part as u8,
+                                                   state as lv_state_t,
+                                                   value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_margin_left(style: *mut lv_style_t,
+                                     state: lv_state_t, value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_margin_left(style: *mut lv_style_t,
+                                                state: lv_state_t,
+                                                value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_margin_left(style as *mut lv_style_t,
+                                         state as lv_state_t,
+                                         value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_margin_right(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_margin_right(obj: *const lv_obj_t,
+                                                     part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_margin_right(obj as *const lv_obj_t,
+                                                  part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_margin_right(obj: *mut lv_obj_t, part: u8,
+                                            state: lv_state_t,
+                                            value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_margin_right(obj: *mut lv_obj_t,
+                                                           part: u8,
+                                                           state: lv_state_t,
+                                                           value:
+                                                               lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_margin_right(obj as *mut lv_obj_t,
+                                                    part as u8,
+                                                    state as lv_state_t,
+                                                    value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_margin_right(style: *mut lv_style_t,
+                                      state: lv_state_t,
+                                      value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_margin_right(style: *mut lv_style_t,
+                                                 state: lv_state_t,
+                                                 value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_margin_right(style as *mut lv_style_t,
+                                          state as lv_state_t,
+                                          value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_bg_blend_mode(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_blend_mode_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_bg_blend_mode(obj: *const lv_obj_t,
+                                                      part: u8)
+                -> lv_blend_mode_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_bg_blend_mode(obj as *const lv_obj_t,
+                                                   part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_bg_blend_mode(obj: *mut lv_obj_t, part: u8,
+                                             state: lv_state_t,
+                                             value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_bg_blend_mode(obj:
+                                                                *mut lv_obj_t,
+                                                            part: u8,
+                                                            state: lv_state_t,
+                                                            value:
+                                                                lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_bg_blend_mode(obj as *mut lv_obj_t,
+                                                     part as u8,
+                                                     state as lv_state_t,
+                                                     value as
+                                                         lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_bg_blend_mode(style: *mut lv_style_t,
+                                       state: lv_state_t,
+                                       value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_bg_blend_mode(style: *mut lv_style_t,
+                                                  state: lv_state_t,
+                                                  value: lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_bg_blend_mode(style as *mut lv_style_t,
+                                           state as lv_state_t,
+                                           value as lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_bg_main_stop(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_bg_main_stop(obj: *const lv_obj_t,
+                                                     part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_bg_main_stop(obj as *const lv_obj_t,
+                                                  part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_bg_main_stop(obj: *mut lv_obj_t, part: u8,
+                                            state: lv_state_t,
+                                            value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_bg_main_stop(obj: *mut lv_obj_t,
+                                                           part: u8,
+                                                           state: lv_state_t,
+                                                           value:
+                                                               lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_bg_main_stop(obj as *mut lv_obj_t,
+                                                    part as u8,
+                                                    state as lv_state_t,
+                                                    value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_bg_main_stop(style: *mut lv_style_t,
+                                      state: lv_state_t,
+                                      value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_bg_main_stop(style: *mut lv_style_t,
+                                                 state: lv_state_t,
+                                                 value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_bg_main_stop(style as *mut lv_style_t,
+                                          state as lv_state_t,
+                                          value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_bg_grad_stop(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_bg_grad_stop(obj: *const lv_obj_t,
+                                                     part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_bg_grad_stop(obj as *const lv_obj_t,
+                                                  part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_bg_grad_stop(obj: *mut lv_obj_t, part: u8,
+                                            state: lv_state_t,
+                                            value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_bg_grad_stop(obj: *mut lv_obj_t,
+                                                           part: u8,
+                                                           state: lv_state_t,
+                                                           value:
+                                                               lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_bg_grad_stop(obj as *mut lv_obj_t,
+                                                    part as u8,
+                                                    state as lv_state_t,
+                                                    value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_bg_grad_stop(style: *mut lv_style_t,
+                                      state: lv_state_t,
+                                      value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_bg_grad_stop(style: *mut lv_style_t,
+                                                 state: lv_state_t,
+                                                 value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_bg_grad_stop(style as *mut lv_style_t,
+                                          state as lv_state_t,
+                                          value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_bg_grad_dir(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_grad_dir_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_bg_grad_dir(obj: *const lv_obj_t,
+                                                    part: u8)
+                -> lv_grad_dir_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_bg_grad_dir(obj as *const lv_obj_t,
+                                                 part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_bg_grad_dir(obj: *mut lv_obj_t, part: u8,
+                                           state: lv_state_t,
+                                           value: lv_grad_dir_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_bg_grad_dir(obj: *mut lv_obj_t,
+                                                          part: u8,
+                                                          state: lv_state_t,
+                                                          value:
+                                                              lv_grad_dir_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_bg_grad_dir(obj as *mut lv_obj_t,
+                                                   part as u8,
+                                                   state as lv_state_t,
+                                                   value as lv_grad_dir_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_bg_grad_dir(style: *mut lv_style_t,
+                                     state: lv_state_t, value: lv_grad_dir_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_bg_grad_dir(style: *mut lv_style_t,
+                                                state: lv_state_t,
+                                                value: lv_grad_dir_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_bg_grad_dir(style as *mut lv_style_t,
+                                         state as lv_state_t,
+                                         value as lv_grad_dir_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_bg_color(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_bg_color(obj: *const lv_obj_t,
+                                                 part: u8)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_bg_color(obj as *const lv_obj_t,
+                                              part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_bg_color(obj: *mut lv_obj_t, part: u8,
+                                        state: lv_state_t, value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_bg_color(obj: *mut lv_obj_t,
+                                                       part: u8,
+                                                       state: lv_state_t,
+                                                       value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_bg_color(obj as *mut lv_obj_t,
+                                                part as u8,
+                                                state as lv_state_t,
+                                                value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_bg_color(style: *mut lv_style_t, state: lv_state_t,
+                                  value: lv_color_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_bg_color(style: *mut lv_style_t,
+                                             state: lv_state_t,
+                                             value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_bg_color(style as *mut lv_style_t,
+                                      state as lv_state_t,
+                                      value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_bg_grad_color(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_bg_grad_color(obj: *const lv_obj_t,
+                                                      part: u8)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_bg_grad_color(obj as *const lv_obj_t,
+                                                   part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_bg_grad_color(obj: *mut lv_obj_t, part: u8,
+                                             state: lv_state_t,
+                                             value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_bg_grad_color(obj:
+                                                                *mut lv_obj_t,
+                                                            part: u8,
+                                                            state: lv_state_t,
+                                                            value:
+                                                                lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_bg_grad_color(obj as *mut lv_obj_t,
+                                                     part as u8,
+                                                     state as lv_state_t,
+                                                     value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_bg_grad_color(style: *mut lv_style_t,
+                                       state: lv_state_t, value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_bg_grad_color(style: *mut lv_style_t,
+                                                  state: lv_state_t,
+                                                  value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_bg_grad_color(style as *mut lv_style_t,
+                                           state as lv_state_t,
+                                           value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_bg_opa(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_opa_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_bg_opa(obj: *const lv_obj_t, part: u8)
+                -> lv_opa_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_bg_opa(obj as *const lv_obj_t,
+                                            part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_bg_opa(obj: *mut lv_obj_t, part: u8,
+                                      state: lv_state_t, value: lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_bg_opa(obj: *mut lv_obj_t,
+                                                     part: u8,
+                                                     state: lv_state_t,
+                                                     value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_bg_opa(obj as *mut lv_obj_t,
+                                              part as u8, state as lv_state_t,
+                                              value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_bg_opa(style: *mut lv_style_t, state: lv_state_t,
+                                value: lv_opa_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_bg_opa(style: *mut lv_style_t,
+                                           state: lv_state_t,
+                                           value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_bg_opa(style as *mut lv_style_t,
+                                    state as lv_state_t, value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_border_width(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_border_width(obj: *const lv_obj_t,
+                                                     part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_border_width(obj as *const lv_obj_t,
+                                                  part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_border_width(obj: *mut lv_obj_t, part: u8,
+                                            state: lv_state_t,
+                                            value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_border_width(obj: *mut lv_obj_t,
+                                                           part: u8,
+                                                           state: lv_state_t,
+                                                           value:
+                                                               lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_border_width(obj as *mut lv_obj_t,
+                                                    part as u8,
+                                                    state as lv_state_t,
+                                                    value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_border_width(style: *mut lv_style_t,
+                                      state: lv_state_t,
+                                      value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_border_width(style: *mut lv_style_t,
+                                                 state: lv_state_t,
+                                                 value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_border_width(style as *mut lv_style_t,
+                                          state as lv_state_t,
+                                          value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_border_side(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_border_side_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_border_side(obj: *const lv_obj_t,
+                                                    part: u8)
+                -> lv_border_side_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_border_side(obj as *const lv_obj_t,
+                                                 part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_border_side(obj: *mut lv_obj_t, part: u8,
+                                           state: lv_state_t,
+                                           value: lv_border_side_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_border_side(obj: *mut lv_obj_t,
+                                                          part: u8,
+                                                          state: lv_state_t,
+                                                          value:
+                                                              lv_border_side_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_border_side(obj as *mut lv_obj_t,
+                                                   part as u8,
+                                                   state as lv_state_t,
+                                                   value as lv_border_side_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_border_side(style: *mut lv_style_t,
+                                     state: lv_state_t,
+                                     value: lv_border_side_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_border_side(style: *mut lv_style_t,
+                                                state: lv_state_t,
+                                                value: lv_border_side_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_border_side(style as *mut lv_style_t,
+                                         state as lv_state_t,
+                                         value as lv_border_side_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_border_blend_mode(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_blend_mode_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_border_blend_mode(obj:
+                                                              *const lv_obj_t,
+                                                          part: u8)
+                -> lv_blend_mode_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_border_blend_mode(obj as *const lv_obj_t,
+                                                       part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_border_blend_mode(obj: *mut lv_obj_t, part: u8,
+                                                 state: lv_state_t,
+                                                 value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_border_blend_mode(obj:
+                                                                    *mut lv_obj_t,
+                                                                part: u8,
+                                                                state:
+                                                                    lv_state_t,
+                                                                value:
+                                                                    lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_border_blend_mode(obj as *mut lv_obj_t,
+                                                         part as u8,
+                                                         state as lv_state_t,
+                                                         value as
+                                                             lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_border_blend_mode(style: *mut lv_style_t,
+                                           state: lv_state_t,
+                                           value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_border_blend_mode(style: *mut lv_style_t,
+                                                      state: lv_state_t,
+                                                      value: lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_border_blend_mode(style as *mut lv_style_t,
+                                               state as lv_state_t,
+                                               value as lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_border_post(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<bool> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_border_post(obj: *const lv_obj_t,
+                                                    part: u8)
+                -> bool;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_border_post(obj as *const lv_obj_t,
+                                                 part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_border_post(obj: *mut lv_obj_t, part: u8,
+                                           state: lv_state_t, value: bool)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_border_post(obj: *mut lv_obj_t,
+                                                          part: u8,
+                                                          state: lv_state_t,
+                                                          value: bool);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_border_post(obj as *mut lv_obj_t,
+                                                   part as u8,
+                                                   state as lv_state_t,
+                                                   value as bool);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_border_post(style: *mut lv_style_t,
+                                     state: lv_state_t, value: bool)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_border_post(style: *mut lv_style_t,
+                                                state: lv_state_t,
+                                                value: bool);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_border_post(style as *mut lv_style_t,
+                                         state as lv_state_t, value as bool);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_border_color(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_border_color(obj: *const lv_obj_t,
+                                                     part: u8)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_border_color(obj as *const lv_obj_t,
+                                                  part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_border_color(obj: *mut lv_obj_t, part: u8,
+                                            state: lv_state_t,
+                                            value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_border_color(obj: *mut lv_obj_t,
+                                                           part: u8,
+                                                           state: lv_state_t,
+                                                           value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_border_color(obj as *mut lv_obj_t,
+                                                    part as u8,
+                                                    state as lv_state_t,
+                                                    value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_border_color(style: *mut lv_style_t,
+                                      state: lv_state_t, value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_border_color(style: *mut lv_style_t,
+                                                 state: lv_state_t,
+                                                 value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_border_color(style as *mut lv_style_t,
+                                          state as lv_state_t,
+                                          value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_border_opa(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_opa_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_border_opa(obj: *const lv_obj_t,
+                                                   part: u8)
+                -> lv_opa_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_border_opa(obj as *const lv_obj_t,
+                                                part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_border_opa(obj: *mut lv_obj_t, part: u8,
+                                          state: lv_state_t, value: lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_border_opa(obj: *mut lv_obj_t,
+                                                         part: u8,
+                                                         state: lv_state_t,
+                                                         value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_border_opa(obj as *mut lv_obj_t,
+                                                  part as u8,
+                                                  state as lv_state_t,
+                                                  value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_border_opa(style: *mut lv_style_t, state: lv_state_t,
+                                    value: lv_opa_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_border_opa(style: *mut lv_style_t,
+                                               state: lv_state_t,
+                                               value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_border_opa(style as *mut lv_style_t,
+                                        state as lv_state_t,
+                                        value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_outline_width(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_outline_width(obj: *const lv_obj_t,
+                                                      part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_outline_width(obj as *const lv_obj_t,
+                                                   part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_outline_width(obj: *mut lv_obj_t, part: u8,
+                                             state: lv_state_t,
+                                             value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_outline_width(obj:
+                                                                *mut lv_obj_t,
+                                                            part: u8,
+                                                            state: lv_state_t,
+                                                            value:
+                                                                lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_outline_width(obj as *mut lv_obj_t,
+                                                     part as u8,
+                                                     state as lv_state_t,
+                                                     value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_outline_width(style: *mut lv_style_t,
+                                       state: lv_state_t,
+                                       value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_outline_width(style: *mut lv_style_t,
+                                                  state: lv_state_t,
+                                                  value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_outline_width(style as *mut lv_style_t,
+                                           state as lv_state_t,
+                                           value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_outline_pad(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_outline_pad(obj: *const lv_obj_t,
+                                                    part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_outline_pad(obj as *const lv_obj_t,
+                                                 part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_outline_pad(obj: *mut lv_obj_t, part: u8,
+                                           state: lv_state_t,
+                                           value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_outline_pad(obj: *mut lv_obj_t,
+                                                          part: u8,
+                                                          state: lv_state_t,
+                                                          value:
+                                                              lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_outline_pad(obj as *mut lv_obj_t,
+                                                   part as u8,
+                                                   state as lv_state_t,
+                                                   value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_outline_pad(style: *mut lv_style_t,
+                                     state: lv_state_t, value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_outline_pad(style: *mut lv_style_t,
+                                                state: lv_state_t,
+                                                value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_outline_pad(style as *mut lv_style_t,
+                                         state as lv_state_t,
+                                         value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_outline_blend_mode(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_blend_mode_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_outline_blend_mode(obj:
+                                                               *const lv_obj_t,
+                                                           part: u8)
+                -> lv_blend_mode_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_outline_blend_mode(obj as
+                                                            *const lv_obj_t,
+                                                        part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_outline_blend_mode(obj: *mut lv_obj_t,
+                                                  part: u8, state: lv_state_t,
+                                                  value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_outline_blend_mode(obj:
+                                                                     *mut lv_obj_t,
+                                                                 part: u8,
+                                                                 state:
+                                                                     lv_state_t,
+                                                                 value:
+                                                                     lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_outline_blend_mode(obj as
+                                                              *mut lv_obj_t,
+                                                          part as u8,
+                                                          state as lv_state_t,
+                                                          value as
+                                                              lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_outline_blend_mode(style: *mut lv_style_t,
+                                            state: lv_state_t,
+                                            value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_outline_blend_mode(style: *mut lv_style_t,
+                                                       state: lv_state_t,
+                                                       value:
+                                                           lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_outline_blend_mode(style as *mut lv_style_t,
+                                                state as lv_state_t,
+                                                value as lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_outline_color(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_outline_color(obj: *const lv_obj_t,
+                                                      part: u8)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_outline_color(obj as *const lv_obj_t,
+                                                   part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_outline_color(obj: *mut lv_obj_t, part: u8,
+                                             state: lv_state_t,
+                                             value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_outline_color(obj:
+                                                                *mut lv_obj_t,
+                                                            part: u8,
+                                                            state: lv_state_t,
+                                                            value:
+                                                                lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_outline_color(obj as *mut lv_obj_t,
+                                                     part as u8,
+                                                     state as lv_state_t,
+                                                     value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_outline_color(style: *mut lv_style_t,
+                                       state: lv_state_t, value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_outline_color(style: *mut lv_style_t,
+                                                  state: lv_state_t,
+                                                  value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_outline_color(style as *mut lv_style_t,
+                                           state as lv_state_t,
+                                           value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_outline_opa(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_opa_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_outline_opa(obj: *const lv_obj_t,
+                                                    part: u8)
+                -> lv_opa_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_outline_opa(obj as *const lv_obj_t,
+                                                 part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_outline_opa(obj: *mut lv_obj_t, part: u8,
+                                           state: lv_state_t, value: lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_outline_opa(obj: *mut lv_obj_t,
+                                                          part: u8,
+                                                          state: lv_state_t,
+                                                          value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_outline_opa(obj as *mut lv_obj_t,
+                                                   part as u8,
+                                                   state as lv_state_t,
+                                                   value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_outline_opa(style: *mut lv_style_t,
+                                     state: lv_state_t, value: lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_outline_opa(style: *mut lv_style_t,
+                                                state: lv_state_t,
+                                                value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_outline_opa(style as *mut lv_style_t,
+                                         state as lv_state_t,
+                                         value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_shadow_width(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_shadow_width(obj: *const lv_obj_t,
+                                                     part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_shadow_width(obj as *const lv_obj_t,
+                                                  part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_shadow_width(obj: *mut lv_obj_t, part: u8,
+                                            state: lv_state_t,
+                                            value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_shadow_width(obj: *mut lv_obj_t,
+                                                           part: u8,
+                                                           state: lv_state_t,
+                                                           value:
+                                                               lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_shadow_width(obj as *mut lv_obj_t,
+                                                    part as u8,
+                                                    state as lv_state_t,
+                                                    value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_shadow_width(style: *mut lv_style_t,
+                                      state: lv_state_t,
+                                      value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_shadow_width(style: *mut lv_style_t,
+                                                 state: lv_state_t,
+                                                 value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_shadow_width(style as *mut lv_style_t,
+                                          state as lv_state_t,
+                                          value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_shadow_ofs_x(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_shadow_ofs_x(obj: *const lv_obj_t,
+                                                     part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_shadow_ofs_x(obj as *const lv_obj_t,
+                                                  part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_shadow_ofs_x(obj: *mut lv_obj_t, part: u8,
+                                            state: lv_state_t,
+                                            value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_shadow_ofs_x(obj: *mut lv_obj_t,
+                                                           part: u8,
+                                                           state: lv_state_t,
+                                                           value:
+                                                               lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_shadow_ofs_x(obj as *mut lv_obj_t,
+                                                    part as u8,
+                                                    state as lv_state_t,
+                                                    value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_shadow_ofs_x(style: *mut lv_style_t,
+                                      state: lv_state_t,
+                                      value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_shadow_ofs_x(style: *mut lv_style_t,
+                                                 state: lv_state_t,
+                                                 value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_shadow_ofs_x(style as *mut lv_style_t,
+                                          state as lv_state_t,
+                                          value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_shadow_ofs_y(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_shadow_ofs_y(obj: *const lv_obj_t,
+                                                     part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_shadow_ofs_y(obj as *const lv_obj_t,
+                                                  part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_shadow_ofs_y(obj: *mut lv_obj_t, part: u8,
+                                            state: lv_state_t,
+                                            value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_shadow_ofs_y(obj: *mut lv_obj_t,
+                                                           part: u8,
+                                                           state: lv_state_t,
+                                                           value:
+                                                               lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_shadow_ofs_y(obj as *mut lv_obj_t,
+                                                    part as u8,
+                                                    state as lv_state_t,
+                                                    value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_shadow_ofs_y(style: *mut lv_style_t,
+                                      state: lv_state_t,
+                                      value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_shadow_ofs_y(style: *mut lv_style_t,
+                                                 state: lv_state_t,
+                                                 value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_shadow_ofs_y(style as *mut lv_style_t,
+                                          state as lv_state_t,
+                                          value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_shadow_spread(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_shadow_spread(obj: *const lv_obj_t,
+                                                      part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_shadow_spread(obj as *const lv_obj_t,
+                                                   part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_shadow_spread(obj: *mut lv_obj_t, part: u8,
+                                             state: lv_state_t,
+                                             value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_shadow_spread(obj:
+                                                                *mut lv_obj_t,
+                                                            part: u8,
+                                                            state: lv_state_t,
+                                                            value:
+                                                                lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_shadow_spread(obj as *mut lv_obj_t,
+                                                     part as u8,
+                                                     state as lv_state_t,
+                                                     value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_shadow_spread(style: *mut lv_style_t,
+                                       state: lv_state_t,
+                                       value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_shadow_spread(style: *mut lv_style_t,
+                                                  state: lv_state_t,
+                                                  value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_shadow_spread(style as *mut lv_style_t,
+                                           state as lv_state_t,
+                                           value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_shadow_blend_mode(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_blend_mode_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_shadow_blend_mode(obj:
+                                                              *const lv_obj_t,
+                                                          part: u8)
+                -> lv_blend_mode_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_shadow_blend_mode(obj as *const lv_obj_t,
+                                                       part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_shadow_blend_mode(obj: *mut lv_obj_t, part: u8,
+                                                 state: lv_state_t,
+                                                 value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_shadow_blend_mode(obj:
+                                                                    *mut lv_obj_t,
+                                                                part: u8,
+                                                                state:
+                                                                    lv_state_t,
+                                                                value:
+                                                                    lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_shadow_blend_mode(obj as *mut lv_obj_t,
+                                                         part as u8,
+                                                         state as lv_state_t,
+                                                         value as
+                                                             lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_shadow_blend_mode(style: *mut lv_style_t,
+                                           state: lv_state_t,
+                                           value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_shadow_blend_mode(style: *mut lv_style_t,
+                                                      state: lv_state_t,
+                                                      value: lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_shadow_blend_mode(style as *mut lv_style_t,
+                                               state as lv_state_t,
+                                               value as lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_shadow_color(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_shadow_color(obj: *const lv_obj_t,
+                                                     part: u8)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_shadow_color(obj as *const lv_obj_t,
+                                                  part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_shadow_color(obj: *mut lv_obj_t, part: u8,
+                                            state: lv_state_t,
+                                            value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_shadow_color(obj: *mut lv_obj_t,
+                                                           part: u8,
+                                                           state: lv_state_t,
+                                                           value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_shadow_color(obj as *mut lv_obj_t,
+                                                    part as u8,
+                                                    state as lv_state_t,
+                                                    value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_shadow_color(style: *mut lv_style_t,
+                                      state: lv_state_t, value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_shadow_color(style: *mut lv_style_t,
+                                                 state: lv_state_t,
+                                                 value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_shadow_color(style as *mut lv_style_t,
+                                          state as lv_state_t,
+                                          value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_shadow_opa(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_opa_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_shadow_opa(obj: *const lv_obj_t,
+                                                   part: u8)
+                -> lv_opa_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_shadow_opa(obj as *const lv_obj_t,
+                                                part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_shadow_opa(obj: *mut lv_obj_t, part: u8,
+                                          state: lv_state_t, value: lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_shadow_opa(obj: *mut lv_obj_t,
+                                                         part: u8,
+                                                         state: lv_state_t,
+                                                         value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_shadow_opa(obj as *mut lv_obj_t,
+                                                  part as u8,
+                                                  state as lv_state_t,
+                                                  value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_shadow_opa(style: *mut lv_style_t, state: lv_state_t,
+                                    value: lv_opa_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_shadow_opa(style: *mut lv_style_t,
+                                               state: lv_state_t,
+                                               value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_shadow_opa(style as *mut lv_style_t,
+                                        state as lv_state_t,
+                                        value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_pattern_repeat(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<bool> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_pattern_repeat(obj: *const lv_obj_t,
+                                                       part: u8)
+                -> bool;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_pattern_repeat(obj as *const lv_obj_t,
+                                                    part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_pattern_repeat(obj: *mut lv_obj_t, part: u8,
+                                              state: lv_state_t, value: bool)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_pattern_repeat(obj:
+                                                                 *mut lv_obj_t,
+                                                             part: u8,
+                                                             state:
+                                                                 lv_state_t,
+                                                             value: bool);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_pattern_repeat(obj as *mut lv_obj_t,
+                                                      part as u8,
+                                                      state as lv_state_t,
+                                                      value as bool);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_pattern_repeat(style: *mut lv_style_t,
+                                        state: lv_state_t, value: bool)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_pattern_repeat(style: *mut lv_style_t,
+                                                   state: lv_state_t,
+                                                   value: bool);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_pattern_repeat(style as *mut lv_style_t,
+                                            state as lv_state_t,
+                                            value as bool);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_pattern_blend_mode(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_blend_mode_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_pattern_blend_mode(obj:
+                                                               *const lv_obj_t,
+                                                           part: u8)
+                -> lv_blend_mode_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_pattern_blend_mode(obj as
+                                                            *const lv_obj_t,
+                                                        part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_pattern_blend_mode(obj: *mut lv_obj_t,
+                                                  part: u8, state: lv_state_t,
+                                                  value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_pattern_blend_mode(obj:
+                                                                     *mut lv_obj_t,
+                                                                 part: u8,
+                                                                 state:
+                                                                     lv_state_t,
+                                                                 value:
+                                                                     lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_pattern_blend_mode(obj as
+                                                              *mut lv_obj_t,
+                                                          part as u8,
+                                                          state as lv_state_t,
+                                                          value as
+                                                              lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_pattern_blend_mode(style: *mut lv_style_t,
+                                            state: lv_state_t,
+                                            value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_pattern_blend_mode(style: *mut lv_style_t,
+                                                       state: lv_state_t,
+                                                       value:
+                                                           lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_pattern_blend_mode(style as *mut lv_style_t,
+                                                state as lv_state_t,
+                                                value as lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_pattern_recolor(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_pattern_recolor(obj: *const lv_obj_t,
+                                                        part: u8)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_pattern_recolor(obj as *const lv_obj_t,
+                                                     part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_pattern_recolor(obj: *mut lv_obj_t, part: u8,
+                                               state: lv_state_t,
+                                               value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_pattern_recolor(obj:
+                                                                  *mut lv_obj_t,
+                                                              part: u8,
+                                                              state:
+                                                                  lv_state_t,
+                                                              value:
+                                                                  lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_pattern_recolor(obj as *mut lv_obj_t,
+                                                       part as u8,
+                                                       state as lv_state_t,
+                                                       value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_pattern_recolor(style: *mut lv_style_t,
+                                         state: lv_state_t, value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_pattern_recolor(style: *mut lv_style_t,
+                                                    state: lv_state_t,
+                                                    value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_pattern_recolor(style as *mut lv_style_t,
+                                             state as lv_state_t,
+                                             value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_pattern_opa(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_opa_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_pattern_opa(obj: *const lv_obj_t,
+                                                    part: u8)
+                -> lv_opa_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_pattern_opa(obj as *const lv_obj_t,
+                                                 part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_pattern_opa(obj: *mut lv_obj_t, part: u8,
+                                           state: lv_state_t, value: lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_pattern_opa(obj: *mut lv_obj_t,
+                                                          part: u8,
+                                                          state: lv_state_t,
+                                                          value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_pattern_opa(obj as *mut lv_obj_t,
+                                                   part as u8,
+                                                   state as lv_state_t,
+                                                   value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_pattern_opa(style: *mut lv_style_t,
+                                     state: lv_state_t, value: lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_pattern_opa(style: *mut lv_style_t,
+                                                state: lv_state_t,
+                                                value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_pattern_opa(style as *mut lv_style_t,
+                                         state as lv_state_t,
+                                         value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_pattern_recolor_opa(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_opa_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_pattern_recolor_opa(obj:
+                                                                *const lv_obj_t,
+                                                            part: u8)
+                -> lv_opa_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_pattern_recolor_opa(obj as
+                                                             *const lv_obj_t,
+                                                         part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_pattern_recolor_opa(obj: *mut lv_obj_t,
+                                                   part: u8,
+                                                   state: lv_state_t,
+                                                   value: lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_pattern_recolor_opa(obj:
+                                                                      *mut lv_obj_t,
+                                                                  part: u8,
+                                                                  state:
+                                                                      lv_state_t,
+                                                                  value:
+                                                                      lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_pattern_recolor_opa(obj as
+                                                               *mut lv_obj_t,
+                                                           part as u8,
+                                                           state as
+                                                               lv_state_t,
+                                                           value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_pattern_recolor_opa(style: *mut lv_style_t,
+                                             state: lv_state_t,
+                                             value: lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_pattern_recolor_opa(style:
+                                                            *mut lv_style_t,
+                                                        state: lv_state_t,
+                                                        value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_pattern_recolor_opa(style as *mut lv_style_t,
+                                                 state as lv_state_t,
+                                                 value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_pattern_image(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<*const ::cty::c_void> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_pattern_image(obj: *const lv_obj_t,
+                                                      part: u8)
+                -> *const ::cty::c_void;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_pattern_image(obj as *const lv_obj_t,
+                                                   part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_pattern_image(obj: *mut lv_obj_t, part: u8,
+                                             state: lv_state_t,
+                                             value: *const ::cty::c_void)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_pattern_image(obj:
+                                                                *mut lv_obj_t,
+                                                            part: u8,
+                                                            state: lv_state_t,
+                                                            value:
+                                                                *const ::cty::c_void);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_pattern_image(obj as *mut lv_obj_t,
+                                                     part as u8,
+                                                     state as lv_state_t,
+                                                     value as
+                                                         *const ::cty::c_void);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_pattern_image(style: *mut lv_style_t,
+                                       state: lv_state_t,
+                                       value: *const ::cty::c_void)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_pattern_image(style: *mut lv_style_t,
+                                                  state: lv_state_t,
+                                                  value:
+                                                      *const ::cty::c_void);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_pattern_image(style as *mut lv_style_t,
+                                           state as lv_state_t,
+                                           value as *const ::cty::c_void);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_value_letter_space(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_value_letter_space(obj:
+                                                               *const lv_obj_t,
+                                                           part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_value_letter_space(obj as
+                                                            *const lv_obj_t,
+                                                        part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_value_letter_space(obj: *mut lv_obj_t,
+                                                  part: u8, state: lv_state_t,
+                                                  value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_value_letter_space(obj:
+                                                                     *mut lv_obj_t,
+                                                                 part: u8,
+                                                                 state:
+                                                                     lv_state_t,
+                                                                 value:
+                                                                     lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_value_letter_space(obj as
+                                                              *mut lv_obj_t,
+                                                          part as u8,
+                                                          state as lv_state_t,
+                                                          value as
+                                                              lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_value_letter_space(style: *mut lv_style_t,
+                                            state: lv_state_t,
+                                            value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_value_letter_space(style: *mut lv_style_t,
+                                                       state: lv_state_t,
+                                                       value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_value_letter_space(style as *mut lv_style_t,
+                                                state as lv_state_t,
+                                                value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_value_line_space(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_value_line_space(obj: *const lv_obj_t,
+                                                         part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_value_line_space(obj as *const lv_obj_t,
+                                                      part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_value_line_space(obj: *mut lv_obj_t, part: u8,
+                                                state: lv_state_t,
+                                                value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_value_line_space(obj:
+                                                                   *mut lv_obj_t,
+                                                               part: u8,
+                                                               state:
+                                                                   lv_state_t,
+                                                               value:
+                                                                   lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_value_line_space(obj as *mut lv_obj_t,
+                                                        part as u8,
+                                                        state as lv_state_t,
+                                                        value as
+                                                            lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_value_line_space(style: *mut lv_style_t,
+                                          state: lv_state_t,
+                                          value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_value_line_space(style: *mut lv_style_t,
+                                                     state: lv_state_t,
+                                                     value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_value_line_space(style as *mut lv_style_t,
+                                              state as lv_state_t,
+                                              value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_value_blend_mode(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_blend_mode_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_value_blend_mode(obj: *const lv_obj_t,
+                                                         part: u8)
+                -> lv_blend_mode_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_value_blend_mode(obj as *const lv_obj_t,
+                                                      part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_value_blend_mode(obj: *mut lv_obj_t, part: u8,
+                                                state: lv_state_t,
+                                                value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_value_blend_mode(obj:
+                                                                   *mut lv_obj_t,
+                                                               part: u8,
+                                                               state:
+                                                                   lv_state_t,
+                                                               value:
+                                                                   lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_value_blend_mode(obj as *mut lv_obj_t,
+                                                        part as u8,
+                                                        state as lv_state_t,
+                                                        value as
+                                                            lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_value_blend_mode(style: *mut lv_style_t,
+                                          state: lv_state_t,
+                                          value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_value_blend_mode(style: *mut lv_style_t,
+                                                     state: lv_state_t,
+                                                     value: lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_value_blend_mode(style as *mut lv_style_t,
+                                              state as lv_state_t,
+                                              value as lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_value_ofs_x(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_value_ofs_x(obj: *const lv_obj_t,
+                                                    part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_value_ofs_x(obj as *const lv_obj_t,
+                                                 part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_value_ofs_x(obj: *mut lv_obj_t, part: u8,
+                                           state: lv_state_t,
+                                           value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_value_ofs_x(obj: *mut lv_obj_t,
+                                                          part: u8,
+                                                          state: lv_state_t,
+                                                          value:
+                                                              lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_value_ofs_x(obj as *mut lv_obj_t,
+                                                   part as u8,
+                                                   state as lv_state_t,
+                                                   value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_value_ofs_x(style: *mut lv_style_t,
+                                     state: lv_state_t, value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_value_ofs_x(style: *mut lv_style_t,
+                                                state: lv_state_t,
+                                                value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_value_ofs_x(style as *mut lv_style_t,
+                                         state as lv_state_t,
+                                         value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_value_ofs_y(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_value_ofs_y(obj: *const lv_obj_t,
+                                                    part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_value_ofs_y(obj as *const lv_obj_t,
+                                                 part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_value_ofs_y(obj: *mut lv_obj_t, part: u8,
+                                           state: lv_state_t,
+                                           value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_value_ofs_y(obj: *mut lv_obj_t,
+                                                          part: u8,
+                                                          state: lv_state_t,
+                                                          value:
+                                                              lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_value_ofs_y(obj as *mut lv_obj_t,
+                                                   part as u8,
+                                                   state as lv_state_t,
+                                                   value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_value_ofs_y(style: *mut lv_style_t,
+                                     state: lv_state_t, value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_value_ofs_y(style: *mut lv_style_t,
+                                                state: lv_state_t,
+                                                value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_value_ofs_y(style as *mut lv_style_t,
+                                         state as lv_state_t,
+                                         value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_value_align(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_align_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_value_align(obj: *const lv_obj_t,
+                                                    part: u8)
+                -> lv_align_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_value_align(obj as *const lv_obj_t,
+                                                 part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_value_align(obj: *mut lv_obj_t, part: u8,
+                                           state: lv_state_t,
+                                           value: lv_align_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_value_align(obj: *mut lv_obj_t,
+                                                          part: u8,
+                                                          state: lv_state_t,
+                                                          value: lv_align_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_value_align(obj as *mut lv_obj_t,
+                                                   part as u8,
+                                                   state as lv_state_t,
+                                                   value as lv_align_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_value_align(style: *mut lv_style_t,
+                                     state: lv_state_t, value: lv_align_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_value_align(style: *mut lv_style_t,
+                                                state: lv_state_t,
+                                                value: lv_align_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_value_align(style as *mut lv_style_t,
+                                         state as lv_state_t,
+                                         value as lv_align_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_value_color(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_value_color(obj: *const lv_obj_t,
+                                                    part: u8)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_value_color(obj as *const lv_obj_t,
+                                                 part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_value_color(obj: *mut lv_obj_t, part: u8,
+                                           state: lv_state_t,
+                                           value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_value_color(obj: *mut lv_obj_t,
+                                                          part: u8,
+                                                          state: lv_state_t,
+                                                          value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_value_color(obj as *mut lv_obj_t,
+                                                   part as u8,
+                                                   state as lv_state_t,
+                                                   value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_value_color(style: *mut lv_style_t,
+                                     state: lv_state_t, value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_value_color(style: *mut lv_style_t,
+                                                state: lv_state_t,
+                                                value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_value_color(style as *mut lv_style_t,
+                                         state as lv_state_t,
+                                         value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_value_opa(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_opa_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_value_opa(obj: *const lv_obj_t,
+                                                  part: u8)
+                -> lv_opa_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_value_opa(obj as *const lv_obj_t,
+                                               part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_value_opa(obj: *mut lv_obj_t, part: u8,
+                                         state: lv_state_t, value: lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_value_opa(obj: *mut lv_obj_t,
+                                                        part: u8,
+                                                        state: lv_state_t,
+                                                        value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_value_opa(obj as *mut lv_obj_t,
+                                                 part as u8,
+                                                 state as lv_state_t,
+                                                 value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_value_opa(style: *mut lv_style_t, state: lv_state_t,
+                                   value: lv_opa_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_value_opa(style: *mut lv_style_t,
+                                              state: lv_state_t,
+                                              value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_value_opa(style as *mut lv_style_t,
+                                       state as lv_state_t,
+                                       value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_value_font(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<*const lv_font_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_value_font(obj: *const lv_obj_t,
+                                                   part: u8)
+                -> *const lv_font_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_value_font(obj as *const lv_obj_t,
+                                                part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_value_font(obj: *mut lv_obj_t, part: u8,
+                                          state: lv_state_t,
+                                          value: *const lv_font_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_value_font(obj: *mut lv_obj_t,
+                                                         part: u8,
+                                                         state: lv_state_t,
+                                                         value:
+                                                             *const lv_font_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_value_font(obj as *mut lv_obj_t,
+                                                  part as u8,
+                                                  state as lv_state_t,
+                                                  value as *const lv_font_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_value_font(style: *mut lv_style_t, state: lv_state_t,
+                                    value: *const lv_font_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_value_font(style: *mut lv_style_t,
+                                               state: lv_state_t,
+                                               value: *const lv_font_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_value_font(style as *mut lv_style_t,
+                                        state as lv_state_t,
+                                        value as *const lv_font_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_value_str(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<Strn> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_value_str(obj: *const lv_obj_t,
+                                                  part: u8)
+                -> *const ::cty::c_char;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_value_str(obj as *const lv_obj_t,
+                                               part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(Strn::from_cstr(result_value as *const u8))
+            }
+        }
+        pub fn set_style_local_value_str(obj: *mut lv_obj_t, part: u8,
+                                         state: lv_state_t, value: &Strn)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_value_str(obj: *mut lv_obj_t,
+                                                        part: u8,
+                                                        state: lv_state_t,
+                                                        value:
+                                                            *const ::cty::c_char);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            value.validate();
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_value_str(obj as *mut lv_obj_t,
+                                                 part as u8,
+                                                 state as lv_state_t,
+                                                 value.as_ptr() as
+                                                     *const ::cty::c_char);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_value_str(style: *mut lv_style_t, state: lv_state_t,
+                                   value: &Strn) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_value_str(style: *mut lv_style_t,
+                                              state: lv_state_t,
+                                              value: *const ::cty::c_char);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            value.validate();
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_value_str(style as *mut lv_style_t,
+                                       state as lv_state_t,
+                                       value.as_ptr() as
+                                           *const ::cty::c_char);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_text_letter_space(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_text_letter_space(obj:
+                                                              *const lv_obj_t,
+                                                          part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_text_letter_space(obj as *const lv_obj_t,
+                                                       part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_text_letter_space(obj: *mut lv_obj_t, part: u8,
+                                                 state: lv_state_t,
+                                                 value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_text_letter_space(obj:
+                                                                    *mut lv_obj_t,
+                                                                part: u8,
+                                                                state:
+                                                                    lv_state_t,
+                                                                value:
+                                                                    lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_text_letter_space(obj as *mut lv_obj_t,
+                                                         part as u8,
+                                                         state as lv_state_t,
+                                                         value as
+                                                             lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_text_letter_space(style: *mut lv_style_t,
+                                           state: lv_state_t,
+                                           value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_text_letter_space(style: *mut lv_style_t,
+                                                      state: lv_state_t,
+                                                      value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_text_letter_space(style as *mut lv_style_t,
+                                               state as lv_state_t,
+                                               value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_text_line_space(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_text_line_space(obj: *const lv_obj_t,
+                                                        part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_text_line_space(obj as *const lv_obj_t,
+                                                     part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_text_line_space(obj: *mut lv_obj_t, part: u8,
+                                               state: lv_state_t,
+                                               value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_text_line_space(obj:
+                                                                  *mut lv_obj_t,
+                                                              part: u8,
+                                                              state:
+                                                                  lv_state_t,
+                                                              value:
+                                                                  lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_text_line_space(obj as *mut lv_obj_t,
+                                                       part as u8,
+                                                       state as lv_state_t,
+                                                       value as
+                                                           lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_text_line_space(style: *mut lv_style_t,
+                                         state: lv_state_t,
+                                         value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_text_line_space(style: *mut lv_style_t,
+                                                    state: lv_state_t,
+                                                    value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_text_line_space(style as *mut lv_style_t,
+                                             state as lv_state_t,
+                                             value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_text_decor(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_text_decor_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_text_decor(obj: *const lv_obj_t,
+                                                   part: u8)
+                -> lv_text_decor_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_text_decor(obj as *const lv_obj_t,
+                                                part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_text_decor(obj: *mut lv_obj_t, part: u8,
+                                          state: lv_state_t,
+                                          value: lv_text_decor_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_text_decor(obj: *mut lv_obj_t,
+                                                         part: u8,
+                                                         state: lv_state_t,
+                                                         value:
+                                                             lv_text_decor_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_text_decor(obj as *mut lv_obj_t,
+                                                  part as u8,
+                                                  state as lv_state_t,
+                                                  value as lv_text_decor_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_text_decor(style: *mut lv_style_t, state: lv_state_t,
+                                    value: lv_text_decor_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_text_decor(style: *mut lv_style_t,
+                                               state: lv_state_t,
+                                               value: lv_text_decor_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_text_decor(style as *mut lv_style_t,
+                                        state as lv_state_t,
+                                        value as lv_text_decor_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_text_blend_mode(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_blend_mode_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_text_blend_mode(obj: *const lv_obj_t,
+                                                        part: u8)
+                -> lv_blend_mode_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_text_blend_mode(obj as *const lv_obj_t,
+                                                     part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_text_blend_mode(obj: *mut lv_obj_t, part: u8,
+                                               state: lv_state_t,
+                                               value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_text_blend_mode(obj:
+                                                                  *mut lv_obj_t,
+                                                              part: u8,
+                                                              state:
+                                                                  lv_state_t,
+                                                              value:
+                                                                  lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_text_blend_mode(obj as *mut lv_obj_t,
+                                                       part as u8,
+                                                       state as lv_state_t,
+                                                       value as
+                                                           lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_text_blend_mode(style: *mut lv_style_t,
+                                         state: lv_state_t,
+                                         value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_text_blend_mode(style: *mut lv_style_t,
+                                                    state: lv_state_t,
+                                                    value: lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_text_blend_mode(style as *mut lv_style_t,
+                                             state as lv_state_t,
+                                             value as lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_text_color(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_text_color(obj: *const lv_obj_t,
+                                                   part: u8)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_text_color(obj as *const lv_obj_t,
+                                                part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_text_color(obj: *mut lv_obj_t, part: u8,
+                                          state: lv_state_t,
+                                          value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_text_color(obj: *mut lv_obj_t,
+                                                         part: u8,
+                                                         state: lv_state_t,
+                                                         value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_text_color(obj as *mut lv_obj_t,
+                                                  part as u8,
+                                                  state as lv_state_t,
+                                                  value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_text_color(style: *mut lv_style_t, state: lv_state_t,
+                                    value: lv_color_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_text_color(style: *mut lv_style_t,
+                                               state: lv_state_t,
+                                               value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_text_color(style as *mut lv_style_t,
+                                        state as lv_state_t,
+                                        value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_text_sel_color(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_text_sel_color(obj: *const lv_obj_t,
+                                                       part: u8)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_text_sel_color(obj as *const lv_obj_t,
+                                                    part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_text_sel_color(obj: *mut lv_obj_t, part: u8,
+                                              state: lv_state_t,
+                                              value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_text_sel_color(obj:
+                                                                 *mut lv_obj_t,
+                                                             part: u8,
+                                                             state:
+                                                                 lv_state_t,
+                                                             value:
+                                                                 lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_text_sel_color(obj as *mut lv_obj_t,
+                                                      part as u8,
+                                                      state as lv_state_t,
+                                                      value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_text_sel_color(style: *mut lv_style_t,
+                                        state: lv_state_t, value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_text_sel_color(style: *mut lv_style_t,
+                                                   state: lv_state_t,
+                                                   value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_text_sel_color(style as *mut lv_style_t,
+                                            state as lv_state_t,
+                                            value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_text_opa(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_opa_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_text_opa(obj: *const lv_obj_t,
+                                                 part: u8)
+                -> lv_opa_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_text_opa(obj as *const lv_obj_t,
+                                              part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_text_opa(obj: *mut lv_obj_t, part: u8,
+                                        state: lv_state_t, value: lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_text_opa(obj: *mut lv_obj_t,
+                                                       part: u8,
+                                                       state: lv_state_t,
+                                                       value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_text_opa(obj as *mut lv_obj_t,
+                                                part as u8,
+                                                state as lv_state_t,
+                                                value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_text_opa(style: *mut lv_style_t, state: lv_state_t,
+                                  value: lv_opa_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_text_opa(style: *mut lv_style_t,
+                                             state: lv_state_t,
+                                             value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_text_opa(style as *mut lv_style_t,
+                                      state as lv_state_t, value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_text_font(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<*const lv_font_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_text_font(obj: *const lv_obj_t,
+                                                  part: u8)
+                -> *const lv_font_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_text_font(obj as *const lv_obj_t,
+                                               part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_text_font(obj: *mut lv_obj_t, part: u8,
+                                         state: lv_state_t,
+                                         value: *const lv_font_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_text_font(obj: *mut lv_obj_t,
+                                                        part: u8,
+                                                        state: lv_state_t,
+                                                        value:
+                                                            *const lv_font_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_text_font(obj as *mut lv_obj_t,
+                                                 part as u8,
+                                                 state as lv_state_t,
+                                                 value as *const lv_font_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_text_font(style: *mut lv_style_t, state: lv_state_t,
+                                   value: *const lv_font_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_text_font(style: *mut lv_style_t,
+                                              state: lv_state_t,
+                                              value: *const lv_font_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_text_font(style as *mut lv_style_t,
+                                       state as lv_state_t,
+                                       value as *const lv_font_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_line_width(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_line_width(obj: *const lv_obj_t,
+                                                   part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_line_width(obj as *const lv_obj_t,
+                                                part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_line_width(obj: *mut lv_obj_t, part: u8,
+                                          state: lv_state_t,
+                                          value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_line_width(obj: *mut lv_obj_t,
+                                                         part: u8,
+                                                         state: lv_state_t,
+                                                         value:
+                                                             lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_line_width(obj as *mut lv_obj_t,
+                                                  part as u8,
+                                                  state as lv_state_t,
+                                                  value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_line_width(style: *mut lv_style_t, state: lv_state_t,
+                                    value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_line_width(style: *mut lv_style_t,
+                                               state: lv_state_t,
+                                               value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_line_width(style as *mut lv_style_t,
+                                        state as lv_state_t,
+                                        value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_line_blend_mode(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_blend_mode_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_line_blend_mode(obj: *const lv_obj_t,
+                                                        part: u8)
+                -> lv_blend_mode_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_line_blend_mode(obj as *const lv_obj_t,
+                                                     part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_line_blend_mode(obj: *mut lv_obj_t, part: u8,
+                                               state: lv_state_t,
+                                               value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_line_blend_mode(obj:
+                                                                  *mut lv_obj_t,
+                                                              part: u8,
+                                                              state:
+                                                                  lv_state_t,
+                                                              value:
+                                                                  lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_line_blend_mode(obj as *mut lv_obj_t,
+                                                       part as u8,
+                                                       state as lv_state_t,
+                                                       value as
+                                                           lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_line_blend_mode(style: *mut lv_style_t,
+                                         state: lv_state_t,
+                                         value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_line_blend_mode(style: *mut lv_style_t,
+                                                    state: lv_state_t,
+                                                    value: lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_line_blend_mode(style as *mut lv_style_t,
+                                             state as lv_state_t,
+                                             value as lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_line_dash_width(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_line_dash_width(obj: *const lv_obj_t,
+                                                        part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_line_dash_width(obj as *const lv_obj_t,
+                                                     part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_line_dash_width(obj: *mut lv_obj_t, part: u8,
+                                               state: lv_state_t,
+                                               value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_line_dash_width(obj:
+                                                                  *mut lv_obj_t,
+                                                              part: u8,
+                                                              state:
+                                                                  lv_state_t,
+                                                              value:
+                                                                  lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_line_dash_width(obj as *mut lv_obj_t,
+                                                       part as u8,
+                                                       state as lv_state_t,
+                                                       value as
+                                                           lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_line_dash_width(style: *mut lv_style_t,
+                                         state: lv_state_t,
+                                         value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_line_dash_width(style: *mut lv_style_t,
+                                                    state: lv_state_t,
+                                                    value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_line_dash_width(style as *mut lv_style_t,
+                                             state as lv_state_t,
+                                             value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_line_dash_gap(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_line_dash_gap(obj: *const lv_obj_t,
+                                                      part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_line_dash_gap(obj as *const lv_obj_t,
+                                                   part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_line_dash_gap(obj: *mut lv_obj_t, part: u8,
+                                             state: lv_state_t,
+                                             value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_line_dash_gap(obj:
+                                                                *mut lv_obj_t,
+                                                            part: u8,
+                                                            state: lv_state_t,
+                                                            value:
+                                                                lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_line_dash_gap(obj as *mut lv_obj_t,
+                                                     part as u8,
+                                                     state as lv_state_t,
+                                                     value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_line_dash_gap(style: *mut lv_style_t,
+                                       state: lv_state_t,
+                                       value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_line_dash_gap(style: *mut lv_style_t,
+                                                  state: lv_state_t,
+                                                  value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_line_dash_gap(style as *mut lv_style_t,
+                                           state as lv_state_t,
+                                           value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_line_rounded(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<bool> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_line_rounded(obj: *const lv_obj_t,
+                                                     part: u8)
+                -> bool;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_line_rounded(obj as *const lv_obj_t,
+                                                  part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_line_rounded(obj: *mut lv_obj_t, part: u8,
+                                            state: lv_state_t, value: bool)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_line_rounded(obj: *mut lv_obj_t,
+                                                           part: u8,
+                                                           state: lv_state_t,
+                                                           value: bool);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_line_rounded(obj as *mut lv_obj_t,
+                                                    part as u8,
+                                                    state as lv_state_t,
+                                                    value as bool);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_line_rounded(style: *mut lv_style_t,
+                                      state: lv_state_t, value: bool)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_line_rounded(style: *mut lv_style_t,
+                                                 state: lv_state_t,
+                                                 value: bool);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_line_rounded(style as *mut lv_style_t,
+                                          state as lv_state_t, value as bool);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_line_color(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_line_color(obj: *const lv_obj_t,
+                                                   part: u8)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_line_color(obj as *const lv_obj_t,
+                                                part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_line_color(obj: *mut lv_obj_t, part: u8,
+                                          state: lv_state_t,
+                                          value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_line_color(obj: *mut lv_obj_t,
+                                                         part: u8,
+                                                         state: lv_state_t,
+                                                         value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_line_color(obj as *mut lv_obj_t,
+                                                  part as u8,
+                                                  state as lv_state_t,
+                                                  value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_line_color(style: *mut lv_style_t, state: lv_state_t,
+                                    value: lv_color_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_line_color(style: *mut lv_style_t,
+                                               state: lv_state_t,
+                                               value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_line_color(style as *mut lv_style_t,
+                                        state as lv_state_t,
+                                        value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_line_opa(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_opa_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_line_opa(obj: *const lv_obj_t,
+                                                 part: u8)
+                -> lv_opa_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_line_opa(obj as *const lv_obj_t,
+                                              part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_line_opa(obj: *mut lv_obj_t, part: u8,
+                                        state: lv_state_t, value: lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_line_opa(obj: *mut lv_obj_t,
+                                                       part: u8,
+                                                       state: lv_state_t,
+                                                       value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_line_opa(obj as *mut lv_obj_t,
+                                                part as u8,
+                                                state as lv_state_t,
+                                                value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_line_opa(style: *mut lv_style_t, state: lv_state_t,
+                                  value: lv_opa_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_line_opa(style: *mut lv_style_t,
+                                             state: lv_state_t,
+                                             value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_line_opa(style as *mut lv_style_t,
+                                      state as lv_state_t, value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_image_blend_mode(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_blend_mode_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_image_blend_mode(obj: *const lv_obj_t,
+                                                         part: u8)
+                -> lv_blend_mode_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_image_blend_mode(obj as *const lv_obj_t,
+                                                      part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_image_blend_mode(obj: *mut lv_obj_t, part: u8,
+                                                state: lv_state_t,
+                                                value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_image_blend_mode(obj:
+                                                                   *mut lv_obj_t,
+                                                               part: u8,
+                                                               state:
+                                                                   lv_state_t,
+                                                               value:
+                                                                   lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_image_blend_mode(obj as *mut lv_obj_t,
+                                                        part as u8,
+                                                        state as lv_state_t,
+                                                        value as
+                                                            lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_image_blend_mode(style: *mut lv_style_t,
+                                          state: lv_state_t,
+                                          value: lv_blend_mode_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_image_blend_mode(style: *mut lv_style_t,
+                                                     state: lv_state_t,
+                                                     value: lv_blend_mode_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_image_blend_mode(style as *mut lv_style_t,
+                                              state as lv_state_t,
+                                              value as lv_blend_mode_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_image_recolor(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_image_recolor(obj: *const lv_obj_t,
+                                                      part: u8)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_image_recolor(obj as *const lv_obj_t,
+                                                   part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_image_recolor(obj: *mut lv_obj_t, part: u8,
+                                             state: lv_state_t,
+                                             value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_image_recolor(obj:
+                                                                *mut lv_obj_t,
+                                                            part: u8,
+                                                            state: lv_state_t,
+                                                            value:
+                                                                lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_image_recolor(obj as *mut lv_obj_t,
+                                                     part as u8,
+                                                     state as lv_state_t,
+                                                     value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_image_recolor(style: *mut lv_style_t,
+                                       state: lv_state_t, value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_image_recolor(style: *mut lv_style_t,
+                                                  state: lv_state_t,
+                                                  value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_image_recolor(style as *mut lv_style_t,
+                                           state as lv_state_t,
+                                           value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_image_opa(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_opa_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_image_opa(obj: *const lv_obj_t,
+                                                  part: u8)
+                -> lv_opa_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_image_opa(obj as *const lv_obj_t,
+                                               part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_image_opa(obj: *mut lv_obj_t, part: u8,
+                                         state: lv_state_t, value: lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_image_opa(obj: *mut lv_obj_t,
+                                                        part: u8,
+                                                        state: lv_state_t,
+                                                        value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_image_opa(obj as *mut lv_obj_t,
+                                                 part as u8,
+                                                 state as lv_state_t,
+                                                 value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_image_opa(style: *mut lv_style_t, state: lv_state_t,
+                                   value: lv_opa_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_image_opa(style: *mut lv_style_t,
+                                              state: lv_state_t,
+                                              value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_image_opa(style as *mut lv_style_t,
+                                       state as lv_state_t,
+                                       value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_image_recolor_opa(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_opa_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_image_recolor_opa(obj:
+                                                              *const lv_obj_t,
+                                                          part: u8)
+                -> lv_opa_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_image_recolor_opa(obj as *const lv_obj_t,
+                                                       part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_image_recolor_opa(obj: *mut lv_obj_t, part: u8,
+                                                 state: lv_state_t,
+                                                 value: lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_image_recolor_opa(obj:
+                                                                    *mut lv_obj_t,
+                                                                part: u8,
+                                                                state:
+                                                                    lv_state_t,
+                                                                value:
+                                                                    lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_image_recolor_opa(obj as *mut lv_obj_t,
+                                                         part as u8,
+                                                         state as lv_state_t,
+                                                         value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_image_recolor_opa(style: *mut lv_style_t,
+                                           state: lv_state_t, value: lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_image_recolor_opa(style: *mut lv_style_t,
+                                                      state: lv_state_t,
+                                                      value: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_image_recolor_opa(style as *mut lv_style_t,
+                                               state as lv_state_t,
+                                               value as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_transition_time(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_transition_time(obj: *const lv_obj_t,
+                                                        part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_transition_time(obj as *const lv_obj_t,
+                                                     part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_transition_time(obj: *mut lv_obj_t, part: u8,
+                                               state: lv_state_t,
+                                               value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_transition_time(obj:
+                                                                  *mut lv_obj_t,
+                                                              part: u8,
+                                                              state:
+                                                                  lv_state_t,
+                                                              value:
+                                                                  lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_transition_time(obj as *mut lv_obj_t,
+                                                       part as u8,
+                                                       state as lv_state_t,
+                                                       value as
+                                                           lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_transition_time(style: *mut lv_style_t,
+                                         state: lv_state_t,
+                                         value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_transition_time(style: *mut lv_style_t,
+                                                    state: lv_state_t,
+                                                    value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_transition_time(style as *mut lv_style_t,
+                                             state as lv_state_t,
+                                             value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_transition_delay(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_transition_delay(obj: *const lv_obj_t,
+                                                         part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_transition_delay(obj as *const lv_obj_t,
+                                                      part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_transition_delay(obj: *mut lv_obj_t, part: u8,
+                                                state: lv_state_t,
+                                                value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_transition_delay(obj:
+                                                                   *mut lv_obj_t,
+                                                               part: u8,
+                                                               state:
+                                                                   lv_state_t,
+                                                               value:
+                                                                   lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_transition_delay(obj as *mut lv_obj_t,
+                                                        part as u8,
+                                                        state as lv_state_t,
+                                                        value as
+                                                            lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_transition_delay(style: *mut lv_style_t,
+                                          state: lv_state_t,
+                                          value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_transition_delay(style: *mut lv_style_t,
+                                                     state: lv_state_t,
+                                                     value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_transition_delay(style as *mut lv_style_t,
+                                              state as lv_state_t,
+                                              value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_transition_prop_1(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_transition_prop_1(obj:
+                                                              *const lv_obj_t,
+                                                          part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_transition_prop_1(obj as *const lv_obj_t,
+                                                       part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_transition_prop_1(obj: *mut lv_obj_t, part: u8,
+                                                 state: lv_state_t,
+                                                 value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_transition_prop_1(obj:
+                                                                    *mut lv_obj_t,
+                                                                part: u8,
+                                                                state:
+                                                                    lv_state_t,
+                                                                value:
+                                                                    lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_transition_prop_1(obj as *mut lv_obj_t,
+                                                         part as u8,
+                                                         state as lv_state_t,
+                                                         value as
+                                                             lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_transition_prop_1(style: *mut lv_style_t,
+                                           state: lv_state_t,
+                                           value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_transition_prop_1(style: *mut lv_style_t,
+                                                      state: lv_state_t,
+                                                      value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_transition_prop_1(style as *mut lv_style_t,
+                                               state as lv_state_t,
+                                               value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_transition_prop_2(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_transition_prop_2(obj:
+                                                              *const lv_obj_t,
+                                                          part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_transition_prop_2(obj as *const lv_obj_t,
+                                                       part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_transition_prop_2(obj: *mut lv_obj_t, part: u8,
+                                                 state: lv_state_t,
+                                                 value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_transition_prop_2(obj:
+                                                                    *mut lv_obj_t,
+                                                                part: u8,
+                                                                state:
+                                                                    lv_state_t,
+                                                                value:
+                                                                    lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_transition_prop_2(obj as *mut lv_obj_t,
+                                                         part as u8,
+                                                         state as lv_state_t,
+                                                         value as
+                                                             lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_transition_prop_2(style: *mut lv_style_t,
+                                           state: lv_state_t,
+                                           value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_transition_prop_2(style: *mut lv_style_t,
+                                                      state: lv_state_t,
+                                                      value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_transition_prop_2(style as *mut lv_style_t,
+                                               state as lv_state_t,
+                                               value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_transition_prop_3(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_transition_prop_3(obj:
+                                                              *const lv_obj_t,
+                                                          part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_transition_prop_3(obj as *const lv_obj_t,
+                                                       part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_transition_prop_3(obj: *mut lv_obj_t, part: u8,
+                                                 state: lv_state_t,
+                                                 value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_transition_prop_3(obj:
+                                                                    *mut lv_obj_t,
+                                                                part: u8,
+                                                                state:
+                                                                    lv_state_t,
+                                                                value:
+                                                                    lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_transition_prop_3(obj as *mut lv_obj_t,
+                                                         part as u8,
+                                                         state as lv_state_t,
+                                                         value as
+                                                             lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_transition_prop_3(style: *mut lv_style_t,
+                                           state: lv_state_t,
+                                           value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_transition_prop_3(style: *mut lv_style_t,
+                                                      state: lv_state_t,
+                                                      value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_transition_prop_3(style as *mut lv_style_t,
+                                               state as lv_state_t,
+                                               value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_transition_prop_4(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_transition_prop_4(obj:
+                                                              *const lv_obj_t,
+                                                          part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_transition_prop_4(obj as *const lv_obj_t,
+                                                       part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_transition_prop_4(obj: *mut lv_obj_t, part: u8,
+                                                 state: lv_state_t,
+                                                 value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_transition_prop_4(obj:
+                                                                    *mut lv_obj_t,
+                                                                part: u8,
+                                                                state:
+                                                                    lv_state_t,
+                                                                value:
+                                                                    lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_transition_prop_4(obj as *mut lv_obj_t,
+                                                         part as u8,
+                                                         state as lv_state_t,
+                                                         value as
+                                                             lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_transition_prop_4(style: *mut lv_style_t,
+                                           state: lv_state_t,
+                                           value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_transition_prop_4(style: *mut lv_style_t,
+                                                      state: lv_state_t,
+                                                      value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_transition_prop_4(style as *mut lv_style_t,
+                                               state as lv_state_t,
+                                               value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_transition_prop_5(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_transition_prop_5(obj:
+                                                              *const lv_obj_t,
+                                                          part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_transition_prop_5(obj as *const lv_obj_t,
+                                                       part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_transition_prop_5(obj: *mut lv_obj_t, part: u8,
+                                                 state: lv_state_t,
+                                                 value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_transition_prop_5(obj:
+                                                                    *mut lv_obj_t,
+                                                                part: u8,
+                                                                state:
+                                                                    lv_state_t,
+                                                                value:
+                                                                    lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_transition_prop_5(obj as *mut lv_obj_t,
+                                                         part as u8,
+                                                         state as lv_state_t,
+                                                         value as
+                                                             lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_transition_prop_5(style: *mut lv_style_t,
+                                           state: lv_state_t,
+                                           value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_transition_prop_5(style: *mut lv_style_t,
+                                                      state: lv_state_t,
+                                                      value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_transition_prop_5(style as *mut lv_style_t,
+                                               state as lv_state_t,
+                                               value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_transition_prop_6(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_transition_prop_6(obj:
+                                                              *const lv_obj_t,
+                                                          part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_transition_prop_6(obj as *const lv_obj_t,
+                                                       part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_transition_prop_6(obj: *mut lv_obj_t, part: u8,
+                                                 state: lv_state_t,
+                                                 value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_transition_prop_6(obj:
+                                                                    *mut lv_obj_t,
+                                                                part: u8,
+                                                                state:
+                                                                    lv_state_t,
+                                                                value:
+                                                                    lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_transition_prop_6(obj as *mut lv_obj_t,
+                                                         part as u8,
+                                                         state as lv_state_t,
+                                                         value as
+                                                             lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_transition_prop_6(style: *mut lv_style_t,
+                                           state: lv_state_t,
+                                           value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_transition_prop_6(style: *mut lv_style_t,
+                                                      state: lv_state_t,
+                                                      value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_transition_prop_6(style as *mut lv_style_t,
+                                               state as lv_state_t,
+                                               value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_transition_path(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<*mut lv_anim_path_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_transition_path(obj: *const lv_obj_t,
+                                                        part: u8)
+                -> *mut lv_anim_path_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_transition_path(obj as *const lv_obj_t,
+                                                     part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_transition_path(obj: *mut lv_obj_t, part: u8,
+                                               state: lv_state_t,
+                                               value: *mut lv_anim_path_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_transition_path(obj:
+                                                                  *mut lv_obj_t,
+                                                              part: u8,
+                                                              state:
+                                                                  lv_state_t,
+                                                              value:
+                                                                  *mut lv_anim_path_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_transition_path(obj as *mut lv_obj_t,
+                                                       part as u8,
+                                                       state as lv_state_t,
+                                                       value as
+                                                           *mut lv_anim_path_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_transition_path(style: *mut lv_style_t,
+                                         state: lv_state_t,
+                                         value: *mut lv_anim_path_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_transition_path(style: *mut lv_style_t,
+                                                    state: lv_state_t,
+                                                    value:
+                                                        *mut lv_anim_path_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_transition_path(style as *mut lv_style_t,
+                                             state as lv_state_t,
+                                             value as *mut lv_anim_path_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_scale_width(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_scale_width(obj: *const lv_obj_t,
+                                                    part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_scale_width(obj as *const lv_obj_t,
+                                                 part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_scale_width(obj: *mut lv_obj_t, part: u8,
+                                           state: lv_state_t,
+                                           value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_scale_width(obj: *mut lv_obj_t,
+                                                          part: u8,
+                                                          state: lv_state_t,
+                                                          value:
+                                                              lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_scale_width(obj as *mut lv_obj_t,
+                                                   part as u8,
+                                                   state as lv_state_t,
+                                                   value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_scale_width(style: *mut lv_style_t,
+                                     state: lv_state_t, value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_scale_width(style: *mut lv_style_t,
+                                                state: lv_state_t,
+                                                value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_scale_width(style as *mut lv_style_t,
+                                         state as lv_state_t,
+                                         value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_scale_border_width(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_scale_border_width(obj:
+                                                               *const lv_obj_t,
+                                                           part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_scale_border_width(obj as
+                                                            *const lv_obj_t,
+                                                        part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_scale_border_width(obj: *mut lv_obj_t,
+                                                  part: u8, state: lv_state_t,
+                                                  value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_scale_border_width(obj:
+                                                                     *mut lv_obj_t,
+                                                                 part: u8,
+                                                                 state:
+                                                                     lv_state_t,
+                                                                 value:
+                                                                     lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_scale_border_width(obj as
+                                                              *mut lv_obj_t,
+                                                          part as u8,
+                                                          state as lv_state_t,
+                                                          value as
+                                                              lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_scale_border_width(style: *mut lv_style_t,
+                                            state: lv_state_t,
+                                            value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_scale_border_width(style: *mut lv_style_t,
+                                                       state: lv_state_t,
+                                                       value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_scale_border_width(style as *mut lv_style_t,
+                                                state as lv_state_t,
+                                                value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_scale_end_border_width(obj: *const lv_obj_t,
+                                                part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_scale_end_border_width(obj:
+                                                                   *const lv_obj_t,
+                                                               part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_scale_end_border_width(obj as
+                                                                *const lv_obj_t,
+                                                            part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_scale_end_border_width(obj: *mut lv_obj_t,
+                                                      part: u8,
+                                                      state: lv_state_t,
+                                                      value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_scale_end_border_width(obj:
+                                                                         *mut lv_obj_t,
+                                                                     part: u8,
+                                                                     state:
+                                                                         lv_state_t,
+                                                                     value:
+                                                                         lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_scale_end_border_width(obj as
+                                                                  *mut lv_obj_t,
+                                                              part as u8,
+                                                              state as
+                                                                  lv_state_t,
+                                                              value as
+                                                                  lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_scale_end_border_width(style: *mut lv_style_t,
+                                                state: lv_state_t,
+                                                value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_scale_end_border_width(style:
+                                                               *mut lv_style_t,
+                                                           state: lv_state_t,
+                                                           value:
+                                                               lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_scale_end_border_width(style as *mut lv_style_t,
+                                                    state as lv_state_t,
+                                                    value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_scale_end_line_width(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_style_int_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_scale_end_line_width(obj:
+                                                                 *const lv_obj_t,
+                                                             part: u8)
+                -> lv_style_int_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_scale_end_line_width(obj as
+                                                              *const lv_obj_t,
+                                                          part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_scale_end_line_width(obj: *mut lv_obj_t,
+                                                    part: u8,
+                                                    state: lv_state_t,
+                                                    value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_scale_end_line_width(obj:
+                                                                       *mut lv_obj_t,
+                                                                   part: u8,
+                                                                   state:
+                                                                       lv_state_t,
+                                                                   value:
+                                                                       lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_scale_end_line_width(obj as
+                                                                *mut lv_obj_t,
+                                                            part as u8,
+                                                            state as
+                                                                lv_state_t,
+                                                            value as
+                                                                lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_scale_end_line_width(style: *mut lv_style_t,
+                                              state: lv_state_t,
+                                              value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_scale_end_line_width(style:
+                                                             *mut lv_style_t,
+                                                         state: lv_state_t,
+                                                         value:
+                                                             lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_scale_end_line_width(style as *mut lv_style_t,
+                                                  state as lv_state_t,
+                                                  value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_scale_grad_color(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_scale_grad_color(obj: *const lv_obj_t,
+                                                         part: u8)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_scale_grad_color(obj as *const lv_obj_t,
+                                                      part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_scale_grad_color(obj: *mut lv_obj_t, part: u8,
+                                                state: lv_state_t,
+                                                value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_scale_grad_color(obj:
+                                                                   *mut lv_obj_t,
+                                                               part: u8,
+                                                               state:
+                                                                   lv_state_t,
+                                                               value:
+                                                                   lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_scale_grad_color(obj as *mut lv_obj_t,
+                                                        part as u8,
+                                                        state as lv_state_t,
+                                                        value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_scale_grad_color(style: *mut lv_style_t,
+                                          state: lv_state_t,
+                                          value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_scale_grad_color(style: *mut lv_style_t,
+                                                     state: lv_state_t,
+                                                     value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_scale_grad_color(style as *mut lv_style_t,
+                                              state as lv_state_t,
+                                              value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn get_style_scale_end_color(obj: *const lv_obj_t, part: u8)
+         -> MynewtResult<lv_color_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_get_style_scale_end_color(obj: *const lv_obj_t,
+                                                        part: u8)
+                -> lv_color_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_obj_get_style_scale_end_color(obj as *const lv_obj_t,
+                                                     part as u8);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        pub fn set_style_local_scale_end_color(obj: *mut lv_obj_t, part: u8,
+                                               state: lv_state_t,
+                                               value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_scale_end_color(obj:
+                                                                  *mut lv_obj_t,
+                                                              part: u8,
+                                                              state:
+                                                                  lv_state_t,
+                                                              value:
+                                                                  lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_scale_end_color(obj as *mut lv_obj_t,
+                                                       part as u8,
+                                                       state as lv_state_t,
+                                                       value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_scale_end_color(style: *mut lv_style_t,
+                                         state: lv_state_t, value: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_scale_end_color(style: *mut lv_style_t,
+                                                    state: lv_state_t,
+                                                    value: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_scale_end_color(style as *mut lv_style_t,
+                                             state as lv_state_t,
+                                             value as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn set_style_local_pad_all(obj: *mut lv_obj_t, part: u8,
+                                       state: lv_state_t,
+                                       value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_pad_all(obj: *mut lv_obj_t,
+                                                      part: u8,
+                                                      state: lv_state_t,
+                                                      value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_pad_all(obj as *mut lv_obj_t,
+                                               part as u8,
+                                               state as lv_state_t,
+                                               value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_pad_all(style: *mut lv_style_t, state: lv_state_t,
+                                 value: lv_style_int_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_pad_all(style: *mut lv_style_t,
+                                            state: lv_state_t,
+                                            value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_pad_all(style as *mut lv_style_t,
+                                     state as lv_state_t,
+                                     value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn set_style_local_pad_hor(obj: *mut lv_obj_t, part: u8,
+                                       state: lv_state_t,
+                                       value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_pad_hor(obj: *mut lv_obj_t,
+                                                      part: u8,
+                                                      state: lv_state_t,
+                                                      value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_pad_hor(obj as *mut lv_obj_t,
+                                               part as u8,
+                                               state as lv_state_t,
+                                               value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_pad_hor(style: *mut lv_style_t, state: lv_state_t,
+                                 value: lv_style_int_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_pad_hor(style: *mut lv_style_t,
+                                            state: lv_state_t,
+                                            value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_pad_hor(style as *mut lv_style_t,
+                                     state as lv_state_t,
+                                     value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn set_style_local_pad_ver(obj: *mut lv_obj_t, part: u8,
+                                       state: lv_state_t,
+                                       value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_pad_ver(obj: *mut lv_obj_t,
+                                                      part: u8,
+                                                      state: lv_state_t,
+                                                      value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_pad_ver(obj as *mut lv_obj_t,
+                                               part as u8,
+                                               state as lv_state_t,
+                                               value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_pad_ver(style: *mut lv_style_t, state: lv_state_t,
+                                 value: lv_style_int_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_pad_ver(style: *mut lv_style_t,
+                                            state: lv_state_t,
+                                            value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_pad_ver(style as *mut lv_style_t,
+                                     state as lv_state_t,
+                                     value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn set_style_local_margin_all(obj: *mut lv_obj_t, part: u8,
+                                          state: lv_state_t,
+                                          value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_margin_all(obj: *mut lv_obj_t,
+                                                         part: u8,
+                                                         state: lv_state_t,
+                                                         value:
+                                                             lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_margin_all(obj as *mut lv_obj_t,
+                                                  part as u8,
+                                                  state as lv_state_t,
+                                                  value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_margin_all(style: *mut lv_style_t, state: lv_state_t,
+                                    value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_margin_all(style: *mut lv_style_t,
+                                               state: lv_state_t,
+                                               value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_margin_all(style as *mut lv_style_t,
+                                        state as lv_state_t,
+                                        value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn set_style_local_margin_hor(obj: *mut lv_obj_t, part: u8,
+                                          state: lv_state_t,
+                                          value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_margin_hor(obj: *mut lv_obj_t,
+                                                         part: u8,
+                                                         state: lv_state_t,
+                                                         value:
+                                                             lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_margin_hor(obj as *mut lv_obj_t,
+                                                  part as u8,
+                                                  state as lv_state_t,
+                                                  value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_margin_hor(style: *mut lv_style_t, state: lv_state_t,
+                                    value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_margin_hor(style: *mut lv_style_t,
+                                               state: lv_state_t,
+                                               value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_margin_hor(style as *mut lv_style_t,
+                                        state as lv_state_t,
+                                        value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn set_style_local_margin_ver(obj: *mut lv_obj_t, part: u8,
+                                          state: lv_state_t,
+                                          value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_obj_set_style_local_margin_ver(obj: *mut lv_obj_t,
+                                                         part: u8,
+                                                         state: lv_state_t,
+                                                         value:
+                                                             lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_obj_set_style_local_margin_ver(obj as *mut lv_obj_t,
+                                                  part as u8,
+                                                  state as lv_state_t,
+                                                  value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_set_margin_ver(style: *mut lv_style_t, state: lv_state_t,
+                                    value: lv_style_int_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_set_margin_ver(style: *mut lv_style_t,
+                                               state: lv_state_t,
+                                               value: lv_style_int_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_set_margin_ver(style as *mut lv_style_t,
+                                        state as lv_state_t,
+                                        value as lv_style_int_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
             }
         }
         #[doc = " Get the hidden attribute of an object"]

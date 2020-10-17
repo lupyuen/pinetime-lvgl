@@ -12,8 +12,9 @@ export RUST_BACKTRACE=1  #  Show Rust errors.
 libname=lvgl
 headerprefix=pinetime_lvgl_mynewt
 
+#  We disable "static" and "inline" so that wrappers will be generated for static inline functions like "lv_style_set_text_font"
 #  TODO: Sync gcc options with https://github.com/AppKaki/lvgl-wasm/blob/mynewt/mynewt/Makefile
-gcc_options=" -g -I $headerprefix/src/lv_core -D LV_USE_DEMO_WIDGETS"
+gcc_options=" -g -I $headerprefix/src/lv_core -D LV_USE_DEMO_WIDGETS -D static= -D inline= "
 
 function generate_bindings() {
     #  Generate bindings for the module.
@@ -121,7 +122,7 @@ generate_bindings_core
 #  generate_bindings_draw
 
 #  Generate bindings for lv_font
-generate_bindings_font
+####generate_bindings_font
 
 #  TODO: Generate bindings for lv_hal
 #  generate_bindings_hal
@@ -130,7 +131,7 @@ generate_bindings_font
 #  generate_bindings_misc
 
 #  Generate bindings for lv_themes
-generate_bindings_themes
+####generate_bindings_themes
 
 #  Generate bindings for lv_widgets
 generate_bindings_widgets

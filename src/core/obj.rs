@@ -540,6 +540,24 @@ pub type lv_align_t = u8;
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Copy an area"]
+    #[doc = " - __`dest`__: pointer to the destination area"]
+    #[doc = " - __`src`__: pointer to the source area"]
+    pub fn lv_area_copy(dest: *mut lv_area_t, src: *const lv_area_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Get the width of an area"]
+    #[doc = " - __`area_p`__: pointer to an area"]
+    #[doc = " Return: the width of the area (if x1 == x2 -> width = 1)"]
+    pub fn lv_area_get_width(area_p: *const lv_area_t) -> lv_coord_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Get the height of an area"]
+    #[doc = " - __`area_p`__: pointer to an area"]
+    #[doc = " Return: the height of the area (if y1 == y2 -> height = 1)"]
+    pub fn lv_area_get_height(area_p: *const lv_area_t) -> lv_coord_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Set the width of an area"]
     #[doc = " - __`area_p`__: pointer to an area"]
     #[doc = " - __`w`__: the new width of the area (w == 1 makes x1 == x2)"]
@@ -668,6 +686,12 @@ pub type lv_font_t = _lv_font_struct;
     #[doc = " - __`letter_next`__: the next letter after `letter`. Used for kerning"]
     #[doc = " Return: the width of the glyph"]
     pub fn lv_font_get_glyph_width(font: *const lv_font_t, letter: u32, letter_next: u32) -> u16;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Get the line height of a font. All characters fit into this height"]
+    #[doc = " - __`font_p`__: pointer to a font"]
+    #[doc = " Return: the height of a font"]
+    pub fn lv_font_get_line_height(font_p: *const lv_font_t) -> lv_coord_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub static mut lv_font_montserrat_24: lv_font_t;
@@ -962,6 +986,72 @@ pub struct lv_color_hsv_t {
 #[doc = "! @cond Doxygen_Suppress"]
 pub type lv_opa_t = u8;
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " GLOBAL PROTOTYPES"]
+    pub fn lv_color_to1(color: lv_color_t) -> u8;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_color_to8(color: lv_color_t) -> u8;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_color_to16(color: lv_color_t) -> u16;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_color_to32(color: lv_color_t) -> u32;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Mix two colors with a given ratio."]
+    #[doc = " - __`c1`__: the first color to mix (usually the foreground)"]
+    #[doc = " - __`c2`__: the second color to mix (usually the background)"]
+    #[doc = " - __`mix`__: The ratio of the colors. 0: full `c2`, 255: full `c1`, 127: half `c1` and half`c2`"]
+    #[doc = " Return: the mixed color"]
+    pub fn lv_color_mix(c1: lv_color_t, c2: lv_color_t, mix: u8) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_color_premult(c: lv_color_t, mix: u8, out: *mut u16);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Mix two colors with a given ratio. It runs faster then `lv_color_mix` but requires some pre computation."]
+    #[doc = " - __`c1`__: The first color. Should be preprocessed with `lv_color_premult(c1)`"]
+    #[doc = " - __`c2`__: The second color. As it is no pre computation required on it"]
+    #[doc = " - __`mix`__: The ratio of the colors. 0: full `c2`, 255: full `c1`, 127: half `c1` and half `c2`."]
+    #[doc = "            Should be modified like mix = `255 - mix`"]
+    #[doc = " Return: the mixed color"]
+    #[doc = " __Note:__ 255 won't give clearly `c1`."]
+    pub fn lv_color_mix_premult(premult_c1: *mut u16, c2: lv_color_t, mix: u8) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Mix two colors. Both color can have alpha value. It requires ARGB888 colors."]
+    #[doc = " - __`bg_color`__: background color"]
+    #[doc = " - __`bg_opa`__: alpha of the background color"]
+    #[doc = " - __`fg_color`__: foreground color"]
+    #[doc = " - __`fg_opa`__: alpha of the foreground color"]
+    #[doc = " - __`res_color`__: the result color"]
+    #[doc = " - __`res_opa`__: the result opacity"]
+    pub fn lv_color_mix_with_alpha(
+        bg_color: lv_color_t,
+        bg_opa: lv_opa_t,
+        fg_color: lv_color_t,
+        fg_opa: lv_opa_t,
+        res_color: *mut lv_color_t,
+        res_opa: *mut lv_opa_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Get the brightness of a color"]
+    #[doc = " - __`color`__: a color"]
+    #[doc = " Return: the brightness [0..255]"]
+    pub fn lv_color_brightness(color: lv_color_t) -> u8;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_color_make(r: u8, g: u8, b: u8) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_color_hex(c: u32) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_color_hex3(c: u32) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = "! @cond Doxygen_Suppress"]
     #[doc = "!"]
     pub fn lv_color_fill(buf: *mut lv_color_t, color: lv_color_t, px_num: u32);
@@ -1149,9 +1239,118 @@ pub type lv_anim_t = _lv_anim_t;
     pub fn lv_anim_init(a: *mut lv_anim_t);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Set a variable to animate"]
+    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+    #[doc = " - __`var`__: pointer to a variable to animate"]
+    pub fn lv_anim_set_var(a: *mut lv_anim_t, var: *mut ::cty::c_void);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Set a function to animate `var`"]
+    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+    #[doc = " - __`exec_cb`__: a function to execute during animation"]
+    #[doc = "                LittelvGL's built-in functions can be used."]
+    #[doc = "                E.g. lv_obj_set_x"]
+    pub fn lv_anim_set_exec_cb(a: *mut lv_anim_t, exec_cb: lv_anim_exec_xcb_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Set the duration of an animation"]
+    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+    #[doc = " - __`duration`__: duration of the animation in milliseconds"]
+    pub fn lv_anim_set_time(a: *mut lv_anim_t, duration: u32);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Set a delay before starting the animation"]
+    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+    #[doc = " - __`delay`__: delay before the animation in milliseconds"]
+    pub fn lv_anim_set_delay(a: *mut lv_anim_t, delay: u32);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Set the start and end values of an animation"]
+    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+    #[doc = " - __`start`__: the start value"]
+    #[doc = " - __`end`__: the end value"]
+    pub fn lv_anim_set_values(a: *mut lv_anim_t, start: lv_anim_value_t, end: lv_anim_value_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Similar to `lv_anim_set_exec_cb` but `lv_anim_custom_exec_cb_t` receives"]
+    #[doc = " `lv_anim_t * ` as its first parameter instead of `void *`."]
+    #[doc = " This function might be used when LVGL is binded to other languages because"]
+    #[doc = " it's more consistent to have `lv_anim_t *` as first parameter."]
+    #[doc = " The variable to animate can be stored in the animation's `user_sata`"]
+    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+    #[doc = " - __`exec_cb`__: a function to execute."]
+    pub fn lv_anim_set_custom_exec_cb(a: *mut lv_anim_t, exec_cb: lv_anim_custom_exec_cb_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Set the path (curve) of the animation."]
+    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+    #[doc = " - __`path_cb`__: a function the get the current value of the animation."]
+    #[doc = "                The built in functions starts with `lv_anim_path_...`"]
+    pub fn lv_anim_set_path(a: *mut lv_anim_t, path: *const lv_anim_path_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Set a function call when the animation really starts (considering `delay`)"]
+    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+    #[doc = " - __`start_cb`__: a function call when the animation starts"]
+    pub fn lv_anim_set_start_cb(a: *mut lv_anim_t, start_cb: lv_anim_ready_cb_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Set a function call when the animation is ready"]
+    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+    #[doc = " - __`ready_cb`__: a function call when the animation is ready"]
+    pub fn lv_anim_set_ready_cb(a: *mut lv_anim_t, ready_cb: lv_anim_ready_cb_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Make the animation to play back to when the forward direction is ready"]
+    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+    #[doc = " - __`time`__: the duration of the playback animation in in milliseconds. 0: disable playback"]
+    pub fn lv_anim_set_playback_time(a: *mut lv_anim_t, time: u16);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Make the animation to play back to when the forward direction is ready"]
+    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+    #[doc = " - __`delay`__: delay in milliseconds before starting the playback animation."]
+    pub fn lv_anim_set_playback_delay(a: *mut lv_anim_t, delay: u16);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Make the animation repeat itself."]
+    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+    #[doc = " - __`cnt`__: repeat count or `LV_ANIM_REPEAT_INFINITE` for infinite repetition. 0: to disable repetition."]
+    pub fn lv_anim_set_repeat_count(a: *mut lv_anim_t, cnt: u16);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Set a delay before repeating the animation."]
+    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+    #[doc = " - __`delay`__: delay in milliseconds before repeating the animation."]
+    pub fn lv_anim_set_repeat_delay(a: *mut lv_anim_t, delay: u16);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Create an animation"]
     #[doc = " - __`a`__: an initialized 'anim_t' variable. Not required after call."]
     pub fn lv_anim_start(a: *mut lv_anim_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Initialize an animation path"]
+    #[doc = " - __`path`__: pointer to path"]
+    pub fn lv_anim_path_init(path: *mut lv_anim_path_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Set a callback for a path"]
+    #[doc = " - __`path`__: pointer to an initialized path"]
+    #[doc = " - __`cb`__: the callback"]
+    pub fn lv_anim_path_set_cb(path: *mut lv_anim_path_t, cb: lv_anim_path_cb_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Set a user data for a path"]
+    #[doc = " - __`path`__: pointer to an initialized path"]
+    #[doc = " - __`user_data`__: pointer to the user data"]
+    pub fn lv_anim_path_set_user_data(path: *mut lv_anim_path_t, user_data: *mut ::cty::c_void);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Get a delay before starting the animation"]
+    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
+    #[doc = " Return: delay before the animation in milliseconds"]
+    pub fn lv_anim_get_delay(a: *mut lv_anim_t) -> i32;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Delete an animation of a variable with a given animator function"]
@@ -1168,6 +1367,18 @@ pub type lv_anim_t = _lv_anim_t;
     #[doc = "           or NULL to delete all the animations of 'var'"]
     #[doc = " Return: pointer to the animation."]
     pub fn lv_anim_get(var: *mut ::cty::c_void, exec_cb: lv_anim_exec_xcb_t) -> *mut lv_anim_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    #[doc = " Delete an animation by getting the animated variable from `a`."]
+    #[doc = " Only animations with `exec_cb` will be deleted."]
+    #[doc = " This function exists because it's logical that all anim. functions receives an"]
+    #[doc = " `lv_anim_t` as their first parameter. It's not practical in C but might make"]
+    #[doc = " the API more consequent and makes easier to generate bindings."]
+    #[doc = " - __`a`__: pointer to an animation."]
+    #[doc = " - __`exec_cb`__: a function pointer which is animating 'var',"]
+    #[doc = "           or NULL to ignore it and delete all the animations of 'var"]
+    #[doc = " Return: true: at least 1 animation is deleted, false: no animation is deleted"]
+    pub fn lv_anim_custom_del(a: *mut lv_anim_t, exec_cb: lv_anim_custom_exec_cb_t) -> bool;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the number of currently running animations"]
@@ -2207,6 +2418,9 @@ impl lv_style_list_t {
     #[doc = " - __`list_dest`__: pointer to the destination style list. (should be initialized with `lv_style_list_init()`)"]
     #[doc = " - __`list_src`__: pointer to the source (to copy) style list."]
     pub fn lv_style_list_copy(list_dest: *mut lv_style_list_t, list_src: *const lv_style_list_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_list_get_style(list: *mut lv_style_list_t, id: u8) -> *mut lv_style_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Clear all properties from a style and all allocated memories."]
@@ -5372,6 +5586,1623 @@ pub struct lv_get_state_info_t {
     #[doc = " E.g. `LV_OBJ_PART_MAIN`, `LV_BTN_PART_MAIN`, `LV_SLIDER_PART_KNOB`"]
     #[doc = " Return: pointer to the local style if exists else `NULL`."]
     pub fn lv_obj_get_local_style(obj: *mut lv_obj_t, part: u8) -> *mut lv_style_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_radius(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_radius(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_radius(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_clip_corner(obj: *const lv_obj_t, part: u8) -> bool;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_clip_corner(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: bool,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_clip_corner(style: *mut lv_style_t, state: lv_state_t, value: bool);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_size(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_size(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_size(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_transform_width(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_transform_width(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transform_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_transform_height(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_transform_height(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transform_height(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_transform_angle(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_transform_angle(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transform_angle(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_transform_zoom(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_transform_zoom(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transform_zoom(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_opa_scale(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_opa_scale(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_opa_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_opa_scale(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_pad_top(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_pad_top(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pad_top(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_pad_bottom(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_pad_bottom(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pad_bottom(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_pad_left(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_pad_left(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pad_left(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_pad_right(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_pad_right(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pad_right(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_pad_inner(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_pad_inner(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pad_inner(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_margin_top(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_margin_top(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_margin_top(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_margin_bottom(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_margin_bottom(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_margin_bottom(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_margin_left(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_margin_left(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_margin_left(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_margin_right(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_margin_right(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_margin_right(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_bg_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_bg_blend_mode(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_bg_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_bg_main_stop(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_bg_main_stop(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_bg_main_stop(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_bg_grad_stop(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_bg_grad_stop(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_bg_grad_stop(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_bg_grad_dir(obj: *const lv_obj_t, part: u8) -> lv_grad_dir_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_bg_grad_dir(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_grad_dir_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_bg_grad_dir(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_grad_dir_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_bg_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_bg_color(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_bg_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_bg_grad_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_bg_grad_color(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_bg_grad_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_bg_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_bg_opa(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_opa_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_bg_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_border_width(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_border_width(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_border_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_border_side(obj: *const lv_obj_t, part: u8) -> lv_border_side_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_border_side(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_border_side_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_border_side(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_border_side_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_border_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_border_blend_mode(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_border_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_border_post(obj: *const lv_obj_t, part: u8) -> bool;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_border_post(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: bool,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_border_post(style: *mut lv_style_t, state: lv_state_t, value: bool);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_border_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_border_color(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_border_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_border_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_border_opa(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_opa_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_border_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_outline_width(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_outline_width(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_outline_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_outline_pad(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_outline_pad(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_outline_pad(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_outline_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_outline_blend_mode(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_outline_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_outline_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_outline_color(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_outline_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_outline_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_outline_opa(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_opa_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_outline_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_shadow_width(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_shadow_width(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_shadow_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_shadow_ofs_x(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_shadow_ofs_x(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_shadow_ofs_x(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_shadow_ofs_y(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_shadow_ofs_y(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_shadow_ofs_y(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_shadow_spread(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_shadow_spread(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_shadow_spread(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_shadow_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_shadow_blend_mode(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_shadow_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_shadow_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_shadow_color(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_shadow_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_shadow_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_shadow_opa(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_opa_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_shadow_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_pattern_repeat(obj: *const lv_obj_t, part: u8) -> bool;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_pattern_repeat(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: bool,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pattern_repeat(style: *mut lv_style_t, state: lv_state_t, value: bool);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_pattern_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_pattern_blend_mode(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pattern_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_pattern_recolor(obj: *const lv_obj_t, part: u8) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_pattern_recolor(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pattern_recolor(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_pattern_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_pattern_opa(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_opa_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pattern_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_pattern_recolor_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_pattern_recolor_opa(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_opa_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pattern_recolor_opa(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_opa_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_pattern_image(obj: *const lv_obj_t, part: u8) -> *const ::cty::c_void;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_pattern_image(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: *const ::cty::c_void,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pattern_image(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: *const ::cty::c_void,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_value_letter_space(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_value_letter_space(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_letter_space(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_value_line_space(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_value_line_space(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_line_space(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_value_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_value_blend_mode(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_value_ofs_x(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_value_ofs_x(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_ofs_x(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_value_ofs_y(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_value_ofs_y(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_ofs_y(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_value_align(obj: *const lv_obj_t, part: u8) -> lv_align_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_value_align(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_align_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_align(style: *mut lv_style_t, state: lv_state_t, value: lv_align_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_value_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_value_color(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_value_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_value_opa(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_opa_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_value_font(obj: *const lv_obj_t, part: u8) -> *const lv_font_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_value_font(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: *const lv_font_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_font(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: *const lv_font_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_value_str(obj: *const lv_obj_t, part: u8) -> *const ::cty::c_char;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_value_str(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: *const ::cty::c_char,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_str(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: *const ::cty::c_char,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_text_letter_space(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_text_letter_space(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_text_letter_space(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_text_line_space(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_text_line_space(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_text_line_space(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_text_decor(obj: *const lv_obj_t, part: u8) -> lv_text_decor_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_text_decor(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_text_decor_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_text_decor(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_text_decor_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_text_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_text_blend_mode(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_text_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_text_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_text_color(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_text_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_text_sel_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_text_sel_color(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_text_sel_color(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_text_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_text_opa(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_opa_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_text_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_text_font(obj: *const lv_obj_t, part: u8) -> *const lv_font_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_text_font(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: *const lv_font_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_text_font(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: *const lv_font_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_line_width(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_line_width(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_line_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_line_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_line_blend_mode(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_line_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_line_dash_width(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_line_dash_width(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_line_dash_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_line_dash_gap(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_line_dash_gap(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_line_dash_gap(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_line_rounded(obj: *const lv_obj_t, part: u8) -> bool;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_line_rounded(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: bool,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_line_rounded(style: *mut lv_style_t, state: lv_state_t, value: bool);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_line_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_line_color(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_line_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_line_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_line_opa(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_opa_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_line_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_image_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_image_blend_mode(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_image_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_image_recolor(obj: *const lv_obj_t, part: u8) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_image_recolor(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_image_recolor(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_image_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_image_opa(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_opa_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_image_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_image_recolor_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_image_recolor_opa(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_opa_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_image_recolor_opa(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_opa_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_transition_time(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_transition_time(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_time(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_transition_delay(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_transition_delay(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_delay(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_transition_prop_1(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_transition_prop_1(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_prop_1(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_transition_prop_2(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_transition_prop_2(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_prop_2(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_transition_prop_3(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_transition_prop_3(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_prop_3(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_transition_prop_4(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_transition_prop_4(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_prop_4(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_transition_prop_5(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_transition_prop_5(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_prop_5(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_transition_prop_6(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_transition_prop_6(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_prop_6(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_transition_path(obj: *const lv_obj_t, part: u8) -> *mut lv_anim_path_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_transition_path(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: *mut lv_anim_path_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_path(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: *mut lv_anim_path_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_scale_width(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_scale_width(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_scale_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_scale_border_width(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_scale_border_width(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_scale_border_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_scale_end_border_width(
+        obj: *const lv_obj_t,
+        part: u8,
+    ) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_scale_end_border_width(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_scale_end_border_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_scale_end_line_width(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_scale_end_line_width(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_scale_end_line_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_scale_grad_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_scale_grad_color(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_scale_grad_color(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_get_style_scale_end_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_scale_end_color(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_scale_end_color(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_pad_all(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pad_all(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_pad_hor(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pad_hor(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_pad_ver(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pad_ver(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_margin_all(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_margin_all(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_margin_hor(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_margin_hor(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_obj_set_style_local_margin_ver(
+        obj: *mut lv_obj_t,
+        part: u8,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_margin_ver(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the hidden attribute of an object"]
