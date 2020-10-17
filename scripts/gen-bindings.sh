@@ -120,8 +120,8 @@ generate_bindings_core
 #  TODO: Generate bindings for lv_draw
 #  generate_bindings_draw
 
-#  TODO: Generate bindings for lv_font
-#  generate_bindings_font
+#  Generate bindings for lv_font
+generate_bindings_font
 
 #  TODO: Generate bindings for lv_hal
 #  generate_bindings_hal
@@ -129,11 +129,11 @@ generate_bindings_core
 #  TODO: Generate bindings for lv_misc
 #  generate_bindings_misc
 
+#  Generate bindings for lv_themes
+generate_bindings_themes
+
 #  Generate bindings for lv_widgets
 generate_bindings_widgets
-
-#  TODO: Generate bindings for lv_themes
-#  generate_bindings_themes
 
 #  Expand the safe wrapper macros
 cargo rustc -- -Z unstable-options --pretty expanded >logs/expanded.rs
