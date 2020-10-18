@@ -182,7 +182,7 @@ function generate_bindings_widgets() {
     #  Add whitelist and blacklist for for lv_widgets/lv_label
     #  TODO: Handle other widgets
     local modname=widgets
-    local submodname=label
+    local submodname=$1  # Submodule name e.g. label
     local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
     local whitelistname=lv_$submodname
     local whitelist=`cat << EOF
@@ -218,7 +218,40 @@ generate_bindings_font
 generate_bindings_themes
 
 #  Generate bindings for lv_widgets
-generate_bindings_widgets
+generate_bindings_widgets arc
+generate_bindings_widgets bar
+generate_bindings_widgets btn
+generate_bindings_widgets btnmatrix
+generate_bindings_widgets calendar
+generate_bindings_widgets canvas
+generate_bindings_widgets chart
+generate_bindings_widgets checkbox
+generate_bindings_widgets cont
+generate_bindings_widgets cpicker
+generate_bindings_widgets dropdown
+generate_bindings_widgets gauge
+generate_bindings_widgets img
+generate_bindings_widgets imgbtn
+generate_bindings_widgets keyboard
+generate_bindings_widgets label
+generate_bindings_widgets led
+generate_bindings_widgets line
+generate_bindings_widgets linemeter
+generate_bindings_widgets list
+generate_bindings_widgets msgbox
+generate_bindings_widgets objmask
+generate_bindings_widgets objx_templ
+generate_bindings_widgets page
+generate_bindings_widgets roller
+generate_bindings_widgets slider
+generate_bindings_widgets spinbox
+generate_bindings_widgets spinner
+generate_bindings_widgets switch
+generate_bindings_widgets table
+generate_bindings_widgets tabview
+generate_bindings_widgets textarea
+generate_bindings_widgets tileview
+generate_bindings_widgets win
 
 #  Expand the safe wrapper macros
 cargo rustc -- -Z unstable-options --pretty expanded >logs/expanded.rs
