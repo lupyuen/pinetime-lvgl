@@ -99,6 +99,66 @@ EOF
     generate_bindings $libname $modname $submodname $headerfile $whitelist
 }
 
+function generate_bindings_draw() {
+    #  Add whitelist and blacklist for for lv_draw/lv_draw
+    local modname=draw
+    local submodname=draw
+    local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
+    local whitelistname=lv_draw
+    local whitelist=`cat << EOF
+        --raw-line use \
+        --raw-line super::*; \
+        --whitelist-function (?i)${whitelistname}.* \
+        --whitelist-type     (?i)${whitelistname}.* \
+        --whitelist-var      (?i)${whitelistname}.* \
+        --blacklist-item     _lv_obj_t \
+        --blacklist-item     lv_style_t
+EOF
+`
+    #  Generate the bindings for lv_themes/lv_theme: libname, modname, submodname, headerfile, whitelist
+    generate_bindings $libname $modname $submodname $headerfile $whitelist
+}
+
+function generate_bindings_font() {
+    #  Add whitelist and blacklist for for lv_font/lv_font
+    local modname=font
+    local submodname=font
+    local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
+    local whitelistname=lv_font
+    local whitelist=`cat << EOF
+        --raw-line use \
+        --raw-line super::*; \
+        --whitelist-function (?i)${whitelistname}.* \
+        --whitelist-type     (?i)${whitelistname}.* \
+        --whitelist-var      (?i)${whitelistname}.* \
+        --blacklist-item     _lv_obj_t \
+        --blacklist-item     lv_style_t
+EOF
+`
+    #  Generate the bindings for lv_themes/lv_theme: libname, modname, submodname, headerfile, whitelist
+    generate_bindings $libname $modname $submodname $headerfile $whitelist
+}
+
+function generate_bindings_hal() {
+    #  Add whitelist and blacklist for for lv_hal/lv_hal
+    local modname=hal
+    local submodname=hal
+    local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
+    local whitelistname=lv_hal
+    local whitelist=`cat << EOF
+        --raw-line use \
+        --raw-line super::*; \
+        --whitelist-function (?i)${whitelistname}.* \
+        --whitelist-type     (?i)${whitelistname}.* \
+        --whitelist-var      (?i)${whitelistname}.* \
+        --blacklist-item     _lv_obj_t \
+        --blacklist-item     lv_style_t
+EOF
+`
+    #  Generate the bindings for lv_themes/lv_theme: libname, modname, submodname, headerfile, whitelist
+    generate_bindings $libname $modname $submodname $headerfile $whitelist
+}
+
 function generate_bindings_themes() {
     #  Add whitelist and blacklist for for lv_themes/lv_theme
     local modname=themes
@@ -124,7 +184,7 @@ function generate_bindings_widgets() {
     local modname=widgets
     local submodname=label
     local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
-    local whitelistname=lv_label
+    local whitelistname=lv_$submodname
     local whitelist=`cat << EOF
         --raw-line use \
         --raw-line super::*; \
@@ -142,11 +202,11 @@ EOF
 #  Generate bindings for lv_core
 generate_bindings_core
 
-#  TODO: Generate bindings for lv_draw
-#  generate_bindings_draw
+#  Generate bindings for lv_draw
+generate_bindings_draw
 
-#  TODO: Generate bindings for lv_font
-#  generate_bindings_font
+#  Generate bindings for lv_font
+generate_bindings_font
 
 #  TODO: Generate bindings for lv_hal
 #  generate_bindings_hal
