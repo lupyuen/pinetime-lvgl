@@ -85,14 +85,31 @@ function generate_bindings_core() {
     local submodname=obj
     local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
     local whitelistname=lv_
-    #  TODO: Fix lifetime parameter for lv_obj_get_style_value_str
+    #  TODO: Fix lifetime parameter for lv_obj_get_style_value_str and the other functions below that return strings.
+    #  These functions (except text input) are probably not essential because our Rust app should already have these strings.
     local whitelist=`cat << EOF
         --raw-line use \
         --raw-line super::*; \
         --whitelist-function (?i)${whitelistname}.* \
         --whitelist-type     (?i)${whitelistname}.* \
         --whitelist-var      (?i)${whitelistname}.* \
-        --blacklist-item     lv_obj_get_style_value_str
+        --blacklist-item     lv_obj_get_style_value_str \
+        --blacklist-item     lv_btnmatrix_get_active_btn_text \
+        --blacklist-item     lv_btnmatrix_get_btn_text \
+        --blacklist-item     lv_checkbox_get_text \
+        --blacklist-item     lv_dropdown_get_text \
+        --blacklist-item     lv_dropdown_get_options \
+        --blacklist-item     lv_dropdown_get_symbol \
+        --blacklist-item     lv_img_get_file_name \
+        --blacklist-item     lv_list_get_btn_text \
+        --blacklist-item     lv_msgbox_get_text \
+        --blacklist-item     lv_msgbox_get_active_btn_text \
+        --blacklist-item     lv_roller_get_options \
+        --blacklist-item     lv_table_get_cell_value \
+        --blacklist-item     lv_textarea_get_text \
+        --blacklist-item     lv_textarea_get_placeholder_text \
+        --blacklist-item     lv_textarea_get_accepted_chars \
+        --blacklist-item     lv_win_get_title
 EOF
 `
     #  Generate the bindings for lv_core/lv_obj: libname, modname, submodname, headerfile, whitelist
