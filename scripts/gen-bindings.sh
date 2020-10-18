@@ -77,6 +77,13 @@ function generate_bindings() {
         | sed 's/@endcode/```/' \
         | sed 's/@note/__Note:__/' \
         | sed 's/\(pub const LV_ALIGN_[^ ][^ ]*\): _[^ ]* /\1: lv_align_t /' \
+        | sed 's/\(pub const LV_DESIGN_[^ ][^ ]*\): _[^ ]* /\1: lv_design_res_t /' \
+        | sed 's/\(pub const LV_EVENT_[^ ][^ ]*\): _[^ ]* /\1: lv_event_t /' \
+        | sed 's/\(pub const _LV_OBJ_PART_[^ ][^ ]*\): _[^ ]* /\1: lv_obj_part_t /' \
+        | sed 's/\(pub const LV_OBJ_PART_[^ ][^ ]*\): _[^ ]* /\1: lv_obj_part_t /' \
+        | sed 's/\(pub const LV_PROTECT_[^ ][^ ]*\): _[^ ]* /\1: lv_protect_t /' \
+        | sed 's/\(pub const LV_SIGNAL_[^ ][^ ]*\): _[^ ]* /\1: lv_signal_t /' \
+        | sed 's/\(pub const LV_STATE_[^ ][^ ]*\): _[^ ]* /\1: lv_state_t /' \
         | sed 's/\(pub const LV_LABEL_ALIGN_[^ ][^ ]*\): _[^ ]* /\1: lv_label_align_t /' \
         | sed 's/\(pub const LV_LABEL_LONG_[^ ][^ ]*\): _[^ ]* /\1: lv_label_long_mode_t /' \
         >$expandpath
