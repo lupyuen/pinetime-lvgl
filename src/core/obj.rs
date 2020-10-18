@@ -130,10 +130,68 @@ impl<T> ::core::cmp::PartialEq for __BindgenUnionField<T> {
 impl<T> ::core::cmp::Eq for __BindgenUnionField<T> {}
 pub type lv_coord_t = i16;
 pub type lv_anim_user_data_t = *mut ::cty::c_void;
+pub type lv_img_decoder_user_data_t = *mut ::cty::c_void;
 pub type lv_disp_drv_user_data_t = *mut ::cty::c_void;
+pub type lv_indev_drv_user_data_t = *mut ::cty::c_void;
 pub type lv_font_user_data_t = *mut ::cty::c_void;
 pub type lv_obj_user_data_t = *mut ::cty::c_void;
+pub type lv_log_level_t = i8;
 pub type lv_res_t = u8;
+pub type lv_uintptr_t = usize;
+#[doc = " Heap information structure."]
+#[repr(C)]
+#[derive(Default)]
+pub struct lv_mem_monitor_t {
+    #[doc = "< Total heap size"]
+    pub total_size: u32,
+    pub free_cnt: u32,
+    #[doc = "< Size of available memory"]
+    pub free_size: u32,
+    pub free_biggest_size: u32,
+    pub used_cnt: u32,
+    #[doc = "< Max size of Heap memory used"]
+    pub max_used: u32,
+    #[doc = "< Percentage used"]
+    pub used_pct: u8,
+    #[doc = "< Amount of fragmentation"]
+    pub frag_pct: u8,
+}
+#[repr(C)]
+pub struct lv_mem_buf_t {
+    pub p: *mut ::cty::c_void,
+    pub size: u16,
+    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+    pub __bindgen_padding_0: [u8; 5usize],
+}
+impl Default for lv_mem_buf_t {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+impl lv_mem_buf_t {
+    #[inline]
+    pub fn used(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_used(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(0usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn new_bitfield_1(used: u8) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
+            Default::default();
+        __bindgen_bitfield_unit.set(0usize, 1u8, {
+            let used: u8 = unsafe { ::core::mem::transmute(used) };
+            used as u64
+        });
+        __bindgen_bitfield_unit
+    }
+}
+pub type lv_mem_buf_arr_t = [lv_mem_buf_t; 16usize];
 #[doc = " Represents a point on the screen."]
 #[repr(C)]
 #[derive(Default)]
@@ -191,6 +249,7 @@ pub struct lv_font_glyph_dsc_t {
     #[doc = "< Bit-per-pixel: 1, 2, 4, 8"]
     pub bpp: u8,
 }
+pub type lv_font_subpx_t = u8;
 #[doc = " Describe the properties of a font"]
 #[repr(C)]
 pub struct _lv_font_struct {
@@ -250,6 +309,157 @@ impl _lv_font_struct {
     }
 }
 pub type lv_font_t = _lv_font_struct;
+#[doc = "      TYPEDEFS"]
+#[repr(C)]
+#[derive(Default)]
+pub struct lv_sqrt_res_t {
+    pub i: u16,
+    pub f: u16,
+}
+#[doc = "      TYPEDEFS"]
+#[repr(C)]
+pub struct lv_color1_t {
+    pub ch: __BindgenUnionField<lv_color1_t__bindgen_ty_1>,
+    pub full: __BindgenUnionField<u8>,
+    pub bindgen_union_field: u8,
+}
+#[repr(C)]
+pub union lv_color1_t__bindgen_ty_1 {
+    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+    _bindgen_union_align: u8,
+}
+impl Default for lv_color1_t__bindgen_ty_1 {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+impl lv_color1_t__bindgen_ty_1 {
+    #[inline]
+    pub fn blue(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_blue(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(0usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn green(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_green(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(1usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn red(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_red(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(2usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn new_bitfield_1(blue: u8, green: u8, red: u8) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
+            Default::default();
+        __bindgen_bitfield_unit.set(0usize, 1u8, {
+            let blue: u8 = unsafe { ::core::mem::transmute(blue) };
+            blue as u64
+        });
+        __bindgen_bitfield_unit.set(1usize, 1u8, {
+            let green: u8 = unsafe { ::core::mem::transmute(green) };
+            green as u64
+        });
+        __bindgen_bitfield_unit.set(2usize, 1u8, {
+            let red: u8 = unsafe { ::core::mem::transmute(red) };
+            red as u64
+        });
+        __bindgen_bitfield_unit
+    }
+}
+impl Default for lv_color1_t {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+#[repr(C)]
+pub struct lv_color8_t {
+    pub ch: __BindgenUnionField<lv_color8_t__bindgen_ty_1>,
+    pub full: __BindgenUnionField<u8>,
+    pub bindgen_union_field: u8,
+}
+#[repr(C, packed)]
+#[derive(Default)]
+pub struct lv_color8_t__bindgen_ty_1 {
+    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+}
+impl lv_color8_t__bindgen_ty_1 {
+    #[inline]
+    pub fn blue(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 2u8) as u8) }
+    }
+    #[inline]
+    pub fn set_blue(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(0usize, 2u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn green(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 3u8) as u8) }
+    }
+    #[inline]
+    pub fn set_green(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(2usize, 3u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn red(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 3u8) as u8) }
+    }
+    #[inline]
+    pub fn set_red(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(5usize, 3u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn new_bitfield_1(blue: u8, green: u8, red: u8) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
+            Default::default();
+        __bindgen_bitfield_unit.set(0usize, 2u8, {
+            let blue: u8 = unsafe { ::core::mem::transmute(blue) };
+            blue as u64
+        });
+        __bindgen_bitfield_unit.set(2usize, 3u8, {
+            let green: u8 = unsafe { ::core::mem::transmute(green) };
+            green as u64
+        });
+        __bindgen_bitfield_unit.set(5usize, 3u8, {
+            let red: u8 = unsafe { ::core::mem::transmute(red) };
+            red as u64
+        });
+        __bindgen_bitfield_unit
+    }
+}
+impl Default for lv_color8_t {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
 #[repr(C)]
 pub struct lv_color16_t {
     pub ch: __BindgenUnionField<lv_color16_t__bindgen_ty_1>,
@@ -340,9 +550,37 @@ impl Default for lv_color16_t {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[repr(C)]
+pub struct lv_color32_t {
+    pub ch: __BindgenUnionField<lv_color32_t__bindgen_ty_1>,
+    pub full: __BindgenUnionField<u32>,
+    pub bindgen_union_field: u32,
+}
+#[repr(C)]
+#[derive(Default)]
+pub struct lv_color32_t__bindgen_ty_1 {
+    pub blue: u8,
+    pub green: u8,
+    pub red: u8,
+    pub alpha: u8,
+}
+impl Default for lv_color32_t {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+pub type lv_color_int_t = u16;
 pub type lv_color_t = lv_color16_t;
+#[repr(C)]
+#[derive(Default)]
+pub struct lv_color_hsv_t {
+    pub h: u16,
+    pub s: u8,
+    pub v: u8,
+}
 #[doc = "! @cond Doxygen_Suppress"]
 pub type lv_opa_t = u8;
+pub type lv_anim_enable_t = u8;
 #[doc = " Type of the animated value"]
 pub type lv_anim_value_t = lv_coord_t;
 #[doc = " Get the current value during an animation"]
@@ -368,6 +606,10 @@ pub type lv_anim_path_t = _lv_anim_path_t;
 #[doc = " it doesn't receive `lv_anim_t *` as its first argument"]
 pub type lv_anim_exec_xcb_t =
     ::core::option::Option<unsafe extern "C" fn(arg1: *mut ::cty::c_void, arg2: lv_anim_value_t)>;
+#[doc = " Same as `lv_anim_exec_xcb_t` but receives `lv_anim_t *` as the first parameter."]
+#[doc = " It's more consistent but less convenient. Might be used by binding generator functions."]
+pub type lv_anim_custom_exec_cb_t =
+    ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_anim_t, arg2: lv_anim_value_t)>;
 #[doc = " Callback to call when the animation is ready"]
 pub type lv_anim_ready_cb_t = ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_anim_t)>;
 #[doc = " Callback to call when the animation really stars (considering `delay`)"]
@@ -478,11 +720,208 @@ impl _lv_anim_t {
     }
 }
 pub type lv_anim_t = _lv_anim_t;
+pub type lv_draw_mask_res_t = u8;
+pub type lv_draw_mask_type_t = u8;
+#[doc = " A common callback type for every mask type."]
+#[doc = " Used internally by the library."]
+pub type lv_draw_mask_xcb_t = ::core::option::Option<
+    unsafe extern "C" fn(
+        mask_buf: *mut lv_opa_t,
+        abs_x: lv_coord_t,
+        abs_y: lv_coord_t,
+        len: lv_coord_t,
+        p: *mut ::cty::c_void,
+    ) -> lv_draw_mask_res_t,
+>;
+pub type lv_draw_mask_line_side_t = u8;
+#[repr(C)]
+#[derive(Default)]
+pub struct lv_draw_mask_common_dsc_t {
+    pub cb: lv_draw_mask_xcb_t,
+    pub type_: lv_draw_mask_type_t,
+}
+#[repr(C)]
+#[derive(Default)]
+pub struct lv_draw_mask_line_param_t {
+    pub dsc: lv_draw_mask_common_dsc_t,
+    pub cfg: lv_draw_mask_line_param_t__bindgen_ty_1,
+    pub origo: lv_point_t,
+    pub xy_steep: i32,
+    pub yx_steep: i32,
+    pub steep: i32,
+    pub spx: i32,
+    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+    pub __bindgen_padding_0: [u8; 7usize],
+}
+#[repr(C)]
+#[derive(Default)]
+pub struct lv_draw_mask_line_param_t__bindgen_ty_1 {
+    pub p1: lv_point_t,
+    pub p2: lv_point_t,
+    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+    pub __bindgen_padding_0: u8,
+}
+impl lv_draw_mask_line_param_t__bindgen_ty_1 {
+    #[inline]
+    pub fn side(&self) -> lv_draw_mask_line_side_t {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 2u8) as u8) }
+    }
+    #[inline]
+    pub fn set_side(&mut self, val: lv_draw_mask_line_side_t) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(0usize, 2u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn new_bitfield_1(
+        side: lv_draw_mask_line_side_t,
+    ) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
+            Default::default();
+        __bindgen_bitfield_unit.set(0usize, 2u8, {
+            let side: u8 = unsafe { ::core::mem::transmute(side) };
+            side as u64
+        });
+        __bindgen_bitfield_unit
+    }
+}
+impl lv_draw_mask_line_param_t {
+    #[inline]
+    pub fn flat(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_flat(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(0usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn inv(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_inv(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(1usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn new_bitfield_1(flat: u8, inv: u8) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
+            Default::default();
+        __bindgen_bitfield_unit.set(0usize, 1u8, {
+            let flat: u8 = unsafe { ::core::mem::transmute(flat) };
+            flat as u64
+        });
+        __bindgen_bitfield_unit.set(1usize, 1u8, {
+            let inv: u8 = unsafe { ::core::mem::transmute(inv) };
+            inv as u64
+        });
+        __bindgen_bitfield_unit
+    }
+}
+#[repr(C)]
+#[derive(Default)]
+pub struct lv_draw_mask_angle_param_t {
+    pub dsc: lv_draw_mask_common_dsc_t,
+    pub cfg: lv_draw_mask_angle_param_t__bindgen_ty_1,
+    pub start_line: lv_draw_mask_line_param_t,
+    pub end_line: lv_draw_mask_line_param_t,
+    pub delta_deg: u16,
+}
+#[repr(C)]
+#[derive(Default)]
+pub struct lv_draw_mask_angle_param_t__bindgen_ty_1 {
+    pub vertex_p: lv_point_t,
+    pub start_angle: lv_coord_t,
+    pub end_angle: lv_coord_t,
+}
+#[repr(C)]
+#[derive(Default)]
+pub struct lv_draw_mask_radius_param_t {
+    pub dsc: lv_draw_mask_common_dsc_t,
+    pub cfg: lv_draw_mask_radius_param_t__bindgen_ty_1,
+    pub y_prev: i32,
+    pub y_prev_x: lv_sqrt_res_t,
+}
+#[repr(C)]
+#[derive(Default)]
+pub struct lv_draw_mask_radius_param_t__bindgen_ty_1 {
+    pub rect: lv_area_t,
+    pub radius: lv_coord_t,
+    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+    pub __bindgen_padding_0: u8,
+}
+impl lv_draw_mask_radius_param_t__bindgen_ty_1 {
+    #[inline]
+    pub fn outer(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_outer(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(0usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn new_bitfield_1(outer: u8) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
+            Default::default();
+        __bindgen_bitfield_unit.set(0usize, 1u8, {
+            let outer: u8 = unsafe { ::core::mem::transmute(outer) };
+            outer as u64
+        });
+        __bindgen_bitfield_unit
+    }
+}
+#[repr(C)]
+#[derive(Default)]
+pub struct lv_draw_mask_fade_param_t {
+    pub dsc: lv_draw_mask_common_dsc_t,
+    pub cfg: lv_draw_mask_fade_param_t__bindgen_ty_1,
+}
+#[repr(C)]
+#[derive(Default)]
+pub struct lv_draw_mask_fade_param_t__bindgen_ty_1 {
+    pub coords: lv_area_t,
+    pub y_top: lv_coord_t,
+    pub y_bottom: lv_coord_t,
+    pub opa_top: lv_opa_t,
+    pub opa_bottom: lv_opa_t,
+}
+#[repr(C)]
+pub struct _lv_draw_mask_map_param_t {
+    pub dsc: lv_draw_mask_common_dsc_t,
+    pub cfg: _lv_draw_mask_map_param_t__bindgen_ty_1,
+}
+#[repr(C)]
+pub struct _lv_draw_mask_map_param_t__bindgen_ty_1 {
+    pub coords: lv_area_t,
+    pub map: *const lv_opa_t,
+}
+impl Default for _lv_draw_mask_map_param_t__bindgen_ty_1 {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+impl Default for _lv_draw_mask_map_param_t {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+pub type lv_draw_mask_map_param_t = _lv_draw_mask_map_param_t;
 pub type lv_blend_mode_t = u8;
 pub type lv_border_side_t = u8;
 pub type lv_grad_dir_t = u8;
 pub type lv_text_decor_t = u8;
+pub type lv_style_attr_t = u8;
 pub type lv_style_property_t = u16;
+pub type lv_style_state_t = u16;
 #[repr(C)]
 pub struct lv_style_t {
     pub map: *mut u8,
@@ -963,6 +1402,7 @@ impl Default for lv_ll_t {
 }
 #[doc = " Tasks execute this type type of functions."]
 pub type lv_task_cb_t = ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_task_t)>;
+pub type lv_task_prio_t = u8;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
 pub struct _lv_task_t {
@@ -1269,7 +1709,287 @@ impl _disp_t {
     }
 }
 pub type lv_disp_t = _disp_t;
+pub const lv_disp_size_t_LV_DISP_SIZE_SMALL: lv_disp_size_t = 0;
+pub const lv_disp_size_t_LV_DISP_SIZE_MEDIUM: lv_disp_size_t = 1;
+pub const lv_disp_size_t_LV_DISP_SIZE_LARGE: lv_disp_size_t = 2;
+pub const lv_disp_size_t_LV_DISP_SIZE_EXTRA_LARGE: lv_disp_size_t = 3;
+pub type lv_disp_size_t = u32;
+pub type lv_indev_type_t = u8;
+pub type lv_indev_state_t = u8;
 pub type lv_drag_dir_t = u8;
+pub type lv_gesture_dir_t = u8;
+#[doc = " Data structure passed to an input driver to fill"]
+#[repr(C)]
+#[derive(Default)]
+pub struct lv_indev_data_t {
+    #[doc = "< For LV_INDEV_TYPE_POINTER the currently pressed point"]
+    pub point: lv_point_t,
+    #[doc = "< For LV_INDEV_TYPE_KEYPAD the currently pressed key"]
+    pub key: u32,
+    #[doc = "< For LV_INDEV_TYPE_BUTTON the currently pressed button"]
+    pub btn_id: u32,
+    #[doc = "< For LV_INDEV_TYPE_ENCODER number of steps since the previous read"]
+    pub enc_diff: i16,
+    #[doc = "< LV_INDEV_STATE_REL or LV_INDEV_STATE_PR"]
+    pub state: lv_indev_state_t,
+}
+#[doc = " Initialized by the user and registered by 'lv_indev_add()'"]
+#[repr(C)]
+pub struct _lv_indev_drv_t {
+    pub type_: lv_indev_type_t,
+    pub read_cb: ::core::option::Option<
+        unsafe extern "C" fn(indev_drv: *mut _lv_indev_drv_t, data: *mut lv_indev_data_t) -> bool,
+    >,
+    #[doc = " Called when an action happened on the input device."]
+    #[doc = " The second parameter is the event from `lv_event_t`"]
+    pub feedback_cb:
+        ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_indev_drv_t, arg2: u8)>,
+    pub user_data: lv_indev_drv_user_data_t,
+    pub disp: *mut _disp_t,
+    pub read_task: *mut lv_task_t,
+    pub drag_limit: u8,
+    pub drag_throw: u8,
+    pub gesture_min_velocity: u8,
+    pub gesture_limit: u8,
+    pub long_press_time: u16,
+    pub long_press_rep_time: u16,
+}
+impl Default for _lv_indev_drv_t {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+pub type lv_indev_drv_t = _lv_indev_drv_t;
+#[doc = " Run time data of input devices"]
+#[doc = " Internally used by the library, you should not need to touch it."]
+#[repr(C)]
+pub struct _lv_indev_proc_t {
+    #[doc = "< Current state of the input device."]
+    pub state: lv_indev_state_t,
+    pub types: _lv_indev_proc_t__bindgen_ty_1,
+    #[doc = "< Pressed time stamp"]
+    pub pr_timestamp: u32,
+    #[doc = "< Long press repeat time stamp"]
+    pub longpr_rep_timestamp: u32,
+    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+    pub __bindgen_padding_0: [u8; 7usize],
+}
+#[repr(C)]
+pub struct _lv_indev_proc_t__bindgen_ty_1 {
+    pub pointer: __BindgenUnionField<_lv_indev_proc_t__bindgen_ty_1__bindgen_ty_1>,
+    pub keypad: __BindgenUnionField<_lv_indev_proc_t__bindgen_ty_1__bindgen_ty_2>,
+    pub bindgen_union_field: [u64; 7usize],
+}
+#[repr(C)]
+pub struct _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_1 {
+    #[doc = "< Current point of input device."]
+    pub act_point: lv_point_t,
+    #[doc = "< Last point of input device."]
+    pub last_point: lv_point_t,
+    #[doc = "< Difference between `act_point` and `last_point`."]
+    pub vect: lv_point_t,
+    pub drag_sum: lv_point_t,
+    pub drag_throw_vect: lv_point_t,
+    pub act_obj: *mut _lv_obj_t,
+    pub last_obj: *mut _lv_obj_t,
+    pub last_pressed: *mut _lv_obj_t,
+    pub gesture_dir: lv_gesture_dir_t,
+    pub gesture_sum: lv_point_t,
+    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+    pub __bindgen_padding_0: u8,
+}
+impl Default for _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_1 {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+impl _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_1 {
+    #[inline]
+    pub fn drag_limit_out(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_drag_limit_out(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(0usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn drag_in_prog(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_drag_in_prog(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(1usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn drag_dir(&self) -> lv_drag_dir_t {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 3u8) as u8) }
+    }
+    #[inline]
+    pub fn set_drag_dir(&mut self, val: lv_drag_dir_t) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(2usize, 3u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn gesture_sent(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_gesture_sent(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(5usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn new_bitfield_1(
+        drag_limit_out: u8,
+        drag_in_prog: u8,
+        drag_dir: lv_drag_dir_t,
+        gesture_sent: u8,
+    ) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
+            Default::default();
+        __bindgen_bitfield_unit.set(0usize, 1u8, {
+            let drag_limit_out: u8 = unsafe { ::core::mem::transmute(drag_limit_out) };
+            drag_limit_out as u64
+        });
+        __bindgen_bitfield_unit.set(1usize, 1u8, {
+            let drag_in_prog: u8 = unsafe { ::core::mem::transmute(drag_in_prog) };
+            drag_in_prog as u64
+        });
+        __bindgen_bitfield_unit.set(2usize, 3u8, {
+            let drag_dir: u8 = unsafe { ::core::mem::transmute(drag_dir) };
+            drag_dir as u64
+        });
+        __bindgen_bitfield_unit.set(5usize, 1u8, {
+            let gesture_sent: u8 = unsafe { ::core::mem::transmute(gesture_sent) };
+            gesture_sent as u64
+        });
+        __bindgen_bitfield_unit
+    }
+}
+#[repr(C)]
+#[derive(Default)]
+pub struct _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_2 {
+    pub last_state: lv_indev_state_t,
+    pub last_key: u32,
+}
+impl Default for _lv_indev_proc_t__bindgen_ty_1 {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+impl Default for _lv_indev_proc_t {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+impl _lv_indev_proc_t {
+    #[inline]
+    pub fn long_pr_sent(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_long_pr_sent(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(0usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn reset_query(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_reset_query(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(1usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn disabled(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_disabled(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(2usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn wait_until_release(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_wait_until_release(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(3usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn new_bitfield_1(
+        long_pr_sent: u8,
+        reset_query: u8,
+        disabled: u8,
+        wait_until_release: u8,
+    ) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
+            Default::default();
+        __bindgen_bitfield_unit.set(0usize, 1u8, {
+            let long_pr_sent: u8 = unsafe { ::core::mem::transmute(long_pr_sent) };
+            long_pr_sent as u64
+        });
+        __bindgen_bitfield_unit.set(1usize, 1u8, {
+            let reset_query: u8 = unsafe { ::core::mem::transmute(reset_query) };
+            reset_query as u64
+        });
+        __bindgen_bitfield_unit.set(2usize, 1u8, {
+            let disabled: u8 = unsafe { ::core::mem::transmute(disabled) };
+            disabled as u64
+        });
+        __bindgen_bitfield_unit.set(3usize, 1u8, {
+            let wait_until_release: u8 = unsafe { ::core::mem::transmute(wait_until_release) };
+            wait_until_release as u64
+        });
+        __bindgen_bitfield_unit
+    }
+}
+pub type lv_indev_proc_t = _lv_indev_proc_t;
+#[repr(C)]
+pub struct _lv_group_t {
+    _unused: [u8; 0],
+}
+#[doc = " The main input device descriptor with driver, runtime data ('proc') and some additional"]
+#[doc = " information"]
+#[repr(C)]
+pub struct _lv_indev_t {
+    pub driver: lv_indev_drv_t,
+    pub proc_: lv_indev_proc_t,
+    #[doc = "< Cursor for LV_INPUT_TYPE_POINTER"]
+    pub cursor: *mut _lv_obj_t,
+    #[doc = "< Keypad destination group"]
+    pub group: *mut _lv_group_t,
+    #[doc = "< Array points assigned to the button ()screen will be pressed"]
+    #[doc = "here by the buttons"]
+    pub btn_points: *const lv_point_t,
+}
+impl Default for _lv_indev_t {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+pub type lv_indev_t = _lv_indev_t;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
 pub struct lv_draw_rect_dsc_t {
@@ -1368,6 +2088,7 @@ impl lv_draw_rect_dsc_t {
 }
 pub type lv_bidi_dir_t = u8;
 pub type lv_txt_flag_t = u8;
+pub type lv_txt_cmd_state_t = u8;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
 pub struct lv_draw_label_dsc_t {
@@ -1390,6 +2111,22 @@ impl Default for lv_draw_label_dsc_t {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
     }
+}
+#[doc = " Store some info to speed up drawing of very large texts"]
+#[doc = " It takes a lot of time to get the first visible character because"]
+#[doc = " all the previous characters needs to be checked to calculate the positions."]
+#[doc = " This structure stores an earlier (e.g. at -1000 px) coordinate and the index of that line."]
+#[doc = " Therefore the calculations can start from here."]
+#[repr(C)]
+#[derive(Default)]
+pub struct lv_draw_label_hint_t {
+    #[doc = " Index of the line at `y` coordinate"]
+    pub line_start: i32,
+    #[doc = " Give the `y` coordinate of the first letter at `line start` index. Relative to the label's coordinates"]
+    pub y: i32,
+    #[doc = " The 'y1' coordinate of the label when the hint was saved."]
+    #[doc = " Used to invalidate the hint if the label has moved too much."]
+    pub coord_y: i32,
 }
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
@@ -1479,6 +2216,321 @@ impl lv_draw_line_dsc_t {
         __bindgen_bitfield_unit
     }
 }
+pub type lv_img_cf_t = u8;
+#[repr(C)]
+#[repr(align(4))]
+#[derive(Default)]
+pub struct lv_img_header_t {
+    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u16>,
+}
+impl lv_img_header_t {
+    #[inline]
+    pub fn cf(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 5u8) as u32) }
+    }
+    #[inline]
+    pub fn set_cf(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(0usize, 5u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn always_zero(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 3u8) as u32) }
+    }
+    #[inline]
+    pub fn set_always_zero(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(5usize, 3u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn reserved(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 2u8) as u32) }
+    }
+    #[inline]
+    pub fn set_reserved(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(8usize, 2u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn w(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 11u8) as u32) }
+    }
+    #[inline]
+    pub fn set_w(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(10usize, 11u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn h(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(21usize, 11u8) as u32) }
+    }
+    #[inline]
+    pub fn set_h(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_1.set(21usize, 11u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn new_bitfield_1(
+        cf: u32,
+        always_zero: u32,
+        reserved: u32,
+        w: u32,
+        h: u32,
+    ) -> __BindgenBitfieldUnit<[u8; 4usize], u16> {
+        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 4usize], u16> =
+            Default::default();
+        __bindgen_bitfield_unit.set(0usize, 5u8, {
+            let cf: u32 = unsafe { ::core::mem::transmute(cf) };
+            cf as u64
+        });
+        __bindgen_bitfield_unit.set(5usize, 3u8, {
+            let always_zero: u32 = unsafe { ::core::mem::transmute(always_zero) };
+            always_zero as u64
+        });
+        __bindgen_bitfield_unit.set(8usize, 2u8, {
+            let reserved: u32 = unsafe { ::core::mem::transmute(reserved) };
+            reserved as u64
+        });
+        __bindgen_bitfield_unit.set(10usize, 11u8, {
+            let w: u32 = unsafe { ::core::mem::transmute(w) };
+            w as u64
+        });
+        __bindgen_bitfield_unit.set(21usize, 11u8, {
+            let h: u32 = unsafe { ::core::mem::transmute(h) };
+            h as u64
+        });
+        __bindgen_bitfield_unit
+    }
+}
+#[doc = " Image header it is compatible with"]
+#[doc = " the result from image converter utility"]
+#[repr(C)]
+pub struct lv_img_dsc_t {
+    pub header: lv_img_header_t,
+    pub data_size: u32,
+    pub data: *const u8,
+}
+impl Default for lv_img_dsc_t {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+#[repr(C)]
+pub struct lv_img_transform_dsc_t {
+    pub cfg: lv_img_transform_dsc_t__bindgen_ty_1,
+    pub res: lv_img_transform_dsc_t__bindgen_ty_2,
+    pub tmp: lv_img_transform_dsc_t__bindgen_ty_3,
+}
+#[repr(C)]
+pub struct lv_img_transform_dsc_t__bindgen_ty_1 {
+    pub src: *const ::cty::c_void,
+    pub src_w: lv_coord_t,
+    pub src_h: lv_coord_t,
+    pub pivot_x: lv_coord_t,
+    pub pivot_y: lv_coord_t,
+    pub angle: i16,
+    pub zoom: u16,
+    pub color: lv_color_t,
+    pub cf: lv_img_cf_t,
+    pub antialias: bool,
+}
+impl Default for lv_img_transform_dsc_t__bindgen_ty_1 {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+#[repr(C)]
+pub struct lv_img_transform_dsc_t__bindgen_ty_2 {
+    pub color: lv_color_t,
+    pub opa: lv_opa_t,
+}
+impl Default for lv_img_transform_dsc_t__bindgen_ty_2 {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+#[repr(C)]
+pub struct lv_img_transform_dsc_t__bindgen_ty_3 {
+    pub img_dsc: lv_img_dsc_t,
+    pub pivot_x_256: i32,
+    pub pivot_y_256: i32,
+    pub sinma: i32,
+    pub cosma: i32,
+    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+    pub zoom_inv: u32,
+    pub xs: lv_coord_t,
+    pub ys: lv_coord_t,
+    pub xs_int: lv_coord_t,
+    pub ys_int: lv_coord_t,
+    pub pxi: u32,
+    pub px_size: u8,
+}
+impl Default for lv_img_transform_dsc_t__bindgen_ty_3 {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+impl lv_img_transform_dsc_t__bindgen_ty_3 {
+    #[inline]
+    pub fn chroma_keyed(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_chroma_keyed(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(0usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn has_alpha(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_has_alpha(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(1usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn native_color(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_native_color(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(2usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn new_bitfield_1(
+        chroma_keyed: u8,
+        has_alpha: u8,
+        native_color: u8,
+    ) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
+            Default::default();
+        __bindgen_bitfield_unit.set(0usize, 1u8, {
+            let chroma_keyed: u8 = unsafe { ::core::mem::transmute(chroma_keyed) };
+            chroma_keyed as u64
+        });
+        __bindgen_bitfield_unit.set(1usize, 1u8, {
+            let has_alpha: u8 = unsafe { ::core::mem::transmute(has_alpha) };
+            has_alpha as u64
+        });
+        __bindgen_bitfield_unit.set(2usize, 1u8, {
+            let native_color: u8 = unsafe { ::core::mem::transmute(native_color) };
+            native_color as u64
+        });
+        __bindgen_bitfield_unit
+    }
+}
+impl Default for lv_img_transform_dsc_t {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+pub type lv_img_src_t = u8;
+#[doc = " Get info from an image and store in the `header`"]
+#[doc = " - __`src`__: the image source. Can be a pointer to a C array or a file name (Use"]
+#[doc = " `lv_img_src_get_type` to determine the type)"]
+#[doc = " - __`header`__: store the info here"]
+#[doc = " Return: LV_RES_OK: info written correctly; LV_RES_INV: failed"]
+pub type lv_img_decoder_info_f_t = ::core::option::Option<
+    unsafe extern "C" fn(
+        decoder: *mut _lv_img_decoder,
+        src: *const ::cty::c_void,
+        header: *mut lv_img_header_t,
+    ) -> lv_res_t,
+>;
+#[doc = " Open an image for decoding. Prepare it as it is required to read it later"]
+#[doc = " - __`decoder`__: pointer to the decoder the function associated with"]
+#[doc = " - __`dsc`__: pointer to decoder descriptor. `src`, `style` are already initialized in it."]
+pub type lv_img_decoder_open_f_t = ::core::option::Option<
+    unsafe extern "C" fn(decoder: *mut _lv_img_decoder, dsc: *mut _lv_img_decoder_dsc) -> lv_res_t,
+>;
+#[doc = " Decode `len` pixels starting from the given `x`, `y` coordinates and store them in `buf`."]
+#[doc = " Required only if the \"open\" function can't return with the whole decoded pixel array."]
+#[doc = " - __`decoder`__: pointer to the decoder the function associated with"]
+#[doc = " - __`dsc`__: pointer to decoder descriptor"]
+#[doc = " - __`x`__: start x coordinate"]
+#[doc = " - __`y`__: start y coordinate"]
+#[doc = " - __`len`__: number of pixels to decode"]
+#[doc = " - __`buf`__: a buffer to store the decoded pixels"]
+#[doc = " Return: LV_RES_OK: ok; LV_RES_INV: failed"]
+pub type lv_img_decoder_read_line_f_t = ::core::option::Option<
+    unsafe extern "C" fn(
+        decoder: *mut _lv_img_decoder,
+        dsc: *mut _lv_img_decoder_dsc,
+        x: lv_coord_t,
+        y: lv_coord_t,
+        len: lv_coord_t,
+        buf: *mut u8,
+    ) -> lv_res_t,
+>;
+#[doc = " Close the pending decoding. Free resources etc."]
+#[doc = " - __`decoder`__: pointer to the decoder the function associated with"]
+#[doc = " - __`dsc`__: pointer to decoder descriptor"]
+pub type lv_img_decoder_close_f_t = ::core::option::Option<
+    unsafe extern "C" fn(decoder: *mut _lv_img_decoder, dsc: *mut _lv_img_decoder_dsc),
+>;
+#[repr(C)]
+pub struct _lv_img_decoder {
+    pub info_cb: lv_img_decoder_info_f_t,
+    pub open_cb: lv_img_decoder_open_f_t,
+    pub read_line_cb: lv_img_decoder_read_line_f_t,
+    pub close_cb: lv_img_decoder_close_f_t,
+    pub user_data: lv_img_decoder_user_data_t,
+}
+impl Default for _lv_img_decoder {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+pub type lv_img_decoder_t = _lv_img_decoder;
+#[doc = "Describe an image decoding session. Stores data about the decoding"]
+#[repr(C)]
+pub struct _lv_img_decoder_dsc {
+    #[doc = "The decoder which was able to open the image source"]
+    pub decoder: *mut lv_img_decoder_t,
+    #[doc = "The image source. A file path like \"S:my_img.png\" or pointer to an `lv_img_dsc_t` variable"]
+    pub src: *const ::cty::c_void,
+    #[doc = "Style to draw the image."]
+    pub color: lv_color_t,
+    #[doc = "Type of the source: file or variable. Can be set in `open` function if required"]
+    pub src_type: lv_img_src_t,
+    #[doc = "Info about the opened image: color format, size, etc. MUST be set in `open` function"]
+    pub header: lv_img_header_t,
+    #[doc = " Pointer to a buffer where the image's data (pixels) are stored in a decoded, plain format."]
+    #[doc = "  MUST be set in `open` function"]
+    pub img_data: *const u8,
+    #[doc = " How much time did it take to open the image. [ms]"]
+    #[doc = "  If not set `lv_img_cache` will measure and set the time to open"]
+    pub time_to_open: u32,
+    #[doc = "A text to display instead of the image when the image can't be opened."]
+    #[doc = " Can be set in `open` function or set NULL."]
+    pub error_msg: *const ::cty::c_char,
+    #[doc = "Store any custom data here is required"]
+    pub user_data: *mut ::cty::c_void,
+}
+impl Default for _lv_img_decoder_dsc {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+pub type lv_img_decoder_dsc_t = _lv_img_decoder_dsc;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
 pub struct lv_draw_img_dsc_t {
@@ -1599,6 +2651,7 @@ impl lv_realign_t {
         __bindgen_bitfield_unit
     }
 }
+pub type lv_protect_t = u8;
 pub type lv_state_t = u8;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
@@ -1858,6 +2911,32 @@ impl Default for lv_obj_type_t {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
     }
+}
+#[repr(C)]
+pub struct lv_hit_test_info_t {
+    pub point: *mut lv_point_t,
+    pub result: bool,
+}
+impl Default for lv_hit_test_info_t {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+#[repr(C)]
+pub struct lv_get_style_info_t {
+    pub part: u8,
+    pub result: *mut lv_style_list_t,
+}
+impl Default for lv_get_style_info_t {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+#[repr(C)]
+#[derive(Default)]
+pub struct lv_get_state_info_t {
+    pub part: u8,
+    pub result: lv_state_t,
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Create a basic object"]
