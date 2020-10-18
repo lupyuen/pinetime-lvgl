@@ -100,9 +100,14 @@ function generate_bindings_core() {
     fi
     local whitelistname=lv_$submodname
     if [ "$submodname" == 'obj' ]; then
-        # For lv_obj.c, include the LV_ALIGN constants and the core types
+        # For lv_obj.c, include the core constants and the core types
         local whitelisttypes=`cat << EOF
         --whitelist-var      LV_ALIGN_.* \
+        --whitelist-var      LV_DESIGN_.* \
+        --whitelist-var      LV_EVENT_.* \
+        --whitelist-var      LV_PROTECT_.* \
+        --whitelist-var      LV_SIGNAL_.* \
+        --whitelist-var      LV_STATE_.* \
         --whitelist-type     lv_.*
 EOF
 `
