@@ -86,6 +86,7 @@ function generate_bindings() {
         | sed 's/\(pub const LV_STATE_[^ ][^ ]*\): _[^ ]* /\1: lv_state_t /' \
         | sed 's/\(pub const LV_LABEL_ALIGN_[^ ][^ ]*\): _[^ ]* /\1: lv_label_align_t /' \
         | sed 's/\(pub const LV_LABEL_LONG_[^ ][^ ]*\): _[^ ]* /\1: lv_label_long_mode_t /' \
+        | sed 's/\(pub const LV_LABEL_PART_[^ ][^ ]*\): _[^ ]* /\1: lv_label_part_t /' \
         >$expandpath
     rm $tmpexpandpath
 }

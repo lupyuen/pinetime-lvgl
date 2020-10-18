@@ -866,7 +866,7 @@ impl lv_label_ext_t {
         __bindgen_bitfield_unit
     }
 }
-pub const LV_LABEL_PART_MAIN: _bindgen_ty_34 = 0;
+pub const LV_LABEL_PART_MAIN: lv_label_part_t = 0;
 #[doc = " Label styles"]
 pub type _bindgen_ty_34 = u32;
 pub type lv_label_part_t = u8;
