@@ -7,6 +7,7 @@
 
 extern crate macros as lvgl_macros;  //  Import Procedural Macros from `macros` library
 
+/// Export Mynewt API
 #[cfg(feature = "mynewt_os")]     //  If building for Mynewt OS...
 pub use mynewt;                   //  Export Mynewt API
 
@@ -228,4 +229,5 @@ pub type Ptr = *mut ::cty::c_void;
 #[cfg(feature = "riot_os")] //  If building for RIOT OS...
 pub const NULL: Ptr = ::core::ptr::null_mut();
 
+///  Pointer to mutable LVGL object `lv_obj_t`
 pub type Ptr = *mut core::obj::lv_obj_t;
