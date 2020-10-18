@@ -163,6 +163,26 @@ EOF
     generate_bindings $libname $modname $submodname $headerfile $whitelist
 }
 
+function generate_bindings_misc() {
+    #  Add whitelist and blacklist for for lv_misc/lv_*
+    local modname=misc
+    local submodname=$1  # Submodule name e.g. anim
+    local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
+    local whitelistname=lv_$submodname
+    local whitelist=`cat << EOF
+        --raw-line use \
+        --raw-line super::*; \
+        --whitelist-function (?i)${whitelistname}.* \
+        --whitelist-type     (?i)${whitelistname}.* \
+        --whitelist-var      (?i)${whitelistname}.* \
+        --blacklist-item     _lv_obj_t \
+        --blacklist-item     lv_style_t
+EOF
+`
+    #  Generate the bindings for lv_widgets/lv_*: libname, modname, submodname, headerfile, whitelist
+    generate_bindings $libname $modname $submodname $headerfile $whitelist
+}
+
 function generate_bindings_themes() {
     #  Add whitelist and blacklist for for lv_themes/lv_theme
     local modname=themes
@@ -237,8 +257,26 @@ generate_bindings_font
 #  TODO: Generate bindings for lv_hal
 #  generate_bindings_hal
 
-#  TODO: Generate bindings for lv_misc
-#  generate_bindings_misc
+#  Generate bindings for lv_misc
+generate_bindings_misc anim
+generate_bindings_misc area
+generate_bindings_misc async
+generate_bindings_misc bidi
+generate_bindings_misc color
+generate_bindings_misc debug
+generate_bindings_misc fs
+generate_bindings_misc gc
+generate_bindings_misc ll
+generate_bindings_misc log
+generate_bindings_misc math
+generate_bindings_misc mem
+generate_bindings_misc printf
+generate_bindings_misc task
+generate_bindings_misc templ
+generate_bindings_misc txt
+generate_bindings_misc txt_ap
+generate_bindings_misc types
+generate_bindings_misc utils
 
 #  Generate bindings for lv_themes
 generate_bindings_themes

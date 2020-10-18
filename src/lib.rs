@@ -21,7 +21,9 @@ pub mod draw;                     //  Lvgl Draw API. Export folder `draw` as Rus
 pub mod font;                     //  Lvgl Font API. Export folder `font` as Rust module `lvgl::font`
 
 //  TODO: pub mod hal;            //  Lvgl HAL API. Export folder `hal` as Rust module `lvgl::hal`
-//  TODO: pub mod misc;           //  Lvgl Misc API. Export folder `misc` as Rust module `lvgl::misc`
+
+#[allow(unused_imports)]          //  Allow unused imports
+pub mod misc;                     //  Lvgl Misc API. Export folder `misc` as Rust module `lvgl::misc`
 
 #[allow(unused_imports)]          //  Allow unused imports
 pub mod themes;                   //  Lvgl Themes API. Export folder `themes` as Rust module `lvgl::themes`
