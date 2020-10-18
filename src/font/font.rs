@@ -3,88 +3,6 @@
 use
 super::*;
 
-#[repr(C)]
-#[derive(Copy, Clone, Debug, Default, Eq, Hash, Ord, PartialEq, PartialOrd)]
-pub struct __BindgenBitfieldUnit<Storage, Align>
-where
-    Storage: AsRef<[u8]> + AsMut<[u8]>,
-{
-    storage: Storage,
-    align: [Align; 0],
-}
-impl<Storage, Align> __BindgenBitfieldUnit<Storage, Align>
-where
-    Storage: AsRef<[u8]> + AsMut<[u8]>,
-{
-    #[inline]
-    pub fn new(storage: Storage) -> Self {
-        Self { storage, align: [] }
-    }
-    #[inline]
-    pub fn get_bit(&self, index: usize) -> bool {
-        debug_assert!(index / 8 < self.storage.as_ref().len());
-        let byte_index = index / 8;
-        let byte = self.storage.as_ref()[byte_index];
-        let bit_index = if cfg!(target_endian = "big") {
-            7 - (index % 8)
-        } else {
-            index % 8
-        };
-        let mask = 1 << bit_index;
-        byte & mask == mask
-    }
-    #[inline]
-    pub fn set_bit(&mut self, index: usize, val: bool) {
-        debug_assert!(index / 8 < self.storage.as_ref().len());
-        let byte_index = index / 8;
-        let byte = &mut self.storage.as_mut()[byte_index];
-        let bit_index = if cfg!(target_endian = "big") {
-            7 - (index % 8)
-        } else {
-            index % 8
-        };
-        let mask = 1 << bit_index;
-        if val {
-            *byte |= mask;
-        } else {
-            *byte &= !mask;
-        }
-    }
-    #[inline]
-    pub fn get(&self, bit_offset: usize, bit_width: u8) -> u64 {
-        debug_assert!(bit_width <= 64);
-        debug_assert!(bit_offset / 8 < self.storage.as_ref().len());
-        debug_assert!((bit_offset + (bit_width as usize)) / 8 <= self.storage.as_ref().len());
-        let mut val = 0;
-        for i in 0..(bit_width as usize) {
-            if self.get_bit(i + bit_offset) {
-                let index = if cfg!(target_endian = "big") {
-                    bit_width as usize - 1 - i
-                } else {
-                    i
-                };
-                val |= 1 << index;
-            }
-        }
-        val
-    }
-    #[inline]
-    pub fn set(&mut self, bit_offset: usize, bit_width: u8, val: u64) {
-        debug_assert!(bit_width <= 64);
-        debug_assert!(bit_offset / 8 < self.storage.as_ref().len());
-        debug_assert!((bit_offset + (bit_width as usize)) / 8 <= self.storage.as_ref().len());
-        for i in 0..(bit_width as usize) {
-            let mask = 1 << i;
-            let val_bit_is_set = val & mask == mask;
-            let index = if cfg!(target_endian = "big") {
-                bit_width as usize - 1 - i
-            } else {
-                i
-            };
-            self.set_bit(index + bit_offset, val_bit_is_set);
-        }
-    }
-}
 pub const LV_FONT_MONTSERRAT_12: u32 = 0;
 pub const LV_FONT_MONTSERRAT_14: u32 = 0;
 pub const LV_FONT_MONTSERRAT_16: u32 = 0;
@@ -118,23 +36,6 @@ pub const LV_FONT_KERN_POSITIVE: u32 = 0;
 pub const LV_FONT_KERN_NEGATIVE: u32 = 1;
 pub type lv_coord_t = i16;
 pub type lv_font_user_data_t = *mut ::cty::c_void;
-#[doc = " Describes the properties of a glyph."]
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_font_glyph_dsc_t {
-    #[doc = "< The glyph needs this space. Draw the next glyph after this width. 8 bit integer, 4 bit fractional"]
-    pub adv_w: u16,
-    #[doc = "< Width of the glyph's bounding box"]
-    pub box_w: u16,
-    #[doc = "< Height of the glyph's bounding box"]
-    pub box_h: u16,
-    #[doc = "< x offset of the bounding box"]
-    pub ofs_x: i16,
-    #[doc = "< y offset of the bounding box"]
-    pub ofs_y: i16,
-    #[doc = "< Bit-per-pixel: 1, 2, 4, 8"]
-    pub bpp: u8,
-}
 pub const LV_FONT_SUBPX_NONE: _bindgen_ty_4 = 0;
 pub const LV_FONT_SUBPX_HOR: _bindgen_ty_4 = 1;
 pub const LV_FONT_SUBPX_VER: _bindgen_ty_4 = 2;
@@ -142,64 +43,6 @@ pub const LV_FONT_SUBPX_BOTH: _bindgen_ty_4 = 3;
 #[doc = " The bitmaps might be upscaled by 3 to achieve subpixel rendering."]
 pub type _bindgen_ty_4 = u32;
 pub type lv_font_subpx_t = u8;
-#[doc = " Describe the properties of a font"]
-#[repr(C)]
-pub struct _lv_font_struct {
-    #[doc = " Get a glyph's  descriptor from a font"]
-    pub get_glyph_dsc: ::core::option::Option<
-        unsafe extern "C" fn(
-            arg1: *const _lv_font_struct,
-            arg2: *mut lv_font_glyph_dsc_t,
-            letter: u32,
-            letter_next: u32,
-        ) -> bool,
-    >,
-    #[doc = " Get a glyph's bitmap from a font"]
-    pub get_glyph_bitmap: ::core::option::Option<
-        unsafe extern "C" fn(arg1: *const _lv_font_struct, arg2: u32) -> *const u8,
-    >,
-    #[doc = "< The real line height where any text fits"]
-    pub line_height: lv_coord_t,
-    #[doc = "< Base line measured from the top of the line_height"]
-    pub base_line: lv_coord_t,
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-    #[doc = "< Distance between the top of the underline and base line (< 0 means below the base line)"]
-    pub underline_position: i8,
-    #[doc = "< Thickness of the underline"]
-    pub underline_thickness: i8,
-    #[doc = "< Store implementation specific or run_time data or caching here"]
-    pub dsc: *mut ::cty::c_void,
-    #[doc = "< Custom user data for font."]
-    pub user_data: lv_font_user_data_t,
-}
-impl Default for _lv_font_struct {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-impl _lv_font_struct {
-    #[inline]
-    pub fn subpx(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 2u8) as u8) }
-    }
-    #[inline]
-    pub fn set_subpx(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(0usize, 2u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn new_bitfield_1(subpx: u8) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
-            Default::default();
-        __bindgen_bitfield_unit.set(0usize, 2u8, {
-            let subpx: u8 = unsafe { ::core::mem::transmute(subpx) };
-            subpx as u64
-        });
-        __bindgen_bitfield_unit
-    }
-}
 pub type lv_font_t = _lv_font_struct;
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Return with the bitmap of a font."]

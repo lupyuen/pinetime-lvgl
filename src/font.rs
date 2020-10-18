@@ -18,6 +18,8 @@ use crate::{
             _lv_obj_t,
             lv_obj_t,
             lv_style_t,
+            lv_font_glyph_dsc_t,
+            _lv_font_struct,
         },
     },
 };

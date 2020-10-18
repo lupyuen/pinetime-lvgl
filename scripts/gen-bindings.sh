@@ -184,7 +184,9 @@ function generate_bindings_font() {
         --whitelist-type     (?i)${whitelistname}.* \
         --whitelist-var      (?i)${whitelistname}.* \
         --blacklist-item     _lv_obj_t \
-        --blacklist-item     lv_style_t
+        --blacklist-item     lv_style_t \
+        --blacklist-item     _lv_font_struct \
+        --blacklist-item     lv_font_glyph_dsc_t
 EOF
 `
     #  Generate the bindings for lv_themes/lv_theme: libname, modname, submodname, headerfile, whitelist
@@ -243,7 +245,9 @@ function generate_bindings_themes() {
         --whitelist-function (?i)${whitelistname}.* \
         --whitelist-type     (?i)${whitelistname}.* \
         --blacklist-item     _lv_obj_t \
-        --blacklist-item     lv_style_t
+        --blacklist-item     lv_style_t \
+        --blacklist-item     _lv_font_struct \
+        --blacklist-item     lv_font_glyph_dsc_t
 EOF
 `
     #  Generate the bindings for lv_themes/lv_theme: libname, modname, submodname, headerfile, whitelist
