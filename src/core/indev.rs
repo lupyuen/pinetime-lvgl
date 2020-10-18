@@ -156,29 +156,6 @@ pub struct lv_area_t {
     pub x2: lv_coord_t,
     pub y2: lv_coord_t,
 }
-pub const LV_ALIGN_CENTER: lv_align_t = 0;
-pub const LV_ALIGN_IN_TOP_LEFT: lv_align_t = 1;
-pub const LV_ALIGN_IN_TOP_MID: lv_align_t = 2;
-pub const LV_ALIGN_IN_TOP_RIGHT: lv_align_t = 3;
-pub const LV_ALIGN_IN_BOTTOM_LEFT: lv_align_t = 4;
-pub const LV_ALIGN_IN_BOTTOM_MID: lv_align_t = 5;
-pub const LV_ALIGN_IN_BOTTOM_RIGHT: lv_align_t = 6;
-pub const LV_ALIGN_IN_LEFT_MID: lv_align_t = 7;
-pub const LV_ALIGN_IN_RIGHT_MID: lv_align_t = 8;
-pub const LV_ALIGN_OUT_TOP_LEFT: lv_align_t = 9;
-pub const LV_ALIGN_OUT_TOP_MID: lv_align_t = 10;
-pub const LV_ALIGN_OUT_TOP_RIGHT: lv_align_t = 11;
-pub const LV_ALIGN_OUT_BOTTOM_LEFT: lv_align_t = 12;
-pub const LV_ALIGN_OUT_BOTTOM_MID: lv_align_t = 13;
-pub const LV_ALIGN_OUT_BOTTOM_RIGHT: lv_align_t = 14;
-pub const LV_ALIGN_OUT_LEFT_TOP: lv_align_t = 15;
-pub const LV_ALIGN_OUT_LEFT_MID: lv_align_t = 16;
-pub const LV_ALIGN_OUT_LEFT_BOTTOM: lv_align_t = 17;
-pub const LV_ALIGN_OUT_RIGHT_TOP: lv_align_t = 18;
-pub const LV_ALIGN_OUT_RIGHT_MID: lv_align_t = 19;
-pub const LV_ALIGN_OUT_RIGHT_BOTTOM: lv_align_t = 20;
-#[doc = " Alignments"]
-pub type _bindgen_ty_3 = u32;
 pub type lv_align_t = u8;
 #[repr(C)]
 pub struct lv_color16_t {

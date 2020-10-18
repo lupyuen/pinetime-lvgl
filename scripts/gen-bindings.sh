@@ -2,6 +2,10 @@
 #  Generate Rust bindings for LVGL C API. Install "bindgen" before running:
 #  cargo install bindgen
 #  Also install rustfmt when prompted
+#  Ignore any "unused option" errors
+#    unused option: --whitelist-function (?i)...
+#    unused option: --whitelist-var (?i)...
+#    unused option: --whitelist-type (?i)...
 #  TODO: Remove derive[Debug]
 
 set -e  #  Exit when any command fails.
@@ -85,6 +89,12 @@ function generate_bindings_core() {
     local submodname=$1  # Submodule name e.g. obj
     local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
     local whitelistname=lv_$submodname
+    if [ "$submodname" == 'obj' ]; then
+        # For obj.rs, include the LV_ALIGN constants
+        local whitelistname2=lv_align
+    else
+        local whitelistname2=$whitelistname
+    fi
     #  TODO: Fix returned string lifetime for lv_obj_get_style_value_str.
     #  This function is probably not essential because our Rust app should already have the string.
     local whitelist=`cat << EOF
@@ -93,13 +103,12 @@ function generate_bindings_core() {
         --whitelist-function (?i)${whitelistname}.* \
         --whitelist-type     (?i)${whitelistname}.* \
         --whitelist-var      (?i)${whitelistname}.* \
-        --whitelist-function (?i)lv_align.* \
-        --whitelist-type     (?i)lv_align.* \
-        --whitelist-var      (?i)lv_align.* \
+        --whitelist-function (?i)${whitelistname2}.* \
+        --whitelist-type     (?i)${whitelistname2}.* \
+        --whitelist-var      (?i)${whitelistname2}.* \
         --blacklist-item     lv_obj_get_style_value_str
 EOF
-`
-    #  Generate the bindings for lv_core/lv_obj: libname, modname, submodname, headerfile, whitelist
+`    #  Generate the bindings for lv_core/lv_obj: libname, modname, submodname, headerfile, whitelist
     generate_bindings $libname $modname $submodname $headerfile $whitelist
 }
 
