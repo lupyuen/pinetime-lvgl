@@ -128,362 +128,12 @@ impl<T> ::core::cmp::PartialEq for __BindgenUnionField<T> {
     }
 }
 impl<T> ::core::cmp::Eq for __BindgenUnionField<T> {}
-pub const LV_HOR_RES_MAX: u32 = 240;
-pub const LV_VER_RES_MAX: u32 = 240;
-pub const LV_SCALE_RES: u32 = 1;
-pub const LV_COLOR_DEPTH: u32 = 16;
-pub const LV_COLOR_16_SWAP: u32 = 1;
-pub const LV_COLOR_SCREEN_TRANSP: u32 = 0;
-pub const LV_ANTIALIAS: u32 = 1;
-pub const LV_DISP_DEF_REFR_PERIOD: u32 = 30;
-pub const LV_DPI: u32 = 100;
-pub const LV_DISP_SMALL_LIMIT: u32 = 30;
-pub const LV_DISP_MEDIUM_LIMIT: u32 = 50;
-pub const LV_DISP_LARGE_LIMIT: u32 = 70;
-pub const LV_MEM_CUSTOM: u32 = 0;
-pub const LV_MEM_SIZE: u32 = 4096;
-pub const LV_MEM_ADR: u32 = 0;
-pub const LV_MEM_AUTO_DEFRAG: u32 = 1;
-pub const LV_ENABLE_GC: u32 = 0;
-pub const LV_INDEV_DEF_READ_PERIOD: u32 = 30;
-pub const LV_INDEV_DEF_DRAG_LIMIT: u32 = 10;
-pub const LV_INDEV_DEF_DRAG_THROW: u32 = 20;
-pub const LV_INDEV_DEF_LONG_PRESS_TIME: u32 = 400;
-pub const LV_INDEV_DEF_LONG_PRESS_REP_TIME: u32 = 100;
-pub const LV_INDEV_DEF_GESTURE_LIMIT: u32 = 50;
-pub const LV_INDEV_DEF_GESTURE_MIN_VELOCITY: u32 = 3;
-pub const LV_USE_ANIMATION: u32 = 1;
-pub const LV_USE_SHADOW: u32 = 0;
-pub const LV_USE_BLEND_MODES: u32 = 1;
-pub const LV_USE_OPA_SCALE: u32 = 1;
-pub const LV_USE_IMG_TRANSFORM: u32 = 1;
-pub const LV_USE_GROUP: u32 = 0;
-pub const LV_USE_GPU: u32 = 0;
-pub const LV_USE_GPU_STM32_DMA2D: u32 = 0;
-pub const LV_USE_FILESYSTEM: u32 = 0;
-pub const LV_USE_USER_DATA: u32 = 1;
-pub const LV_USE_PERF_MONITOR: u32 = 0;
-pub const LV_USE_API_EXTENSION_V6: u32 = 1;
-pub const LV_USE_API_EXTENSION_V7: u32 = 1;
-pub const LV_IMG_CF_INDEXED: u32 = 1;
-pub const LV_IMG_CF_ALPHA: u32 = 1;
-pub const LV_IMG_CACHE_DEF_SIZE: u32 = 1;
-pub const LV_BIG_ENDIAN_SYSTEM: u32 = 0;
-pub const LV_TICK_CUSTOM: u32 = 0;
-pub const LV_USE_LOG: u32 = 0;
-pub const LV_USE_DEBUG: u32 = 0;
-pub const LV_FONT_MONTSERRAT_12: u32 = 0;
-pub const LV_FONT_MONTSERRAT_14: u32 = 0;
-pub const LV_FONT_MONTSERRAT_16: u32 = 0;
-pub const LV_FONT_MONTSERRAT_18: u32 = 0;
-pub const LV_FONT_MONTSERRAT_20: u32 = 0;
-pub const LV_FONT_MONTSERRAT_22: u32 = 0;
-pub const LV_FONT_MONTSERRAT_24: u32 = 1;
-pub const LV_FONT_MONTSERRAT_26: u32 = 0;
-pub const LV_FONT_MONTSERRAT_28: u32 = 0;
-pub const LV_FONT_MONTSERRAT_30: u32 = 0;
-pub const LV_FONT_MONTSERRAT_32: u32 = 1;
-pub const LV_FONT_MONTSERRAT_34: u32 = 0;
-pub const LV_FONT_MONTSERRAT_36: u32 = 0;
-pub const LV_FONT_MONTSERRAT_38: u32 = 0;
-pub const LV_FONT_MONTSERRAT_40: u32 = 0;
-pub const LV_FONT_MONTSERRAT_42: u32 = 0;
-pub const LV_FONT_MONTSERRAT_44: u32 = 0;
-pub const LV_FONT_MONTSERRAT_46: u32 = 0;
-pub const LV_FONT_MONTSERRAT_48: u32 = 0;
-pub const LV_FONT_MONTSERRAT_12_SUBPX: u32 = 0;
-pub const LV_FONT_MONTSERRAT_28_COMPRESSED: u32 = 0;
-pub const LV_FONT_DEJAVU_16_PERSIAN_HEBREW: u32 = 0;
-pub const LV_FONT_SIMSUN_16_CJK: u32 = 0;
-pub const LV_FONT_UNSCII_8: u32 = 0;
-pub const LV_FONT_FMT_TXT_LARGE: u32 = 0;
-pub const LV_FONT_SUBPX_BGR: u32 = 0;
-pub const LV_USE_THEME_EMPTY: u32 = 1;
-pub const LV_USE_THEME_TEMPLATE: u32 = 1;
-pub const LV_USE_THEME_MATERIAL: u32 = 1;
-pub const LV_USE_THEME_MONO: u32 = 1;
-pub const LV_TXT_BREAK_CHARS: &'static [u8; 8usize] = b" ,.;:-_\0";
-pub const LV_TXT_LINE_BREAK_LONG_LEN: u32 = 12;
-pub const LV_TXT_LINE_BREAK_LONG_PRE_MIN_LEN: u32 = 3;
-pub const LV_TXT_LINE_BREAK_LONG_POST_MIN_LEN: u32 = 3;
-pub const LV_TXT_COLOR_CMD: &'static [u8; 2usize] = b"#\0";
-pub const LV_USE_BIDI: u32 = 0;
-pub const LV_USE_ARABIC_PERSIAN_CHARS: u32 = 0;
-pub const LV_SPRINTF_CUSTOM: u32 = 0;
-pub const LV_SPRINTF_DISABLE_FLOAT: u32 = 1;
-pub const LV_USE_USER_DATA_FREE: u32 = 0;
-pub const LV_USE_OBJ_REALIGN: u32 = 1;
-pub const LV_USE_ARC: u32 = 1;
-pub const LV_USE_BAR: u32 = 1;
-pub const LV_USE_BTN: u32 = 1;
-pub const LV_USE_BTNMATRIX: u32 = 1;
-pub const LV_USE_CALENDAR: u32 = 1;
-pub const LV_CALENDAR_WEEK_STARTS_MONDAY: u32 = 0;
-pub const LV_USE_CANVAS: u32 = 1;
-pub const LV_USE_CHECKBOX: u32 = 1;
-pub const LV_USE_CHART: u32 = 1;
-pub const LV_CHART_AXIS_TICK_LABEL_MAX_LEN: u32 = 256;
-pub const LV_USE_CONT: u32 = 1;
-pub const LV_USE_CPICKER: u32 = 1;
-pub const LV_USE_DROPDOWN: u32 = 1;
-pub const LV_DROPDOWN_DEF_ANIM_TIME: u32 = 200;
-pub const LV_USE_GAUGE: u32 = 1;
-pub const LV_USE_IMG: u32 = 1;
-pub const LV_USE_IMGBTN: u32 = 1;
-pub const LV_IMGBTN_TILED: u32 = 0;
-pub const LV_USE_KEYBOARD: u32 = 1;
-pub const LV_USE_LABEL: u32 = 1;
-pub const LV_LABEL_DEF_SCROLL_SPEED: u32 = 25;
-pub const LV_LABEL_WAIT_CHAR_COUNT: u32 = 3;
-pub const LV_LABEL_TEXT_SEL: u32 = 0;
-pub const LV_LABEL_LONG_TXT_HINT: u32 = 0;
-pub const LV_USE_LED: u32 = 1;
-pub const LV_LED_BRIGHT_MIN: u32 = 120;
-pub const LV_LED_BRIGHT_MAX: u32 = 255;
-pub const LV_USE_LINE: u32 = 1;
-pub const LV_USE_LIST: u32 = 1;
-pub const LV_LIST_DEF_ANIM_TIME: u32 = 100;
-pub const LV_USE_LINEMETER: u32 = 1;
-pub const LV_LINEMETER_PRECISE: u32 = 0;
-pub const LV_USE_OBJMASK: u32 = 1;
-pub const LV_USE_MSGBOX: u32 = 1;
-pub const LV_USE_PAGE: u32 = 1;
-pub const LV_PAGE_DEF_ANIM_TIME: u32 = 400;
-pub const LV_USE_SPINNER: u32 = 1;
-pub const LV_SPINNER_DEF_ARC_LENGTH: u32 = 60;
-pub const LV_SPINNER_DEF_SPIN_TIME: u32 = 1000;
-pub const LV_USE_ROLLER: u32 = 1;
-pub const LV_ROLLER_DEF_ANIM_TIME: u32 = 200;
-pub const LV_ROLLER_INF_PAGES: u32 = 7;
-pub const LV_USE_SLIDER: u32 = 1;
-pub const LV_USE_SPINBOX: u32 = 1;
-pub const LV_USE_SWITCH: u32 = 1;
-pub const LV_USE_TEXTAREA: u32 = 1;
-pub const LV_TEXTAREA_DEF_CURSOR_BLINK_TIME: u32 = 400;
-pub const LV_TEXTAREA_DEF_PWD_SHOW_TIME: u32 = 1500;
-pub const LV_USE_TABLE: u32 = 1;
-pub const LV_TABLE_COL_MAX: u32 = 12;
-pub const LV_USE_TABVIEW: u32 = 1;
-pub const LV_TABVIEW_DEF_ANIM_TIME: u32 = 300;
-pub const LV_USE_TILEVIEW: u32 = 1;
-pub const LV_TILEVIEW_DEF_ANIM_TIME: u32 = 300;
-pub const LV_USE_WIN: u32 = 1;
-pub const LV_MEMCPY_MEMSET_STD: u32 = 0;
-pub const LV_USE_OUTLINE: u32 = 1;
-pub const LV_USE_PATTERN: u32 = 1;
-pub const LV_USE_VALUE_STR: u32 = 1;
-pub const LV_FONT_MONTSERRAT_8: u32 = 0;
-pub const LV_FONT_MONTSERRAT_10: u32 = 0;
-pub const LV_USE_FONT_COMPRESSED: u32 = 1;
-pub const LV_USE_FONT_SUBPX: u32 = 1;
-pub const LV_SYMBOL_AUDIO: &'static [u8; 4usize] = b"\xEF\x80\x81\0";
-pub const LV_SYMBOL_VIDEO: &'static [u8; 4usize] = b"\xEF\x80\x88\0";
-pub const LV_SYMBOL_LIST: &'static [u8; 4usize] = b"\xEF\x80\x8B\0";
-pub const LV_SYMBOL_OK: &'static [u8; 4usize] = b"\xEF\x80\x8C\0";
-pub const LV_SYMBOL_CLOSE: &'static [u8; 4usize] = b"\xEF\x80\x8D\0";
-pub const LV_SYMBOL_POWER: &'static [u8; 4usize] = b"\xEF\x80\x91\0";
-pub const LV_SYMBOL_SETTINGS: &'static [u8; 4usize] = b"\xEF\x80\x93\0";
-pub const LV_SYMBOL_HOME: &'static [u8; 4usize] = b"\xEF\x80\x95\0";
-pub const LV_SYMBOL_DOWNLOAD: &'static [u8; 4usize] = b"\xEF\x80\x99\0";
-pub const LV_SYMBOL_DRIVE: &'static [u8; 4usize] = b"\xEF\x80\x9C\0";
-pub const LV_SYMBOL_REFRESH: &'static [u8; 4usize] = b"\xEF\x80\xA1\0";
-pub const LV_SYMBOL_MUTE: &'static [u8; 4usize] = b"\xEF\x80\xA6\0";
-pub const LV_SYMBOL_VOLUME_MID: &'static [u8; 4usize] = b"\xEF\x80\xA7\0";
-pub const LV_SYMBOL_VOLUME_MAX: &'static [u8; 4usize] = b"\xEF\x80\xA8\0";
-pub const LV_SYMBOL_IMAGE: &'static [u8; 4usize] = b"\xEF\x80\xBE\0";
-pub const LV_SYMBOL_EDIT: &'static [u8; 4usize] = b"\xEF\x8C\x84\0";
-pub const LV_SYMBOL_PREV: &'static [u8; 4usize] = b"\xEF\x81\x88\0";
-pub const LV_SYMBOL_PLAY: &'static [u8; 4usize] = b"\xEF\x81\x8B\0";
-pub const LV_SYMBOL_PAUSE: &'static [u8; 4usize] = b"\xEF\x81\x8C\0";
-pub const LV_SYMBOL_STOP: &'static [u8; 4usize] = b"\xEF\x81\x8D\0";
-pub const LV_SYMBOL_NEXT: &'static [u8; 4usize] = b"\xEF\x81\x91\0";
-pub const LV_SYMBOL_EJECT: &'static [u8; 4usize] = b"\xEF\x81\x92\0";
-pub const LV_SYMBOL_LEFT: &'static [u8; 4usize] = b"\xEF\x81\x93\0";
-pub const LV_SYMBOL_RIGHT: &'static [u8; 4usize] = b"\xEF\x81\x94\0";
-pub const LV_SYMBOL_PLUS: &'static [u8; 4usize] = b"\xEF\x81\xA7\0";
-pub const LV_SYMBOL_MINUS: &'static [u8; 4usize] = b"\xEF\x81\xA8\0";
-pub const LV_SYMBOL_EYE_OPEN: &'static [u8; 4usize] = b"\xEF\x81\xAE\0";
-pub const LV_SYMBOL_EYE_CLOSE: &'static [u8; 4usize] = b"\xEF\x81\xB0\0";
-pub const LV_SYMBOL_WARNING: &'static [u8; 4usize] = b"\xEF\x81\xB1\0";
-pub const LV_SYMBOL_SHUFFLE: &'static [u8; 4usize] = b"\xEF\x81\xB4\0";
-pub const LV_SYMBOL_UP: &'static [u8; 4usize] = b"\xEF\x81\xB7\0";
-pub const LV_SYMBOL_DOWN: &'static [u8; 4usize] = b"\xEF\x81\xB8\0";
-pub const LV_SYMBOL_LOOP: &'static [u8; 4usize] = b"\xEF\x81\xB9\0";
-pub const LV_SYMBOL_DIRECTORY: &'static [u8; 4usize] = b"\xEF\x81\xBB\0";
-pub const LV_SYMBOL_UPLOAD: &'static [u8; 4usize] = b"\xEF\x82\x93\0";
-pub const LV_SYMBOL_CALL: &'static [u8; 4usize] = b"\xEF\x82\x95\0";
-pub const LV_SYMBOL_CUT: &'static [u8; 4usize] = b"\xEF\x83\x84\0";
-pub const LV_SYMBOL_COPY: &'static [u8; 4usize] = b"\xEF\x83\x85\0";
-pub const LV_SYMBOL_SAVE: &'static [u8; 4usize] = b"\xEF\x83\x87\0";
-pub const LV_SYMBOL_CHARGE: &'static [u8; 4usize] = b"\xEF\x83\xA7\0";
-pub const LV_SYMBOL_PASTE: &'static [u8; 4usize] = b"\xEF\x83\xAA\0";
-pub const LV_SYMBOL_BELL: &'static [u8; 4usize] = b"\xEF\x83\xB3\0";
-pub const LV_SYMBOL_KEYBOARD: &'static [u8; 4usize] = b"\xEF\x84\x9C\0";
-pub const LV_SYMBOL_GPS: &'static [u8; 4usize] = b"\xEF\x84\xA4\0";
-pub const LV_SYMBOL_FILE: &'static [u8; 4usize] = b"\xEF\x85\x9B\0";
-pub const LV_SYMBOL_WIFI: &'static [u8; 4usize] = b"\xEF\x87\xAB\0";
-pub const LV_SYMBOL_BATTERY_FULL: &'static [u8; 4usize] = b"\xEF\x89\x80\0";
-pub const LV_SYMBOL_BATTERY_3: &'static [u8; 4usize] = b"\xEF\x89\x81\0";
-pub const LV_SYMBOL_BATTERY_2: &'static [u8; 4usize] = b"\xEF\x89\x82\0";
-pub const LV_SYMBOL_BATTERY_1: &'static [u8; 4usize] = b"\xEF\x89\x83\0";
-pub const LV_SYMBOL_BATTERY_EMPTY: &'static [u8; 4usize] = b"\xEF\x89\x84\0";
-pub const LV_SYMBOL_USB: &'static [u8; 4usize] = b"\xEF\x8A\x87\0";
-pub const LV_SYMBOL_BLUETOOTH: &'static [u8; 4usize] = b"\xEF\x8A\x93\0";
-pub const LV_SYMBOL_TRASH: &'static [u8; 4usize] = b"\xEF\x8B\xAD\0";
-pub const LV_SYMBOL_BACKSPACE: &'static [u8; 4usize] = b"\xEF\x95\x9A\0";
-pub const LV_SYMBOL_SD_CARD: &'static [u8; 4usize] = b"\xEF\x9F\x82\0";
-pub const LV_SYMBOL_NEW_LINE: &'static [u8; 4usize] = b"\xEF\xA2\xA2\0";
-pub const LV_SYMBOL_DUMMY: &'static [u8; 4usize] = b"\xEF\xA3\xBF\0";
-pub const LV_SYMBOL_BULLET: &'static [u8; 4usize] = b"\xE2\x80\xA2\0";
-pub const LV_LOG_LEVEL_TRACE: u32 = 0;
-pub const LV_LOG_LEVEL_INFO: u32 = 1;
-pub const LV_LOG_LEVEL_WARN: u32 = 2;
-pub const LV_LOG_LEVEL_ERROR: u32 = 3;
-pub const LV_LOG_LEVEL_USER: u32 = 4;
-pub const LV_LOG_LEVEL_NONE: u32 = 5;
-pub const LV_MEM_BUF_MAX_NUM: u32 = 16;
-pub const LV_FONT_WIDTH_FRACT_DIGIT: u32 = 4;
-pub const LV_FONT_KERN_POSITIVE: u32 = 0;
-pub const LV_FONT_KERN_NEGATIVE: u32 = 1;
-pub const LV_TRIGO_SIN_MAX: u32 = 32767;
-pub const LV_TRIGO_SHIFT: u32 = 15;
-pub const LV_BEZIER_VAL_MAX: u32 = 1024;
-pub const LV_BEZIER_VAL_SHIFT: u32 = 10;
-pub const LV_OPA_MIN: u32 = 2;
-pub const LV_OPA_MAX: u32 = 253;
-pub const LV_COLOR_SIZE: u32 = 16;
-pub const LV_COLOR_MIX_ROUND_OFS: u32 = 128;
-pub const LV_ANIM_REPEAT_INFINITE: u32 = 65535;
-pub const LV_MASK_ID_INV: i32 = -1;
-pub const LV_RADIUS_CIRCLE: u32 = 32767;
-pub const LV_DEBUG_STYLE_SENTINEL_VALUE: u32 = 579381998;
-pub const LV_DEBUG_STYLE_LIST_SENTINEL_VALUE: u32 = 2574765243;
-pub const LV_STYLE_ID_MASK: u32 = 255;
-pub const LV_STYLE_ATTR_NONE: u32 = 0;
-pub const LV_STYLE_ATTR_INHERIT: u32 = 128;
-pub const LV_STYLE_TRANS_NUM_MAX: u32 = 6;
-pub const LV_STYLE_PROP_ALL: u32 = 255;
-pub const LV_STYLE_ID_VALUE: u32 = 0;
-pub const LV_STYLE_ID_COLOR: u32 = 9;
-pub const LV_STYLE_ID_OPA: u32 = 12;
-pub const LV_STYLE_ID_PTR: u32 = 14;
-pub const LV_STYLE_STATE_POS: u32 = 8;
-pub const LV_STYLE_STATE_MASK: u32 = 32512;
-pub const LV_STYLE_INHERIT_MASK: u32 = 32768;
-pub const LV_NO_TASK_READY: u32 = 4294967295;
-pub const LV_INV_BUF_SIZE: u32 = 32;
-pub const LV_BIDI_LRO: &'static [u8; 4usize] = b"\xE2\x80\xAD\0";
-pub const LV_BIDI_RLO: &'static [u8; 4usize] = b"\xE2\x80\xAE\0";
-pub const LV_TXT_ENC_UTF8: u32 = 1;
-pub const LV_TXT_ENC_ASCII: u32 = 2;
-pub const LV_DRAW_LABEL_NO_TXT_SEL: u32 = 65535;
-pub const LV_IMG_PX_SIZE_ALPHA_BYTE: u32 = 3;
-pub const LV_IMG_ZOOM_NONE: u32 = 256;
-pub const LV_MAX_ANCESTOR_NUM: u32 = 8;
-pub const LV_EXT_CLICK_AREA_OFF: u32 = 0;
-pub const LV_EXT_CLICK_AREA_TINY: u32 = 1;
-pub const LV_EXT_CLICK_AREA_FULL: u32 = 2;
 pub type lv_coord_t = i16;
 pub type lv_anim_user_data_t = *mut ::cty::c_void;
-pub type lv_img_decoder_user_data_t = *mut ::cty::c_void;
 pub type lv_disp_drv_user_data_t = *mut ::cty::c_void;
-pub type lv_indev_drv_user_data_t = *mut ::cty::c_void;
 pub type lv_font_user_data_t = *mut ::cty::c_void;
 pub type lv_obj_user_data_t = *mut ::cty::c_void;
-pub type lv_log_level_t = i8;
-pub const LV_RES_INV: _bindgen_ty_2 = 0;
-pub const LV_RES_OK: _bindgen_ty_2 = 1;
-#[doc = " LVGL error codes."]
-pub type _bindgen_ty_2 = u32;
 pub type lv_res_t = u8;
-pub type lv_uintptr_t = usize;
-#[doc = " Heap information structure."]
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_mem_monitor_t {
-    #[doc = "< Total heap size"]
-    pub total_size: u32,
-    pub free_cnt: u32,
-    #[doc = "< Size of available memory"]
-    pub free_size: u32,
-    pub free_biggest_size: u32,
-    pub used_cnt: u32,
-    #[doc = "< Max size of Heap memory used"]
-    pub max_used: u32,
-    #[doc = "< Percentage used"]
-    pub used_pct: u8,
-    #[doc = "< Amount of fragmentation"]
-    pub frag_pct: u8,
-}
-#[repr(C)]
-pub struct lv_mem_buf_t {
-    pub p: *mut ::cty::c_void,
-    pub size: u16,
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-    pub __bindgen_padding_0: [u8; 5usize],
-}
-impl Default for lv_mem_buf_t {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-impl lv_mem_buf_t {
-    #[inline]
-    pub fn used(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_used(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(0usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn new_bitfield_1(used: u8) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
-            Default::default();
-        __bindgen_bitfield_unit.set(0usize, 1u8, {
-            let used: u8 = unsafe { ::core::mem::transmute(used) };
-            used as u64
-        });
-        __bindgen_bitfield_unit
-    }
-}
-pub type lv_mem_buf_arr_t = [lv_mem_buf_t; 16usize];
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Allocate a memory dynamically"]
-    #[doc = " - __`size`__: size of the memory to allocate in bytes"]
-    #[doc = " Return: pointer to the allocated memory"]
-    pub fn lv_mem_alloc(size: usize) -> *mut ::cty::c_void;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Free an allocated data"]
-    #[doc = " - __`data`__: pointer to an allocated memory"]
-    pub fn lv_mem_free(data: *const ::cty::c_void);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Reallocate a memory with a new size. The old content will be kept."]
-    #[doc = " - __`data`__: pointer to an allocated memory."]
-    #[doc = " Its content will be copied to the new memory block and freed"]
-    #[doc = " - __`new_size`__: the desired new size in byte"]
-    #[doc = " Return: pointer to the new memory"]
-    pub fn lv_mem_realloc(data_p: *mut ::cty::c_void, new_size: usize) -> *mut ::cty::c_void;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Join the adjacent free memory blocks"]
-    pub fn lv_mem_defrag();
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " @return"]
-    pub fn lv_mem_test() -> lv_res_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Give information about the work memory of dynamic allocation"]
-    #[doc = " - __`mon_p`__: pointer to a dm_mon_p variable,"]
-    #[doc = "              the result of the analysis will be stored here"]
-    pub fn lv_mem_monitor(mon_p: *mut lv_mem_monitor_t);
-}
 #[doc = " Represents a point on the screen."]
 #[repr(C)]
 #[derive(Default)]
@@ -524,57 +174,6 @@ pub const LV_ALIGN_OUT_RIGHT_BOTTOM: lv_align_t = 20;
 #[doc = " Alignments"]
 pub type _bindgen_ty_3 = u32;
 pub type lv_align_t = u8;
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Initialize an area"]
-    #[doc = " - __`area_p`__: pointer to an area"]
-    #[doc = " - __`x1`__: left coordinate of the area"]
-    #[doc = " - __`y1`__: top coordinate of the area"]
-    #[doc = " - __`x2`__: right coordinate of the area"]
-    #[doc = " - __`y2`__: bottom coordinate of the area"]
-    pub fn lv_area_set(
-        area_p: *mut lv_area_t,
-        x1: lv_coord_t,
-        y1: lv_coord_t,
-        x2: lv_coord_t,
-        y2: lv_coord_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Copy an area"]
-    #[doc = " - __`dest`__: pointer to the destination area"]
-    #[doc = " - __`src`__: pointer to the source area"]
-    pub fn lv_area_copy(dest: *mut lv_area_t, src: *const lv_area_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the width of an area"]
-    #[doc = " - __`area_p`__: pointer to an area"]
-    #[doc = " Return: the width of the area (if x1 == x2 -> width = 1)"]
-    pub fn lv_area_get_width(area_p: *const lv_area_t) -> lv_coord_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the height of an area"]
-    #[doc = " - __`area_p`__: pointer to an area"]
-    #[doc = " Return: the height of the area (if y1 == y2 -> height = 1)"]
-    pub fn lv_area_get_height(area_p: *const lv_area_t) -> lv_coord_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set the width of an area"]
-    #[doc = " - __`area_p`__: pointer to an area"]
-    #[doc = " - __`w`__: the new width of the area (w == 1 makes x1 == x2)"]
-    pub fn lv_area_set_width(area_p: *mut lv_area_t, w: lv_coord_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set the height of an area"]
-    #[doc = " - __`area_p`__: pointer to an area"]
-    #[doc = " - __`h`__: the new height of the area (h == 1 makes y1 == y2)"]
-    pub fn lv_area_set_height(area_p: *mut lv_area_t, h: lv_coord_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Return with area of an area (x * y)"]
-    #[doc = " - __`area_p`__: pointer to an area"]
-    #[doc = " Return: size of area"]
-    pub fn lv_area_get_size(area_p: *const lv_area_t) -> u32;
-}
 #[doc = " Describes the properties of a glyph."]
 #[repr(C)]
 #[derive(Default)]
@@ -592,13 +191,6 @@ pub struct lv_font_glyph_dsc_t {
     #[doc = "< Bit-per-pixel: 1, 2, 4, 8"]
     pub bpp: u8,
 }
-pub const LV_FONT_SUBPX_NONE: _bindgen_ty_4 = 0;
-pub const LV_FONT_SUBPX_HOR: _bindgen_ty_4 = 1;
-pub const LV_FONT_SUBPX_VER: _bindgen_ty_4 = 2;
-pub const LV_FONT_SUBPX_BOTH: _bindgen_ty_4 = 3;
-#[doc = " The bitmaps might be upscaled by 3 to achieve subpixel rendering."]
-pub type _bindgen_ty_4 = u32;
-pub type lv_font_subpx_t = u8;
 #[doc = " Describe the properties of a font"]
 #[repr(C)]
 pub struct _lv_font_struct {
@@ -658,213 +250,6 @@ impl _lv_font_struct {
     }
 }
 pub type lv_font_t = _lv_font_struct;
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Return with the bitmap of a font."]
-    #[doc = " - __`font_p`__: pointer to a font"]
-    #[doc = " - __`letter`__: an UNICODE character code"]
-    #[doc = " Return:  pointer to the bitmap of the letter"]
-    pub fn lv_font_get_glyph_bitmap(font_p: *const lv_font_t, letter: u32) -> *const u8;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the descriptor of a glyph"]
-    #[doc = " - __`font_p`__: pointer to font"]
-    #[doc = " - __`dsc_out`__: store the result descriptor here"]
-    #[doc = " - __`letter`__: an UNICODE letter code"]
-    #[doc = " Return: true: descriptor is successfully loaded into `dsc_out`."]
-    #[doc = "         false: the letter was not found, no data is loaded to `dsc_out`"]
-    pub fn lv_font_get_glyph_dsc(
-        font_p: *const lv_font_t,
-        dsc_out: *mut lv_font_glyph_dsc_t,
-        letter: u32,
-        letter_next: u32,
-    ) -> bool;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the width of a glyph with kerning"]
-    #[doc = " - __`font`__: pointer to a font"]
-    #[doc = " - __`letter`__: an UNICODE letter"]
-    #[doc = " - __`letter_next`__: the next letter after `letter`. Used for kerning"]
-    #[doc = " Return: the width of the glyph"]
-    pub fn lv_font_get_glyph_width(font: *const lv_font_t, letter: u32, letter_next: u32) -> u16;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the line height of a font. All characters fit into this height"]
-    #[doc = " - __`font_p`__: pointer to a font"]
-    #[doc = " Return: the height of a font"]
-    pub fn lv_font_get_line_height(font_p: *const lv_font_t) -> lv_coord_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub static mut lv_font_montserrat_24: lv_font_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub static mut lv_font_montserrat_32: lv_font_t;
-}
-#[doc = "      TYPEDEFS"]
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_sqrt_res_t {
-    pub i: u16,
-    pub f: u16,
-}
-pub const LV_OPA_TRANSP: _bindgen_ty_5 = 0;
-pub const LV_OPA_0: _bindgen_ty_5 = 0;
-pub const LV_OPA_10: _bindgen_ty_5 = 25;
-pub const LV_OPA_20: _bindgen_ty_5 = 51;
-pub const LV_OPA_30: _bindgen_ty_5 = 76;
-pub const LV_OPA_40: _bindgen_ty_5 = 102;
-pub const LV_OPA_50: _bindgen_ty_5 = 127;
-pub const LV_OPA_60: _bindgen_ty_5 = 153;
-pub const LV_OPA_70: _bindgen_ty_5 = 178;
-pub const LV_OPA_80: _bindgen_ty_5 = 204;
-pub const LV_OPA_90: _bindgen_ty_5 = 229;
-pub const LV_OPA_100: _bindgen_ty_5 = 255;
-pub const LV_OPA_COVER: _bindgen_ty_5 = 255;
-#[doc = " Opacity percentages."]
-pub type _bindgen_ty_5 = u32;
-#[doc = "      TYPEDEFS"]
-#[repr(C)]
-pub struct lv_color1_t {
-    pub ch: __BindgenUnionField<lv_color1_t__bindgen_ty_1>,
-    pub full: __BindgenUnionField<u8>,
-    pub bindgen_union_field: u8,
-}
-#[repr(C)]
-pub union lv_color1_t__bindgen_ty_1 {
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-    _bindgen_union_align: u8,
-}
-impl Default for lv_color1_t__bindgen_ty_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-impl lv_color1_t__bindgen_ty_1 {
-    #[inline]
-    pub fn blue(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_blue(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(0usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn green(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_green(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(1usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn red(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_red(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(2usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn new_bitfield_1(blue: u8, green: u8, red: u8) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
-            Default::default();
-        __bindgen_bitfield_unit.set(0usize, 1u8, {
-            let blue: u8 = unsafe { ::core::mem::transmute(blue) };
-            blue as u64
-        });
-        __bindgen_bitfield_unit.set(1usize, 1u8, {
-            let green: u8 = unsafe { ::core::mem::transmute(green) };
-            green as u64
-        });
-        __bindgen_bitfield_unit.set(2usize, 1u8, {
-            let red: u8 = unsafe { ::core::mem::transmute(red) };
-            red as u64
-        });
-        __bindgen_bitfield_unit
-    }
-}
-impl Default for lv_color1_t {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[repr(C)]
-pub struct lv_color8_t {
-    pub ch: __BindgenUnionField<lv_color8_t__bindgen_ty_1>,
-    pub full: __BindgenUnionField<u8>,
-    pub bindgen_union_field: u8,
-}
-#[repr(C, packed)]
-#[derive(Default)]
-pub struct lv_color8_t__bindgen_ty_1 {
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-}
-impl lv_color8_t__bindgen_ty_1 {
-    #[inline]
-    pub fn blue(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 2u8) as u8) }
-    }
-    #[inline]
-    pub fn set_blue(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(0usize, 2u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn green(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 3u8) as u8) }
-    }
-    #[inline]
-    pub fn set_green(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(2usize, 3u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn red(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 3u8) as u8) }
-    }
-    #[inline]
-    pub fn set_red(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(5usize, 3u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn new_bitfield_1(blue: u8, green: u8, red: u8) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
-            Default::default();
-        __bindgen_bitfield_unit.set(0usize, 2u8, {
-            let blue: u8 = unsafe { ::core::mem::transmute(blue) };
-            blue as u64
-        });
-        __bindgen_bitfield_unit.set(2usize, 3u8, {
-            let green: u8 = unsafe { ::core::mem::transmute(green) };
-            green as u64
-        });
-        __bindgen_bitfield_unit.set(5usize, 3u8, {
-            let red: u8 = unsafe { ::core::mem::transmute(red) };
-            red as u64
-        });
-        __bindgen_bitfield_unit
-    }
-}
-impl Default for lv_color8_t {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
 #[repr(C)]
 pub struct lv_color16_t {
     pub ch: __BindgenUnionField<lv_color16_t__bindgen_ty_1>,
@@ -955,141 +340,9 @@ impl Default for lv_color16_t {
         unsafe { ::core::mem::zeroed() }
     }
 }
-#[repr(C)]
-pub struct lv_color32_t {
-    pub ch: __BindgenUnionField<lv_color32_t__bindgen_ty_1>,
-    pub full: __BindgenUnionField<u32>,
-    pub bindgen_union_field: u32,
-}
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_color32_t__bindgen_ty_1 {
-    pub blue: u8,
-    pub green: u8,
-    pub red: u8,
-    pub alpha: u8,
-}
-impl Default for lv_color32_t {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-pub type lv_color_int_t = u16;
 pub type lv_color_t = lv_color16_t;
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_color_hsv_t {
-    pub h: u16,
-    pub s: u8,
-    pub v: u8,
-}
 #[doc = "! @cond Doxygen_Suppress"]
 pub type lv_opa_t = u8;
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " GLOBAL PROTOTYPES"]
-    pub fn lv_color_to1(color: lv_color_t) -> u8;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_color_to8(color: lv_color_t) -> u8;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_color_to16(color: lv_color_t) -> u16;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_color_to32(color: lv_color_t) -> u32;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Mix two colors with a given ratio."]
-    #[doc = " - __`c1`__: the first color to mix (usually the foreground)"]
-    #[doc = " - __`c2`__: the second color to mix (usually the background)"]
-    #[doc = " - __`mix`__: The ratio of the colors. 0: full `c2`, 255: full `c1`, 127: half `c1` and half`c2`"]
-    #[doc = " Return: the mixed color"]
-    pub fn lv_color_mix(c1: lv_color_t, c2: lv_color_t, mix: u8) -> lv_color_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_color_premult(c: lv_color_t, mix: u8, out: *mut u16);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Mix two colors with a given ratio. It runs faster then `lv_color_mix` but requires some pre computation."]
-    #[doc = " - __`c1`__: The first color. Should be preprocessed with `lv_color_premult(c1)`"]
-    #[doc = " - __`c2`__: The second color. As it is no pre computation required on it"]
-    #[doc = " - __`mix`__: The ratio of the colors. 0: full `c2`, 255: full `c1`, 127: half `c1` and half `c2`."]
-    #[doc = "            Should be modified like mix = `255 - mix`"]
-    #[doc = " Return: the mixed color"]
-    #[doc = " __Note:__ 255 won't give clearly `c1`."]
-    pub fn lv_color_mix_premult(premult_c1: *mut u16, c2: lv_color_t, mix: u8) -> lv_color_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Mix two colors. Both color can have alpha value. It requires ARGB888 colors."]
-    #[doc = " - __`bg_color`__: background color"]
-    #[doc = " - __`bg_opa`__: alpha of the background color"]
-    #[doc = " - __`fg_color`__: foreground color"]
-    #[doc = " - __`fg_opa`__: alpha of the foreground color"]
-    #[doc = " - __`res_color`__: the result color"]
-    #[doc = " - __`res_opa`__: the result opacity"]
-    pub fn lv_color_mix_with_alpha(
-        bg_color: lv_color_t,
-        bg_opa: lv_opa_t,
-        fg_color: lv_color_t,
-        fg_opa: lv_opa_t,
-        res_color: *mut lv_color_t,
-        res_opa: *mut lv_opa_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the brightness of a color"]
-    #[doc = " - __`color`__: a color"]
-    #[doc = " Return: the brightness [0..255]"]
-    pub fn lv_color_brightness(color: lv_color_t) -> u8;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_color_make(r: u8, g: u8, b: u8) -> lv_color_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_color_hex(c: u32) -> lv_color_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_color_hex3(c: u32) -> lv_color_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = "! @cond Doxygen_Suppress"]
-    #[doc = "!"]
-    pub fn lv_color_fill(buf: *mut lv_color_t, color: lv_color_t, px_num: u32);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = "! @endcond"]
-    pub fn lv_color_lighten(c: lv_color_t, lvl: lv_opa_t) -> lv_color_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_color_darken(c: lv_color_t, lvl: lv_opa_t) -> lv_color_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Convert a HSV color to RGB"]
-    #[doc = " - __`h`__: hue [0..359]"]
-    #[doc = " - __`s`__: saturation [0..100]"]
-    #[doc = " - __`v`__: value [0..100]"]
-    #[doc = " Return: the given RGB color in RGB (with LV_COLOR_DEPTH depth)"]
-    pub fn lv_color_hsv_to_rgb(h: u16, s: u8, v: u8) -> lv_color_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Convert a 32-bit RGB color to HSV"]
-    #[doc = " - __`r8`__: 8-bit red"]
-    #[doc = " - __`g8`__: 8-bit green"]
-    #[doc = " - __`b8`__: 8-bit blue"]
-    #[doc = " Return: the given RGB color in HSV"]
-    pub fn lv_color_rgb_to_hsv(r8: u8, g8: u8, b8: u8) -> lv_color_hsv_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Convert a color to HSV"]
-    #[doc = " - __`color`__: color"]
-    #[doc = " Return: the given color in HSV"]
-    pub fn lv_color_to_hsv(color: lv_color_t) -> lv_color_hsv_t;
-}
-pub const LV_ANIM_OFF: _bindgen_ty_6 = 0;
-pub const LV_ANIM_ON: _bindgen_ty_6 = 1;
-#[doc = " Can be used to indicate if animations are enabled or disabled in a case"]
-pub type _bindgen_ty_6 = u32;
-pub type lv_anim_enable_t = u8;
 #[doc = " Type of the animated value"]
 pub type lv_anim_value_t = lv_coord_t;
 #[doc = " Get the current value during an animation"]
@@ -1115,10 +368,6 @@ pub type lv_anim_path_t = _lv_anim_path_t;
 #[doc = " it doesn't receive `lv_anim_t *` as its first argument"]
 pub type lv_anim_exec_xcb_t =
     ::core::option::Option<unsafe extern "C" fn(arg1: *mut ::cty::c_void, arg2: lv_anim_value_t)>;
-#[doc = " Same as `lv_anim_exec_xcb_t` but receives `lv_anim_t *` as the first parameter."]
-#[doc = " It's more consistent but less convenient. Might be used by binding generator functions."]
-pub type lv_anim_custom_exec_cb_t =
-    ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_anim_t, arg2: lv_anim_value_t)>;
 #[doc = " Callback to call when the animation is ready"]
 pub type lv_anim_ready_cb_t = ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_anim_t)>;
 #[doc = " Callback to call when the animation really stars (considering `delay`)"]
@@ -1229,710 +478,11 @@ impl _lv_anim_t {
     }
 }
 pub type lv_anim_t = _lv_anim_t;
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Initialize an animation variable."]
-    #[doc = " E.g.:"]
-    #[doc = " lv_anim_t a;"]
-    #[doc = " lv_anim_init(&a);"]
-    #[doc = " lv_anim_set_...(&a);"]
-    #[doc = " - __`a`__: pointer to an `lv_anim_t` variable to initialize"]
-    pub fn lv_anim_init(a: *mut lv_anim_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set a variable to animate"]
-    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-    #[doc = " - __`var`__: pointer to a variable to animate"]
-    pub fn lv_anim_set_var(a: *mut lv_anim_t, var: *mut ::cty::c_void);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set a function to animate `var`"]
-    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-    #[doc = " - __`exec_cb`__: a function to execute during animation"]
-    #[doc = "                LittelvGL's built-in functions can be used."]
-    #[doc = "                E.g. lv_obj_set_x"]
-    pub fn lv_anim_set_exec_cb(a: *mut lv_anim_t, exec_cb: lv_anim_exec_xcb_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set the duration of an animation"]
-    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-    #[doc = " - __`duration`__: duration of the animation in milliseconds"]
-    pub fn lv_anim_set_time(a: *mut lv_anim_t, duration: u32);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set a delay before starting the animation"]
-    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-    #[doc = " - __`delay`__: delay before the animation in milliseconds"]
-    pub fn lv_anim_set_delay(a: *mut lv_anim_t, delay: u32);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set the start and end values of an animation"]
-    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-    #[doc = " - __`start`__: the start value"]
-    #[doc = " - __`end`__: the end value"]
-    pub fn lv_anim_set_values(a: *mut lv_anim_t, start: lv_anim_value_t, end: lv_anim_value_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Similar to `lv_anim_set_exec_cb` but `lv_anim_custom_exec_cb_t` receives"]
-    #[doc = " `lv_anim_t * ` as its first parameter instead of `void *`."]
-    #[doc = " This function might be used when LVGL is binded to other languages because"]
-    #[doc = " it's more consistent to have `lv_anim_t *` as first parameter."]
-    #[doc = " The variable to animate can be stored in the animation's `user_sata`"]
-    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-    #[doc = " - __`exec_cb`__: a function to execute."]
-    pub fn lv_anim_set_custom_exec_cb(a: *mut lv_anim_t, exec_cb: lv_anim_custom_exec_cb_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set the path (curve) of the animation."]
-    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-    #[doc = " - __`path_cb`__: a function the get the current value of the animation."]
-    #[doc = "                The built in functions starts with `lv_anim_path_...`"]
-    pub fn lv_anim_set_path(a: *mut lv_anim_t, path: *const lv_anim_path_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set a function call when the animation really starts (considering `delay`)"]
-    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-    #[doc = " - __`start_cb`__: a function call when the animation starts"]
-    pub fn lv_anim_set_start_cb(a: *mut lv_anim_t, start_cb: lv_anim_ready_cb_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set a function call when the animation is ready"]
-    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-    #[doc = " - __`ready_cb`__: a function call when the animation is ready"]
-    pub fn lv_anim_set_ready_cb(a: *mut lv_anim_t, ready_cb: lv_anim_ready_cb_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Make the animation to play back to when the forward direction is ready"]
-    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-    #[doc = " - __`time`__: the duration of the playback animation in in milliseconds. 0: disable playback"]
-    pub fn lv_anim_set_playback_time(a: *mut lv_anim_t, time: u16);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Make the animation to play back to when the forward direction is ready"]
-    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-    #[doc = " - __`delay`__: delay in milliseconds before starting the playback animation."]
-    pub fn lv_anim_set_playback_delay(a: *mut lv_anim_t, delay: u16);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Make the animation repeat itself."]
-    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-    #[doc = " - __`cnt`__: repeat count or `LV_ANIM_REPEAT_INFINITE` for infinite repetition. 0: to disable repetition."]
-    pub fn lv_anim_set_repeat_count(a: *mut lv_anim_t, cnt: u16);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set a delay before repeating the animation."]
-    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-    #[doc = " - __`delay`__: delay in milliseconds before repeating the animation."]
-    pub fn lv_anim_set_repeat_delay(a: *mut lv_anim_t, delay: u16);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Create an animation"]
-    #[doc = " - __`a`__: an initialized 'anim_t' variable. Not required after call."]
-    pub fn lv_anim_start(a: *mut lv_anim_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Initialize an animation path"]
-    #[doc = " - __`path`__: pointer to path"]
-    pub fn lv_anim_path_init(path: *mut lv_anim_path_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set a callback for a path"]
-    #[doc = " - __`path`__: pointer to an initialized path"]
-    #[doc = " - __`cb`__: the callback"]
-    pub fn lv_anim_path_set_cb(path: *mut lv_anim_path_t, cb: lv_anim_path_cb_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set a user data for a path"]
-    #[doc = " - __`path`__: pointer to an initialized path"]
-    #[doc = " - __`user_data`__: pointer to the user data"]
-    pub fn lv_anim_path_set_user_data(path: *mut lv_anim_path_t, user_data: *mut ::cty::c_void);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get a delay before starting the animation"]
-    #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-    #[doc = " Return: delay before the animation in milliseconds"]
-    pub fn lv_anim_get_delay(a: *mut lv_anim_t) -> i32;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Delete an animation of a variable with a given animator function"]
-    #[doc = " - __`var`__: pointer to variable"]
-    #[doc = " - __`exec_cb`__: a function pointer which is animating 'var',"]
-    #[doc = "           or NULL to ignore it and delete all the animations of 'var"]
-    #[doc = " Return: true: at least 1 animation is deleted, false: no animation is deleted"]
-    pub fn lv_anim_del(var: *mut ::cty::c_void, exec_cb: lv_anim_exec_xcb_t) -> bool;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the animation of a variable and its `exec_cb`."]
-    #[doc = " - __`var`__: pointer to variable"]
-    #[doc = " - __`exec_cb`__: a function pointer which is animating 'var',"]
-    #[doc = "           or NULL to delete all the animations of 'var'"]
-    #[doc = " Return: pointer to the animation."]
-    pub fn lv_anim_get(var: *mut ::cty::c_void, exec_cb: lv_anim_exec_xcb_t) -> *mut lv_anim_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Delete an animation by getting the animated variable from `a`."]
-    #[doc = " Only animations with `exec_cb` will be deleted."]
-    #[doc = " This function exists because it's logical that all anim. functions receives an"]
-    #[doc = " `lv_anim_t` as their first parameter. It's not practical in C but might make"]
-    #[doc = " the API more consequent and makes easier to generate bindings."]
-    #[doc = " - __`a`__: pointer to an animation."]
-    #[doc = " - __`exec_cb`__: a function pointer which is animating 'var',"]
-    #[doc = "           or NULL to ignore it and delete all the animations of 'var"]
-    #[doc = " Return: true: at least 1 animation is deleted, false: no animation is deleted"]
-    pub fn lv_anim_custom_del(a: *mut lv_anim_t, exec_cb: lv_anim_custom_exec_cb_t) -> bool;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the number of currently running animations"]
-    #[doc = " Return: the number of running animations"]
-    pub fn lv_anim_count_running() -> u16;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Calculate the time of an animation with a given speed and the start and end values"]
-    #[doc = " - __`speed`__: speed of animation in unit/sec"]
-    #[doc = " - __`start`__: start value of the animation"]
-    #[doc = " - __`end`__: end value of the animation"]
-    #[doc = " Return: the required time [ms] for the animation with the given parameters"]
-    pub fn lv_anim_speed_to_time(speed: u16, start: lv_anim_value_t, end: lv_anim_value_t) -> u16;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Manually refresh the state of the animations."]
-    #[doc = " Useful to make the animations running in a blocking process where"]
-    #[doc = " `lv_task_handler` can't run for a while."]
-    #[doc = " Shouldn't be used directly because it is called in `lv_refr_now()`."]
-    pub fn lv_anim_refr_now();
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Calculate the current value of an animation applying linear characteristic"]
-    #[doc = " - __`a`__: pointer to an animation"]
-    #[doc = " Return: the current value to set"]
-    pub fn lv_anim_path_linear(path: *const lv_anim_path_t, a: *const lv_anim_t)
-        -> lv_anim_value_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Calculate the current value of an animation slowing down the start phase"]
-    #[doc = " - __`a`__: pointer to an animation"]
-    #[doc = " Return: the current value to set"]
-    pub fn lv_anim_path_ease_in(
-        path: *const lv_anim_path_t,
-        a: *const lv_anim_t,
-    ) -> lv_anim_value_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Calculate the current value of an animation slowing down the end phase"]
-    #[doc = " - __`a`__: pointer to an animation"]
-    #[doc = " Return: the current value to set"]
-    pub fn lv_anim_path_ease_out(
-        path: *const lv_anim_path_t,
-        a: *const lv_anim_t,
-    ) -> lv_anim_value_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Calculate the current value of an animation applying an \"S\" characteristic (cosine)"]
-    #[doc = " - __`a`__: pointer to an animation"]
-    #[doc = " Return: the current value to set"]
-    pub fn lv_anim_path_ease_in_out(
-        path: *const lv_anim_path_t,
-        a: *const lv_anim_t,
-    ) -> lv_anim_value_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Calculate the current value of an animation with overshoot at the end"]
-    #[doc = " - __`a`__: pointer to an animation"]
-    #[doc = " Return: the current value to set"]
-    pub fn lv_anim_path_overshoot(
-        path: *const lv_anim_path_t,
-        a: *const lv_anim_t,
-    ) -> lv_anim_value_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Calculate the current value of an animation with 3 bounces"]
-    #[doc = " - __`a`__: pointer to an animation"]
-    #[doc = " Return: the current value to set"]
-    pub fn lv_anim_path_bounce(path: *const lv_anim_path_t, a: *const lv_anim_t)
-        -> lv_anim_value_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Calculate the current value of an animation applying step characteristic."]
-    #[doc = " (Set end value on the end of the animation)"]
-    #[doc = " - __`a`__: pointer to an animation"]
-    #[doc = " Return: the current value to set"]
-    pub fn lv_anim_path_step(path: *const lv_anim_path_t, a: *const lv_anim_t) -> lv_anim_value_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub static lv_anim_path_def: lv_anim_path_t;
-}
-pub const LV_DRAW_MASK_RES_TRANSP: _bindgen_ty_7 = 0;
-pub const LV_DRAW_MASK_RES_FULL_COVER: _bindgen_ty_7 = 1;
-pub const LV_DRAW_MASK_RES_CHANGED: _bindgen_ty_7 = 2;
-pub const LV_DRAW_MASK_RES_UNKNOWN: _bindgen_ty_7 = 3;
-#[doc = "      TYPEDEFS"]
-pub type _bindgen_ty_7 = u32;
-pub type lv_draw_mask_res_t = u8;
-pub const LV_DRAW_MASK_TYPE_LINE: _bindgen_ty_8 = 0;
-pub const LV_DRAW_MASK_TYPE_ANGLE: _bindgen_ty_8 = 1;
-pub const LV_DRAW_MASK_TYPE_RADIUS: _bindgen_ty_8 = 2;
-pub const LV_DRAW_MASK_TYPE_FADE: _bindgen_ty_8 = 3;
-pub const LV_DRAW_MASK_TYPE_MAP: _bindgen_ty_8 = 4;
-pub type _bindgen_ty_8 = u32;
-pub type lv_draw_mask_type_t = u8;
-pub const LV_DRAW_MASK_LINE_SIDE_LEFT: _bindgen_ty_9 = 0;
-pub const LV_DRAW_MASK_LINE_SIDE_RIGHT: _bindgen_ty_9 = 1;
-pub const LV_DRAW_MASK_LINE_SIDE_TOP: _bindgen_ty_9 = 2;
-pub const LV_DRAW_MASK_LINE_SIDE_BOTTOM: _bindgen_ty_9 = 3;
-pub type _bindgen_ty_9 = u32;
-#[doc = " A common callback type for every mask type."]
-#[doc = " Used internally by the library."]
-pub type lv_draw_mask_xcb_t = ::core::option::Option<
-    unsafe extern "C" fn(
-        mask_buf: *mut lv_opa_t,
-        abs_x: lv_coord_t,
-        abs_y: lv_coord_t,
-        len: lv_coord_t,
-        p: *mut ::cty::c_void,
-    ) -> lv_draw_mask_res_t,
->;
-pub type lv_draw_mask_line_side_t = u8;
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_draw_mask_common_dsc_t {
-    pub cb: lv_draw_mask_xcb_t,
-    pub type_: lv_draw_mask_type_t,
-}
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_draw_mask_line_param_t {
-    pub dsc: lv_draw_mask_common_dsc_t,
-    pub cfg: lv_draw_mask_line_param_t__bindgen_ty_1,
-    pub origo: lv_point_t,
-    pub xy_steep: i32,
-    pub yx_steep: i32,
-    pub steep: i32,
-    pub spx: i32,
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-    pub __bindgen_padding_0: [u8; 7usize],
-}
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_draw_mask_line_param_t__bindgen_ty_1 {
-    pub p1: lv_point_t,
-    pub p2: lv_point_t,
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-    pub __bindgen_padding_0: u8,
-}
-impl lv_draw_mask_line_param_t__bindgen_ty_1 {
-    #[inline]
-    pub fn side(&self) -> lv_draw_mask_line_side_t {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 2u8) as u8) }
-    }
-    #[inline]
-    pub fn set_side(&mut self, val: lv_draw_mask_line_side_t) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(0usize, 2u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn new_bitfield_1(
-        side: lv_draw_mask_line_side_t,
-    ) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
-            Default::default();
-        __bindgen_bitfield_unit.set(0usize, 2u8, {
-            let side: u8 = unsafe { ::core::mem::transmute(side) };
-            side as u64
-        });
-        __bindgen_bitfield_unit
-    }
-}
-impl lv_draw_mask_line_param_t {
-    #[inline]
-    pub fn flat(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_flat(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(0usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn inv(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_inv(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(1usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn new_bitfield_1(flat: u8, inv: u8) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
-            Default::default();
-        __bindgen_bitfield_unit.set(0usize, 1u8, {
-            let flat: u8 = unsafe { ::core::mem::transmute(flat) };
-            flat as u64
-        });
-        __bindgen_bitfield_unit.set(1usize, 1u8, {
-            let inv: u8 = unsafe { ::core::mem::transmute(inv) };
-            inv as u64
-        });
-        __bindgen_bitfield_unit
-    }
-}
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_draw_mask_angle_param_t {
-    pub dsc: lv_draw_mask_common_dsc_t,
-    pub cfg: lv_draw_mask_angle_param_t__bindgen_ty_1,
-    pub start_line: lv_draw_mask_line_param_t,
-    pub end_line: lv_draw_mask_line_param_t,
-    pub delta_deg: u16,
-}
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_draw_mask_angle_param_t__bindgen_ty_1 {
-    pub vertex_p: lv_point_t,
-    pub start_angle: lv_coord_t,
-    pub end_angle: lv_coord_t,
-}
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_draw_mask_radius_param_t {
-    pub dsc: lv_draw_mask_common_dsc_t,
-    pub cfg: lv_draw_mask_radius_param_t__bindgen_ty_1,
-    pub y_prev: i32,
-    pub y_prev_x: lv_sqrt_res_t,
-}
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_draw_mask_radius_param_t__bindgen_ty_1 {
-    pub rect: lv_area_t,
-    pub radius: lv_coord_t,
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-    pub __bindgen_padding_0: u8,
-}
-impl lv_draw_mask_radius_param_t__bindgen_ty_1 {
-    #[inline]
-    pub fn outer(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_outer(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(0usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn new_bitfield_1(outer: u8) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
-            Default::default();
-        __bindgen_bitfield_unit.set(0usize, 1u8, {
-            let outer: u8 = unsafe { ::core::mem::transmute(outer) };
-            outer as u64
-        });
-        __bindgen_bitfield_unit
-    }
-}
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_draw_mask_fade_param_t {
-    pub dsc: lv_draw_mask_common_dsc_t,
-    pub cfg: lv_draw_mask_fade_param_t__bindgen_ty_1,
-}
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_draw_mask_fade_param_t__bindgen_ty_1 {
-    pub coords: lv_area_t,
-    pub y_top: lv_coord_t,
-    pub y_bottom: lv_coord_t,
-    pub opa_top: lv_opa_t,
-    pub opa_bottom: lv_opa_t,
-}
-#[repr(C)]
-pub struct _lv_draw_mask_map_param_t {
-    pub dsc: lv_draw_mask_common_dsc_t,
-    pub cfg: _lv_draw_mask_map_param_t__bindgen_ty_1,
-}
-#[repr(C)]
-pub struct _lv_draw_mask_map_param_t__bindgen_ty_1 {
-    pub coords: lv_area_t,
-    pub map: *const lv_opa_t,
-}
-impl Default for _lv_draw_mask_map_param_t__bindgen_ty_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-impl Default for _lv_draw_mask_map_param_t {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-pub type lv_draw_mask_map_param_t = _lv_draw_mask_map_param_t;
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Add a draw mask. Everything drawn after it (until removing the mask) will be affected by the mask."]
-    #[doc = " - __`param`__: an initialized mask parameter. Only the pointer is saved."]
-    #[doc = " - __`custom_id`__: a custom pointer to identify the mask. Used in `lv_draw_mask_remove_custom`."]
-    #[doc = " Return: the an integer, the ID of the mask. Can be used in `lv_draw_mask_remove_id`."]
-    pub fn lv_draw_mask_add(param: *mut ::cty::c_void, custom_id: *mut ::cty::c_void) -> i16;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Apply the added buffers on a line. Used internally by the library's drawing routines."]
-    #[doc = " - __`mask_buf`__: store the result mask here. Has to be `len` byte long. Should be initialized with `0xFF`."]
-    #[doc = " - __`abs_x`__: absolute X coordinate where the line to calculate start"]
-    #[doc = " - __`abs_y`__: absolute Y coordinate where the line to calculate start"]
-    #[doc = " - __`len`__: length of the line to calculate (in pixel count)"]
-    #[doc = " Return: One of these values:"]
-    #[doc = " - `LV_DRAW_MASK_RES_FULL_TRANSP`: the whole line is transparent. `mask_buf` is not set to zero"]
-    #[doc = " - `LV_DRAW_MASK_RES_FULL_COVER`: the whole line is fully visible. `mask_buf` is unchanged"]
-    #[doc = " - `LV_DRAW_MASK_RES_CHANGED`: `mask_buf` has changed, it shows the desired opacity of each pixel in the given line"]
-    pub fn lv_draw_mask_apply(
-        mask_buf: *mut lv_opa_t,
-        abs_x: lv_coord_t,
-        abs_y: lv_coord_t,
-        len: lv_coord_t,
-    ) -> lv_draw_mask_res_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Remove a mask with a given ID"]
-    #[doc = " - __`id`__: the ID of the mask.  Returned by `lv_draw_mask_add`"]
-    #[doc = " Return: the parameter of the removed mask."]
-    #[doc = " If more masks have `custom_id` ID then the last mask's parameter will be returned"]
-    pub fn lv_draw_mask_remove_id(id: i16) -> *mut ::cty::c_void;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Remove all mask with a given custom ID"]
-    #[doc = " - __`custom_id`__: a pointer used in `lv_draw_mask_add`"]
-    #[doc = " Return: return the parameter of the removed mask."]
-    #[doc = " If more masks have `custom_id` ID then the last mask's parameter will be returned"]
-    pub fn lv_draw_mask_remove_custom(custom_id: *mut ::cty::c_void) -> *mut ::cty::c_void;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Count the currently added masks"]
-    #[doc = " Return: number of active masks"]
-    pub fn lv_draw_mask_get_cnt() -> u8;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = "Initialize a line mask from two points."]
-    #[doc = " - __`param`__: pointer to a `lv_draw_mask_param_t` to initialize"]
-    #[doc = " - __`p1x`__: X coordinate of the first point of the line"]
-    #[doc = " - __`p1y`__: Y coordinate of the first point of the line"]
-    #[doc = " - __`p2x`__: X coordinate of the second point of the line"]
-    #[doc = " - __`p2y`__: y coordinate of the second point of the line"]
-    #[doc = " - __`side`__: and element of `lv_draw_mask_line_side_t` to describe which side to keep."]
-    #[doc = " With `LV_DRAW_MASK_LINE_SIDE_LEFT/RIGHT` and horizontal line all pixels are kept"]
-    #[doc = " With `LV_DRAW_MASK_LINE_SIDE_TOP/BOTTOM` and vertical line all pixels are kept"]
-    pub fn lv_draw_mask_line_points_init(
-        param: *mut lv_draw_mask_line_param_t,
-        p1x: lv_coord_t,
-        p1y: lv_coord_t,
-        p2x: lv_coord_t,
-        p2y: lv_coord_t,
-        side: lv_draw_mask_line_side_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = "Initialize a line mask from a point and an angle."]
-    #[doc = " - __`param`__: pointer to a `lv_draw_mask_param_t` to initialize"]
-    #[doc = " - __`px`__: X coordinate of a point of the line"]
-    #[doc = " - __`py`__: X coordinate of a point of the line"]
-    #[doc = " - __`angle`__: right 0 deg, bottom: 90"]
-    #[doc = " - __`side`__: and element of `lv_draw_mask_line_side_t` to describe which side to keep."]
-    #[doc = " With `LV_DRAW_MASK_LINE_SIDE_LEFT/RIGHT` and horizontal line all pixels are kept"]
-    #[doc = " With `LV_DRAW_MASK_LINE_SIDE_TOP/BOTTOM` and vertical line all pixels are kept"]
-    pub fn lv_draw_mask_line_angle_init(
-        param: *mut lv_draw_mask_line_param_t,
-        p1x: lv_coord_t,
-        py: lv_coord_t,
-        angle: i16,
-        side: lv_draw_mask_line_side_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Initialize an angle mask."]
-    #[doc = " - __`param`__: pointer to a `lv_draw_mask_param_t` to initialize"]
-    #[doc = " - __`vertex_x`__: X coordinate of the angle vertex (absolute coordinates)"]
-    #[doc = " - __`vertex_y`__: Y coordinate of the angle vertex (absolute coordinates)"]
-    #[doc = " - __`start_angle`__: start angle in degrees. 0 deg on the right, 90 deg, on the bottom"]
-    #[doc = " - __`end_angle`__: end angle"]
-    pub fn lv_draw_mask_angle_init(
-        param: *mut lv_draw_mask_angle_param_t,
-        vertex_x: lv_coord_t,
-        vertex_y: lv_coord_t,
-        start_angle: lv_coord_t,
-        end_angle: lv_coord_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Initialize a fade mask."]
-    #[doc = " - __`param`__: param pointer to a `lv_draw_mask_param_t` to initialize"]
-    #[doc = " - __`rect`__: coordinates of the rectangle to affect (absolute coordinates)"]
-    #[doc = " - __`radius`__: radius of the rectangle"]
-    #[doc = " - __`inv:`__: true: keep the pixels inside the rectangle; keep the pixels outside of the rectangle"]
-    pub fn lv_draw_mask_radius_init(
-        param: *mut lv_draw_mask_radius_param_t,
-        rect: *const lv_area_t,
-        radius: lv_coord_t,
-        inv: bool,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Initialize a fade mask."]
-    #[doc = " - __`param`__: pointer to a `lv_draw_mask_param_t` to initialize"]
-    #[doc = " - __`coords`__: coordinates of the area to affect (absolute coordinates)"]
-    #[doc = " - __`opa_top`__: opacity on the top"]
-    #[doc = " - __`y_top`__: at which coordinate start to change to opacity to `opa_bottom`"]
-    #[doc = " - __`opa_bottom`__: opacity at the bottom"]
-    #[doc = " - __`y_bottom`__: at which coordinate reach `opa_bottom`."]
-    pub fn lv_draw_mask_fade_init(
-        param: *mut lv_draw_mask_fade_param_t,
-        coords: *const lv_area_t,
-        opa_top: lv_opa_t,
-        y_top: lv_coord_t,
-        opa_bottom: lv_opa_t,
-        y_bottom: lv_coord_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Initialize a map mask."]
-    #[doc = " - __`param`__: pointer to a `lv_draw_mask_param_t` to initialize"]
-    #[doc = " - __`coords`__: coordinates of the map (absolute coordinates)"]
-    #[doc = " - __`map`__: array of bytes with the mask values"]
-    pub fn lv_draw_mask_map_init(
-        param: *mut lv_draw_mask_map_param_t,
-        coords: *const lv_area_t,
-        map: *const lv_opa_t,
-    );
-}
-pub const LV_BLEND_MODE_NORMAL: _bindgen_ty_10 = 0;
-pub const LV_BLEND_MODE_ADDITIVE: _bindgen_ty_10 = 1;
-pub const LV_BLEND_MODE_SUBTRACTIVE: _bindgen_ty_10 = 2;
-#[doc = "      TYPEDEFS"]
-pub type _bindgen_ty_10 = u32;
 pub type lv_blend_mode_t = u8;
-pub const LV_BORDER_SIDE_NONE: _bindgen_ty_11 = 0;
-pub const LV_BORDER_SIDE_BOTTOM: _bindgen_ty_11 = 1;
-pub const LV_BORDER_SIDE_TOP: _bindgen_ty_11 = 2;
-pub const LV_BORDER_SIDE_LEFT: _bindgen_ty_11 = 4;
-pub const LV_BORDER_SIDE_RIGHT: _bindgen_ty_11 = 8;
-pub const LV_BORDER_SIDE_FULL: _bindgen_ty_11 = 15;
-#[doc = "< FOR matrix-like objects (e.g. Button matrix)"]
-pub const LV_BORDER_SIDE_INTERNAL: _bindgen_ty_11 = 16;
-pub const _LV_BORDER_SIDE_LAST: _bindgen_ty_11 = 17;
-#[doc = "      TYPEDEFS"]
-pub type _bindgen_ty_11 = u32;
 pub type lv_border_side_t = u8;
-pub const LV_GRAD_DIR_NONE: _bindgen_ty_12 = 0;
-pub const LV_GRAD_DIR_VER: _bindgen_ty_12 = 1;
-pub const LV_GRAD_DIR_HOR: _bindgen_ty_12 = 2;
-pub const _LV_GRAD_DIR_LAST: _bindgen_ty_12 = 3;
-pub type _bindgen_ty_12 = u32;
 pub type lv_grad_dir_t = u8;
-pub const LV_TEXT_DECOR_NONE: _bindgen_ty_13 = 0;
-pub const LV_TEXT_DECOR_UNDERLINE: _bindgen_ty_13 = 1;
-pub const LV_TEXT_DECOR_STRIKETHROUGH: _bindgen_ty_13 = 2;
-pub const _LV_TEXT_DECOR_LAST: _bindgen_ty_13 = 3;
-pub type _bindgen_ty_13 = u32;
 pub type lv_text_decor_t = u8;
-pub type lv_style_attr_t = u8;
-pub const LV_STYLE_RADIUS: _bindgen_ty_14 = 1;
-pub const LV_STYLE_CLIP_CORNER: _bindgen_ty_14 = 2;
-pub const LV_STYLE_SIZE: _bindgen_ty_14 = 3;
-pub const LV_STYLE_TRANSFORM_WIDTH: _bindgen_ty_14 = 4;
-pub const LV_STYLE_TRANSFORM_HEIGHT: _bindgen_ty_14 = 5;
-pub const LV_STYLE_TRANSFORM_ANGLE: _bindgen_ty_14 = 6;
-pub const LV_STYLE_TRANSFORM_ZOOM: _bindgen_ty_14 = 7;
-pub const LV_STYLE_OPA_SCALE: _bindgen_ty_14 = 32780;
-pub const LV_STYLE_PAD_TOP: _bindgen_ty_14 = 16;
-pub const LV_STYLE_PAD_BOTTOM: _bindgen_ty_14 = 17;
-pub const LV_STYLE_PAD_LEFT: _bindgen_ty_14 = 18;
-pub const LV_STYLE_PAD_RIGHT: _bindgen_ty_14 = 19;
-pub const LV_STYLE_PAD_INNER: _bindgen_ty_14 = 20;
-pub const LV_STYLE_MARGIN_TOP: _bindgen_ty_14 = 21;
-pub const LV_STYLE_MARGIN_BOTTOM: _bindgen_ty_14 = 22;
-pub const LV_STYLE_MARGIN_LEFT: _bindgen_ty_14 = 23;
-pub const LV_STYLE_MARGIN_RIGHT: _bindgen_ty_14 = 24;
-pub const LV_STYLE_BG_BLEND_MODE: _bindgen_ty_14 = 32;
-pub const LV_STYLE_BG_MAIN_STOP: _bindgen_ty_14 = 33;
-pub const LV_STYLE_BG_GRAD_STOP: _bindgen_ty_14 = 34;
-pub const LV_STYLE_BG_GRAD_DIR: _bindgen_ty_14 = 35;
-pub const LV_STYLE_BG_COLOR: _bindgen_ty_14 = 41;
-pub const LV_STYLE_BG_GRAD_COLOR: _bindgen_ty_14 = 42;
-pub const LV_STYLE_BG_OPA: _bindgen_ty_14 = 44;
-pub const LV_STYLE_BORDER_WIDTH: _bindgen_ty_14 = 48;
-pub const LV_STYLE_BORDER_SIDE: _bindgen_ty_14 = 49;
-pub const LV_STYLE_BORDER_BLEND_MODE: _bindgen_ty_14 = 50;
-pub const LV_STYLE_BORDER_POST: _bindgen_ty_14 = 51;
-pub const LV_STYLE_BORDER_COLOR: _bindgen_ty_14 = 57;
-pub const LV_STYLE_BORDER_OPA: _bindgen_ty_14 = 60;
-pub const LV_STYLE_OUTLINE_WIDTH: _bindgen_ty_14 = 64;
-pub const LV_STYLE_OUTLINE_PAD: _bindgen_ty_14 = 65;
-pub const LV_STYLE_OUTLINE_BLEND_MODE: _bindgen_ty_14 = 66;
-pub const LV_STYLE_OUTLINE_COLOR: _bindgen_ty_14 = 73;
-pub const LV_STYLE_OUTLINE_OPA: _bindgen_ty_14 = 76;
-pub const LV_STYLE_SHADOW_WIDTH: _bindgen_ty_14 = 80;
-pub const LV_STYLE_SHADOW_OFS_X: _bindgen_ty_14 = 81;
-pub const LV_STYLE_SHADOW_OFS_Y: _bindgen_ty_14 = 82;
-pub const LV_STYLE_SHADOW_SPREAD: _bindgen_ty_14 = 83;
-pub const LV_STYLE_SHADOW_BLEND_MODE: _bindgen_ty_14 = 84;
-pub const LV_STYLE_SHADOW_COLOR: _bindgen_ty_14 = 89;
-pub const LV_STYLE_SHADOW_OPA: _bindgen_ty_14 = 92;
-pub const LV_STYLE_PATTERN_BLEND_MODE: _bindgen_ty_14 = 96;
-pub const LV_STYLE_PATTERN_REPEAT: _bindgen_ty_14 = 97;
-pub const LV_STYLE_PATTERN_RECOLOR: _bindgen_ty_14 = 105;
-pub const LV_STYLE_PATTERN_OPA: _bindgen_ty_14 = 108;
-pub const LV_STYLE_PATTERN_RECOLOR_OPA: _bindgen_ty_14 = 109;
-pub const LV_STYLE_PATTERN_IMAGE: _bindgen_ty_14 = 110;
-pub const LV_STYLE_VALUE_LETTER_SPACE: _bindgen_ty_14 = 112;
-pub const LV_STYLE_VALUE_LINE_SPACE: _bindgen_ty_14 = 113;
-pub const LV_STYLE_VALUE_BLEND_MODE: _bindgen_ty_14 = 114;
-pub const LV_STYLE_VALUE_OFS_X: _bindgen_ty_14 = 115;
-pub const LV_STYLE_VALUE_OFS_Y: _bindgen_ty_14 = 116;
-pub const LV_STYLE_VALUE_ALIGN: _bindgen_ty_14 = 117;
-pub const LV_STYLE_VALUE_COLOR: _bindgen_ty_14 = 121;
-pub const LV_STYLE_VALUE_OPA: _bindgen_ty_14 = 124;
-pub const LV_STYLE_VALUE_FONT: _bindgen_ty_14 = 126;
-pub const LV_STYLE_VALUE_STR: _bindgen_ty_14 = 127;
-pub const LV_STYLE_TEXT_LETTER_SPACE: _bindgen_ty_14 = 32896;
-pub const LV_STYLE_TEXT_LINE_SPACE: _bindgen_ty_14 = 32897;
-pub const LV_STYLE_TEXT_DECOR: _bindgen_ty_14 = 32898;
-pub const LV_STYLE_TEXT_BLEND_MODE: _bindgen_ty_14 = 32899;
-pub const LV_STYLE_TEXT_COLOR: _bindgen_ty_14 = 32905;
-pub const LV_STYLE_TEXT_SEL_COLOR: _bindgen_ty_14 = 32906;
-pub const LV_STYLE_TEXT_OPA: _bindgen_ty_14 = 32908;
-pub const LV_STYLE_TEXT_FONT: _bindgen_ty_14 = 32910;
-pub const LV_STYLE_LINE_WIDTH: _bindgen_ty_14 = 144;
-pub const LV_STYLE_LINE_BLEND_MODE: _bindgen_ty_14 = 145;
-pub const LV_STYLE_LINE_DASH_WIDTH: _bindgen_ty_14 = 146;
-pub const LV_STYLE_LINE_DASH_GAP: _bindgen_ty_14 = 147;
-pub const LV_STYLE_LINE_ROUNDED: _bindgen_ty_14 = 148;
-pub const LV_STYLE_LINE_COLOR: _bindgen_ty_14 = 153;
-pub const LV_STYLE_LINE_OPA: _bindgen_ty_14 = 156;
-pub const LV_STYLE_IMAGE_BLEND_MODE: _bindgen_ty_14 = 32928;
-pub const LV_STYLE_IMAGE_RECOLOR: _bindgen_ty_14 = 32937;
-pub const LV_STYLE_IMAGE_OPA: _bindgen_ty_14 = 32940;
-pub const LV_STYLE_IMAGE_RECOLOR_OPA: _bindgen_ty_14 = 32941;
-pub const LV_STYLE_TRANSITION_TIME: _bindgen_ty_14 = 176;
-pub const LV_STYLE_TRANSITION_DELAY: _bindgen_ty_14 = 177;
-pub const LV_STYLE_TRANSITION_PROP_1: _bindgen_ty_14 = 178;
-pub const LV_STYLE_TRANSITION_PROP_2: _bindgen_ty_14 = 179;
-pub const LV_STYLE_TRANSITION_PROP_3: _bindgen_ty_14 = 180;
-pub const LV_STYLE_TRANSITION_PROP_4: _bindgen_ty_14 = 181;
-pub const LV_STYLE_TRANSITION_PROP_5: _bindgen_ty_14 = 182;
-pub const LV_STYLE_TRANSITION_PROP_6: _bindgen_ty_14 = 183;
-pub const LV_STYLE_TRANSITION_PATH: _bindgen_ty_14 = 190;
-pub const LV_STYLE_SCALE_WIDTH: _bindgen_ty_14 = 192;
-pub const LV_STYLE_SCALE_BORDER_WIDTH: _bindgen_ty_14 = 193;
-pub const LV_STYLE_SCALE_END_BORDER_WIDTH: _bindgen_ty_14 = 194;
-pub const LV_STYLE_SCALE_END_LINE_WIDTH: _bindgen_ty_14 = 195;
-pub const LV_STYLE_SCALE_GRAD_COLOR: _bindgen_ty_14 = 201;
-pub const LV_STYLE_SCALE_END_COLOR: _bindgen_ty_14 = 202;
-pub type _bindgen_ty_14 = u32;
 pub type lv_style_property_t = u16;
-pub type lv_style_state_t = u16;
 #[repr(C)]
 pub struct lv_style_t {
     pub map: *mut u8,
@@ -2397,62 +947,6 @@ impl lv_style_list_t {
         __bindgen_bitfield_unit
     }
 }
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Initialize a style"]
-    #[doc = " - __`style`__: pointer to a style to initialize"]
-    pub fn lv_style_init(style: *mut lv_style_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Copy a style with all its properties"]
-    #[doc = " - __`style_dest`__: pointer to the destination style. (Should be initialized with `lv_style_init()`)"]
-    #[doc = " - __`style_src`__: pointer to the source (to copy )style"]
-    pub fn lv_style_copy(style_dest: *mut lv_style_t, style_src: *const lv_style_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Initialize a style list"]
-    #[doc = " - __`list`__: a style list to initialize"]
-    pub fn lv_style_list_init(list: *mut lv_style_list_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Copy a style list with all its styles and local style properties"]
-    #[doc = " - __`list_dest`__: pointer to the destination style list. (should be initialized with `lv_style_list_init()`)"]
-    #[doc = " - __`list_src`__: pointer to the source (to copy) style list."]
-    pub fn lv_style_list_copy(list_dest: *mut lv_style_list_t, list_src: *const lv_style_list_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_list_get_style(list: *mut lv_style_list_t, id: u8) -> *mut lv_style_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Clear all properties from a style and all allocated memories."]
-    #[doc = " - __`style`__: pointer to a style"]
-    pub fn lv_style_reset(style: *mut lv_style_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Remove a property from a style"]
-    #[doc = " - __`style`__: pointer to a style"]
-    #[doc = " - __`prop`__:  a style property ORed with a state."]
-    #[doc = " E.g. `LV_STYLE_BORDER_WIDTH | (LV_STATE_PRESSED << LV_STYLE_STATE_POS)`"]
-    #[doc = " Return: true: the property was found and removed; false: the property wasn't found"]
-    pub fn lv_style_remove_prop(style: *mut lv_style_t, prop: lv_style_property_t) -> bool;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the local style of a style list"]
-    #[doc = " - __`list`__: pointer to a style list where the local property should be set"]
-    #[doc = " Return: pointer to the local style if exists else `NULL`."]
-    pub fn lv_style_list_get_local_style(list: *mut lv_style_list_t) -> *mut lv_style_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Check whether a style is valid (initialized correctly)"]
-    #[doc = " - __`style`__: pointer to a style"]
-    #[doc = " Return: true: valid"]
-    pub fn lv_debug_check_style(style: *const lv_style_t) -> bool;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Check whether a style list is valid (initialized correctly)"]
-    #[doc = " - __`style`__: pointer to a style"]
-    #[doc = " Return: true: valid"]
-    pub fn lv_debug_check_style_list(list: *const lv_style_list_t) -> bool;
-}
 #[doc = " Dummy type to make handling easier"]
 pub type lv_ll_node_t = u8;
 #[doc = " Description of a linked list"]
@@ -2469,16 +963,6 @@ impl Default for lv_ll_t {
 }
 #[doc = " Tasks execute this type type of functions."]
 pub type lv_task_cb_t = ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_task_t)>;
-pub const LV_TASK_PRIO_OFF: _bindgen_ty_15 = 0;
-pub const LV_TASK_PRIO_LOWEST: _bindgen_ty_15 = 1;
-pub const LV_TASK_PRIO_LOW: _bindgen_ty_15 = 2;
-pub const LV_TASK_PRIO_MID: _bindgen_ty_15 = 3;
-pub const LV_TASK_PRIO_HIGH: _bindgen_ty_15 = 4;
-pub const LV_TASK_PRIO_HIGHEST: _bindgen_ty_15 = 5;
-pub const _LV_TASK_PRIO_NUM: _bindgen_ty_15 = 6;
-#[doc = " Possible priorities for lv_tasks"]
-pub type _bindgen_ty_15 = u32;
-pub type lv_task_prio_t = u8;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
 pub struct _lv_task_t {
@@ -2524,89 +1008,6 @@ impl _lv_task_t {
     }
 }
 pub type lv_task_t = _lv_task_t;
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Call it  periodically to handle lv_tasks."]
-    #[doc = " Return: time till it needs to be run next (in ms)"]
-    pub fn lv_task_handler() -> u32;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Create an \"empty\" task. It needs to initialized with at least"]
-    #[doc = " `lv_task_set_cb` and `lv_task_set_period`"]
-    #[doc = " Return: pointer to the created task"]
-    pub fn lv_task_create_basic() -> *mut lv_task_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Create a new lv_task"]
-    #[doc = " - __`task_xcb`__: a callback which is the task itself. It will be called periodically."]
-    #[doc = "                 (the 'x' in the argument name indicates that its not a fully generic function because it not follows"]
-    #[doc = "                  the `func_name(object, callback, ...)` convention)"]
-    #[doc = " - __`period`__: call period in ms unit"]
-    #[doc = " - __`prio`__: priority of the task (LV_TASK_PRIO_OFF means the task is stopped)"]
-    #[doc = " - __`user_data`__: custom parameter"]
-    #[doc = " Return: pointer to the new task"]
-    pub fn lv_task_create(
-        task_xcb: lv_task_cb_t,
-        period: u32,
-        prio: lv_task_prio_t,
-        user_data: *mut ::cty::c_void,
-    ) -> *mut lv_task_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Delete a lv_task"]
-    #[doc = " - __`task`__: pointer to task_cb created by task"]
-    pub fn lv_task_del(task: *mut lv_task_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set the callback the task (the function to call periodically)"]
-    #[doc = " - __`task`__: pointer to a task"]
-    #[doc = " - __`task_cb`__: the function to call periodically"]
-    pub fn lv_task_set_cb(task: *mut lv_task_t, task_cb: lv_task_cb_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set new priority for a lv_task"]
-    #[doc = " - __`task`__: pointer to a lv_task"]
-    #[doc = " - __`prio`__: the new priority"]
-    pub fn lv_task_set_prio(task: *mut lv_task_t, prio: lv_task_prio_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set new period for a lv_task"]
-    #[doc = " - __`task`__: pointer to a lv_task"]
-    #[doc = " - __`period`__: the new period"]
-    pub fn lv_task_set_period(task: *mut lv_task_t, period: u32);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Make a lv_task ready. It will not wait its period."]
-    #[doc = " - __`task`__: pointer to a lv_task."]
-    pub fn lv_task_ready(task: *mut lv_task_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set the number of times a task will repeat."]
-    #[doc = " - __`task`__: pointer to a lv_task."]
-    #[doc = " - __`repeat_count`__: -1 : infinity;  0 : stop ;  n>0: residual times"]
-    pub fn lv_task_set_repeat_count(task: *mut lv_task_t, repeat_count: i32);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Reset a lv_task."]
-    #[doc = " It will be called the previously set period milliseconds later."]
-    #[doc = " - __`task`__: pointer to a lv_task."]
-    pub fn lv_task_reset(task: *mut lv_task_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Enable or disable the whole  lv_task handling"]
-    #[doc = " - __`en:`__: true: lv_task handling is running, false: lv_task handling is suspended"]
-    pub fn lv_task_enable(en: bool);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get idle percentage"]
-    #[doc = " Return: the lv_task idle in percentage"]
-    pub fn lv_task_get_idle() -> u8;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Iterate through the tasks"]
-    #[doc = " - __`task`__: NULL to start iteration or the previous return value to get the next task"]
-    #[doc = " Return: the next task or NULL if there is no more task"]
-    pub fn lv_task_get_next(task: *mut lv_task_t) -> *mut lv_task_t;
-}
 #[doc = " Structure for holding display buffer information."]
 #[repr(C)]
 pub struct lv_disp_buf_t {
@@ -2868,492 +1269,7 @@ impl _disp_t {
     }
 }
 pub type lv_disp_t = _disp_t;
-pub const lv_disp_size_t_LV_DISP_SIZE_SMALL: lv_disp_size_t = 0;
-pub const lv_disp_size_t_LV_DISP_SIZE_MEDIUM: lv_disp_size_t = 1;
-pub const lv_disp_size_t_LV_DISP_SIZE_LARGE: lv_disp_size_t = 2;
-pub const lv_disp_size_t_LV_DISP_SIZE_EXTRA_LARGE: lv_disp_size_t = 3;
-pub type lv_disp_size_t = u32;
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Initialize a display driver with default values."]
-    #[doc = " It is used to have known values in the fields and not junk in memory."]
-    #[doc = " After it you can safely set only the fields you need."]
-    #[doc = " - __`driver`__: pointer to driver variable to initialize"]
-    pub fn lv_disp_drv_init(driver: *mut lv_disp_drv_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Initialize a display buffer"]
-    #[doc = " - __`disp_buf`__: pointer `lv_disp_buf_t` variable to initialize"]
-    #[doc = " - __`buf1`__: A buffer to be used by LVGL to draw the image."]
-    #[doc = "             Always has to specified and can't be NULL."]
-    #[doc = "             Can be an array allocated by the user. E.g. `static lv_color_t disp_buf1[1024 * 10]`"]
-    #[doc = "             Or a memory address e.g. in external SRAM"]
-    #[doc = " - __`buf2`__: Optionally specify a second buffer to make image rendering and image flushing"]
-    #[doc = "             (sending to the display) parallel."]
-    #[doc = "             In the `disp_drv->flush` you should use DMA or similar hardware to send"]
-    #[doc = "             the image to the display in the background."]
-    #[doc = "             It lets LVGL to render next frame into the other buffer while previous is being"]
-    #[doc = " sent. Set to `NULL` if unused."]
-    #[doc = " - __`size_in_px_cnt`__: size of the `buf1` and `buf2` in pixel count."]
-    pub fn lv_disp_buf_init(
-        disp_buf: *mut lv_disp_buf_t,
-        buf1: *mut ::cty::c_void,
-        buf2: *mut ::cty::c_void,
-        size_in_px_cnt: u32,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Register an initialized display driver."]
-    #[doc = " Automatically set the first display as active."]
-    #[doc = " - __`driver`__: pointer to an initialized 'lv_disp_drv_t' variable (can be local variable)"]
-    #[doc = " Return: pointer to the new display or NULL on error"]
-    pub fn lv_disp_drv_register(driver: *mut lv_disp_drv_t) -> *mut lv_disp_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Update the driver in run time."]
-    #[doc = " - __`disp`__: pointer to a display. (return value of `lv_disp_drv_register`)"]
-    #[doc = " - __`new_drv`__: pointer to the new driver"]
-    pub fn lv_disp_drv_update(disp: *mut lv_disp_t, new_drv: *mut lv_disp_drv_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Remove a display"]
-    #[doc = " - __`disp`__: pointer to display"]
-    pub fn lv_disp_remove(disp: *mut lv_disp_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set a default screen. The new screens will be created on it by default."]
-    #[doc = " - __`disp`__: pointer to a display"]
-    pub fn lv_disp_set_default(disp: *mut lv_disp_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the default display"]
-    #[doc = " Return: pointer to the default display"]
-    pub fn lv_disp_get_default() -> *mut lv_disp_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the horizontal resolution of a display"]
-    #[doc = " - __`disp`__: pointer to a display (NULL to use the default display)"]
-    #[doc = " Return: the horizontal resolution of the display"]
-    pub fn lv_disp_get_hor_res(disp: *mut lv_disp_t) -> lv_coord_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the vertical resolution of a display"]
-    #[doc = " - __`disp`__: pointer to a display (NULL to use the default display)"]
-    #[doc = " Return: the vertical resolution of the display"]
-    pub fn lv_disp_get_ver_res(disp: *mut lv_disp_t) -> lv_coord_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get if anti-aliasing is enabled for a display or not"]
-    #[doc = " - __`disp`__: pointer to a display (NULL to use the default display)"]
-    #[doc = " Return: true: anti-aliasing is enabled; false: disabled"]
-    pub fn lv_disp_get_antialiasing(disp: *mut lv_disp_t) -> bool;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the DPI of the display"]
-    #[doc = " - __`disp`__: pointer to a display (NULL to use the default display)"]
-    #[doc = " Return: dpi of the display"]
-    pub fn lv_disp_get_dpi(disp: *mut lv_disp_t) -> lv_coord_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the size category of the display based on it's hor. res. and dpi."]
-    #[doc = " - __`disp`__: pointer to a display (NULL to use the default display)"]
-    #[doc = " Return: LV_DISP_SIZE_SMALL/MEDIUM/LARGE/EXTRA_LARGE"]
-    pub fn lv_disp_get_size_category(disp: *mut lv_disp_t) -> lv_disp_size_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Call in the display driver's `flush_cb` function when the flushing is finished"]
-    #[doc = " - __`disp_drv`__: pointer to display driver in `flush_cb` where this function is called"]
-    pub fn lv_disp_flush_ready(disp_drv: *mut lv_disp_drv_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Tell if it's the last area of the refreshing process."]
-    #[doc = " Can be called from `flush_cb` to execute some special display refreshing if needed when all areas area flushed."]
-    #[doc = " - __`disp_drv`__: pointer to display driver"]
-    #[doc = " Return: true: it's the last area to flush; false: there are other areas too which will be refreshed soon"]
-    pub fn lv_disp_flush_is_last(disp_drv: *mut lv_disp_drv_t) -> bool;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the next display."]
-    #[doc = " - __`disp`__: pointer to the current display. NULL to initialize."]
-    #[doc = " Return: the next display or NULL if no more. Give the first display when the parameter is NULL"]
-    pub fn lv_disp_get_next(disp: *mut lv_disp_t) -> *mut lv_disp_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the internal buffer of a display"]
-    #[doc = " - __`disp`__: pointer to a display"]
-    #[doc = " Return: pointer to the internal buffers"]
-    pub fn lv_disp_get_buf(disp: *mut lv_disp_t) -> *mut lv_disp_buf_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the number of areas in the buffer"]
-    #[doc = " Return: number of invalid areas"]
-    pub fn lv_disp_get_inv_buf_size(disp: *mut lv_disp_t) -> u16;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Check the driver configuration if it's double buffered (both `buf1` and `buf2` are set)"]
-    #[doc = " - __`disp`__: pointer to to display to check"]
-    #[doc = " Return: true: double buffered; false: not double buffered"]
-    pub fn lv_disp_is_double_buf(disp: *mut lv_disp_t) -> bool;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Check the driver configuration if it's TRUE double buffered (both `buf1` and `buf2` are set and"]
-    #[doc = " `size` is screen sized)"]
-    #[doc = " - __`disp`__: pointer to to display to check"]
-    #[doc = " Return: true: double buffered; false: not double buffered"]
-    pub fn lv_disp_is_true_double_buf(disp: *mut lv_disp_t) -> bool;
-}
-#[doc = "< Uninitialized state"]
-pub const LV_INDEV_TYPE_NONE: _bindgen_ty_16 = 0;
-#[doc = "< Touch pad, mouse, external button"]
-pub const LV_INDEV_TYPE_POINTER: _bindgen_ty_16 = 1;
-#[doc = "< Keypad or keyboard"]
-pub const LV_INDEV_TYPE_KEYPAD: _bindgen_ty_16 = 2;
-#[doc = "< External (hardware button) which is assigned to a specific point of the"]
-#[doc = "screen"]
-pub const LV_INDEV_TYPE_BUTTON: _bindgen_ty_16 = 3;
-#[doc = "< Encoder with only Left, Right turn and a Button"]
-pub const LV_INDEV_TYPE_ENCODER: _bindgen_ty_16 = 4;
-#[doc = " Possible input device types"]
-pub type _bindgen_ty_16 = u32;
-pub type lv_indev_type_t = u8;
-pub const LV_INDEV_STATE_REL: _bindgen_ty_17 = 0;
-pub const LV_INDEV_STATE_PR: _bindgen_ty_17 = 1;
-#[doc = " States for input devices"]
-pub type _bindgen_ty_17 = u32;
-pub type lv_indev_state_t = u8;
-#[doc = "< Object can be dragged horizontally."]
-pub const LV_DRAG_DIR_HOR: _bindgen_ty_18 = 1;
-#[doc = "< Object can be dragged vertically."]
-pub const LV_DRAG_DIR_VER: _bindgen_ty_18 = 2;
-#[doc = "< Object can be dragged in all directions."]
-pub const LV_DRAG_DIR_BOTH: _bindgen_ty_18 = 3;
-#[doc = "< Object can be dragged only one direction (the first move)."]
-pub const LV_DRAG_DIR_ONE: _bindgen_ty_18 = 4;
-pub type _bindgen_ty_18 = u32;
 pub type lv_drag_dir_t = u8;
-#[doc = "< Gesture dir up."]
-pub const LV_GESTURE_DIR_TOP: _bindgen_ty_19 = 0;
-#[doc = "< Gesture dir down."]
-pub const LV_GESTURE_DIR_BOTTOM: _bindgen_ty_19 = 1;
-#[doc = "< Gesture dir left."]
-pub const LV_GESTURE_DIR_LEFT: _bindgen_ty_19 = 2;
-#[doc = "< Gesture dir right."]
-pub const LV_GESTURE_DIR_RIGHT: _bindgen_ty_19 = 3;
-pub type _bindgen_ty_19 = u32;
-pub type lv_gesture_dir_t = u8;
-#[doc = " Data structure passed to an input driver to fill"]
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_indev_data_t {
-    #[doc = "< For LV_INDEV_TYPE_POINTER the currently pressed point"]
-    pub point: lv_point_t,
-    #[doc = "< For LV_INDEV_TYPE_KEYPAD the currently pressed key"]
-    pub key: u32,
-    #[doc = "< For LV_INDEV_TYPE_BUTTON the currently pressed button"]
-    pub btn_id: u32,
-    #[doc = "< For LV_INDEV_TYPE_ENCODER number of steps since the previous read"]
-    pub enc_diff: i16,
-    #[doc = "< LV_INDEV_STATE_REL or LV_INDEV_STATE_PR"]
-    pub state: lv_indev_state_t,
-}
-#[doc = " Initialized by the user and registered by 'lv_indev_add()'"]
-#[repr(C)]
-pub struct _lv_indev_drv_t {
-    pub type_: lv_indev_type_t,
-    pub read_cb: ::core::option::Option<
-        unsafe extern "C" fn(indev_drv: *mut _lv_indev_drv_t, data: *mut lv_indev_data_t) -> bool,
-    >,
-    #[doc = " Called when an action happened on the input device."]
-    #[doc = " The second parameter is the event from `lv_event_t`"]
-    pub feedback_cb:
-        ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_indev_drv_t, arg2: u8)>,
-    pub user_data: lv_indev_drv_user_data_t,
-    pub disp: *mut _disp_t,
-    pub read_task: *mut lv_task_t,
-    pub drag_limit: u8,
-    pub drag_throw: u8,
-    pub gesture_min_velocity: u8,
-    pub gesture_limit: u8,
-    pub long_press_time: u16,
-    pub long_press_rep_time: u16,
-}
-impl Default for _lv_indev_drv_t {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-pub type lv_indev_drv_t = _lv_indev_drv_t;
-#[doc = " Run time data of input devices"]
-#[doc = " Internally used by the library, you should not need to touch it."]
-#[repr(C)]
-pub struct _lv_indev_proc_t {
-    #[doc = "< Current state of the input device."]
-    pub state: lv_indev_state_t,
-    pub types: _lv_indev_proc_t__bindgen_ty_1,
-    #[doc = "< Pressed time stamp"]
-    pub pr_timestamp: u32,
-    #[doc = "< Long press repeat time stamp"]
-    pub longpr_rep_timestamp: u32,
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-    pub __bindgen_padding_0: [u8; 7usize],
-}
-#[repr(C)]
-pub struct _lv_indev_proc_t__bindgen_ty_1 {
-    pub pointer: __BindgenUnionField<_lv_indev_proc_t__bindgen_ty_1__bindgen_ty_1>,
-    pub keypad: __BindgenUnionField<_lv_indev_proc_t__bindgen_ty_1__bindgen_ty_2>,
-    pub bindgen_union_field: [u64; 7usize],
-}
-#[repr(C)]
-pub struct _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_1 {
-    #[doc = "< Current point of input device."]
-    pub act_point: lv_point_t,
-    #[doc = "< Last point of input device."]
-    pub last_point: lv_point_t,
-    #[doc = "< Difference between `act_point` and `last_point`."]
-    pub vect: lv_point_t,
-    pub drag_sum: lv_point_t,
-    pub drag_throw_vect: lv_point_t,
-    pub act_obj: *mut _lv_obj_t,
-    pub last_obj: *mut _lv_obj_t,
-    pub last_pressed: *mut _lv_obj_t,
-    pub gesture_dir: lv_gesture_dir_t,
-    pub gesture_sum: lv_point_t,
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-    pub __bindgen_padding_0: u8,
-}
-impl Default for _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-impl _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_1 {
-    #[inline]
-    pub fn drag_limit_out(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_drag_limit_out(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(0usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn drag_in_prog(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_drag_in_prog(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(1usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn drag_dir(&self) -> lv_drag_dir_t {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 3u8) as u8) }
-    }
-    #[inline]
-    pub fn set_drag_dir(&mut self, val: lv_drag_dir_t) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(2usize, 3u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn gesture_sent(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_gesture_sent(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(5usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn new_bitfield_1(
-        drag_limit_out: u8,
-        drag_in_prog: u8,
-        drag_dir: lv_drag_dir_t,
-        gesture_sent: u8,
-    ) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
-            Default::default();
-        __bindgen_bitfield_unit.set(0usize, 1u8, {
-            let drag_limit_out: u8 = unsafe { ::core::mem::transmute(drag_limit_out) };
-            drag_limit_out as u64
-        });
-        __bindgen_bitfield_unit.set(1usize, 1u8, {
-            let drag_in_prog: u8 = unsafe { ::core::mem::transmute(drag_in_prog) };
-            drag_in_prog as u64
-        });
-        __bindgen_bitfield_unit.set(2usize, 3u8, {
-            let drag_dir: u8 = unsafe { ::core::mem::transmute(drag_dir) };
-            drag_dir as u64
-        });
-        __bindgen_bitfield_unit.set(5usize, 1u8, {
-            let gesture_sent: u8 = unsafe { ::core::mem::transmute(gesture_sent) };
-            gesture_sent as u64
-        });
-        __bindgen_bitfield_unit
-    }
-}
-#[repr(C)]
-#[derive(Default)]
-pub struct _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_2 {
-    pub last_state: lv_indev_state_t,
-    pub last_key: u32,
-}
-impl Default for _lv_indev_proc_t__bindgen_ty_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-impl Default for _lv_indev_proc_t {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-impl _lv_indev_proc_t {
-    #[inline]
-    pub fn long_pr_sent(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_long_pr_sent(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(0usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn reset_query(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_reset_query(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(1usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn disabled(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_disabled(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(2usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn wait_until_release(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_wait_until_release(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(3usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn new_bitfield_1(
-        long_pr_sent: u8,
-        reset_query: u8,
-        disabled: u8,
-        wait_until_release: u8,
-    ) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
-            Default::default();
-        __bindgen_bitfield_unit.set(0usize, 1u8, {
-            let long_pr_sent: u8 = unsafe { ::core::mem::transmute(long_pr_sent) };
-            long_pr_sent as u64
-        });
-        __bindgen_bitfield_unit.set(1usize, 1u8, {
-            let reset_query: u8 = unsafe { ::core::mem::transmute(reset_query) };
-            reset_query as u64
-        });
-        __bindgen_bitfield_unit.set(2usize, 1u8, {
-            let disabled: u8 = unsafe { ::core::mem::transmute(disabled) };
-            disabled as u64
-        });
-        __bindgen_bitfield_unit.set(3usize, 1u8, {
-            let wait_until_release: u8 = unsafe { ::core::mem::transmute(wait_until_release) };
-            wait_until_release as u64
-        });
-        __bindgen_bitfield_unit
-    }
-}
-pub type lv_indev_proc_t = _lv_indev_proc_t;
-#[repr(C)]
-pub struct _lv_group_t {
-    _unused: [u8; 0],
-}
-#[doc = " The main input device descriptor with driver, runtime data ('proc') and some additional"]
-#[doc = " information"]
-#[repr(C)]
-pub struct _lv_indev_t {
-    pub driver: lv_indev_drv_t,
-    pub proc_: lv_indev_proc_t,
-    #[doc = "< Cursor for LV_INPUT_TYPE_POINTER"]
-    pub cursor: *mut _lv_obj_t,
-    #[doc = "< Keypad destination group"]
-    pub group: *mut _lv_group_t,
-    #[doc = "< Array points assigned to the button ()screen will be pressed"]
-    #[doc = "here by the buttons"]
-    pub btn_points: *const lv_point_t,
-}
-impl Default for _lv_indev_t {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-pub type lv_indev_t = _lv_indev_t;
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Initialize an input device driver with default values."]
-    #[doc = " It is used to surly have known values in the fields ant not memory junk."]
-    #[doc = " After it you can set the fields."]
-    #[doc = " - __`driver`__: pointer to driver variable to initialize"]
-    pub fn lv_indev_drv_init(driver: *mut lv_indev_drv_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Register an initialized input device driver."]
-    #[doc = " - __`driver`__: pointer to an initialized 'lv_indev_drv_t' variable (can be local variable)"]
-    #[doc = " Return: pointer to the new input device or NULL on error"]
-    pub fn lv_indev_drv_register(driver: *mut lv_indev_drv_t) -> *mut lv_indev_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Update the driver in run time."]
-    #[doc = " - __`indev`__: pointer to a input device. (return value of `lv_indev_drv_register`)"]
-    #[doc = " - __`new_drv`__: pointer to the new driver"]
-    pub fn lv_indev_drv_update(indev: *mut lv_indev_t, new_drv: *mut lv_indev_drv_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the next input device."]
-    #[doc = " - __`indev`__: pointer to the current input device. NULL to initialize."]
-    #[doc = " Return: the next input devise or NULL if no more. Give the first input device when the parameter"]
-    #[doc = " is NULL"]
-    pub fn lv_indev_get_next(indev: *mut lv_indev_t) -> *mut lv_indev_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " You have to call this function periodically"]
-    #[doc = " - __`tick_period`__: the call period of this function in milliseconds"]
-    pub fn lv_tick_inc(tick_period: u32);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the elapsed milliseconds since start up"]
-    #[doc = " Return: the elapsed milliseconds"]
-    pub fn lv_tick_get() -> u32;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the elapsed milliseconds since a previous time stamp"]
-    #[doc = " - __`prev_tick`__: a previous time stamp (return value of systick_get() )"]
-    #[doc = " Return: the elapsed milliseconds since 'prev_tick'"]
-    pub fn lv_tick_elaps(prev_tick: u32) -> u32;
-}
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
 pub struct lv_draw_rect_dsc_t {
@@ -3450,65 +1366,8 @@ impl lv_draw_rect_dsc_t {
         __bindgen_bitfield_unit
     }
 }
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " GLOBAL PROTOTYPES"]
-    pub fn lv_draw_rect_dsc_init(dsc: *mut lv_draw_rect_dsc_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Draw a rectangle"]
-    #[doc = " - __`coords`__: the coordinates of the rectangle"]
-    #[doc = " - __`mask`__: the rectangle will be drawn only in this mask"]
-    #[doc = " - __`dsc`__: pointer to an initialized `lv_draw_rect_dsc_t` variable"]
-    pub fn lv_draw_rect(
-        coords: *const lv_area_t,
-        mask: *const lv_area_t,
-        dsc: *const lv_draw_rect_dsc_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Draw a pixel"]
-    #[doc = " - __`point`__: the coordinates of the point to draw"]
-    #[doc = " - __`mask`__: the pixel will be drawn only in this mask"]
-    #[doc = " - __`style`__: pointer to a style"]
-    pub fn lv_draw_px(
-        point: *const lv_point_t,
-        clip_area: *const lv_area_t,
-        style: *const lv_style_t,
-    );
-}
-pub const LV_BIDI_DIR_LTR: _bindgen_ty_20 = 0;
-pub const LV_BIDI_DIR_RTL: _bindgen_ty_20 = 1;
-pub const LV_BIDI_DIR_AUTO: _bindgen_ty_20 = 2;
-pub const LV_BIDI_DIR_INHERIT: _bindgen_ty_20 = 3;
-pub const LV_BIDI_DIR_NEUTRAL: _bindgen_ty_20 = 32;
-pub const LV_BIDI_DIR_WEAK: _bindgen_ty_20 = 33;
-#[doc = "      TYPEDEFS"]
-pub type _bindgen_ty_20 = u32;
 pub type lv_bidi_dir_t = u8;
-pub const LV_TXT_FLAG_NONE: _bindgen_ty_21 = 0;
-#[doc = "< Enable parsing of recolor command"]
-pub const LV_TXT_FLAG_RECOLOR: _bindgen_ty_21 = 1;
-#[doc = "< Ignore max-width to avoid automatic word wrapping"]
-pub const LV_TXT_FLAG_EXPAND: _bindgen_ty_21 = 2;
-#[doc = "< Align the text to the middle"]
-pub const LV_TXT_FLAG_CENTER: _bindgen_ty_21 = 4;
-#[doc = "< Align the text to the right"]
-pub const LV_TXT_FLAG_RIGHT: _bindgen_ty_21 = 8;
-#[doc = "< Max-width is already equal to the longest line. (Used to skip some calculation)"]
-pub const LV_TXT_FLAG_FIT: _bindgen_ty_21 = 16;
-#[doc = "      TYPEDEFS"]
-#[doc = " Options for text rendering."]
-pub type _bindgen_ty_21 = u32;
 pub type lv_txt_flag_t = u8;
-#[doc = "< Waiting for command"]
-pub const LV_TXT_CMD_STATE_WAIT: _bindgen_ty_22 = 0;
-#[doc = "< Processing the parameter"]
-pub const LV_TXT_CMD_STATE_PAR: _bindgen_ty_22 = 1;
-#[doc = "< Processing the command"]
-pub const LV_TXT_CMD_STATE_IN: _bindgen_ty_22 = 2;
-#[doc = " State machine for text renderer."]
-pub type _bindgen_ty_22 = u32;
-pub type lv_txt_cmd_state_t = u8;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
 pub struct lv_draw_label_dsc_t {
@@ -3531,42 +1390,6 @@ impl Default for lv_draw_label_dsc_t {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
     }
-}
-#[doc = " Store some info to speed up drawing of very large texts"]
-#[doc = " It takes a lot of time to get the first visible character because"]
-#[doc = " all the previous characters needs to be checked to calculate the positions."]
-#[doc = " This structure stores an earlier (e.g. at -1000 px) coordinate and the index of that line."]
-#[doc = " Therefore the calculations can start from here."]
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_draw_label_hint_t {
-    #[doc = " Index of the line at `y` coordinate"]
-    pub line_start: i32,
-    #[doc = " Give the `y` coordinate of the first letter at `line start` index. Relative to the label's coordinates"]
-    pub y: i32,
-    #[doc = " The 'y1' coordinate of the label when the hint was saved."]
-    #[doc = " Used to invalidate the hint if the label has moved too much."]
-    pub coord_y: i32,
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = "! @cond Doxygen_Suppress"]
-    pub fn lv_draw_label_dsc_init(dsc: *mut lv_draw_label_dsc_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Write a text"]
-    #[doc = " - __`coords`__: coordinates of the label"]
-    #[doc = " - __`mask`__: the label will be drawn only in this area"]
-    #[doc = " - __`dsc`__: pointer to draw descriptor"]
-    #[doc = " - __`txt`__: `\\0` terminated text to write"]
-    #[doc = " - __`hint`__: pointer to a `lv_draw_label_hint_t` variable."]
-    #[doc = " It is managed by the drawer to speed up the drawing of very long texts (thousands of lines)."]
-    pub fn lv_draw_label(
-        coords: *const lv_area_t,
-        mask: *const lv_area_t,
-        dsc: *const lv_draw_label_dsc_t,
-        txt: *const ::cty::c_char,
-        hint: *mut lv_draw_label_hint_t,
-    );
 }
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
@@ -3656,654 +1479,6 @@ impl lv_draw_line_dsc_t {
         __bindgen_bitfield_unit
     }
 }
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = "! @cond Doxygen_Suppress"]
-    #[doc = "**"]
-    #[doc = "* Draw a line"]
-    #[doc = "* - __`point1`__: first point of the line"]
-    #[doc = "* - __`point2`__: second point of the line"]
-    #[doc = "* - __`clip`__: the line will be drawn only in this area"]
-    #[doc = "* - __`dsc`__: pointer to an initialized `lv_draw_line_dsc_t` variable"]
-    #[doc = "*/"]
-    pub fn lv_draw_line(
-        point1: *const lv_point_t,
-        point2: *const lv_point_t,
-        clip: *const lv_area_t,
-        dsc: *const lv_draw_line_dsc_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_draw_line_dsc_init(dsc: *mut lv_draw_line_dsc_t);
-}
-pub const LV_IMG_CF_UNKNOWN: _bindgen_ty_23 = 0;
-#[doc = "< Contains the file as it is. Needs custom decoder function"]
-pub const LV_IMG_CF_RAW: _bindgen_ty_23 = 1;
-#[doc = "< Contains the file as it is. The image has alpha. Needs custom decoder"]
-#[doc = "function"]
-pub const LV_IMG_CF_RAW_ALPHA: _bindgen_ty_23 = 2;
-#[doc = "< Contains the file as it is. The image is chroma keyed. Needs"]
-#[doc = "custom decoder function"]
-pub const LV_IMG_CF_RAW_CHROMA_KEYED: _bindgen_ty_23 = 3;
-#[doc = "< Color format and depth should match with LV_COLOR settings"]
-pub const LV_IMG_CF_TRUE_COLOR: _bindgen_ty_23 = 4;
-#[doc = "< Same as `LV_IMG_CF_TRUE_COLOR` but every pixel has an alpha byte"]
-pub const LV_IMG_CF_TRUE_COLOR_ALPHA: _bindgen_ty_23 = 5;
-#[doc = "< Same as `LV_IMG_CF_TRUE_COLOR` but LV_COLOR_TRANSP pixels"]
-#[doc = "will be transparent"]
-pub const LV_IMG_CF_TRUE_COLOR_CHROMA_KEYED: _bindgen_ty_23 = 6;
-#[doc = "< Can have 2 different colors in a palette (always chroma keyed)"]
-pub const LV_IMG_CF_INDEXED_1BIT: _bindgen_ty_23 = 7;
-#[doc = "< Can have 4 different colors in a palette (always chroma keyed)"]
-pub const LV_IMG_CF_INDEXED_2BIT: _bindgen_ty_23 = 8;
-#[doc = "< Can have 16 different colors in a palette (always chroma keyed)"]
-pub const LV_IMG_CF_INDEXED_4BIT: _bindgen_ty_23 = 9;
-#[doc = "< Can have 256 different colors in a palette (always chroma keyed)"]
-pub const LV_IMG_CF_INDEXED_8BIT: _bindgen_ty_23 = 10;
-#[doc = "< Can have one color and it can be drawn or not"]
-pub const LV_IMG_CF_ALPHA_1BIT: _bindgen_ty_23 = 11;
-#[doc = "< Can have one color but 4 different alpha value"]
-pub const LV_IMG_CF_ALPHA_2BIT: _bindgen_ty_23 = 12;
-#[doc = "< Can have one color but 16 different alpha value"]
-pub const LV_IMG_CF_ALPHA_4BIT: _bindgen_ty_23 = 13;
-#[doc = "< Can have one color but 256 different alpha value"]
-pub const LV_IMG_CF_ALPHA_8BIT: _bindgen_ty_23 = 14;
-#[doc = "< Reserved for further use."]
-pub const LV_IMG_CF_RESERVED_15: _bindgen_ty_23 = 15;
-#[doc = "< Reserved for further use."]
-pub const LV_IMG_CF_RESERVED_16: _bindgen_ty_23 = 16;
-#[doc = "< Reserved for further use."]
-pub const LV_IMG_CF_RESERVED_17: _bindgen_ty_23 = 17;
-#[doc = "< Reserved for further use."]
-pub const LV_IMG_CF_RESERVED_18: _bindgen_ty_23 = 18;
-#[doc = "< Reserved for further use."]
-pub const LV_IMG_CF_RESERVED_19: _bindgen_ty_23 = 19;
-#[doc = "< Reserved for further use."]
-pub const LV_IMG_CF_RESERVED_20: _bindgen_ty_23 = 20;
-#[doc = "< Reserved for further use."]
-pub const LV_IMG_CF_RESERVED_21: _bindgen_ty_23 = 21;
-#[doc = "< Reserved for further use."]
-pub const LV_IMG_CF_RESERVED_22: _bindgen_ty_23 = 22;
-#[doc = "< Reserved for further use."]
-pub const LV_IMG_CF_RESERVED_23: _bindgen_ty_23 = 23;
-#[doc = "< User holder encoding format."]
-pub const LV_IMG_CF_USER_ENCODED_0: _bindgen_ty_23 = 24;
-#[doc = "< User holder encoding format."]
-pub const LV_IMG_CF_USER_ENCODED_1: _bindgen_ty_23 = 25;
-#[doc = "< User holder encoding format."]
-pub const LV_IMG_CF_USER_ENCODED_2: _bindgen_ty_23 = 26;
-#[doc = "< User holder encoding format."]
-pub const LV_IMG_CF_USER_ENCODED_3: _bindgen_ty_23 = 27;
-#[doc = "< User holder encoding format."]
-pub const LV_IMG_CF_USER_ENCODED_4: _bindgen_ty_23 = 28;
-#[doc = "< User holder encoding format."]
-pub const LV_IMG_CF_USER_ENCODED_5: _bindgen_ty_23 = 29;
-#[doc = "< User holder encoding format."]
-pub const LV_IMG_CF_USER_ENCODED_6: _bindgen_ty_23 = 30;
-#[doc = "< User holder encoding format."]
-pub const LV_IMG_CF_USER_ENCODED_7: _bindgen_ty_23 = 31;
-#[doc = "      TYPEDEFS"]
-pub type _bindgen_ty_23 = u32;
-pub type lv_img_cf_t = u8;
-#[repr(C)]
-#[repr(align(4))]
-#[derive(Default)]
-pub struct lv_img_header_t {
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u16>,
-}
-impl lv_img_header_t {
-    #[inline]
-    pub fn cf(&self) -> u32 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 5u8) as u32) }
-    }
-    #[inline]
-    pub fn set_cf(&mut self, val: u32) {
-        unsafe {
-            let val: u32 = ::core::mem::transmute(val);
-            self._bitfield_1.set(0usize, 5u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn always_zero(&self) -> u32 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 3u8) as u32) }
-    }
-    #[inline]
-    pub fn set_always_zero(&mut self, val: u32) {
-        unsafe {
-            let val: u32 = ::core::mem::transmute(val);
-            self._bitfield_1.set(5usize, 3u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn reserved(&self) -> u32 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 2u8) as u32) }
-    }
-    #[inline]
-    pub fn set_reserved(&mut self, val: u32) {
-        unsafe {
-            let val: u32 = ::core::mem::transmute(val);
-            self._bitfield_1.set(8usize, 2u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn w(&self) -> u32 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 11u8) as u32) }
-    }
-    #[inline]
-    pub fn set_w(&mut self, val: u32) {
-        unsafe {
-            let val: u32 = ::core::mem::transmute(val);
-            self._bitfield_1.set(10usize, 11u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn h(&self) -> u32 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(21usize, 11u8) as u32) }
-    }
-    #[inline]
-    pub fn set_h(&mut self, val: u32) {
-        unsafe {
-            let val: u32 = ::core::mem::transmute(val);
-            self._bitfield_1.set(21usize, 11u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn new_bitfield_1(
-        cf: u32,
-        always_zero: u32,
-        reserved: u32,
-        w: u32,
-        h: u32,
-    ) -> __BindgenBitfieldUnit<[u8; 4usize], u16> {
-        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 4usize], u16> =
-            Default::default();
-        __bindgen_bitfield_unit.set(0usize, 5u8, {
-            let cf: u32 = unsafe { ::core::mem::transmute(cf) };
-            cf as u64
-        });
-        __bindgen_bitfield_unit.set(5usize, 3u8, {
-            let always_zero: u32 = unsafe { ::core::mem::transmute(always_zero) };
-            always_zero as u64
-        });
-        __bindgen_bitfield_unit.set(8usize, 2u8, {
-            let reserved: u32 = unsafe { ::core::mem::transmute(reserved) };
-            reserved as u64
-        });
-        __bindgen_bitfield_unit.set(10usize, 11u8, {
-            let w: u32 = unsafe { ::core::mem::transmute(w) };
-            w as u64
-        });
-        __bindgen_bitfield_unit.set(21usize, 11u8, {
-            let h: u32 = unsafe { ::core::mem::transmute(h) };
-            h as u64
-        });
-        __bindgen_bitfield_unit
-    }
-}
-#[doc = " Image header it is compatible with"]
-#[doc = " the result from image converter utility"]
-#[repr(C)]
-pub struct lv_img_dsc_t {
-    pub header: lv_img_header_t,
-    pub data_size: u32,
-    pub data: *const u8,
-}
-impl Default for lv_img_dsc_t {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[repr(C)]
-pub struct lv_img_transform_dsc_t {
-    pub cfg: lv_img_transform_dsc_t__bindgen_ty_1,
-    pub res: lv_img_transform_dsc_t__bindgen_ty_2,
-    pub tmp: lv_img_transform_dsc_t__bindgen_ty_3,
-}
-#[repr(C)]
-pub struct lv_img_transform_dsc_t__bindgen_ty_1 {
-    pub src: *const ::cty::c_void,
-    pub src_w: lv_coord_t,
-    pub src_h: lv_coord_t,
-    pub pivot_x: lv_coord_t,
-    pub pivot_y: lv_coord_t,
-    pub angle: i16,
-    pub zoom: u16,
-    pub color: lv_color_t,
-    pub cf: lv_img_cf_t,
-    pub antialias: bool,
-}
-impl Default for lv_img_transform_dsc_t__bindgen_ty_1 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[repr(C)]
-pub struct lv_img_transform_dsc_t__bindgen_ty_2 {
-    pub color: lv_color_t,
-    pub opa: lv_opa_t,
-}
-impl Default for lv_img_transform_dsc_t__bindgen_ty_2 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[repr(C)]
-pub struct lv_img_transform_dsc_t__bindgen_ty_3 {
-    pub img_dsc: lv_img_dsc_t,
-    pub pivot_x_256: i32,
-    pub pivot_y_256: i32,
-    pub sinma: i32,
-    pub cosma: i32,
-    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-    pub zoom_inv: u32,
-    pub xs: lv_coord_t,
-    pub ys: lv_coord_t,
-    pub xs_int: lv_coord_t,
-    pub ys_int: lv_coord_t,
-    pub pxi: u32,
-    pub px_size: u8,
-}
-impl Default for lv_img_transform_dsc_t__bindgen_ty_3 {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-impl lv_img_transform_dsc_t__bindgen_ty_3 {
-    #[inline]
-    pub fn chroma_keyed(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_chroma_keyed(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(0usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn has_alpha(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_has_alpha(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(1usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn native_color(&self) -> u8 {
-        unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u8) }
-    }
-    #[inline]
-    pub fn set_native_color(&mut self, val: u8) {
-        unsafe {
-            let val: u8 = ::core::mem::transmute(val);
-            self._bitfield_1.set(2usize, 1u8, val as u64)
-        }
-    }
-    #[inline]
-    pub fn new_bitfield_1(
-        chroma_keyed: u8,
-        has_alpha: u8,
-        native_color: u8,
-    ) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
-            Default::default();
-        __bindgen_bitfield_unit.set(0usize, 1u8, {
-            let chroma_keyed: u8 = unsafe { ::core::mem::transmute(chroma_keyed) };
-            chroma_keyed as u64
-        });
-        __bindgen_bitfield_unit.set(1usize, 1u8, {
-            let has_alpha: u8 = unsafe { ::core::mem::transmute(has_alpha) };
-            has_alpha as u64
-        });
-        __bindgen_bitfield_unit.set(2usize, 1u8, {
-            let native_color: u8 = unsafe { ::core::mem::transmute(native_color) };
-            native_color as u64
-        });
-        __bindgen_bitfield_unit
-    }
-}
-impl Default for lv_img_transform_dsc_t {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Allocate an image buffer in RAM"]
-    #[doc = " - __`w`__: width of image"]
-    #[doc = " - __`h`__: height of image"]
-    #[doc = " - __`cf`__: a color format (`LV_IMG_CF_...`)"]
-    #[doc = " Return: an allocated image, or NULL on failure"]
-    pub fn lv_img_buf_alloc(w: lv_coord_t, h: lv_coord_t, cf: lv_img_cf_t) -> *mut lv_img_dsc_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the color of an image's pixel"]
-    #[doc = " - __`dsc`__: an image descriptor"]
-    #[doc = " - __`x`__: x coordinate of the point to get"]
-    #[doc = " - __`y`__: x coordinate of the point to get"]
-    #[doc = " - __`color`__: the color of the image. In case of `LV_IMG_CF_ALPHA_1/2/4/8` this color is used."]
-    #[doc = " Not used in other cases."]
-    #[doc = " - __`safe`__: true: check out of bounds"]
-    #[doc = " Return: color of the point"]
-    pub fn lv_img_buf_get_px_color(
-        dsc: *mut lv_img_dsc_t,
-        x: lv_coord_t,
-        y: lv_coord_t,
-        color: lv_color_t,
-    ) -> lv_color_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the alpha value of an image's pixel"]
-    #[doc = " - __`dsc`__: pointer to an image descriptor"]
-    #[doc = " - __`x`__: x coordinate of the point to set"]
-    #[doc = " - __`y`__: x coordinate of the point to set"]
-    #[doc = " - __`safe`__: true: check out of bounds"]
-    #[doc = " Return: alpha value of the point"]
-    pub fn lv_img_buf_get_px_alpha(
-        dsc: *mut lv_img_dsc_t,
-        x: lv_coord_t,
-        y: lv_coord_t,
-    ) -> lv_opa_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set the color of a pixel of an image. The alpha channel won't be affected."]
-    #[doc = " - __`dsc`__: pointer to an image descriptor"]
-    #[doc = " - __`x`__: x coordinate of the point to set"]
-    #[doc = " - __`y`__: x coordinate of the point to set"]
-    #[doc = " - __`c`__: color of the point"]
-    #[doc = " - __`safe`__: true: check out of bounds"]
-    pub fn lv_img_buf_set_px_color(
-        dsc: *mut lv_img_dsc_t,
-        x: lv_coord_t,
-        y: lv_coord_t,
-        c: lv_color_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set the alpha value of a pixel of an image. The color won't be affected"]
-    #[doc = " - __`dsc`__: pointer to an image descriptor"]
-    #[doc = " - __`x`__: x coordinate of the point to set"]
-    #[doc = " - __`y`__: x coordinate of the point to set"]
-    #[doc = " - __`opa`__: the desired opacity"]
-    #[doc = " - __`safe`__: true: check out of bounds"]
-    pub fn lv_img_buf_set_px_alpha(
-        dsc: *mut lv_img_dsc_t,
-        x: lv_coord_t,
-        y: lv_coord_t,
-        opa: lv_opa_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set the palette color of an indexed image. Valid only for `LV_IMG_CF_INDEXED1/2/4/8`"]
-    #[doc = " - __`dsc`__: pointer to an image descriptor"]
-    #[doc = " - __`id`__: the palette color to set:"]
-    #[doc = "   - for `LV_IMG_CF_INDEXED1`: 0..1"]
-    #[doc = "   - for `LV_IMG_CF_INDEXED2`: 0..3"]
-    #[doc = "   - for `LV_IMG_CF_INDEXED4`: 0..15"]
-    #[doc = "   - for `LV_IMG_CF_INDEXED8`: 0..255"]
-    #[doc = " - __`c`__: the color to set"]
-    pub fn lv_img_buf_set_palette(dsc: *mut lv_img_dsc_t, id: u8, c: lv_color_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Free an allocated image buffer"]
-    #[doc = " - __`dsc`__: image buffer to free"]
-    pub fn lv_img_buf_free(dsc: *mut lv_img_dsc_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the memory consumption of a raw bitmap, given color format and dimensions."]
-    #[doc = " - __`w`__: width"]
-    #[doc = " - __`h`__: height"]
-    #[doc = " - __`cf`__: color format"]
-    #[doc = " Return: size in bytes"]
-    pub fn lv_img_buf_get_img_size(w: lv_coord_t, h: lv_coord_t, cf: lv_img_cf_t) -> u32;
-}
-pub const LV_IMG_SRC_VARIABLE: _bindgen_ty_24 = 0;
-#[doc = " Binary/C variable"]
-pub const LV_IMG_SRC_FILE: _bindgen_ty_24 = 1;
-#[doc = " File in filesystem"]
-pub const LV_IMG_SRC_SYMBOL: _bindgen_ty_24 = 2;
-#[doc = " Symbol (@ref lv_symbol_def.h)"]
-pub const LV_IMG_SRC_UNKNOWN: _bindgen_ty_24 = 3;
-#[doc = " Source of image."]
-pub type _bindgen_ty_24 = u32;
-pub type lv_img_src_t = u8;
-#[doc = " Get info from an image and store in the `header`"]
-#[doc = " - __`src`__: the image source. Can be a pointer to a C array or a file name (Use"]
-#[doc = " `lv_img_src_get_type` to determine the type)"]
-#[doc = " - __`header`__: store the info here"]
-#[doc = " Return: LV_RES_OK: info written correctly; LV_RES_INV: failed"]
-pub type lv_img_decoder_info_f_t = ::core::option::Option<
-    unsafe extern "C" fn(
-        decoder: *mut _lv_img_decoder,
-        src: *const ::cty::c_void,
-        header: *mut lv_img_header_t,
-    ) -> lv_res_t,
->;
-#[doc = " Open an image for decoding. Prepare it as it is required to read it later"]
-#[doc = " - __`decoder`__: pointer to the decoder the function associated with"]
-#[doc = " - __`dsc`__: pointer to decoder descriptor. `src`, `style` are already initialized in it."]
-pub type lv_img_decoder_open_f_t = ::core::option::Option<
-    unsafe extern "C" fn(decoder: *mut _lv_img_decoder, dsc: *mut _lv_img_decoder_dsc) -> lv_res_t,
->;
-#[doc = " Decode `len` pixels starting from the given `x`, `y` coordinates and store them in `buf`."]
-#[doc = " Required only if the \"open\" function can't return with the whole decoded pixel array."]
-#[doc = " - __`decoder`__: pointer to the decoder the function associated with"]
-#[doc = " - __`dsc`__: pointer to decoder descriptor"]
-#[doc = " - __`x`__: start x coordinate"]
-#[doc = " - __`y`__: start y coordinate"]
-#[doc = " - __`len`__: number of pixels to decode"]
-#[doc = " - __`buf`__: a buffer to store the decoded pixels"]
-#[doc = " Return: LV_RES_OK: ok; LV_RES_INV: failed"]
-pub type lv_img_decoder_read_line_f_t = ::core::option::Option<
-    unsafe extern "C" fn(
-        decoder: *mut _lv_img_decoder,
-        dsc: *mut _lv_img_decoder_dsc,
-        x: lv_coord_t,
-        y: lv_coord_t,
-        len: lv_coord_t,
-        buf: *mut u8,
-    ) -> lv_res_t,
->;
-#[doc = " Close the pending decoding. Free resources etc."]
-#[doc = " - __`decoder`__: pointer to the decoder the function associated with"]
-#[doc = " - __`dsc`__: pointer to decoder descriptor"]
-pub type lv_img_decoder_close_f_t = ::core::option::Option<
-    unsafe extern "C" fn(decoder: *mut _lv_img_decoder, dsc: *mut _lv_img_decoder_dsc),
->;
-#[repr(C)]
-pub struct _lv_img_decoder {
-    pub info_cb: lv_img_decoder_info_f_t,
-    pub open_cb: lv_img_decoder_open_f_t,
-    pub read_line_cb: lv_img_decoder_read_line_f_t,
-    pub close_cb: lv_img_decoder_close_f_t,
-    pub user_data: lv_img_decoder_user_data_t,
-}
-impl Default for _lv_img_decoder {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-pub type lv_img_decoder_t = _lv_img_decoder;
-#[doc = "Describe an image decoding session. Stores data about the decoding"]
-#[repr(C)]
-pub struct _lv_img_decoder_dsc {
-    #[doc = "The decoder which was able to open the image source"]
-    pub decoder: *mut lv_img_decoder_t,
-    #[doc = "The image source. A file path like \"S:my_img.png\" or pointer to an `lv_img_dsc_t` variable"]
-    pub src: *const ::cty::c_void,
-    #[doc = "Style to draw the image."]
-    pub color: lv_color_t,
-    #[doc = "Type of the source: file or variable. Can be set in `open` function if required"]
-    pub src_type: lv_img_src_t,
-    #[doc = "Info about the opened image: color format, size, etc. MUST be set in `open` function"]
-    pub header: lv_img_header_t,
-    #[doc = " Pointer to a buffer where the image's data (pixels) are stored in a decoded, plain format."]
-    #[doc = "  MUST be set in `open` function"]
-    pub img_data: *const u8,
-    #[doc = " How much time did it take to open the image. [ms]"]
-    #[doc = "  If not set `lv_img_cache` will measure and set the time to open"]
-    pub time_to_open: u32,
-    #[doc = "A text to display instead of the image when the image can't be opened."]
-    #[doc = " Can be set in `open` function or set NULL."]
-    pub error_msg: *const ::cty::c_char,
-    #[doc = "Store any custom data here is required"]
-    pub user_data: *mut ::cty::c_void,
-}
-impl Default for _lv_img_decoder_dsc {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-pub type lv_img_decoder_dsc_t = _lv_img_decoder_dsc;
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get information about an image."]
-    #[doc = " Try the created image decoder one by one. Once one is able to get info that info will be used."]
-    #[doc = " - __`src`__: the image source. Can be"]
-    #[doc = "  1) File name: E.g. \"S:folder/img1.png\" (The drivers needs to registered via `lv_fs_add_drv()`)"]
-    #[doc = "  2) Variable: Pointer to an `lv_img_dsc_t` variable"]
-    #[doc = "  3) Symbol: E.g. `LV_SYMBOL_OK`"]
-    #[doc = " - __`header`__: the image info will be stored here"]
-    #[doc = " Return: LV_RES_OK: success; LV_RES_INV: wasn't able to get info about the image"]
-    pub fn lv_img_decoder_get_info(
-        src: *const ::cty::c_char,
-        header: *mut lv_img_header_t,
-    ) -> lv_res_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Open an image."]
-    #[doc = " Try the created image decoder one by one. Once one is able to open the image that decoder is save in `dsc`"]
-    #[doc = " - __`dsc`__: describe a decoding session. Simply a pointer to an `lv_img_decoder_dsc_t` variable."]
-    #[doc = " - __`src`__: the image source. Can be"]
-    #[doc = "  1) File name: E.g. \"S:folder/img1.png\" (The drivers needs to registered via `lv_fs_add_drv()`)"]
-    #[doc = "  2) Variable: Pointer to an `lv_img_dsc_t` variable"]
-    #[doc = "  3) Symbol: E.g. `LV_SYMBOL_OK`"]
-    #[doc = " - __`color`__: The color of the image with `LV_IMG_CF_ALPHA_...`"]
-    #[doc = " Return: LV_RES_OK: opened the image. `dsc->img_data` and `dsc->header` are set."]
-    #[doc = "         LV_RES_INV: none of the registered image decoders were able to open the image."]
-    pub fn lv_img_decoder_open(
-        dsc: *mut lv_img_decoder_dsc_t,
-        src: *const ::cty::c_void,
-        color: lv_color_t,
-    ) -> lv_res_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Read a line from an opened image"]
-    #[doc = " - __`dsc`__: pointer to `lv_img_decoder_dsc_t` used in `lv_img_decoder_open`"]
-    #[doc = " - __`x`__: start X coordinate (from left)"]
-    #[doc = " - __`y`__: start Y coordinate (from top)"]
-    #[doc = " - __`len`__: number of pixels to read"]
-    #[doc = " - __`buf`__: store the data here"]
-    #[doc = " Return: LV_RES_OK: success; LV_RES_INV: an error occurred"]
-    pub fn lv_img_decoder_read_line(
-        dsc: *mut lv_img_decoder_dsc_t,
-        x: lv_coord_t,
-        y: lv_coord_t,
-        len: lv_coord_t,
-        buf: *mut u8,
-    ) -> lv_res_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Close a decoding session"]
-    #[doc = " - __`dsc`__: pointer to `lv_img_decoder_dsc_t` used in `lv_img_decoder_open`"]
-    pub fn lv_img_decoder_close(dsc: *mut lv_img_decoder_dsc_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Create a new image decoder"]
-    #[doc = " Return: pointer to the new image decoder"]
-    pub fn lv_img_decoder_create() -> *mut lv_img_decoder_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Delete an image decoder"]
-    #[doc = " - __`decoder`__: pointer to an image decoder"]
-    pub fn lv_img_decoder_delete(decoder: *mut lv_img_decoder_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set a callback to get information about the image"]
-    #[doc = " - __`decoder`__: pointer to an image decoder"]
-    #[doc = " - __`info_cb`__: a function to collect info about an image (fill an `lv_img_header_t` struct)"]
-    pub fn lv_img_decoder_set_info_cb(
-        decoder: *mut lv_img_decoder_t,
-        info_cb: lv_img_decoder_info_f_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set a callback to open an image"]
-    #[doc = " - __`decoder`__: pointer to an image decoder"]
-    #[doc = " - __`open_cb`__: a function to open an image"]
-    pub fn lv_img_decoder_set_open_cb(
-        decoder: *mut lv_img_decoder_t,
-        open_cb: lv_img_decoder_open_f_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set a callback to a decoded line of an image"]
-    #[doc = " - __`decoder`__: pointer to an image decoder"]
-    #[doc = " - __`read_line_cb`__: a function to read a line of an image"]
-    pub fn lv_img_decoder_set_read_line_cb(
-        decoder: *mut lv_img_decoder_t,
-        read_line_cb: lv_img_decoder_read_line_f_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Set a callback to close a decoding session. E.g. close files and free other resources."]
-    #[doc = " - __`decoder`__: pointer to an image decoder"]
-    #[doc = " - __`close_cb`__: a function to close a decoding session"]
-    pub fn lv_img_decoder_set_close_cb(
-        decoder: *mut lv_img_decoder_t,
-        close_cb: lv_img_decoder_close_f_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get info about a built-in image"]
-    #[doc = " - __`decoder`__: the decoder where this function belongs"]
-    #[doc = " - __`src`__: the image source: pointer to an `lv_img_dsc_t` variable, a file path or a symbol"]
-    #[doc = " - __`header`__: store the image data here"]
-    #[doc = " Return: LV_RES_OK: the info is successfully stored in `header`; LV_RES_INV: unknown format or other error."]
-    pub fn lv_img_decoder_built_in_info(
-        decoder: *mut lv_img_decoder_t,
-        src: *const ::cty::c_void,
-        header: *mut lv_img_header_t,
-    ) -> lv_res_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Open a built in image"]
-    #[doc = " - __`decoder`__: the decoder where this function belongs"]
-    #[doc = " - __`dsc`__: pointer to decoder descriptor. `src`, `style` are already initialized in it."]
-    #[doc = " Return: LV_RES_OK: the info is successfully stored in `header`; LV_RES_INV: unknown format or other error."]
-    pub fn lv_img_decoder_built_in_open(
-        decoder: *mut lv_img_decoder_t,
-        dsc: *mut lv_img_decoder_dsc_t,
-    ) -> lv_res_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Decode `len` pixels starting from the given `x`, `y` coordinates and store them in `buf`."]
-    #[doc = " Required only if the \"open\" function can't return with the whole decoded pixel array."]
-    #[doc = " - __`decoder`__: pointer to the decoder the function associated with"]
-    #[doc = " - __`dsc`__: pointer to decoder descriptor"]
-    #[doc = " - __`x`__: start x coordinate"]
-    #[doc = " - __`y`__: start y coordinate"]
-    #[doc = " - __`len`__: number of pixels to decode"]
-    #[doc = " - __`buf`__: a buffer to store the decoded pixels"]
-    #[doc = " Return: LV_RES_OK: ok; LV_RES_INV: failed"]
-    pub fn lv_img_decoder_built_in_read_line(
-        decoder: *mut lv_img_decoder_t,
-        dsc: *mut lv_img_decoder_dsc_t,
-        x: lv_coord_t,
-        y: lv_coord_t,
-        len: lv_coord_t,
-        buf: *mut u8,
-    ) -> lv_res_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Close the pending decoding. Free resources etc."]
-    #[doc = " - __`decoder`__: pointer to the decoder the function associated with"]
-    #[doc = " - __`dsc`__: pointer to decoder descriptor"]
-    pub fn lv_img_decoder_built_in_close(
-        decoder: *mut lv_img_decoder_t,
-        dsc: *mut lv_img_decoder_dsc_t,
-    );
-}
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
 pub struct lv_draw_img_dsc_t {
@@ -4344,69 +1519,7 @@ impl lv_draw_img_dsc_t {
         __bindgen_bitfield_unit
     }
 }
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " GLOBAL PROTOTYPES"]
-    pub fn lv_draw_img_dsc_init(dsc: *mut lv_draw_img_dsc_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Draw an image"]
-    #[doc = " - __`coords`__: the coordinates of the image"]
-    #[doc = " - __`mask`__: the image will be drawn only in this area"]
-    #[doc = " - __`src`__: pointer to a lv_color_t array which contains the pixels of the image"]
-    #[doc = " - __`dsc`__: pointer to an initialized `lv_draw_img_dsc_t` variable"]
-    pub fn lv_draw_img(
-        coords: *const lv_area_t,
-        mask: *const lv_area_t,
-        src: *const ::cty::c_void,
-        dsc: *const lv_draw_img_dsc_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the type of an image source"]
-    #[doc = " - __`src`__: pointer to an image source:"]
-    #[doc = "  - pointer to an 'lv_img_t' variable (image stored internally and compiled into the code)"]
-    #[doc = "  - a path to a file (e.g. \"S:/folder/image.bin\")"]
-    #[doc = "  - or a symbol (e.g. LV_SYMBOL_CLOSE)"]
-    #[doc = " Return: type of the image source LV_IMG_SRC_VARIABLE/FILE/SYMBOL/UNKNOWN"]
-    pub fn lv_img_src_get_type(src: *const ::cty::c_void) -> lv_img_src_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the pixel size of a color format in bits"]
-    #[doc = " - __`cf`__: a color format (`LV_IMG_CF_...`)"]
-    #[doc = " Return: the pixel size in bits"]
-    pub fn lv_img_cf_get_px_size(cf: lv_img_cf_t) -> u8;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Check if a color format is chroma keyed or not"]
-    #[doc = " - __`cf`__: a color format (`LV_IMG_CF_...`)"]
-    #[doc = " Return: true: chroma keyed; false: not chroma keyed"]
-    pub fn lv_img_cf_is_chroma_keyed(cf: lv_img_cf_t) -> bool;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Check if a color format has alpha channel or not"]
-    #[doc = " - __`cf`__: a color format (`LV_IMG_CF_...`)"]
-    #[doc = " Return: true: has alpha channel; false: doesn't have alpha channel"]
-    pub fn lv_img_cf_has_alpha(cf: lv_img_cf_t) -> bool;
-}
-#[doc = "< Draw the main portion of the object"]
-pub const LV_DESIGN_DRAW_MAIN: _bindgen_ty_25 = 0;
-#[doc = "< Draw extras on the object"]
-pub const LV_DESIGN_DRAW_POST: _bindgen_ty_25 = 1;
-#[doc = "< Check if the object fully covers the 'mask_p' area"]
-pub const LV_DESIGN_COVER_CHK: _bindgen_ty_25 = 2;
-#[doc = " Design modes"]
-pub type _bindgen_ty_25 = u32;
 pub type lv_design_mode_t = u8;
-#[doc = "< Draw ready"]
-pub const LV_DESIGN_RES_OK: _bindgen_ty_26 = 0;
-#[doc = "< Returned on `LV_DESIGN_COVER_CHK` if the areas is fully covered"]
-pub const LV_DESIGN_RES_COVER: _bindgen_ty_26 = 1;
-#[doc = "< Returned on `LV_DESIGN_COVER_CHK` if the areas is not covered"]
-pub const LV_DESIGN_RES_NOT_COVER: _bindgen_ty_26 = 2;
-#[doc = "< Returned on `LV_DESIGN_COVER_CHK` if the areas is masked out (children also not cover)"]
-pub const LV_DESIGN_RES_MASKED: _bindgen_ty_26 = 3;
-#[doc = " Design results"]
-pub type _bindgen_ty_26 = u32;
 pub type lv_design_res_t = u8;
 #[doc = " The design callback is used to draw the object on the screen."]
 #[doc = " It accepts the object, a mask area, and the mode in which to draw the object."]
@@ -4417,99 +1530,12 @@ pub type lv_design_cb_t = ::core::option::Option<
         mode: lv_design_mode_t,
     ) -> lv_design_res_t,
 >;
-#[doc = "< The object has been pressed"]
-pub const LV_EVENT_PRESSED: _bindgen_ty_27 = 0;
-#[doc = "< The object is being pressed (called continuously while pressing)"]
-pub const LV_EVENT_PRESSING: _bindgen_ty_27 = 1;
-#[doc = "< User is still pressing but slid cursor/finger off of the object"]
-pub const LV_EVENT_PRESS_LOST: _bindgen_ty_27 = 2;
-#[doc = "< User pressed object for a short period of time, then released it. Not called if dragged."]
-pub const LV_EVENT_SHORT_CLICKED: _bindgen_ty_27 = 3;
-#[doc = "< Object has been pressed for at least `LV_INDEV_LONG_PRESS_TIME`.  Not called if dragged."]
-pub const LV_EVENT_LONG_PRESSED: _bindgen_ty_27 = 4;
-#[doc = "< Called after `LV_INDEV_LONG_PRESS_TIME` in every"]
-#[doc = "`LV_INDEV_LONG_PRESS_REP_TIME` ms.  Not called if dragged."]
-pub const LV_EVENT_LONG_PRESSED_REPEAT: _bindgen_ty_27 = 5;
-#[doc = "< Called on release if not dragged (regardless to long press)"]
-pub const LV_EVENT_CLICKED: _bindgen_ty_27 = 6;
-#[doc = "< Called in every cases when the object has been released"]
-pub const LV_EVENT_RELEASED: _bindgen_ty_27 = 7;
-pub const LV_EVENT_DRAG_BEGIN: _bindgen_ty_27 = 8;
-pub const LV_EVENT_DRAG_END: _bindgen_ty_27 = 9;
-pub const LV_EVENT_DRAG_THROW_BEGIN: _bindgen_ty_27 = 10;
-#[doc = "< The object has been gesture"]
-pub const LV_EVENT_GESTURE: _bindgen_ty_27 = 11;
-pub const LV_EVENT_KEY: _bindgen_ty_27 = 12;
-pub const LV_EVENT_FOCUSED: _bindgen_ty_27 = 13;
-pub const LV_EVENT_DEFOCUSED: _bindgen_ty_27 = 14;
-pub const LV_EVENT_LEAVE: _bindgen_ty_27 = 15;
-#[doc = "< The object's value has changed (i.e. slider moved)"]
-pub const LV_EVENT_VALUE_CHANGED: _bindgen_ty_27 = 16;
-pub const LV_EVENT_INSERT: _bindgen_ty_27 = 17;
-pub const LV_EVENT_REFRESH: _bindgen_ty_27 = 18;
-#[doc = "< \"Ok\", \"Apply\" or similar specific button has clicked"]
-pub const LV_EVENT_APPLY: _bindgen_ty_27 = 19;
-#[doc = "< \"Close\", \"Cancel\" or similar specific button has clicked"]
-pub const LV_EVENT_CANCEL: _bindgen_ty_27 = 20;
-#[doc = "< Object is being deleted"]
-pub const LV_EVENT_DELETE: _bindgen_ty_27 = 21;
-pub const _LV_EVENT_LAST: _bindgen_ty_27 = 22;
-pub type _bindgen_ty_27 = u32;
 pub type lv_event_t = u8;
 #[doc = " @brief Event callback."]
 #[doc = " Events are used to notify the user of some action being taken on the object."]
 #[doc = " For details, see ::lv_event_t."]
 pub type lv_event_cb_t =
     ::core::option::Option<unsafe extern "C" fn(obj: *mut _lv_obj_t, event: lv_event_t)>;
-#[doc = "< Object is being deleted"]
-pub const LV_SIGNAL_CLEANUP: _bindgen_ty_28 = 0;
-#[doc = "< Child was removed/added"]
-pub const LV_SIGNAL_CHILD_CHG: _bindgen_ty_28 = 1;
-#[doc = "< Object coordinates/size have changed"]
-pub const LV_SIGNAL_COORD_CHG: _bindgen_ty_28 = 2;
-#[doc = "< Parent's size has changed"]
-pub const LV_SIGNAL_PARENT_SIZE_CHG: _bindgen_ty_28 = 3;
-#[doc = "< Object's style has changed"]
-pub const LV_SIGNAL_STYLE_CHG: _bindgen_ty_28 = 4;
-#[doc = "<The base dir has changed"]
-pub const LV_SIGNAL_BASE_DIR_CHG: _bindgen_ty_28 = 5;
-#[doc = "< Object's extra padding has changed"]
-pub const LV_SIGNAL_REFR_EXT_DRAW_PAD: _bindgen_ty_28 = 6;
-#[doc = "< LVGL needs to retrieve the object's type"]
-pub const LV_SIGNAL_GET_TYPE: _bindgen_ty_28 = 7;
-#[doc = "<Get the style of an object"]
-pub const LV_SIGNAL_GET_STYLE: _bindgen_ty_28 = 8;
-#[doc = "<Get the state of the object"]
-pub const LV_SIGNAL_GET_STATE_DSC: _bindgen_ty_28 = 9;
-#[doc = "< Advanced hit-testing"]
-pub const LV_SIGNAL_HIT_TEST: _bindgen_ty_28 = 10;
-#[doc = "< The object has been pressed"]
-pub const LV_SIGNAL_PRESSED: _bindgen_ty_28 = 11;
-#[doc = "< The object is being pressed (called continuously while pressing)"]
-pub const LV_SIGNAL_PRESSING: _bindgen_ty_28 = 12;
-#[doc = "< User is still pressing but slid cursor/finger off of the object"]
-pub const LV_SIGNAL_PRESS_LOST: _bindgen_ty_28 = 13;
-#[doc = "< User pressed object for a short period of time, then released it. Not called if dragged."]
-pub const LV_SIGNAL_RELEASED: _bindgen_ty_28 = 14;
-#[doc = "< Object has been pressed for at least `LV_INDEV_LONG_PRESS_TIME`.  Not called if dragged."]
-pub const LV_SIGNAL_LONG_PRESS: _bindgen_ty_28 = 15;
-#[doc = "< Called after `LV_INDEV_LONG_PRESS_TIME` in every `LV_INDEV_LONG_PRESS_REP_TIME` ms.  Not called if dragged."]
-pub const LV_SIGNAL_LONG_PRESS_REP: _bindgen_ty_28 = 16;
-pub const LV_SIGNAL_DRAG_BEGIN: _bindgen_ty_28 = 17;
-pub const LV_SIGNAL_DRAG_THROW_BEGIN: _bindgen_ty_28 = 18;
-pub const LV_SIGNAL_DRAG_END: _bindgen_ty_28 = 19;
-#[doc = "< The object has been gesture"]
-pub const LV_SIGNAL_GESTURE: _bindgen_ty_28 = 20;
-#[doc = "< Another object is clicked or chosen via an input device"]
-pub const LV_SIGNAL_LEAVE: _bindgen_ty_28 = 21;
-pub const LV_SIGNAL_FOCUS: _bindgen_ty_28 = 22;
-pub const LV_SIGNAL_DEFOCUS: _bindgen_ty_28 = 23;
-pub const LV_SIGNAL_CONTROL: _bindgen_ty_28 = 24;
-pub const LV_SIGNAL_GET_EDITABLE: _bindgen_ty_28 = 25;
-#[doc = " Signals are for use by the object itself or to extend the object's functionality."]
-#[doc = " Applications should use ::lv_obj_set_event_cb to be notified of events that occur"]
-#[doc = " on the object."]
-pub type _bindgen_ty_28 = u32;
 pub type lv_signal_t = u8;
 pub type lv_signal_cb_t = ::core::option::Option<
     unsafe extern "C" fn(
@@ -4573,31 +1599,6 @@ impl lv_realign_t {
         __bindgen_bitfield_unit
     }
 }
-pub const LV_PROTECT_NONE: _bindgen_ty_29 = 0;
-#[doc = "< Disable the child change signal. Used by the library"]
-pub const LV_PROTECT_CHILD_CHG: _bindgen_ty_29 = 1;
-#[doc = "< Prevent automatic parent change (e.g. in lv_page)"]
-pub const LV_PROTECT_PARENT: _bindgen_ty_29 = 2;
-#[doc = "< Prevent automatic positioning (e.g. in lv_cont layout)"]
-pub const LV_PROTECT_POS: _bindgen_ty_29 = 4;
-#[doc = "< Prevent the object be followed in automatic ordering (e.g. in"]
-#[doc = "lv_cont PRETTY layout)"]
-pub const LV_PROTECT_FOLLOW: _bindgen_ty_29 = 8;
-#[doc = "< If the `indev` was pressing this object but swiped out while"]
-#[doc = "pressing do not search other object."]
-pub const LV_PROTECT_PRESS_LOST: _bindgen_ty_29 = 16;
-#[doc = "< Prevent focusing the object by clicking on it"]
-pub const LV_PROTECT_CLICK_FOCUS: _bindgen_ty_29 = 32;
-pub type _bindgen_ty_29 = u32;
-pub type lv_protect_t = u8;
-pub const LV_STATE_DEFAULT: _bindgen_ty_30 = 0;
-pub const LV_STATE_CHECKED: _bindgen_ty_30 = 1;
-pub const LV_STATE_FOCUSED: _bindgen_ty_30 = 2;
-pub const LV_STATE_EDITED: _bindgen_ty_30 = 4;
-pub const LV_STATE_HOVERED: _bindgen_ty_30 = 8;
-pub const LV_STATE_PRESSED: _bindgen_ty_30 = 16;
-pub const LV_STATE_DISABLED: _bindgen_ty_30 = 32;
-pub type _bindgen_ty_30 = u32;
 pub type lv_state_t = u8;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
@@ -4857,39 +1858,6 @@ impl Default for lv_obj_type_t {
     fn default() -> Self {
         unsafe { ::core::mem::zeroed() }
     }
-}
-#[repr(C)]
-pub struct lv_hit_test_info_t {
-    pub point: *mut lv_point_t,
-    pub result: bool,
-}
-impl Default for lv_hit_test_info_t {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[repr(C)]
-pub struct lv_get_style_info_t {
-    pub part: u8,
-    pub result: *mut lv_style_list_t,
-}
-impl Default for lv_get_style_info_t {
-    fn default() -> Self {
-        unsafe { ::core::mem::zeroed() }
-    }
-}
-#[repr(C)]
-#[derive(Default)]
-pub struct lv_get_state_info_t {
-    pub part: u8,
-    pub result: lv_state_t,
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Init. the 'lv' library."]
-    pub fn lv_init();
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_deinit();
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Create a basic object"]
@@ -5324,66 +2292,11 @@ pub struct lv_get_state_info_t {
     pub fn lv_obj_set_event_cb(obj: *mut lv_obj_t, event_cb: lv_event_cb_t);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Send an event to the object"]
-    #[doc = " - __`obj`__: pointer to an object"]
-    #[doc = " - __`event`__: the type of the event from `lv_event_t`."]
-    #[doc = " - __`data`__: arbitrary data depending on the object type and the event. (Usually `NULL`)"]
-    #[doc = " Return: LV_RES_OK: `obj` was not deleted in the event; LV_RES_INV: `obj` was deleted in the event"]
-    pub fn lv_event_send(
-        obj: *mut lv_obj_t,
-        event: lv_event_t,
-        data: *const ::cty::c_void,
-    ) -> lv_res_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Send LV_EVENT_REFRESH event to an object"]
-    #[doc = " - __`obj`__: point to an obejct. (Can NOT be NULL)"]
-    #[doc = " Return: LV_RES_OK: success, LV_RES_INV: to object become invalid (e.g. deleted) due to this event."]
-    pub fn lv_event_send_refresh(obj: *mut lv_obj_t) -> lv_res_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Send LV_EVENT_REFRESH event to an object and all of its children"]
-    #[doc = " - __`obj`__: pointer to an object or NULL to refresh all objects of all displays"]
-    pub fn lv_event_send_refresh_recursive(obj: *mut lv_obj_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Call an event function with an object, event, and data."]
-    #[doc = " - __`event_xcb`__: an event callback function. If `NULL` `LV_RES_OK` will return without any actions."]
-    #[doc = "        (the 'x' in the argument name indicates that its not a fully generic function because it not follows"]
-    #[doc = "         the `func_name(object, callback, ...)` convention)"]
-    #[doc = " - __`obj`__: pointer to an object to associate with the event (can be `NULL` to simply call the `event_cb`)"]
-    #[doc = " - __`event`__: an event"]
-    #[doc = " - __`data`__: pointer to a custom data"]
-    #[doc = " Return: LV_RES_OK: `obj` was not deleted in the event; LV_RES_INV: `obj` was deleted in the event"]
-    pub fn lv_event_send_func(
-        event_xcb: lv_event_cb_t,
-        obj: *mut lv_obj_t,
-        event: lv_event_t,
-        data: *const ::cty::c_void,
-    ) -> lv_res_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the `data` parameter of the current event"]
-    #[doc = " Return: the `data` parameter"]
-    pub fn lv_event_get_data() -> *const ::cty::c_void;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Set the a signal function of an object. Used internally by the library."]
     #[doc = " Always call the previous signal function in the new."]
     #[doc = " - __`obj`__: pointer to an object"]
     #[doc = " - __`signal_cb`__: the new signal function"]
     pub fn lv_obj_set_signal_cb(obj: *mut lv_obj_t, signal_cb: lv_signal_cb_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Send an event to the object"]
-    #[doc = " - __`obj`__: pointer to an object"]
-    #[doc = " - __`event`__: the type of the event from `lv_event_t`."]
-    #[doc = " Return: LV_RES_OK or LV_RES_INV"]
-    pub fn lv_signal_send(
-        obj: *mut lv_obj_t,
-        signal: lv_signal_t,
-        param: *mut ::cty::c_void,
-    ) -> lv_res_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Set a new design function for an object"]
@@ -5599,9 +2512,6 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_radius(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_clip_corner(obj: *const lv_obj_t, part: u8) -> bool;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
@@ -5611,9 +2521,6 @@ pub struct lv_get_state_info_t {
         state: lv_state_t,
         value: bool,
     );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_clip_corner(style: *mut lv_style_t, state: lv_state_t, value: bool);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_size(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
@@ -5627,22 +2534,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_size(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_transform_width(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_transform_width(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_transform_width(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -5659,26 +2556,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_transform_height(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_transform_angle(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_transform_angle(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_transform_angle(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -5695,13 +2578,6 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_transform_zoom(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_opa_scale(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
@@ -5711,9 +2587,6 @@ pub struct lv_get_state_info_t {
         state: lv_state_t,
         value: lv_opa_t,
     );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_opa_scale(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_pad_top(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
@@ -5727,22 +2600,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_pad_top(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_pad_bottom(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_pad_bottom(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_pad_bottom(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -5759,9 +2622,6 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_pad_left(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_pad_right(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
@@ -5771,9 +2631,6 @@ pub struct lv_get_state_info_t {
         state: lv_state_t,
         value: lv_style_int_t,
     );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_pad_right(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_pad_inner(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
@@ -5787,22 +2644,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_pad_inner(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_margin_top(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_margin_top(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_margin_top(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -5819,26 +2666,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_margin_bottom(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_margin_left(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_margin_left(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_margin_left(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -5855,26 +2688,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_margin_right(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_bg_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_bg_blend_mode(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_blend_mode_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_bg_blend_mode(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_blend_mode_t,
     );
@@ -5891,26 +2710,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_bg_main_stop(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_bg_grad_stop(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_bg_grad_stop(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_bg_grad_stop(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -5927,13 +2732,6 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_bg_grad_dir(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_grad_dir_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_bg_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
@@ -5943,9 +2741,6 @@ pub struct lv_get_state_info_t {
         state: lv_state_t,
         value: lv_color_t,
     );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_bg_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_bg_grad_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
@@ -5959,9 +2754,6 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_bg_grad_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_bg_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
@@ -5973,22 +2765,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_bg_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_border_width(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_border_width(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_border_width(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -6005,26 +2787,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_border_side(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_border_side_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_border_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_border_blend_mode(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_blend_mode_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_border_blend_mode(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_blend_mode_t,
     );
@@ -6041,9 +2809,6 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_border_post(style: *mut lv_style_t, state: lv_state_t, value: bool);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_border_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
@@ -6053,9 +2818,6 @@ pub struct lv_get_state_info_t {
         state: lv_state_t,
         value: lv_color_t,
     );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_border_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_border_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
@@ -6069,22 +2831,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_border_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_outline_width(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_outline_width(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_outline_width(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -6101,26 +2853,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_outline_pad(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_outline_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_outline_blend_mode(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_blend_mode_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_outline_blend_mode(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_blend_mode_t,
     );
@@ -6137,9 +2875,6 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_outline_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_outline_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
@@ -6151,22 +2886,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_outline_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_shadow_width(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_shadow_width(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_shadow_width(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -6183,26 +2908,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_shadow_ofs_x(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_shadow_ofs_y(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_shadow_ofs_y(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_shadow_ofs_y(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -6219,26 +2930,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_shadow_spread(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_shadow_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_shadow_blend_mode(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_blend_mode_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_shadow_blend_mode(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_blend_mode_t,
     );
@@ -6255,9 +2952,6 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_shadow_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_shadow_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
@@ -6267,9 +2961,6 @@ pub struct lv_get_state_info_t {
         state: lv_state_t,
         value: lv_opa_t,
     );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_shadow_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_pattern_repeat(obj: *const lv_obj_t, part: u8) -> bool;
@@ -6283,22 +2974,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_pattern_repeat(style: *mut lv_style_t, state: lv_state_t, value: bool);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_pattern_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_pattern_blend_mode(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_blend_mode_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_pattern_blend_mode(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_blend_mode_t,
     );
@@ -6315,13 +2996,6 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_pattern_recolor(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_color_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_pattern_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
@@ -6333,22 +3007,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_pattern_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_pattern_recolor_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_pattern_recolor_opa(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_opa_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_pattern_recolor_opa(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_opa_t,
     );
@@ -6365,26 +3029,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_pattern_image(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: *const ::cty::c_void,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_value_letter_space(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_value_letter_space(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_value_letter_space(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -6401,26 +3051,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_value_line_space(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_value_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_value_blend_mode(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_blend_mode_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_value_blend_mode(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_blend_mode_t,
     );
@@ -6437,26 +3073,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_value_ofs_x(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_value_ofs_y(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_value_ofs_y(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_value_ofs_y(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -6473,9 +3095,6 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_value_align(style: *mut lv_style_t, state: lv_state_t, value: lv_align_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_value_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
@@ -6485,9 +3104,6 @@ pub struct lv_get_state_info_t {
         state: lv_state_t,
         value: lv_color_t,
     );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_value_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_value_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
@@ -6501,9 +3117,6 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_value_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_value_font(obj: *const lv_obj_t, part: u8) -> *const lv_font_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
@@ -6515,23 +3128,9 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_value_font(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: *const lv_font_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_value_str(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: *const ::cty::c_char,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_value_str(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: *const ::cty::c_char,
     );
@@ -6548,26 +3147,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_text_letter_space(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_text_line_space(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_text_line_space(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_text_line_space(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -6584,26 +3169,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_text_decor(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_text_decor_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_text_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_text_blend_mode(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_blend_mode_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_text_blend_mode(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_blend_mode_t,
     );
@@ -6620,22 +3191,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_text_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_text_sel_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_text_sel_color(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_color_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_text_sel_color(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_color_t,
     );
@@ -6652,22 +3213,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_text_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_text_font(obj: *const lv_obj_t, part: u8) -> *const lv_font_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_text_font(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: *const lv_font_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_text_font(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: *const lv_font_t,
     );
@@ -6684,26 +3235,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_line_width(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_line_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_line_blend_mode(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_blend_mode_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_line_blend_mode(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_blend_mode_t,
     );
@@ -6720,26 +3257,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_line_dash_width(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_line_dash_gap(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_line_dash_gap(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_line_dash_gap(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -6756,9 +3279,6 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_line_rounded(style: *mut lv_style_t, state: lv_state_t, value: bool);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_line_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
@@ -6768,9 +3288,6 @@ pub struct lv_get_state_info_t {
         state: lv_state_t,
         value: lv_color_t,
     );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_line_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_line_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
@@ -6784,22 +3301,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_line_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_image_blend_mode(obj: *const lv_obj_t, part: u8) -> lv_blend_mode_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_image_blend_mode(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_blend_mode_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_image_blend_mode(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_blend_mode_t,
     );
@@ -6816,9 +3323,6 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_image_recolor(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_image_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
@@ -6830,22 +3334,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_image_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_image_recolor_opa(obj: *const lv_obj_t, part: u8) -> lv_opa_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_image_recolor_opa(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_opa_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_image_recolor_opa(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_opa_t,
     );
@@ -6862,26 +3356,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_transition_time(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_transition_delay(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_transition_delay(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_transition_delay(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -6898,26 +3378,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_transition_prop_1(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_transition_prop_2(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_transition_prop_2(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_transition_prop_2(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -6934,26 +3400,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_transition_prop_3(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_transition_prop_4(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_transition_prop_4(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_transition_prop_4(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -6970,26 +3422,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_transition_prop_5(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_transition_prop_6(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_transition_prop_6(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_transition_prop_6(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -7006,13 +3444,6 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_transition_path(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: *mut lv_anim_path_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_scale_width(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
@@ -7024,26 +3455,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_scale_width(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_scale_border_width(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_scale_border_width(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_scale_border_width(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -7063,26 +3480,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_scale_end_border_width(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_scale_end_line_width(obj: *const lv_obj_t, part: u8) -> lv_style_int_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_scale_end_line_width(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_scale_end_line_width(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -7099,26 +3502,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_scale_grad_color(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_color_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_get_style_scale_end_color(obj: *const lv_obj_t, part: u8) -> lv_color_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_scale_end_color(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_color_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_scale_end_color(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_color_t,
     );
@@ -7132,18 +3521,12 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_pad_all(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_pad_hor(
         obj: *mut lv_obj_t,
         part: u8,
         state: lv_state_t,
         value: lv_style_int_t,
     );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_pad_hor(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_pad_ver(
@@ -7154,19 +3537,9 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_pad_ver(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_margin_all(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_margin_all(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -7180,23 +3553,9 @@ pub struct lv_get_state_info_t {
     );
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_margin_hor(
-        style: *mut lv_style_t,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     pub fn lv_obj_set_style_local_margin_ver(
         obj: *mut lv_obj_t,
         part: u8,
-        state: lv_state_t,
-        value: lv_style_int_t,
-    );
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub fn lv_style_set_margin_ver(
-        style: *mut lv_style_t,
         state: lv_state_t,
         value: lv_style_int_t,
     );
@@ -7429,18 +3788,4 @@ pub struct lv_get_state_info_t {
     #[doc = " - __`time`__: duration of the animation [ms]"]
     #[doc = " - __`delay`__: wait before the animation starts [ms]"]
     pub fn lv_obj_fade_out(obj: *mut lv_obj_t, time: u32, delay: u32);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Check if any object has a given type"]
-    #[doc = " - __`obj`__: pointer to an object"]
-    #[doc = " - __`obj_type`__: type of the object. (e.g. \"lv_btn\")"]
-    #[doc = " Return: true: valid"]
-    pub fn lv_debug_check_obj_type(obj: *const lv_obj_t, obj_type: *const ::cty::c_char) -> bool;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Check if any object is still \"alive\", and part of the hierarchy"]
-    #[doc = " - __`obj`__: pointer to an object"]
-    #[doc = " - __`obj_type`__: type of the object. (e.g. \"lv_btn\")"]
-    #[doc = " Return: true: valid"]
-    pub fn lv_debug_check_obj_valid(obj: *const lv_obj_t) -> bool;
 }

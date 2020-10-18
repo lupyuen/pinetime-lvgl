@@ -19,6 +19,7 @@ extern crate macros as lvgl_macros;
 //  Import Procedural Macros from `macros` library
 
 //  If building for Mynewt OS...
+/// Export Mynewt API
 #[cfg(feature = "mynewt_os")]
 pub use mynewt;
 //  Export Mynewt API
@@ -99,11 +100,11 @@ pub mod core {
     //! LVGL Core API for Rust
     #[cfg(feature = "mynewt_os")]
     use mynewt::{result::*, Out, Ptr, Strn};
-    /// Contains Rust bindings for LVGL Core API `lv_core`
+    /// Contains Rust bindings for LVGL Core Display API `lv_disp`
     #[allow(non_camel_case_types)]
     #[allow(non_upper_case_globals)]
     #[allow(unused_imports)]
-    pub mod obj {
+    pub mod disp {
         use super::*;
         #[repr(C)]
         pub struct __BindgenBitfieldUnit<Storage, Align> where
@@ -512,1187 +513,13 @@ pub mod core {
             fn eq(&self, _other: &__BindgenUnionField<T>) -> bool { true }
         }
         impl <T> ::core::cmp::Eq for __BindgenUnionField<T> { }
-        pub const LV_HOR_RES_MAX: u32 = 240;
-        pub const LV_VER_RES_MAX: u32 = 240;
-        pub const LV_SCALE_RES: u32 = 1;
-        pub const LV_COLOR_DEPTH: u32 = 16;
-        pub const LV_COLOR_16_SWAP: u32 = 1;
-        pub const LV_COLOR_SCREEN_TRANSP: u32 = 0;
-        pub const LV_ANTIALIAS: u32 = 1;
         pub const LV_DISP_DEF_REFR_PERIOD: u32 = 30;
-        pub const LV_DPI: u32 = 100;
         pub const LV_DISP_SMALL_LIMIT: u32 = 30;
         pub const LV_DISP_MEDIUM_LIMIT: u32 = 50;
         pub const LV_DISP_LARGE_LIMIT: u32 = 70;
-        pub const LV_MEM_CUSTOM: u32 = 0;
-        pub const LV_MEM_SIZE: u32 = 4096;
-        pub const LV_MEM_ADR: u32 = 0;
-        pub const LV_MEM_AUTO_DEFRAG: u32 = 1;
-        pub const LV_ENABLE_GC: u32 = 0;
-        pub const LV_INDEV_DEF_READ_PERIOD: u32 = 30;
-        pub const LV_INDEV_DEF_DRAG_LIMIT: u32 = 10;
-        pub const LV_INDEV_DEF_DRAG_THROW: u32 = 20;
-        pub const LV_INDEV_DEF_LONG_PRESS_TIME: u32 = 400;
-        pub const LV_INDEV_DEF_LONG_PRESS_REP_TIME: u32 = 100;
-        pub const LV_INDEV_DEF_GESTURE_LIMIT: u32 = 50;
-        pub const LV_INDEV_DEF_GESTURE_MIN_VELOCITY: u32 = 3;
-        pub const LV_USE_ANIMATION: u32 = 1;
-        pub const LV_USE_SHADOW: u32 = 0;
-        pub const LV_USE_BLEND_MODES: u32 = 1;
-        pub const LV_USE_OPA_SCALE: u32 = 1;
-        pub const LV_USE_IMG_TRANSFORM: u32 = 1;
-        pub const LV_USE_GROUP: u32 = 0;
-        pub const LV_USE_GPU: u32 = 0;
-        pub const LV_USE_GPU_STM32_DMA2D: u32 = 0;
-        pub const LV_USE_FILESYSTEM: u32 = 0;
-        pub const LV_USE_USER_DATA: u32 = 1;
-        pub const LV_USE_PERF_MONITOR: u32 = 0;
-        pub const LV_USE_API_EXTENSION_V6: u32 = 1;
-        pub const LV_USE_API_EXTENSION_V7: u32 = 1;
-        pub const LV_IMG_CF_INDEXED: u32 = 1;
-        pub const LV_IMG_CF_ALPHA: u32 = 1;
-        pub const LV_IMG_CACHE_DEF_SIZE: u32 = 1;
-        pub const LV_BIG_ENDIAN_SYSTEM: u32 = 0;
-        pub const LV_TICK_CUSTOM: u32 = 0;
-        pub const LV_USE_LOG: u32 = 0;
-        pub const LV_USE_DEBUG: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_12: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_14: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_16: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_18: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_20: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_22: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_24: u32 = 1;
-        pub const LV_FONT_MONTSERRAT_26: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_28: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_30: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_32: u32 = 1;
-        pub const LV_FONT_MONTSERRAT_34: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_36: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_38: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_40: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_42: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_44: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_46: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_48: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_12_SUBPX: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_28_COMPRESSED: u32 = 0;
-        pub const LV_FONT_DEJAVU_16_PERSIAN_HEBREW: u32 = 0;
-        pub const LV_FONT_SIMSUN_16_CJK: u32 = 0;
-        pub const LV_FONT_UNSCII_8: u32 = 0;
-        pub const LV_FONT_FMT_TXT_LARGE: u32 = 0;
-        pub const LV_FONT_SUBPX_BGR: u32 = 0;
-        pub const LV_USE_THEME_EMPTY: u32 = 1;
-        pub const LV_USE_THEME_TEMPLATE: u32 = 1;
-        pub const LV_USE_THEME_MATERIAL: u32 = 1;
-        pub const LV_USE_THEME_MONO: u32 = 1;
-        pub const LV_TXT_BREAK_CHARS: &'static [u8; 8usize] = b" ,.;:-_\0";
-        pub const LV_TXT_LINE_BREAK_LONG_LEN: u32 = 12;
-        pub const LV_TXT_LINE_BREAK_LONG_PRE_MIN_LEN: u32 = 3;
-        pub const LV_TXT_LINE_BREAK_LONG_POST_MIN_LEN: u32 = 3;
-        pub const LV_TXT_COLOR_CMD: &'static [u8; 2usize] = b"#\0";
-        pub const LV_USE_BIDI: u32 = 0;
-        pub const LV_USE_ARABIC_PERSIAN_CHARS: u32 = 0;
-        pub const LV_SPRINTF_CUSTOM: u32 = 0;
-        pub const LV_SPRINTF_DISABLE_FLOAT: u32 = 1;
-        pub const LV_USE_USER_DATA_FREE: u32 = 0;
-        pub const LV_USE_OBJ_REALIGN: u32 = 1;
-        pub const LV_USE_ARC: u32 = 1;
-        pub const LV_USE_BAR: u32 = 1;
-        pub const LV_USE_BTN: u32 = 1;
-        pub const LV_USE_BTNMATRIX: u32 = 1;
-        pub const LV_USE_CALENDAR: u32 = 1;
-        pub const LV_CALENDAR_WEEK_STARTS_MONDAY: u32 = 0;
-        pub const LV_USE_CANVAS: u32 = 1;
-        pub const LV_USE_CHECKBOX: u32 = 1;
-        pub const LV_USE_CHART: u32 = 1;
-        pub const LV_CHART_AXIS_TICK_LABEL_MAX_LEN: u32 = 256;
-        pub const LV_USE_CONT: u32 = 1;
-        pub const LV_USE_CPICKER: u32 = 1;
-        pub const LV_USE_DROPDOWN: u32 = 1;
-        pub const LV_DROPDOWN_DEF_ANIM_TIME: u32 = 200;
-        pub const LV_USE_GAUGE: u32 = 1;
-        pub const LV_USE_IMG: u32 = 1;
-        pub const LV_USE_IMGBTN: u32 = 1;
-        pub const LV_IMGBTN_TILED: u32 = 0;
-        pub const LV_USE_KEYBOARD: u32 = 1;
-        pub const LV_USE_LABEL: u32 = 1;
-        pub const LV_LABEL_DEF_SCROLL_SPEED: u32 = 25;
-        pub const LV_LABEL_WAIT_CHAR_COUNT: u32 = 3;
-        pub const LV_LABEL_TEXT_SEL: u32 = 0;
-        pub const LV_LABEL_LONG_TXT_HINT: u32 = 0;
-        pub const LV_USE_LED: u32 = 1;
-        pub const LV_LED_BRIGHT_MIN: u32 = 120;
-        pub const LV_LED_BRIGHT_MAX: u32 = 255;
-        pub const LV_USE_LINE: u32 = 1;
-        pub const LV_USE_LIST: u32 = 1;
-        pub const LV_LIST_DEF_ANIM_TIME: u32 = 100;
-        pub const LV_USE_LINEMETER: u32 = 1;
-        pub const LV_LINEMETER_PRECISE: u32 = 0;
-        pub const LV_USE_OBJMASK: u32 = 1;
-        pub const LV_USE_MSGBOX: u32 = 1;
-        pub const LV_USE_PAGE: u32 = 1;
-        pub const LV_PAGE_DEF_ANIM_TIME: u32 = 400;
-        pub const LV_USE_SPINNER: u32 = 1;
-        pub const LV_SPINNER_DEF_ARC_LENGTH: u32 = 60;
-        pub const LV_SPINNER_DEF_SPIN_TIME: u32 = 1000;
-        pub const LV_USE_ROLLER: u32 = 1;
-        pub const LV_ROLLER_DEF_ANIM_TIME: u32 = 200;
-        pub const LV_ROLLER_INF_PAGES: u32 = 7;
-        pub const LV_USE_SLIDER: u32 = 1;
-        pub const LV_USE_SPINBOX: u32 = 1;
-        pub const LV_USE_SWITCH: u32 = 1;
-        pub const LV_USE_TEXTAREA: u32 = 1;
-        pub const LV_TEXTAREA_DEF_CURSOR_BLINK_TIME: u32 = 400;
-        pub const LV_TEXTAREA_DEF_PWD_SHOW_TIME: u32 = 1500;
-        pub const LV_USE_TABLE: u32 = 1;
-        pub const LV_TABLE_COL_MAX: u32 = 12;
-        pub const LV_USE_TABVIEW: u32 = 1;
-        pub const LV_TABVIEW_DEF_ANIM_TIME: u32 = 300;
-        pub const LV_USE_TILEVIEW: u32 = 1;
-        pub const LV_TILEVIEW_DEF_ANIM_TIME: u32 = 300;
-        pub const LV_USE_WIN: u32 = 1;
-        pub const LV_MEMCPY_MEMSET_STD: u32 = 0;
-        pub const LV_USE_OUTLINE: u32 = 1;
-        pub const LV_USE_PATTERN: u32 = 1;
-        pub const LV_USE_VALUE_STR: u32 = 1;
-        pub const LV_FONT_MONTSERRAT_8: u32 = 0;
-        pub const LV_FONT_MONTSERRAT_10: u32 = 0;
-        pub const LV_USE_FONT_COMPRESSED: u32 = 1;
-        pub const LV_USE_FONT_SUBPX: u32 = 1;
-        pub const LV_SYMBOL_AUDIO: &'static [u8; 4usize] = b"\xEF\x80\x81\0";
-        pub const LV_SYMBOL_VIDEO: &'static [u8; 4usize] = b"\xEF\x80\x88\0";
-        pub const LV_SYMBOL_LIST: &'static [u8; 4usize] = b"\xEF\x80\x8B\0";
-        pub const LV_SYMBOL_OK: &'static [u8; 4usize] = b"\xEF\x80\x8C\0";
-        pub const LV_SYMBOL_CLOSE: &'static [u8; 4usize] = b"\xEF\x80\x8D\0";
-        pub const LV_SYMBOL_POWER: &'static [u8; 4usize] = b"\xEF\x80\x91\0";
-        pub const LV_SYMBOL_SETTINGS: &'static [u8; 4usize] =
-            b"\xEF\x80\x93\0";
-        pub const LV_SYMBOL_HOME: &'static [u8; 4usize] = b"\xEF\x80\x95\0";
-        pub const LV_SYMBOL_DOWNLOAD: &'static [u8; 4usize] =
-            b"\xEF\x80\x99\0";
-        pub const LV_SYMBOL_DRIVE: &'static [u8; 4usize] = b"\xEF\x80\x9C\0";
-        pub const LV_SYMBOL_REFRESH: &'static [u8; 4usize] =
-            b"\xEF\x80\xA1\0";
-        pub const LV_SYMBOL_MUTE: &'static [u8; 4usize] = b"\xEF\x80\xA6\0";
-        pub const LV_SYMBOL_VOLUME_MID: &'static [u8; 4usize] =
-            b"\xEF\x80\xA7\0";
-        pub const LV_SYMBOL_VOLUME_MAX: &'static [u8; 4usize] =
-            b"\xEF\x80\xA8\0";
-        pub const LV_SYMBOL_IMAGE: &'static [u8; 4usize] = b"\xEF\x80\xBE\0";
-        pub const LV_SYMBOL_EDIT: &'static [u8; 4usize] = b"\xEF\x8C\x84\0";
-        pub const LV_SYMBOL_PREV: &'static [u8; 4usize] = b"\xEF\x81\x88\0";
-        pub const LV_SYMBOL_PLAY: &'static [u8; 4usize] = b"\xEF\x81\x8B\0";
-        pub const LV_SYMBOL_PAUSE: &'static [u8; 4usize] = b"\xEF\x81\x8C\0";
-        pub const LV_SYMBOL_STOP: &'static [u8; 4usize] = b"\xEF\x81\x8D\0";
-        pub const LV_SYMBOL_NEXT: &'static [u8; 4usize] = b"\xEF\x81\x91\0";
-        pub const LV_SYMBOL_EJECT: &'static [u8; 4usize] = b"\xEF\x81\x92\0";
-        pub const LV_SYMBOL_LEFT: &'static [u8; 4usize] = b"\xEF\x81\x93\0";
-        pub const LV_SYMBOL_RIGHT: &'static [u8; 4usize] = b"\xEF\x81\x94\0";
-        pub const LV_SYMBOL_PLUS: &'static [u8; 4usize] = b"\xEF\x81\xA7\0";
-        pub const LV_SYMBOL_MINUS: &'static [u8; 4usize] = b"\xEF\x81\xA8\0";
-        pub const LV_SYMBOL_EYE_OPEN: &'static [u8; 4usize] =
-            b"\xEF\x81\xAE\0";
-        pub const LV_SYMBOL_EYE_CLOSE: &'static [u8; 4usize] =
-            b"\xEF\x81\xB0\0";
-        pub const LV_SYMBOL_WARNING: &'static [u8; 4usize] =
-            b"\xEF\x81\xB1\0";
-        pub const LV_SYMBOL_SHUFFLE: &'static [u8; 4usize] =
-            b"\xEF\x81\xB4\0";
-        pub const LV_SYMBOL_UP: &'static [u8; 4usize] = b"\xEF\x81\xB7\0";
-        pub const LV_SYMBOL_DOWN: &'static [u8; 4usize] = b"\xEF\x81\xB8\0";
-        pub const LV_SYMBOL_LOOP: &'static [u8; 4usize] = b"\xEF\x81\xB9\0";
-        pub const LV_SYMBOL_DIRECTORY: &'static [u8; 4usize] =
-            b"\xEF\x81\xBB\0";
-        pub const LV_SYMBOL_UPLOAD: &'static [u8; 4usize] = b"\xEF\x82\x93\0";
-        pub const LV_SYMBOL_CALL: &'static [u8; 4usize] = b"\xEF\x82\x95\0";
-        pub const LV_SYMBOL_CUT: &'static [u8; 4usize] = b"\xEF\x83\x84\0";
-        pub const LV_SYMBOL_COPY: &'static [u8; 4usize] = b"\xEF\x83\x85\0";
-        pub const LV_SYMBOL_SAVE: &'static [u8; 4usize] = b"\xEF\x83\x87\0";
-        pub const LV_SYMBOL_CHARGE: &'static [u8; 4usize] = b"\xEF\x83\xA7\0";
-        pub const LV_SYMBOL_PASTE: &'static [u8; 4usize] = b"\xEF\x83\xAA\0";
-        pub const LV_SYMBOL_BELL: &'static [u8; 4usize] = b"\xEF\x83\xB3\0";
-        pub const LV_SYMBOL_KEYBOARD: &'static [u8; 4usize] =
-            b"\xEF\x84\x9C\0";
-        pub const LV_SYMBOL_GPS: &'static [u8; 4usize] = b"\xEF\x84\xA4\0";
-        pub const LV_SYMBOL_FILE: &'static [u8; 4usize] = b"\xEF\x85\x9B\0";
-        pub const LV_SYMBOL_WIFI: &'static [u8; 4usize] = b"\xEF\x87\xAB\0";
-        pub const LV_SYMBOL_BATTERY_FULL: &'static [u8; 4usize] =
-            b"\xEF\x89\x80\0";
-        pub const LV_SYMBOL_BATTERY_3: &'static [u8; 4usize] =
-            b"\xEF\x89\x81\0";
-        pub const LV_SYMBOL_BATTERY_2: &'static [u8; 4usize] =
-            b"\xEF\x89\x82\0";
-        pub const LV_SYMBOL_BATTERY_1: &'static [u8; 4usize] =
-            b"\xEF\x89\x83\0";
-        pub const LV_SYMBOL_BATTERY_EMPTY: &'static [u8; 4usize] =
-            b"\xEF\x89\x84\0";
-        pub const LV_SYMBOL_USB: &'static [u8; 4usize] = b"\xEF\x8A\x87\0";
-        pub const LV_SYMBOL_BLUETOOTH: &'static [u8; 4usize] =
-            b"\xEF\x8A\x93\0";
-        pub const LV_SYMBOL_TRASH: &'static [u8; 4usize] = b"\xEF\x8B\xAD\0";
-        pub const LV_SYMBOL_BACKSPACE: &'static [u8; 4usize] =
-            b"\xEF\x95\x9A\0";
-        pub const LV_SYMBOL_SD_CARD: &'static [u8; 4usize] =
-            b"\xEF\x9F\x82\0";
-        pub const LV_SYMBOL_NEW_LINE: &'static [u8; 4usize] =
-            b"\xEF\xA2\xA2\0";
-        pub const LV_SYMBOL_DUMMY: &'static [u8; 4usize] = b"\xEF\xA3\xBF\0";
-        pub const LV_SYMBOL_BULLET: &'static [u8; 4usize] = b"\xE2\x80\xA2\0";
-        pub const LV_LOG_LEVEL_TRACE: u32 = 0;
-        pub const LV_LOG_LEVEL_INFO: u32 = 1;
-        pub const LV_LOG_LEVEL_WARN: u32 = 2;
-        pub const LV_LOG_LEVEL_ERROR: u32 = 3;
-        pub const LV_LOG_LEVEL_USER: u32 = 4;
-        pub const LV_LOG_LEVEL_NONE: u32 = 5;
-        pub const LV_MEM_BUF_MAX_NUM: u32 = 16;
-        pub const LV_FONT_WIDTH_FRACT_DIGIT: u32 = 4;
-        pub const LV_FONT_KERN_POSITIVE: u32 = 0;
-        pub const LV_FONT_KERN_NEGATIVE: u32 = 1;
-        pub const LV_TRIGO_SIN_MAX: u32 = 32767;
-        pub const LV_TRIGO_SHIFT: u32 = 15;
-        pub const LV_BEZIER_VAL_MAX: u32 = 1024;
-        pub const LV_BEZIER_VAL_SHIFT: u32 = 10;
-        pub const LV_OPA_MIN: u32 = 2;
-        pub const LV_OPA_MAX: u32 = 253;
-        pub const LV_COLOR_SIZE: u32 = 16;
-        pub const LV_COLOR_MIX_ROUND_OFS: u32 = 128;
-        pub const LV_ANIM_REPEAT_INFINITE: u32 = 65535;
-        pub const LV_MASK_ID_INV: i32 = -1;
-        pub const LV_RADIUS_CIRCLE: u32 = 32767;
-        pub const LV_DEBUG_STYLE_SENTINEL_VALUE: u32 = 579381998;
-        pub const LV_DEBUG_STYLE_LIST_SENTINEL_VALUE: u32 = 2574765243;
-        pub const LV_STYLE_ID_MASK: u32 = 255;
-        pub const LV_STYLE_ATTR_NONE: u32 = 0;
-        pub const LV_STYLE_ATTR_INHERIT: u32 = 128;
-        pub const LV_STYLE_TRANS_NUM_MAX: u32 = 6;
-        pub const LV_STYLE_PROP_ALL: u32 = 255;
-        pub const LV_STYLE_ID_VALUE: u32 = 0;
-        pub const LV_STYLE_ID_COLOR: u32 = 9;
-        pub const LV_STYLE_ID_OPA: u32 = 12;
-        pub const LV_STYLE_ID_PTR: u32 = 14;
-        pub const LV_STYLE_STATE_POS: u32 = 8;
-        pub const LV_STYLE_STATE_MASK: u32 = 32512;
-        pub const LV_STYLE_INHERIT_MASK: u32 = 32768;
-        pub const LV_NO_TASK_READY: u32 = 4294967295;
-        pub const LV_INV_BUF_SIZE: u32 = 32;
-        pub const LV_BIDI_LRO: &'static [u8; 4usize] = b"\xE2\x80\xAD\0";
-        pub const LV_BIDI_RLO: &'static [u8; 4usize] = b"\xE2\x80\xAE\0";
-        pub const LV_TXT_ENC_UTF8: u32 = 1;
-        pub const LV_TXT_ENC_ASCII: u32 = 2;
-        pub const LV_DRAW_LABEL_NO_TXT_SEL: u32 = 65535;
-        pub const LV_IMG_PX_SIZE_ALPHA_BYTE: u32 = 3;
-        pub const LV_IMG_ZOOM_NONE: u32 = 256;
-        pub const LV_MAX_ANCESTOR_NUM: u32 = 8;
-        pub const LV_EXT_CLICK_AREA_OFF: u32 = 0;
-        pub const LV_EXT_CLICK_AREA_TINY: u32 = 1;
-        pub const LV_EXT_CLICK_AREA_FULL: u32 = 2;
         pub type lv_coord_t = i16;
-        pub type lv_anim_user_data_t = *mut ::cty::c_void;
-        pub type lv_img_decoder_user_data_t = *mut ::cty::c_void;
         pub type lv_disp_drv_user_data_t = *mut ::cty::c_void;
-        pub type lv_indev_drv_user_data_t = *mut ::cty::c_void;
-        pub type lv_font_user_data_t = *mut ::cty::c_void;
         pub type lv_obj_user_data_t = *mut ::cty::c_void;
-        pub type lv_log_level_t = i8;
-        pub const LV_RES_INV: _bindgen_ty_2 = 0;
-        pub const LV_RES_OK: _bindgen_ty_2 = 1;
-        #[doc = " LVGL error codes."]
-        pub type _bindgen_ty_2 = u32;
-        pub type lv_res_t = u8;
-        pub type lv_uintptr_t = usize;
-        #[doc = " Heap information structure."]
-        #[repr(C)]
-        pub struct lv_mem_monitor_t {
-            #[doc = "< Total heap size"]
-            pub total_size: u32,
-            pub free_cnt: u32,
-            #[doc = "< Size of available memory"]
-            pub free_size: u32,
-            pub free_biggest_size: u32,
-            pub used_cnt: u32,
-            #[doc = "< Max size of Heap memory used"]
-            pub max_used: u32,
-            #[doc = "< Percentage used"]
-            pub used_pct: u8,
-            #[doc = "< Amount of fragmentation"]
-            pub frag_pct: u8,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for lv_mem_monitor_t {
-            #[inline]
-            fn default() -> lv_mem_monitor_t {
-                lv_mem_monitor_t{total_size:
-                                     ::core::default::Default::default(),
-                                 free_cnt:
-                                     ::core::default::Default::default(),
-                                 free_size:
-                                     ::core::default::Default::default(),
-                                 free_biggest_size:
-                                     ::core::default::Default::default(),
-                                 used_cnt:
-                                     ::core::default::Default::default(),
-                                 max_used:
-                                     ::core::default::Default::default(),
-                                 used_pct:
-                                     ::core::default::Default::default(),
-                                 frag_pct:
-                                     ::core::default::Default::default(),}
-            }
-        }
-        #[repr(C)]
-        pub struct lv_mem_buf_t {
-            pub p: *mut ::cty::c_void,
-            pub size: u16,
-            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-            pub __bindgen_padding_0: [u8; 5usize],
-        }
-        impl Default for lv_mem_buf_t {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        impl lv_mem_buf_t {
-            #[inline]
-            pub fn used(&self) -> u8 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
-                                               as u8)
-                }
-            }
-            #[inline]
-            pub fn set_used(&mut self, val: u8) {
-                unsafe {
-                    let val: u8 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(0usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn new_bitfield_1(used: u8)
-             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-                let mut __bindgen_bitfield_unit:
-                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
-                    Default::default();
-                __bindgen_bitfield_unit.set(0usize, 1u8,
-                                            {
-                                                let used: u8 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(used)
-                                                    };
-                                                used as u64
-                                            });
-                __bindgen_bitfield_unit
-            }
-        }
-        pub type lv_mem_buf_arr_t = [lv_mem_buf_t; 16usize];
-        #[doc = " Allocate a memory dynamically"]
-        #[doc = " - __`size`__: size of the memory to allocate in bytes"]
-        #[doc = " Return: pointer to the allocated memory"]
-        pub fn mem_alloc(size: usize) -> MynewtResult<*mut ::cty::c_void> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Allocate a memory dynamically"]
-                #[doc =
-                  " - __`size`__: size of the memory to allocate in bytes"]
-                #[doc = " Return: pointer to the allocated memory"]
-                pub fn lv_mem_alloc(size: usize)
-                -> *mut ::cty::c_void;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_mem_alloc(size as usize);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Free an allocated data"]
-        #[doc = " - __`data`__: pointer to an allocated memory"]
-        pub fn mem_free(data: *const ::cty::c_void) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Free an allocated data"]
-                #[doc = " - __`data`__: pointer to an allocated memory"]
-                pub fn lv_mem_free(data: *const ::cty::c_void);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_mem_free(data as *const ::cty::c_void);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc =
-          " Reallocate a memory with a new size. The old content will be kept."]
-        #[doc = " - __`data`__: pointer to an allocated memory."]
-        #[doc =
-          " Its content will be copied to the new memory block and freed"]
-        #[doc = " - __`new_size`__: the desired new size in byte"]
-        #[doc = " Return: pointer to the new memory"]
-        pub fn mem_realloc(data_p: Ptr, new_size: usize)
-         -> MynewtResult<*mut ::cty::c_void> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Reallocate a memory with a new size. The old content will be kept."]
-                #[doc = " - __`data`__: pointer to an allocated memory."]
-                #[doc =
-                  " Its content will be copied to the new memory block and freed"]
-                #[doc = " - __`new_size`__: the desired new size in byte"]
-                #[doc = " Return: pointer to the new memory"]
-                pub fn lv_mem_realloc(data_p: *mut ::cty::c_void,
-                                      new_size: usize)
-                -> *mut ::cty::c_void;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_mem_realloc(data_p as *mut ::cty::c_void,
-                                   new_size as usize);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Join the adjacent free memory blocks"]
-        pub fn mem_defrag() -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Join the adjacent free memory blocks"]
-                pub fn lv_mem_defrag();
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_mem_defrag();
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " @return"]
-        pub fn mem_test() -> MynewtResult<lv_res_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " @return"]
-                pub fn lv_mem_test()
-                -> lv_res_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_mem_test();
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Give information about the work memory of dynamic allocation"]
-        #[doc = " - __`mon_p`__: pointer to a dm_mon_p variable,"]
-        #[doc =
-          "              the result of the analysis will be stored here"]
-        pub fn mem_monitor(mon_p: *mut lv_mem_monitor_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Give information about the work memory of dynamic allocation"]
-                #[doc = " - __`mon_p`__: pointer to a dm_mon_p variable,"]
-                #[doc =
-                  "              the result of the analysis will be stored here"]
-                pub fn lv_mem_monitor(mon_p: *mut lv_mem_monitor_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_mem_monitor(mon_p as *mut lv_mem_monitor_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Represents a point on the screen."]
-        #[repr(C)]
-        pub struct lv_point_t {
-            pub x: lv_coord_t,
-            pub y: lv_coord_t,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for lv_point_t {
-            #[inline]
-            fn default() -> lv_point_t {
-                lv_point_t{x: ::core::default::Default::default(),
-                           y: ::core::default::Default::default(),}
-            }
-        }
-        #[doc = " Represents an area of the screen."]
-        #[repr(C)]
-        pub struct lv_area_t {
-            pub x1: lv_coord_t,
-            pub y1: lv_coord_t,
-            pub x2: lv_coord_t,
-            pub y2: lv_coord_t,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for lv_area_t {
-            #[inline]
-            fn default() -> lv_area_t {
-                lv_area_t{x1: ::core::default::Default::default(),
-                          y1: ::core::default::Default::default(),
-                          x2: ::core::default::Default::default(),
-                          y2: ::core::default::Default::default(),}
-            }
-        }
-        pub const LV_ALIGN_CENTER: lv_align_t = 0;
-        pub const LV_ALIGN_IN_TOP_LEFT: lv_align_t = 1;
-        pub const LV_ALIGN_IN_TOP_MID: lv_align_t = 2;
-        pub const LV_ALIGN_IN_TOP_RIGHT: lv_align_t = 3;
-        pub const LV_ALIGN_IN_BOTTOM_LEFT: lv_align_t = 4;
-        pub const LV_ALIGN_IN_BOTTOM_MID: lv_align_t = 5;
-        pub const LV_ALIGN_IN_BOTTOM_RIGHT: lv_align_t = 6;
-        pub const LV_ALIGN_IN_LEFT_MID: lv_align_t = 7;
-        pub const LV_ALIGN_IN_RIGHT_MID: lv_align_t = 8;
-        pub const LV_ALIGN_OUT_TOP_LEFT: lv_align_t = 9;
-        pub const LV_ALIGN_OUT_TOP_MID: lv_align_t = 10;
-        pub const LV_ALIGN_OUT_TOP_RIGHT: lv_align_t = 11;
-        pub const LV_ALIGN_OUT_BOTTOM_LEFT: lv_align_t = 12;
-        pub const LV_ALIGN_OUT_BOTTOM_MID: lv_align_t = 13;
-        pub const LV_ALIGN_OUT_BOTTOM_RIGHT: lv_align_t = 14;
-        pub const LV_ALIGN_OUT_LEFT_TOP: lv_align_t = 15;
-        pub const LV_ALIGN_OUT_LEFT_MID: lv_align_t = 16;
-        pub const LV_ALIGN_OUT_LEFT_BOTTOM: lv_align_t = 17;
-        pub const LV_ALIGN_OUT_RIGHT_TOP: lv_align_t = 18;
-        pub const LV_ALIGN_OUT_RIGHT_MID: lv_align_t = 19;
-        pub const LV_ALIGN_OUT_RIGHT_BOTTOM: lv_align_t = 20;
-        #[doc = " Alignments"]
-        pub type _bindgen_ty_3 = u32;
-        pub type lv_align_t = u8;
-        #[doc = " Initialize an area"]
-        #[doc = " - __`area_p`__: pointer to an area"]
-        #[doc = " - __`x1`__: left coordinate of the area"]
-        #[doc = " - __`y1`__: top coordinate of the area"]
-        #[doc = " - __`x2`__: right coordinate of the area"]
-        #[doc = " - __`y2`__: bottom coordinate of the area"]
-        pub fn area_set(area_p: *mut lv_area_t, x1: lv_coord_t,
-                        y1: lv_coord_t, x2: lv_coord_t, y2: lv_coord_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Initialize an area"]
-                #[doc = " - __`area_p`__: pointer to an area"]
-                #[doc = " - __`x1`__: left coordinate of the area"]
-                #[doc = " - __`y1`__: top coordinate of the area"]
-                #[doc = " - __`x2`__: right coordinate of the area"]
-                #[doc = " - __`y2`__: bottom coordinate of the area"]
-                pub fn lv_area_set(area_p: *mut lv_area_t, x1: lv_coord_t,
-                                   y1: lv_coord_t, x2: lv_coord_t,
-                                   y2: lv_coord_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_area_set(area_p as *mut lv_area_t, x1 as lv_coord_t,
-                            y1 as lv_coord_t, x2 as lv_coord_t,
-                            y2 as lv_coord_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Copy an area"]
-        #[doc = " - __`dest`__: pointer to the destination area"]
-        #[doc = " - __`src`__: pointer to the source area"]
-        pub fn area_copy(dest: *mut lv_area_t, src: *const lv_area_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Copy an area"]
-                #[doc = " - __`dest`__: pointer to the destination area"]
-                #[doc = " - __`src`__: pointer to the source area"]
-                pub fn lv_area_copy(dest: *mut lv_area_t,
-                                    src: *const lv_area_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_area_copy(dest as *mut lv_area_t, src as *const lv_area_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Get the width of an area"]
-        #[doc = " - __`area_p`__: pointer to an area"]
-        #[doc = " Return: the width of the area (if x1 == x2 -> width = 1)"]
-        pub fn area_get_width(area_p: *const lv_area_t)
-         -> MynewtResult<lv_coord_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Get the width of an area"]
-                #[doc = " - __`area_p`__: pointer to an area"]
-                #[doc =
-                  " Return: the width of the area (if x1 == x2 -> width = 1)"]
-                pub fn lv_area_get_width(area_p: *const lv_area_t)
-                -> lv_coord_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_area_get_width(area_p as *const lv_area_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Get the height of an area"]
-        #[doc = " - __`area_p`__: pointer to an area"]
-        #[doc = " Return: the height of the area (if y1 == y2 -> height = 1)"]
-        pub fn area_get_height(area_p: *const lv_area_t)
-         -> MynewtResult<lv_coord_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Get the height of an area"]
-                #[doc = " - __`area_p`__: pointer to an area"]
-                #[doc =
-                  " Return: the height of the area (if y1 == y2 -> height = 1)"]
-                pub fn lv_area_get_height(area_p: *const lv_area_t)
-                -> lv_coord_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_area_get_height(area_p as *const lv_area_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Set the width of an area"]
-        #[doc = " - __`area_p`__: pointer to an area"]
-        #[doc =
-          " - __`w`__: the new width of the area (w == 1 makes x1 == x2)"]
-        pub fn area_set_width(area_p: *mut lv_area_t, w: lv_coord_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set the width of an area"]
-                #[doc = " - __`area_p`__: pointer to an area"]
-                #[doc =
-                  " - __`w`__: the new width of the area (w == 1 makes x1 == x2)"]
-                pub fn lv_area_set_width(area_p: *mut lv_area_t,
-                                         w: lv_coord_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_area_set_width(area_p as *mut lv_area_t, w as lv_coord_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Set the height of an area"]
-        #[doc = " - __`area_p`__: pointer to an area"]
-        #[doc =
-          " - __`h`__: the new height of the area (h == 1 makes y1 == y2)"]
-        pub fn area_set_height(area_p: *mut lv_area_t, h: lv_coord_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set the height of an area"]
-                #[doc = " - __`area_p`__: pointer to an area"]
-                #[doc =
-                  " - __`h`__: the new height of the area (h == 1 makes y1 == y2)"]
-                pub fn lv_area_set_height(area_p: *mut lv_area_t,
-                                          h: lv_coord_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_area_set_height(area_p as *mut lv_area_t, h as lv_coord_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Return with area of an area (x * y)"]
-        #[doc = " - __`area_p`__: pointer to an area"]
-        #[doc = " Return: size of area"]
-        pub fn area_get_size(area_p: *const lv_area_t) -> MynewtResult<u32> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Return with area of an area (x * y)"]
-                #[doc = " - __`area_p`__: pointer to an area"]
-                #[doc = " Return: size of area"]
-                pub fn lv_area_get_size(area_p: *const lv_area_t)
-                -> u32;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_area_get_size(area_p as *const lv_area_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Describes the properties of a glyph."]
-        #[repr(C)]
-        pub struct lv_font_glyph_dsc_t {
-            #[doc =
-              "< The glyph needs this space. Draw the next glyph after this width. 8 bit integer, 4 bit fractional"]
-            pub adv_w: u16,
-            #[doc = "< Width of the glyph's bounding box"]
-            pub box_w: u16,
-            #[doc = "< Height of the glyph's bounding box"]
-            pub box_h: u16,
-            #[doc = "< x offset of the bounding box"]
-            pub ofs_x: i16,
-            #[doc = "< y offset of the bounding box"]
-            pub ofs_y: i16,
-            #[doc = "< Bit-per-pixel: 1, 2, 4, 8"]
-            pub bpp: u8,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for lv_font_glyph_dsc_t {
-            #[inline]
-            fn default() -> lv_font_glyph_dsc_t {
-                lv_font_glyph_dsc_t{adv_w:
-                                        ::core::default::Default::default(),
-                                    box_w:
-                                        ::core::default::Default::default(),
-                                    box_h:
-                                        ::core::default::Default::default(),
-                                    ofs_x:
-                                        ::core::default::Default::default(),
-                                    ofs_y:
-                                        ::core::default::Default::default(),
-                                    bpp: ::core::default::Default::default(),}
-            }
-        }
-        pub const LV_FONT_SUBPX_NONE: _bindgen_ty_4 = 0;
-        pub const LV_FONT_SUBPX_HOR: _bindgen_ty_4 = 1;
-        pub const LV_FONT_SUBPX_VER: _bindgen_ty_4 = 2;
-        pub const LV_FONT_SUBPX_BOTH: _bindgen_ty_4 = 3;
-        #[doc =
-          " The bitmaps might be upscaled by 3 to achieve subpixel rendering."]
-        pub type _bindgen_ty_4 = u32;
-        pub type lv_font_subpx_t = u8;
-        #[doc = " Describe the properties of a font"]
-        #[repr(C)]
-        pub struct _lv_font_struct {
-            #[doc = " Get a glyph's  descriptor from a font"]
-            pub get_glyph_dsc: ::core::option::Option<unsafe extern "C" fn(arg1:
-                                                                               *const _lv_font_struct,
-                                                                           arg2:
-                                                                               *mut lv_font_glyph_dsc_t,
-                                                                           letter:
-                                                                               u32,
-                                                                           letter_next:
-                                                                               u32)
-                                                          -> bool>,
-            #[doc = " Get a glyph's bitmap from a font"]
-            pub get_glyph_bitmap: ::core::option::Option<unsafe extern "C" fn(arg1:
-                                                                                  *const _lv_font_struct,
-                                                                              arg2:
-                                                                                  u32)
-                                                             -> *const u8>,
-            #[doc = "< The real line height where any text fits"]
-            pub line_height: lv_coord_t,
-            #[doc = "< Base line measured from the top of the line_height"]
-            pub base_line: lv_coord_t,
-            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-            #[doc =
-              "< Distance between the top of the underline and base line (< 0 means below the base line)"]
-            pub underline_position: i8,
-            #[doc = "< Thickness of the underline"]
-            pub underline_thickness: i8,
-            #[doc =
-              "< Store implementation specific or run_time data or caching here"]
-            pub dsc: *mut ::cty::c_void,
-            #[doc = "< Custom user data for font."]
-            pub user_data: lv_font_user_data_t,
-        }
-        impl Default for _lv_font_struct {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        impl _lv_font_struct {
-            #[inline]
-            pub fn subpx(&self) -> u8 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(0usize, 2u8)
-                                               as u8)
-                }
-            }
-            #[inline]
-            pub fn set_subpx(&mut self, val: u8) {
-                unsafe {
-                    let val: u8 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(0usize, 2u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn new_bitfield_1(subpx: u8)
-             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-                let mut __bindgen_bitfield_unit:
-                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
-                    Default::default();
-                __bindgen_bitfield_unit.set(0usize, 2u8,
-                                            {
-                                                let subpx: u8 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(subpx)
-                                                    };
-                                                subpx as u64
-                                            });
-                __bindgen_bitfield_unit
-            }
-        }
-        pub type lv_font_t = _lv_font_struct;
-        #[doc = " Return with the bitmap of a font."]
-        #[doc = " - __`font_p`__: pointer to a font"]
-        #[doc = " - __`letter`__: an UNICODE character code"]
-        #[doc = " Return:  pointer to the bitmap of the letter"]
-        pub fn font_get_glyph_bitmap(font_p: *const lv_font_t, letter: u32)
-         -> MynewtResult<*const u8> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Return with the bitmap of a font."]
-                #[doc = " - __`font_p`__: pointer to a font"]
-                #[doc = " - __`letter`__: an UNICODE character code"]
-                #[doc = " Return:  pointer to the bitmap of the letter"]
-                pub fn lv_font_get_glyph_bitmap(font_p: *const lv_font_t,
-                                                letter: u32)
-                -> *const u8;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_font_get_glyph_bitmap(font_p as *const lv_font_t,
-                                             letter as u32);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Get the descriptor of a glyph"]
-        #[doc = " - __`font_p`__: pointer to font"]
-        #[doc = " - __`dsc_out`__: store the result descriptor here"]
-        #[doc = " - __`letter`__: an UNICODE letter code"]
-        #[doc =
-          " Return: true: descriptor is successfully loaded into `dsc_out`."]
-        #[doc =
-          "         false: the letter was not found, no data is loaded to `dsc_out`"]
-        pub fn font_get_glyph_dsc(font_p: *const lv_font_t,
-                                  dsc_out: *mut lv_font_glyph_dsc_t,
-                                  letter: u32, letter_next: u32)
-         -> MynewtResult<bool> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Get the descriptor of a glyph"]
-                #[doc = " - __`font_p`__: pointer to font"]
-                #[doc = " - __`dsc_out`__: store the result descriptor here"]
-                #[doc = " - __`letter`__: an UNICODE letter code"]
-                #[doc =
-                  " Return: true: descriptor is successfully loaded into `dsc_out`."]
-                #[doc =
-                  "         false: the letter was not found, no data is loaded to `dsc_out`"]
-                pub fn lv_font_get_glyph_dsc(font_p: *const lv_font_t,
-                                             dsc_out:
-                                                 *mut lv_font_glyph_dsc_t,
-                                             letter: u32, letter_next: u32)
-                -> bool;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_font_get_glyph_dsc(font_p as *const lv_font_t,
-                                          dsc_out as *mut lv_font_glyph_dsc_t,
-                                          letter as u32, letter_next as u32);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Get the width of a glyph with kerning"]
-        #[doc = " - __`font`__: pointer to a font"]
-        #[doc = " - __`letter`__: an UNICODE letter"]
-        #[doc =
-          " - __`letter_next`__: the next letter after `letter`. Used for kerning"]
-        #[doc = " Return: the width of the glyph"]
-        pub fn font_get_glyph_width(font: *const lv_font_t, letter: u32,
-                                    letter_next: u32) -> MynewtResult<u16> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Get the width of a glyph with kerning"]
-                #[doc = " - __`font`__: pointer to a font"]
-                #[doc = " - __`letter`__: an UNICODE letter"]
-                #[doc =
-                  " - __`letter_next`__: the next letter after `letter`. Used for kerning"]
-                #[doc = " Return: the width of the glyph"]
-                pub fn lv_font_get_glyph_width(font: *const lv_font_t,
-                                               letter: u32, letter_next: u32)
-                -> u16;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_font_get_glyph_width(font as *const lv_font_t,
-                                            letter as u32,
-                                            letter_next as u32);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Get the line height of a font. All characters fit into this height"]
-        #[doc = " - __`font_p`__: pointer to a font"]
-        #[doc = " Return: the height of a font"]
-        pub fn font_get_line_height(font_p: *const lv_font_t)
-         -> MynewtResult<lv_coord_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Get the line height of a font. All characters fit into this height"]
-                #[doc = " - __`font_p`__: pointer to a font"]
-                #[doc = " Return: the height of a font"]
-                pub fn lv_font_get_line_height(font_p: *const lv_font_t)
-                -> lv_coord_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_font_get_line_height(font_p as *const lv_font_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        extern "C" {
-            pub static mut lv_font_montserrat_24: lv_font_t ;
-        }
-        extern "C" {
-            pub static mut lv_font_montserrat_32: lv_font_t ;
-        }
-        #[doc = "      TYPEDEFS"]
-        #[repr(C)]
-        pub struct lv_sqrt_res_t {
-            pub i: u16,
-            pub f: u16,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for lv_sqrt_res_t {
-            #[inline]
-            fn default() -> lv_sqrt_res_t {
-                lv_sqrt_res_t{i: ::core::default::Default::default(),
-                              f: ::core::default::Default::default(),}
-            }
-        }
-        pub const LV_OPA_TRANSP: _bindgen_ty_5 = 0;
-        pub const LV_OPA_0: _bindgen_ty_5 = 0;
-        pub const LV_OPA_10: _bindgen_ty_5 = 25;
-        pub const LV_OPA_20: _bindgen_ty_5 = 51;
-        pub const LV_OPA_30: _bindgen_ty_5 = 76;
-        pub const LV_OPA_40: _bindgen_ty_5 = 102;
-        pub const LV_OPA_50: _bindgen_ty_5 = 127;
-        pub const LV_OPA_60: _bindgen_ty_5 = 153;
-        pub const LV_OPA_70: _bindgen_ty_5 = 178;
-        pub const LV_OPA_80: _bindgen_ty_5 = 204;
-        pub const LV_OPA_90: _bindgen_ty_5 = 229;
-        pub const LV_OPA_100: _bindgen_ty_5 = 255;
-        pub const LV_OPA_COVER: _bindgen_ty_5 = 255;
-        #[doc = " Opacity percentages."]
-        pub type _bindgen_ty_5 = u32;
-        #[doc = "      TYPEDEFS"]
-        #[repr(C)]
-        pub struct lv_color1_t {
-            pub ch: __BindgenUnionField<lv_color1_t__bindgen_ty_1>,
-            pub full: __BindgenUnionField<u8>,
-            pub bindgen_union_field: u8,
-        }
-        #[repr(C)]
-        pub union lv_color1_t__bindgen_ty_1 {
-            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-            _bindgen_union_align: u8,
-        }
-        impl Default for lv_color1_t__bindgen_ty_1 {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        impl lv_color1_t__bindgen_ty_1 {
-            #[inline]
-            pub fn blue(&self) -> u8 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
-                                               as u8)
-                }
-            }
-            #[inline]
-            pub fn set_blue(&mut self, val: u8) {
-                unsafe {
-                    let val: u8 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(0usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn green(&self) -> u8 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8)
-                                               as u8)
-                }
-            }
-            #[inline]
-            pub fn set_green(&mut self, val: u8) {
-                unsafe {
-                    let val: u8 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(1usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn red(&self) -> u8 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8)
-                                               as u8)
-                }
-            }
-            #[inline]
-            pub fn set_red(&mut self, val: u8) {
-                unsafe {
-                    let val: u8 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(2usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn new_bitfield_1(blue: u8, green: u8, red: u8)
-             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-                let mut __bindgen_bitfield_unit:
-                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
-                    Default::default();
-                __bindgen_bitfield_unit.set(0usize, 1u8,
-                                            {
-                                                let blue: u8 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(blue)
-                                                    };
-                                                blue as u64
-                                            });
-                __bindgen_bitfield_unit.set(1usize, 1u8,
-                                            {
-                                                let green: u8 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(green)
-                                                    };
-                                                green as u64
-                                            });
-                __bindgen_bitfield_unit.set(2usize, 1u8,
-                                            {
-                                                let red: u8 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(red)
-                                                    };
-                                                red as u64
-                                            });
-                __bindgen_bitfield_unit
-            }
-        }
-        impl Default for lv_color1_t {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        #[repr(C)]
-        pub struct lv_color8_t {
-            pub ch: __BindgenUnionField<lv_color8_t__bindgen_ty_1>,
-            pub full: __BindgenUnionField<u8>,
-            pub bindgen_union_field: u8,
-        }
-        #[repr(C, packed)]
-        pub struct lv_color8_t__bindgen_ty_1 {
-            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for lv_color8_t__bindgen_ty_1 {
-            #[inline]
-            fn default() -> lv_color8_t__bindgen_ty_1 {
-                lv_color8_t__bindgen_ty_1{_bitfield_1:
-                                              ::core::default::Default::default(),}
-            }
-        }
-        impl lv_color8_t__bindgen_ty_1 {
-            #[inline]
-            pub fn blue(&self) -> u8 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(0usize, 2u8)
-                                               as u8)
-                }
-            }
-            #[inline]
-            pub fn set_blue(&mut self, val: u8) {
-                unsafe {
-                    let val: u8 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(0usize, 2u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn green(&self) -> u8 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(2usize, 3u8)
-                                               as u8)
-                }
-            }
-            #[inline]
-            pub fn set_green(&mut self, val: u8) {
-                unsafe {
-                    let val: u8 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(2usize, 3u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn red(&self) -> u8 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(5usize, 3u8)
-                                               as u8)
-                }
-            }
-            #[inline]
-            pub fn set_red(&mut self, val: u8) {
-                unsafe {
-                    let val: u8 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(5usize, 3u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn new_bitfield_1(blue: u8, green: u8, red: u8)
-             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-                let mut __bindgen_bitfield_unit:
-                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
-                    Default::default();
-                __bindgen_bitfield_unit.set(0usize, 2u8,
-                                            {
-                                                let blue: u8 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(blue)
-                                                    };
-                                                blue as u64
-                                            });
-                __bindgen_bitfield_unit.set(2usize, 3u8,
-                                            {
-                                                let green: u8 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(green)
-                                                    };
-                                                green as u64
-                                            });
-                __bindgen_bitfield_unit.set(5usize, 3u8,
-                                            {
-                                                let red: u8 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(red)
-                                                    };
-                                                red as u64
-                                            });
-                __bindgen_bitfield_unit
-            }
-        }
-        impl Default for lv_color8_t {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
         #[repr(C)]
         pub struct lv_color16_t {
             pub ch: __BindgenUnionField<lv_color16_t__bindgen_ty_1>,
@@ -1815,3288 +642,53 @@ pub mod core {
         impl Default for lv_color16_t {
             fn default() -> Self { unsafe { ::core::mem::zeroed() } }
         }
-        #[repr(C)]
-        pub struct lv_color32_t {
-            pub ch: __BindgenUnionField<lv_color32_t__bindgen_ty_1>,
-            pub full: __BindgenUnionField<u32>,
-            pub bindgen_union_field: u32,
-        }
-        #[repr(C)]
-        pub struct lv_color32_t__bindgen_ty_1 {
-            pub blue: u8,
-            pub green: u8,
-            pub red: u8,
-            pub alpha: u8,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for lv_color32_t__bindgen_ty_1 {
-            #[inline]
-            fn default() -> lv_color32_t__bindgen_ty_1 {
-                lv_color32_t__bindgen_ty_1{blue:
-                                               ::core::default::Default::default(),
-                                           green:
-                                               ::core::default::Default::default(),
-                                           red:
-                                               ::core::default::Default::default(),
-                                           alpha:
-                                               ::core::default::Default::default(),}
-            }
-        }
-        impl Default for lv_color32_t {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        pub type lv_color_int_t = u16;
         pub type lv_color_t = lv_color16_t;
-        #[repr(C)]
-        pub struct lv_color_hsv_t {
-            pub h: u16,
-            pub s: u8,
-            pub v: u8,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for lv_color_hsv_t {
-            #[inline]
-            fn default() -> lv_color_hsv_t {
-                lv_color_hsv_t{h: ::core::default::Default::default(),
-                               s: ::core::default::Default::default(),
-                               v: ::core::default::Default::default(),}
-            }
-        }
         #[doc = "! @cond Doxygen_Suppress"]
         pub type lv_opa_t = u8;
-        #[doc = " GLOBAL PROTOTYPES"]
-        pub fn color_to1(color: lv_color_t) -> MynewtResult<u8> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " GLOBAL PROTOTYPES"]
-                pub fn lv_color_to1(color: lv_color_t)
-                -> u8;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_color_to1(color as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        pub fn color_to8(color: lv_color_t) -> MynewtResult<u8> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_color_to8(color: lv_color_t)
-                -> u8;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_color_to8(color as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        pub fn color_to16(color: lv_color_t) -> MynewtResult<u16> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_color_to16(color: lv_color_t)
-                -> u16;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_color_to16(color as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        pub fn color_to32(color: lv_color_t) -> MynewtResult<u32> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_color_to32(color: lv_color_t)
-                -> u32;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_color_to32(color as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Mix two colors with a given ratio."]
-        #[doc =
-          " - __`c1`__: the first color to mix (usually the foreground)"]
-        #[doc =
-          " - __`c2`__: the second color to mix (usually the background)"]
-        #[doc =
-          " - __`mix`__: The ratio of the colors. 0: full `c2`, 255: full `c1`, 127: half `c1` and half`c2`"]
-        #[doc = " Return: the mixed color"]
-        pub fn color_mix(c1: lv_color_t, c2: lv_color_t, mix: u8)
-         -> MynewtResult<lv_color_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Mix two colors with a given ratio."]
-                #[doc =
-                  " - __`c1`__: the first color to mix (usually the foreground)"]
-                #[doc =
-                  " - __`c2`__: the second color to mix (usually the background)"]
-                #[doc =
-                  " - __`mix`__: The ratio of the colors. 0: full `c2`, 255: full `c1`, 127: half `c1` and half`c2`"]
-                #[doc = " Return: the mixed color"]
-                pub fn lv_color_mix(c1: lv_color_t, c2: lv_color_t, mix: u8)
-                -> lv_color_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_color_mix(c1 as lv_color_t, c2 as lv_color_t,
-                                 mix as u8);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        pub fn color_premult(c: lv_color_t, mix: u8, out: *mut u16)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_color_premult(c: lv_color_t, mix: u8,
-                                        out: *mut u16);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_color_premult(c as lv_color_t, mix as u8, out as *mut u16);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc =
-          " Mix two colors with a given ratio. It runs faster then `lv_color_mix` but requires some pre computation."]
-        #[doc =
-          " - __`c1`__: The first color. Should be preprocessed with `lv_color_premult(c1)`"]
-        #[doc =
-          " - __`c2`__: The second color. As it is no pre computation required on it"]
-        #[doc =
-          " - __`mix`__: The ratio of the colors. 0: full `c2`, 255: full `c1`, 127: half `c1` and half `c2`."]
-        #[doc = "            Should be modified like mix = `255 - mix`"]
-        #[doc = " Return: the mixed color"]
-        #[doc = " __Note:__ 255 won't give clearly `c1`."]
-        pub fn color_mix_premult(premult_c1: *mut u16, c2: lv_color_t,
-                                 mix: u8) -> MynewtResult<lv_color_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Mix two colors with a given ratio. It runs faster then `lv_color_mix` but requires some pre computation."]
-                #[doc =
-                  " - __`c1`__: The first color. Should be preprocessed with `lv_color_premult(c1)`"]
-                #[doc =
-                  " - __`c2`__: The second color. As it is no pre computation required on it"]
-                #[doc =
-                  " - __`mix`__: The ratio of the colors. 0: full `c2`, 255: full `c1`, 127: half `c1` and half `c2`."]
-                #[doc =
-                  "            Should be modified like mix = `255 - mix`"]
-                #[doc = " Return: the mixed color"]
-                #[doc = " __Note:__ 255 won't give clearly `c1`."]
-                pub fn lv_color_mix_premult(premult_c1: *mut u16,
-                                            c2: lv_color_t, mix: u8)
-                -> lv_color_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_color_mix_premult(premult_c1 as *mut u16,
-                                         c2 as lv_color_t, mix as u8);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Mix two colors. Both color can have alpha value. It requires ARGB888 colors."]
-        #[doc = " - __`bg_color`__: background color"]
-        #[doc = " - __`bg_opa`__: alpha of the background color"]
-        #[doc = " - __`fg_color`__: foreground color"]
-        #[doc = " - __`fg_opa`__: alpha of the foreground color"]
-        #[doc = " - __`res_color`__: the result color"]
-        #[doc = " - __`res_opa`__: the result opacity"]
-        pub fn color_mix_with_alpha(bg_color: lv_color_t, bg_opa: lv_opa_t,
-                                    fg_color: lv_color_t, fg_opa: lv_opa_t,
-                                    res_color: *mut lv_color_t,
-                                    res_opa: *mut lv_opa_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Mix two colors. Both color can have alpha value. It requires ARGB888 colors."]
-                #[doc = " - __`bg_color`__: background color"]
-                #[doc = " - __`bg_opa`__: alpha of the background color"]
-                #[doc = " - __`fg_color`__: foreground color"]
-                #[doc = " - __`fg_opa`__: alpha of the foreground color"]
-                #[doc = " - __`res_color`__: the result color"]
-                #[doc = " - __`res_opa`__: the result opacity"]
-                pub fn lv_color_mix_with_alpha(bg_color: lv_color_t,
-                                               bg_opa: lv_opa_t,
-                                               fg_color: lv_color_t,
-                                               fg_opa: lv_opa_t,
-                                               res_color: *mut lv_color_t,
-                                               res_opa: *mut lv_opa_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_color_mix_with_alpha(bg_color as lv_color_t,
-                                        bg_opa as lv_opa_t,
-                                        fg_color as lv_color_t,
-                                        fg_opa as lv_opa_t,
-                                        res_color as *mut lv_color_t,
-                                        res_opa as *mut lv_opa_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Get the brightness of a color"]
-        #[doc = " - __`color`__: a color"]
-        #[doc = " Return: the brightness [0..255]"]
-        pub fn color_brightness(color: lv_color_t) -> MynewtResult<u8> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Get the brightness of a color"]
-                #[doc = " - __`color`__: a color"]
-                #[doc = " Return: the brightness [0..255]"]
-                pub fn lv_color_brightness(color: lv_color_t)
-                -> u8;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_color_brightness(color as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        pub fn color_make(r: u8, g: u8, b: u8) -> MynewtResult<lv_color_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_color_make(r: u8, g: u8, b: u8)
-                -> lv_color_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_color_make(r as u8, g as u8, b as u8);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        pub fn color_hex(c: u32) -> MynewtResult<lv_color_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_color_hex(c: u32)
-                -> lv_color_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_color_hex(c as u32);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        pub fn color_hex3(c: u32) -> MynewtResult<lv_color_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_color_hex3(c: u32)
-                -> lv_color_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_color_hex3(c as u32);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = "! @cond Doxygen_Suppress"]
-        #[doc = "!"]
-        pub fn color_fill(buf: *mut lv_color_t, color: lv_color_t,
-                          px_num: u32) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = "! @cond Doxygen_Suppress"]
-                #[doc = "!"]
-                pub fn lv_color_fill(buf: *mut lv_color_t, color: lv_color_t,
-                                     px_num: u32);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_color_fill(buf as *mut lv_color_t, color as lv_color_t,
-                              px_num as u32);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = "! @endcond"]
-        pub fn color_lighten(c: lv_color_t, lvl: lv_opa_t)
-         -> MynewtResult<lv_color_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = "! @endcond"]
-                pub fn lv_color_lighten(c: lv_color_t, lvl: lv_opa_t)
-                -> lv_color_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_color_lighten(c as lv_color_t, lvl as lv_opa_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        pub fn color_darken(c: lv_color_t, lvl: lv_opa_t)
-         -> MynewtResult<lv_color_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_color_darken(c: lv_color_t, lvl: lv_opa_t)
-                -> lv_color_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_color_darken(c as lv_color_t, lvl as lv_opa_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Convert a HSV color to RGB"]
-        #[doc = " - __`h`__: hue [0..359]"]
-        #[doc = " - __`s`__: saturation [0..100]"]
-        #[doc = " - __`v`__: value [0..100]"]
-        #[doc =
-          " Return: the given RGB color in RGB (with LV_COLOR_DEPTH depth)"]
-        pub fn color_hsv_to_rgb(h: u16, s: u8, v: u8)
-         -> MynewtResult<lv_color_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Convert a HSV color to RGB"]
-                #[doc = " - __`h`__: hue [0..359]"]
-                #[doc = " - __`s`__: saturation [0..100]"]
-                #[doc = " - __`v`__: value [0..100]"]
-                #[doc =
-                  " Return: the given RGB color in RGB (with LV_COLOR_DEPTH depth)"]
-                pub fn lv_color_hsv_to_rgb(h: u16, s: u8, v: u8)
-                -> lv_color_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_color_hsv_to_rgb(h as u16, s as u8, v as u8);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Convert a 32-bit RGB color to HSV"]
-        #[doc = " - __`r8`__: 8-bit red"]
-        #[doc = " - __`g8`__: 8-bit green"]
-        #[doc = " - __`b8`__: 8-bit blue"]
-        #[doc = " Return: the given RGB color in HSV"]
-        pub fn color_rgb_to_hsv(r8: u8, g8: u8, b8: u8)
-         -> MynewtResult<lv_color_hsv_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Convert a 32-bit RGB color to HSV"]
-                #[doc = " - __`r8`__: 8-bit red"]
-                #[doc = " - __`g8`__: 8-bit green"]
-                #[doc = " - __`b8`__: 8-bit blue"]
-                #[doc = " Return: the given RGB color in HSV"]
-                pub fn lv_color_rgb_to_hsv(r8: u8, g8: u8, b8: u8)
-                -> lv_color_hsv_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_color_rgb_to_hsv(r8 as u8, g8 as u8, b8 as u8);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Convert a color to HSV"]
-        #[doc = " - __`color`__: color"]
-        #[doc = " Return: the given color in HSV"]
-        pub fn color_to_hsv(color: lv_color_t)
-         -> MynewtResult<lv_color_hsv_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Convert a color to HSV"]
-                #[doc = " - __`color`__: color"]
-                #[doc = " Return: the given color in HSV"]
-                pub fn lv_color_to_hsv(color: lv_color_t)
-                -> lv_color_hsv_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_color_to_hsv(color as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        pub const LV_ANIM_OFF: _bindgen_ty_6 = 0;
-        pub const LV_ANIM_ON: _bindgen_ty_6 = 1;
-        #[doc =
-          " Can be used to indicate if animations are enabled or disabled in a case"]
-        pub type _bindgen_ty_6 = u32;
-        pub type lv_anim_enable_t = u8;
-        #[doc = " Type of the animated value"]
-        pub type lv_anim_value_t = lv_coord_t;
-        #[doc = " Get the current value during an animation"]
-        pub type lv_anim_path_cb_t =
-         ::core::option::Option<unsafe extern "C" fn(arg1:
-                                                         *const _lv_anim_path_t,
-                                                     arg2: *const _lv_anim_t)
-                                    -> lv_anim_value_t>;
+        pub type lv_res_t = u8;
+        #[doc = " Represents an area of the screen."]
         #[repr(C)]
-        pub struct _lv_anim_path_t {
-            pub cb: lv_anim_path_cb_t,
-            pub user_data: *mut ::cty::c_void,
-        }
-        impl Default for _lv_anim_path_t {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        pub type lv_anim_path_t = _lv_anim_path_t;
-        #[doc = " Generic prototype of \"animator\" functions."]
-        #[doc = " First parameter is the variable to animate."]
-        #[doc = " Second parameter is the value to set."]
-        #[doc = " Compatible with `lv_xxx_set_yyy(obj, value)` functions"]
-        #[doc =
-          " The `x` in `_xcb_t` means its not a fully generic prototype because"]
-        #[doc = " it doesn't receive `lv_anim_t *` as its first argument"]
-        pub type lv_anim_exec_xcb_t =
-         ::core::option::Option<unsafe extern "C" fn(arg1: *mut ::cty::c_void,
-                                                     arg2: lv_anim_value_t)>;
-        #[doc =
-          " Same as `lv_anim_exec_xcb_t` but receives `lv_anim_t *` as the first parameter."]
-        #[doc =
-          " It's more consistent but less convenient. Might be used by binding generator functions."]
-        pub type lv_anim_custom_exec_cb_t =
-         ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_anim_t,
-                                                     arg2: lv_anim_value_t)>;
-        #[doc = " Callback to call when the animation is ready"]
-        pub type lv_anim_ready_cb_t =
-         ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_anim_t)>;
-        #[doc =
-          " Callback to call when the animation really stars (considering `delay`)"]
-        pub type lv_anim_start_cb_t =
-         ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_anim_t)>;
-        #[doc = " Describes an animation"]
-        #[repr(C)]
-        pub struct _lv_anim_t {
-            #[doc = "<Variable to animate"]
-            pub var: *mut ::cty::c_void,
-            #[doc = "< Function to execute to animate"]
-            pub exec_cb: lv_anim_exec_xcb_t,
-            #[doc =
-              "< Call it when the animation is starts (considering `delay`)"]
-            pub start_cb: lv_anim_start_cb_t,
-            #[doc = "< Call it when the animation is ready"]
-            pub ready_cb: lv_anim_ready_cb_t,
-            #[doc = "< Describe the path (curve) of animations"]
-            pub path: lv_anim_path_t,
-            #[doc = "< Start value"]
-            pub start: i32,
-            #[doc = "< Current value"]
-            pub current: i32,
-            #[doc = "< End value"]
-            pub end: i32,
-            #[doc = "< Animation time in ms"]
-            pub time: i32,
-            #[doc =
-              "< Current time in animation. Set to negative to make delay."]
-            pub act_time: i32,
-            #[doc = "< Wait before play back"]
-            pub playback_delay: u32,
-            #[doc = "< Duration of playback animation"]
-            pub playback_time: u32,
-            #[doc = "< Wait before repeat"]
-            pub repeat_delay: u32,
-            #[doc = "< Repeat count for the animation"]
-            pub repeat_cnt: u16,
-            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-            #[doc = "< Custom user data"]
-            pub user_data: lv_anim_user_data_t,
-            pub time_orig: u32,
-            pub _bitfield_2: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-            pub __bindgen_padding_0: [u8; 3usize],
-        }
-        impl Default for _lv_anim_t {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        impl _lv_anim_t {
-            #[inline]
-            pub fn early_apply(&self) -> u8 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
-                                               as u8)
-                }
-            }
-            #[inline]
-            pub fn set_early_apply(&mut self, val: u8) {
-                unsafe {
-                    let val: u8 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(0usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn new_bitfield_1(early_apply: u8)
-             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-                let mut __bindgen_bitfield_unit:
-                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
-                    Default::default();
-                __bindgen_bitfield_unit.set(0usize, 1u8,
-                                            {
-                                                let early_apply: u8 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(early_apply)
-                                                    };
-                                                early_apply as u64
-                                            });
-                __bindgen_bitfield_unit
-            }
-            #[inline]
-            pub fn playback_now(&self) -> u8 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_2.get(0usize, 1u8)
-                                               as u8)
-                }
-            }
-            #[inline]
-            pub fn set_playback_now(&mut self, val: u8) {
-                unsafe {
-                    let val: u8 = ::core::mem::transmute(val);
-                    self._bitfield_2.set(0usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn has_run(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_2.get(1usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_has_run(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_2.set(1usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn new_bitfield_2(playback_now: u8, has_run: u32)
-             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-                let mut __bindgen_bitfield_unit:
-                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
-                    Default::default();
-                __bindgen_bitfield_unit.set(0usize, 1u8,
-                                            {
-                                                let playback_now: u8 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(playback_now)
-                                                    };
-                                                playback_now as u64
-                                            });
-                __bindgen_bitfield_unit.set(1usize, 1u8,
-                                            {
-                                                let has_run: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(has_run)
-                                                    };
-                                                has_run as u64
-                                            });
-                __bindgen_bitfield_unit
-            }
-        }
-        pub type lv_anim_t = _lv_anim_t;
-        #[doc = " Initialize an animation variable."]
-        #[doc = " E.g.:"]
-        #[doc = " lv_anim_t a;"]
-        #[doc = " lv_anim_init(&a);"]
-        #[doc = " lv_anim_set_...(&a);"]
-        #[doc =
-          " - __`a`__: pointer to an `lv_anim_t` variable to initialize"]
-        pub fn anim_init(a: *mut lv_anim_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Initialize an animation variable."]
-                #[doc = " E.g.:"]
-                #[doc = " lv_anim_t a;"]
-                #[doc = " lv_anim_init(&a);"]
-                #[doc = " lv_anim_set_...(&a);"]
-                #[doc =
-                  " - __`a`__: pointer to an `lv_anim_t` variable to initialize"]
-                pub fn lv_anim_init(a: *mut lv_anim_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_init(a as *mut lv_anim_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Set a variable to animate"]
-        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-        #[doc = " - __`var`__: pointer to a variable to animate"]
-        pub fn anim_set_var(a: *mut lv_anim_t, var: Ptr) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set a variable to animate"]
-                #[doc =
-                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-                #[doc = " - __`var`__: pointer to a variable to animate"]
-                pub fn lv_anim_set_var(a: *mut lv_anim_t,
-                                       var: *mut ::cty::c_void);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_set_var(a as *mut lv_anim_t,
-                                var as *mut ::cty::c_void);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Set a function to animate `var`"]
-        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-        #[doc = " - __`exec_cb`__: a function to execute during animation"]
-        #[doc = "                LittelvGL's built-in functions can be used."]
-        #[doc = "                E.g. lv_obj_set_x"]
-        pub fn anim_set_exec_cb(a: *mut lv_anim_t,
-                                exec_cb: lv_anim_exec_xcb_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set a function to animate `var`"]
-                #[doc =
-                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-                #[doc =
-                  " - __`exec_cb`__: a function to execute during animation"]
-                #[doc =
-                  "                LittelvGL's built-in functions can be used."]
-                #[doc = "                E.g. lv_obj_set_x"]
-                pub fn lv_anim_set_exec_cb(a: *mut lv_anim_t,
-                                           exec_cb: lv_anim_exec_xcb_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_set_exec_cb(a as *mut lv_anim_t,
-                                    exec_cb as lv_anim_exec_xcb_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Set the duration of an animation"]
-        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-        #[doc =
-          " - __`duration`__: duration of the animation in milliseconds"]
-        pub fn anim_set_time(a: *mut lv_anim_t, duration: u32)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set the duration of an animation"]
-                #[doc =
-                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-                #[doc =
-                  " - __`duration`__: duration of the animation in milliseconds"]
-                pub fn lv_anim_set_time(a: *mut lv_anim_t, duration: u32);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_set_time(a as *mut lv_anim_t, duration as u32);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Set a delay before starting the animation"]
-        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-        #[doc = " - __`delay`__: delay before the animation in milliseconds"]
-        pub fn anim_set_delay(a: *mut lv_anim_t, delay: u32)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set a delay before starting the animation"]
-                #[doc =
-                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-                #[doc =
-                  " - __`delay`__: delay before the animation in milliseconds"]
-                pub fn lv_anim_set_delay(a: *mut lv_anim_t, delay: u32);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_set_delay(a as *mut lv_anim_t, delay as u32);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Set the start and end values of an animation"]
-        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-        #[doc = " - __`start`__: the start value"]
-        #[doc = " - __`end`__: the end value"]
-        pub fn anim_set_values(a: *mut lv_anim_t, start: lv_anim_value_t,
-                               end: lv_anim_value_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set the start and end values of an animation"]
-                #[doc =
-                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-                #[doc = " - __`start`__: the start value"]
-                #[doc = " - __`end`__: the end value"]
-                pub fn lv_anim_set_values(a: *mut lv_anim_t,
-                                          start: lv_anim_value_t,
-                                          end: lv_anim_value_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_set_values(a as *mut lv_anim_t,
-                                   start as lv_anim_value_t,
-                                   end as lv_anim_value_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc =
-          " Similar to `lv_anim_set_exec_cb` but `lv_anim_custom_exec_cb_t` receives"]
-        #[doc = " `lv_anim_t * ` as its first parameter instead of `void *`."]
-        #[doc =
-          " This function might be used when LVGL is binded to other languages because"]
-        #[doc =
-          " it's more consistent to have `lv_anim_t *` as first parameter."]
-        #[doc =
-          " The variable to animate can be stored in the animation's `user_sata`"]
-        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-        #[doc = " - __`exec_cb`__: a function to execute."]
-        pub fn anim_set_custom_exec_cb(a: *mut lv_anim_t,
-                                       exec_cb: lv_anim_custom_exec_cb_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Similar to `lv_anim_set_exec_cb` but `lv_anim_custom_exec_cb_t` receives"]
-                #[doc =
-                  " `lv_anim_t * ` as its first parameter instead of `void *`."]
-                #[doc =
-                  " This function might be used when LVGL is binded to other languages because"]
-                #[doc =
-                  " it's more consistent to have `lv_anim_t *` as first parameter."]
-                #[doc =
-                  " The variable to animate can be stored in the animation's `user_sata`"]
-                #[doc =
-                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-                #[doc = " - __`exec_cb`__: a function to execute."]
-                pub fn lv_anim_set_custom_exec_cb(a: *mut lv_anim_t,
-                                                  exec_cb:
-                                                      lv_anim_custom_exec_cb_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_set_custom_exec_cb(a as *mut lv_anim_t,
-                                           exec_cb as
-                                               lv_anim_custom_exec_cb_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Set the path (curve) of the animation."]
-        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-        #[doc =
-          " - __`path_cb`__: a function the get the current value of the animation."]
-        #[doc =
-          "                The built in functions starts with `lv_anim_path_...`"]
-        pub fn anim_set_path(a: *mut lv_anim_t, path: *const lv_anim_path_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set the path (curve) of the animation."]
-                #[doc =
-                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-                #[doc =
-                  " - __`path_cb`__: a function the get the current value of the animation."]
-                #[doc =
-                  "                The built in functions starts with `lv_anim_path_...`"]
-                pub fn lv_anim_set_path(a: *mut lv_anim_t,
-                                        path: *const lv_anim_path_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_set_path(a as *mut lv_anim_t,
-                                 path as *const lv_anim_path_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc =
-          " Set a function call when the animation really starts (considering `delay`)"]
-        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-        #[doc =
-          " - __`start_cb`__: a function call when the animation starts"]
-        pub fn anim_set_start_cb(a: *mut lv_anim_t,
-                                 start_cb: lv_anim_ready_cb_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Set a function call when the animation really starts (considering `delay`)"]
-                #[doc =
-                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-                #[doc =
-                  " - __`start_cb`__: a function call when the animation starts"]
-                pub fn lv_anim_set_start_cb(a: *mut lv_anim_t,
-                                            start_cb: lv_anim_ready_cb_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_set_start_cb(a as *mut lv_anim_t,
-                                     start_cb as lv_anim_ready_cb_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Set a function call when the animation is ready"]
-        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-        #[doc =
-          " - __`ready_cb`__: a function call when the animation is ready"]
-        pub fn anim_set_ready_cb(a: *mut lv_anim_t,
-                                 ready_cb: lv_anim_ready_cb_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set a function call when the animation is ready"]
-                #[doc =
-                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-                #[doc =
-                  " - __`ready_cb`__: a function call when the animation is ready"]
-                pub fn lv_anim_set_ready_cb(a: *mut lv_anim_t,
-                                            ready_cb: lv_anim_ready_cb_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_set_ready_cb(a as *mut lv_anim_t,
-                                     ready_cb as lv_anim_ready_cb_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc =
-          " Make the animation to play back to when the forward direction is ready"]
-        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-        #[doc =
-          " - __`time`__: the duration of the playback animation in in milliseconds. 0: disable playback"]
-        pub fn anim_set_playback_time(a: *mut lv_anim_t, time: u16)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Make the animation to play back to when the forward direction is ready"]
-                #[doc =
-                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-                #[doc =
-                  " - __`time`__: the duration of the playback animation in in milliseconds. 0: disable playback"]
-                pub fn lv_anim_set_playback_time(a: *mut lv_anim_t,
-                                                 time: u16);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_set_playback_time(a as *mut lv_anim_t, time as u16);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc =
-          " Make the animation to play back to when the forward direction is ready"]
-        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-        #[doc =
-          " - __`delay`__: delay in milliseconds before starting the playback animation."]
-        pub fn anim_set_playback_delay(a: *mut lv_anim_t, delay: u16)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Make the animation to play back to when the forward direction is ready"]
-                #[doc =
-                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-                #[doc =
-                  " - __`delay`__: delay in milliseconds before starting the playback animation."]
-                pub fn lv_anim_set_playback_delay(a: *mut lv_anim_t,
-                                                  delay: u16);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_set_playback_delay(a as *mut lv_anim_t, delay as u16);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Make the animation repeat itself."]
-        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-        #[doc =
-          " - __`cnt`__: repeat count or `LV_ANIM_REPEAT_INFINITE` for infinite repetition. 0: to disable repetition."]
-        pub fn anim_set_repeat_count(a: *mut lv_anim_t, cnt: u16)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Make the animation repeat itself."]
-                #[doc =
-                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-                #[doc =
-                  " - __`cnt`__: repeat count or `LV_ANIM_REPEAT_INFINITE` for infinite repetition. 0: to disable repetition."]
-                pub fn lv_anim_set_repeat_count(a: *mut lv_anim_t, cnt: u16);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_set_repeat_count(a as *mut lv_anim_t, cnt as u16);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Set a delay before repeating the animation."]
-        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-        #[doc =
-          " - __`delay`__: delay in milliseconds before repeating the animation."]
-        pub fn anim_set_repeat_delay(a: *mut lv_anim_t, delay: u16)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set a delay before repeating the animation."]
-                #[doc =
-                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-                #[doc =
-                  " - __`delay`__: delay in milliseconds before repeating the animation."]
-                pub fn lv_anim_set_repeat_delay(a: *mut lv_anim_t,
-                                                delay: u16);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_set_repeat_delay(a as *mut lv_anim_t, delay as u16);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Create an animation"]
-        #[doc =
-          " - __`a`__: an initialized 'anim_t' variable. Not required after call."]
-        pub fn anim_start(a: *mut lv_anim_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Create an animation"]
-                #[doc =
-                  " - __`a`__: an initialized 'anim_t' variable. Not required after call."]
-                pub fn lv_anim_start(a: *mut lv_anim_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_start(a as *mut lv_anim_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Initialize an animation path"]
-        #[doc = " - __`path`__: pointer to path"]
-        pub fn anim_path_init(path: *mut lv_anim_path_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Initialize an animation path"]
-                #[doc = " - __`path`__: pointer to path"]
-                pub fn lv_anim_path_init(path: *mut lv_anim_path_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_path_init(path as *mut lv_anim_path_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Set a callback for a path"]
-        #[doc = " - __`path`__: pointer to an initialized path"]
-        #[doc = " - __`cb`__: the callback"]
-        pub fn anim_path_set_cb(path: *mut lv_anim_path_t,
-                                cb: lv_anim_path_cb_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set a callback for a path"]
-                #[doc = " - __`path`__: pointer to an initialized path"]
-                #[doc = " - __`cb`__: the callback"]
-                pub fn lv_anim_path_set_cb(path: *mut lv_anim_path_t,
-                                           cb: lv_anim_path_cb_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_path_set_cb(path as *mut lv_anim_path_t,
-                                    cb as lv_anim_path_cb_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Set a user data for a path"]
-        #[doc = " - __`path`__: pointer to an initialized path"]
-        #[doc = " - __`user_data`__: pointer to the user data"]
-        pub fn anim_path_set_user_data(path: *mut lv_anim_path_t,
-                                       user_data: Ptr) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set a user data for a path"]
-                #[doc = " - __`path`__: pointer to an initialized path"]
-                #[doc = " - __`user_data`__: pointer to the user data"]
-                pub fn lv_anim_path_set_user_data(path: *mut lv_anim_path_t,
-                                                  user_data:
-                                                      *mut ::cty::c_void);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_path_set_user_data(path as *mut lv_anim_path_t,
-                                           user_data as *mut ::cty::c_void);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Get a delay before starting the animation"]
-        #[doc = " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-        #[doc = " Return: delay before the animation in milliseconds"]
-        pub fn anim_get_delay(a: *mut lv_anim_t) -> MynewtResult<i32> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Get a delay before starting the animation"]
-                #[doc =
-                  " - __`a`__: pointer to an initialized `lv_anim_t` variable"]
-                #[doc = " Return: delay before the animation in milliseconds"]
-                pub fn lv_anim_get_delay(a: *mut lv_anim_t)
-                -> i32;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_anim_get_delay(a as *mut lv_anim_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Delete an animation of a variable with a given animator function"]
-        #[doc = " - __`var`__: pointer to variable"]
-        #[doc =
-          " - __`exec_cb`__: a function pointer which is animating 'var',"]
-        #[doc =
-          "           or NULL to ignore it and delete all the animations of 'var"]
-        #[doc =
-          " Return: true: at least 1 animation is deleted, false: no animation is deleted"]
-        pub fn anim_del(var: Ptr, exec_cb: lv_anim_exec_xcb_t)
-         -> MynewtResult<bool> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Delete an animation of a variable with a given animator function"]
-                #[doc = " - __`var`__: pointer to variable"]
-                #[doc =
-                  " - __`exec_cb`__: a function pointer which is animating 'var',"]
-                #[doc =
-                  "           or NULL to ignore it and delete all the animations of 'var"]
-                #[doc =
-                  " Return: true: at least 1 animation is deleted, false: no animation is deleted"]
-                pub fn lv_anim_del(var: *mut ::cty::c_void,
-                                   exec_cb: lv_anim_exec_xcb_t)
-                -> bool;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_anim_del(var as *mut ::cty::c_void,
-                                exec_cb as lv_anim_exec_xcb_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Get the animation of a variable and its `exec_cb`."]
-        #[doc = " - __`var`__: pointer to variable"]
-        #[doc =
-          " - __`exec_cb`__: a function pointer which is animating 'var',"]
-        #[doc = "           or NULL to delete all the animations of 'var'"]
-        #[doc = " Return: pointer to the animation."]
-        pub fn anim_get(var: Ptr, exec_cb: lv_anim_exec_xcb_t)
-         -> MynewtResult<*mut lv_anim_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Get the animation of a variable and its `exec_cb`."]
-                #[doc = " - __`var`__: pointer to variable"]
-                #[doc =
-                  " - __`exec_cb`__: a function pointer which is animating 'var',"]
-                #[doc =
-                  "           or NULL to delete all the animations of 'var'"]
-                #[doc = " Return: pointer to the animation."]
-                pub fn lv_anim_get(var: *mut ::cty::c_void,
-                                   exec_cb: lv_anim_exec_xcb_t)
-                -> *mut lv_anim_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_anim_get(var as *mut ::cty::c_void,
-                                exec_cb as lv_anim_exec_xcb_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Delete an animation by getting the animated variable from `a`."]
-        #[doc = " Only animations with `exec_cb` will be deleted."]
-        #[doc =
-          " This function exists because it's logical that all anim. functions receives an"]
-        #[doc =
-          " `lv_anim_t` as their first parameter. It's not practical in C but might make"]
-        #[doc =
-          " the API more consequent and makes easier to generate bindings."]
-        #[doc = " - __`a`__: pointer to an animation."]
-        #[doc =
-          " - __`exec_cb`__: a function pointer which is animating 'var',"]
-        #[doc =
-          "           or NULL to ignore it and delete all the animations of 'var"]
-        #[doc =
-          " Return: true: at least 1 animation is deleted, false: no animation is deleted"]
-        pub fn anim_custom_del(a: *mut lv_anim_t,
-                               exec_cb: lv_anim_custom_exec_cb_t)
-         -> MynewtResult<bool> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Delete an animation by getting the animated variable from `a`."]
-                #[doc = " Only animations with `exec_cb` will be deleted."]
-                #[doc =
-                  " This function exists because it's logical that all anim. functions receives an"]
-                #[doc =
-                  " `lv_anim_t` as their first parameter. It's not practical in C but might make"]
-                #[doc =
-                  " the API more consequent and makes easier to generate bindings."]
-                #[doc = " - __`a`__: pointer to an animation."]
-                #[doc =
-                  " - __`exec_cb`__: a function pointer which is animating 'var',"]
-                #[doc =
-                  "           or NULL to ignore it and delete all the animations of 'var"]
-                #[doc =
-                  " Return: true: at least 1 animation is deleted, false: no animation is deleted"]
-                pub fn lv_anim_custom_del(a: *mut lv_anim_t,
-                                          exec_cb: lv_anim_custom_exec_cb_t)
-                -> bool;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_anim_custom_del(a as *mut lv_anim_t,
-                                       exec_cb as lv_anim_custom_exec_cb_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Get the number of currently running animations"]
-        #[doc = " Return: the number of running animations"]
-        pub fn anim_count_running() -> MynewtResult<u16> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Get the number of currently running animations"]
-                #[doc = " Return: the number of running animations"]
-                pub fn lv_anim_count_running()
-                -> u16;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_anim_count_running();
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Calculate the time of an animation with a given speed and the start and end values"]
-        #[doc = " - __`speed`__: speed of animation in unit/sec"]
-        #[doc = " - __`start`__: start value of the animation"]
-        #[doc = " - __`end`__: end value of the animation"]
-        #[doc =
-          " Return: the required time [ms] for the animation with the given parameters"]
-        pub fn anim_speed_to_time(speed: u16, start: lv_anim_value_t,
-                                  end: lv_anim_value_t) -> MynewtResult<u16> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Calculate the time of an animation with a given speed and the start and end values"]
-                #[doc = " - __`speed`__: speed of animation in unit/sec"]
-                #[doc = " - __`start`__: start value of the animation"]
-                #[doc = " - __`end`__: end value of the animation"]
-                #[doc =
-                  " Return: the required time [ms] for the animation with the given parameters"]
-                pub fn lv_anim_speed_to_time(speed: u16,
-                                             start: lv_anim_value_t,
-                                             end: lv_anim_value_t)
-                -> u16;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_anim_speed_to_time(speed as u16,
-                                          start as lv_anim_value_t,
-                                          end as lv_anim_value_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Manually refresh the state of the animations."]
-        #[doc =
-          " Useful to make the animations running in a blocking process where"]
-        #[doc = " `lv_task_handler` can't run for a while."]
-        #[doc =
-          " Shouldn't be used directly because it is called in `lv_refr_now()`."]
-        pub fn anim_refr_now() -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Manually refresh the state of the animations."]
-                #[doc =
-                  " Useful to make the animations running in a blocking process where"]
-                #[doc = " `lv_task_handler` can't run for a while."]
-                #[doc =
-                  " Shouldn't be used directly because it is called in `lv_refr_now()`."]
-                pub fn lv_anim_refr_now();
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_anim_refr_now();
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc =
-          " Calculate the current value of an animation applying linear characteristic"]
-        #[doc = " - __`a`__: pointer to an animation"]
-        #[doc = " Return: the current value to set"]
-        pub fn anim_path_linear(path: *const lv_anim_path_t,
-                                a: *const lv_anim_t)
-         -> MynewtResult<lv_anim_value_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Calculate the current value of an animation applying linear characteristic"]
-                #[doc = " - __`a`__: pointer to an animation"]
-                #[doc = " Return: the current value to set"]
-                pub fn lv_anim_path_linear(path: *const lv_anim_path_t,
-                                           a: *const lv_anim_t)
-                -> lv_anim_value_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_anim_path_linear(path as *const lv_anim_path_t,
-                                        a as *const lv_anim_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Calculate the current value of an animation slowing down the start phase"]
-        #[doc = " - __`a`__: pointer to an animation"]
-        #[doc = " Return: the current value to set"]
-        pub fn anim_path_ease_in(path: *const lv_anim_path_t,
-                                 a: *const lv_anim_t)
-         -> MynewtResult<lv_anim_value_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Calculate the current value of an animation slowing down the start phase"]
-                #[doc = " - __`a`__: pointer to an animation"]
-                #[doc = " Return: the current value to set"]
-                pub fn lv_anim_path_ease_in(path: *const lv_anim_path_t,
-                                            a: *const lv_anim_t)
-                -> lv_anim_value_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_anim_path_ease_in(path as *const lv_anim_path_t,
-                                         a as *const lv_anim_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Calculate the current value of an animation slowing down the end phase"]
-        #[doc = " - __`a`__: pointer to an animation"]
-        #[doc = " Return: the current value to set"]
-        pub fn anim_path_ease_out(path: *const lv_anim_path_t,
-                                  a: *const lv_anim_t)
-         -> MynewtResult<lv_anim_value_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Calculate the current value of an animation slowing down the end phase"]
-                #[doc = " - __`a`__: pointer to an animation"]
-                #[doc = " Return: the current value to set"]
-                pub fn lv_anim_path_ease_out(path: *const lv_anim_path_t,
-                                             a: *const lv_anim_t)
-                -> lv_anim_value_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_anim_path_ease_out(path as *const lv_anim_path_t,
-                                          a as *const lv_anim_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Calculate the current value of an animation applying an \"S\" characteristic (cosine)"]
-        #[doc = " - __`a`__: pointer to an animation"]
-        #[doc = " Return: the current value to set"]
-        pub fn anim_path_ease_in_out(path: *const lv_anim_path_t,
-                                     a: *const lv_anim_t)
-         -> MynewtResult<lv_anim_value_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Calculate the current value of an animation applying an \"S\" characteristic (cosine)"]
-                #[doc = " - __`a`__: pointer to an animation"]
-                #[doc = " Return: the current value to set"]
-                pub fn lv_anim_path_ease_in_out(path: *const lv_anim_path_t,
-                                                a: *const lv_anim_t)
-                -> lv_anim_value_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_anim_path_ease_in_out(path as *const lv_anim_path_t,
-                                             a as *const lv_anim_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Calculate the current value of an animation with overshoot at the end"]
-        #[doc = " - __`a`__: pointer to an animation"]
-        #[doc = " Return: the current value to set"]
-        pub fn anim_path_overshoot(path: *const lv_anim_path_t,
-                                   a: *const lv_anim_t)
-         -> MynewtResult<lv_anim_value_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Calculate the current value of an animation with overshoot at the end"]
-                #[doc = " - __`a`__: pointer to an animation"]
-                #[doc = " Return: the current value to set"]
-                pub fn lv_anim_path_overshoot(path: *const lv_anim_path_t,
-                                              a: *const lv_anim_t)
-                -> lv_anim_value_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_anim_path_overshoot(path as *const lv_anim_path_t,
-                                           a as *const lv_anim_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Calculate the current value of an animation with 3 bounces"]
-        #[doc = " - __`a`__: pointer to an animation"]
-        #[doc = " Return: the current value to set"]
-        pub fn anim_path_bounce(path: *const lv_anim_path_t,
-                                a: *const lv_anim_t)
-         -> MynewtResult<lv_anim_value_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Calculate the current value of an animation with 3 bounces"]
-                #[doc = " - __`a`__: pointer to an animation"]
-                #[doc = " Return: the current value to set"]
-                pub fn lv_anim_path_bounce(path: *const lv_anim_path_t,
-                                           a: *const lv_anim_t)
-                -> lv_anim_value_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_anim_path_bounce(path as *const lv_anim_path_t,
-                                        a as *const lv_anim_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Calculate the current value of an animation applying step characteristic."]
-        #[doc = " (Set end value on the end of the animation)"]
-        #[doc = " - __`a`__: pointer to an animation"]
-        #[doc = " Return: the current value to set"]
-        pub fn anim_path_step(path: *const lv_anim_path_t,
-                              a: *const lv_anim_t)
-         -> MynewtResult<lv_anim_value_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Calculate the current value of an animation applying step characteristic."]
-                #[doc = " (Set end value on the end of the animation)"]
-                #[doc = " - __`a`__: pointer to an animation"]
-                #[doc = " Return: the current value to set"]
-                pub fn lv_anim_path_step(path: *const lv_anim_path_t,
-                                         a: *const lv_anim_t)
-                -> lv_anim_value_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_anim_path_step(path as *const lv_anim_path_t,
-                                      a as *const lv_anim_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        extern "C" {
-            pub static lv_anim_path_def: lv_anim_path_t ;
-        }
-        pub const LV_DRAW_MASK_RES_TRANSP: _bindgen_ty_7 = 0;
-        pub const LV_DRAW_MASK_RES_FULL_COVER: _bindgen_ty_7 = 1;
-        pub const LV_DRAW_MASK_RES_CHANGED: _bindgen_ty_7 = 2;
-        pub const LV_DRAW_MASK_RES_UNKNOWN: _bindgen_ty_7 = 3;
-        #[doc = "      TYPEDEFS"]
-        pub type _bindgen_ty_7 = u32;
-        pub type lv_draw_mask_res_t = u8;
-        pub const LV_DRAW_MASK_TYPE_LINE: _bindgen_ty_8 = 0;
-        pub const LV_DRAW_MASK_TYPE_ANGLE: _bindgen_ty_8 = 1;
-        pub const LV_DRAW_MASK_TYPE_RADIUS: _bindgen_ty_8 = 2;
-        pub const LV_DRAW_MASK_TYPE_FADE: _bindgen_ty_8 = 3;
-        pub const LV_DRAW_MASK_TYPE_MAP: _bindgen_ty_8 = 4;
-        pub type _bindgen_ty_8 = u32;
-        pub type lv_draw_mask_type_t = u8;
-        pub const LV_DRAW_MASK_LINE_SIDE_LEFT: _bindgen_ty_9 = 0;
-        pub const LV_DRAW_MASK_LINE_SIDE_RIGHT: _bindgen_ty_9 = 1;
-        pub const LV_DRAW_MASK_LINE_SIDE_TOP: _bindgen_ty_9 = 2;
-        pub const LV_DRAW_MASK_LINE_SIDE_BOTTOM: _bindgen_ty_9 = 3;
-        pub type _bindgen_ty_9 = u32;
-        #[doc = " A common callback type for every mask type."]
-        #[doc = " Used internally by the library."]
-        pub type lv_draw_mask_xcb_t =
-         ::core::option::Option<unsafe extern "C" fn(mask_buf: *mut lv_opa_t,
-                                                     abs_x: lv_coord_t,
-                                                     abs_y: lv_coord_t,
-                                                     len: lv_coord_t,
-                                                     p: *mut ::cty::c_void)
-                                    -> lv_draw_mask_res_t>;
-        pub type lv_draw_mask_line_side_t = u8;
-        #[repr(C)]
-        pub struct lv_draw_mask_common_dsc_t {
-            pub cb: lv_draw_mask_xcb_t,
-            pub type_: lv_draw_mask_type_t,
+        pub struct lv_area_t {
+            pub x1: lv_coord_t,
+            pub y1: lv_coord_t,
+            pub x2: lv_coord_t,
+            pub y2: lv_coord_t,
         }
         #[automatically_derived]
         #[allow(unused_qualifications)]
-        impl ::core::default::Default for lv_draw_mask_common_dsc_t {
+        impl ::core::default::Default for lv_area_t {
             #[inline]
-            fn default() -> lv_draw_mask_common_dsc_t {
-                lv_draw_mask_common_dsc_t{cb:
-                                              ::core::default::Default::default(),
-                                          type_:
-                                              ::core::default::Default::default(),}
+            fn default() -> lv_area_t {
+                lv_area_t{x1: ::core::default::Default::default(),
+                          y1: ::core::default::Default::default(),
+                          x2: ::core::default::Default::default(),
+                          y2: ::core::default::Default::default(),}
             }
         }
-        #[repr(C)]
-        pub struct lv_draw_mask_line_param_t {
-            pub dsc: lv_draw_mask_common_dsc_t,
-            pub cfg: lv_draw_mask_line_param_t__bindgen_ty_1,
-            pub origo: lv_point_t,
-            pub xy_steep: i32,
-            pub yx_steep: i32,
-            pub steep: i32,
-            pub spx: i32,
-            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-            pub __bindgen_padding_0: [u8; 7usize],
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for lv_draw_mask_line_param_t {
-            #[inline]
-            fn default() -> lv_draw_mask_line_param_t {
-                lv_draw_mask_line_param_t{dsc:
-                                              ::core::default::Default::default(),
-                                          cfg:
-                                              ::core::default::Default::default(),
-                                          origo:
-                                              ::core::default::Default::default(),
-                                          xy_steep:
-                                              ::core::default::Default::default(),
-                                          yx_steep:
-                                              ::core::default::Default::default(),
-                                          steep:
-                                              ::core::default::Default::default(),
-                                          spx:
-                                              ::core::default::Default::default(),
-                                          _bitfield_1:
-                                              ::core::default::Default::default(),
-                                          __bindgen_padding_0:
-                                              ::core::default::Default::default(),}
-            }
-        }
-        #[repr(C)]
-        pub struct lv_draw_mask_line_param_t__bindgen_ty_1 {
-            pub p1: lv_point_t,
-            pub p2: lv_point_t,
-            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-            pub __bindgen_padding_0: u8,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for
-         lv_draw_mask_line_param_t__bindgen_ty_1 {
-            #[inline]
-            fn default() -> lv_draw_mask_line_param_t__bindgen_ty_1 {
-                lv_draw_mask_line_param_t__bindgen_ty_1{p1:
-                                                            ::core::default::Default::default(),
-                                                        p2:
-                                                            ::core::default::Default::default(),
-                                                        _bitfield_1:
-                                                            ::core::default::Default::default(),
-                                                        __bindgen_padding_0:
-                                                            ::core::default::Default::default(),}
-            }
-        }
-        impl lv_draw_mask_line_param_t__bindgen_ty_1 {
-            #[inline]
-            pub fn side(&self) -> lv_draw_mask_line_side_t {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(0usize, 2u8)
-                                               as u8)
-                }
-            }
-            #[inline]
-            pub fn set_side(&mut self, val: lv_draw_mask_line_side_t) {
-                unsafe {
-                    let val: u8 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(0usize, 2u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn new_bitfield_1(side: lv_draw_mask_line_side_t)
-             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-                let mut __bindgen_bitfield_unit:
-                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
-                    Default::default();
-                __bindgen_bitfield_unit.set(0usize, 2u8,
-                                            {
-                                                let side: u8 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(side)
-                                                    };
-                                                side as u64
-                                            });
-                __bindgen_bitfield_unit
-            }
-        }
-        impl lv_draw_mask_line_param_t {
-            #[inline]
-            pub fn flat(&self) -> u8 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
-                                               as u8)
-                }
-            }
-            #[inline]
-            pub fn set_flat(&mut self, val: u8) {
-                unsafe {
-                    let val: u8 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(0usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn inv(&self) -> u8 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8)
-                                               as u8)
-                }
-            }
-            #[inline]
-            pub fn set_inv(&mut self, val: u8) {
-                unsafe {
-                    let val: u8 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(1usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn new_bitfield_1(flat: u8, inv: u8)
-             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-                let mut __bindgen_bitfield_unit:
-                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
-                    Default::default();
-                __bindgen_bitfield_unit.set(0usize, 1u8,
-                                            {
-                                                let flat: u8 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(flat)
-                                                    };
-                                                flat as u64
-                                            });
-                __bindgen_bitfield_unit.set(1usize, 1u8,
-                                            {
-                                                let inv: u8 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(inv)
-                                                    };
-                                                inv as u64
-                                            });
-                __bindgen_bitfield_unit
-            }
-        }
-        #[repr(C)]
-        pub struct lv_draw_mask_angle_param_t {
-            pub dsc: lv_draw_mask_common_dsc_t,
-            pub cfg: lv_draw_mask_angle_param_t__bindgen_ty_1,
-            pub start_line: lv_draw_mask_line_param_t,
-            pub end_line: lv_draw_mask_line_param_t,
-            pub delta_deg: u16,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for lv_draw_mask_angle_param_t {
-            #[inline]
-            fn default() -> lv_draw_mask_angle_param_t {
-                lv_draw_mask_angle_param_t{dsc:
-                                               ::core::default::Default::default(),
-                                           cfg:
-                                               ::core::default::Default::default(),
-                                           start_line:
-                                               ::core::default::Default::default(),
-                                           end_line:
-                                               ::core::default::Default::default(),
-                                           delta_deg:
-                                               ::core::default::Default::default(),}
-            }
-        }
-        #[repr(C)]
-        pub struct lv_draw_mask_angle_param_t__bindgen_ty_1 {
-            pub vertex_p: lv_point_t,
-            pub start_angle: lv_coord_t,
-            pub end_angle: lv_coord_t,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for
-         lv_draw_mask_angle_param_t__bindgen_ty_1 {
-            #[inline]
-            fn default() -> lv_draw_mask_angle_param_t__bindgen_ty_1 {
-                lv_draw_mask_angle_param_t__bindgen_ty_1{vertex_p:
-                                                             ::core::default::Default::default(),
-                                                         start_angle:
-                                                             ::core::default::Default::default(),
-                                                         end_angle:
-                                                             ::core::default::Default::default(),}
-            }
-        }
-        #[repr(C)]
-        pub struct lv_draw_mask_radius_param_t {
-            pub dsc: lv_draw_mask_common_dsc_t,
-            pub cfg: lv_draw_mask_radius_param_t__bindgen_ty_1,
-            pub y_prev: i32,
-            pub y_prev_x: lv_sqrt_res_t,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for lv_draw_mask_radius_param_t {
-            #[inline]
-            fn default() -> lv_draw_mask_radius_param_t {
-                lv_draw_mask_radius_param_t{dsc:
-                                                ::core::default::Default::default(),
-                                            cfg:
-                                                ::core::default::Default::default(),
-                                            y_prev:
-                                                ::core::default::Default::default(),
-                                            y_prev_x:
-                                                ::core::default::Default::default(),}
-            }
-        }
-        #[repr(C)]
-        pub struct lv_draw_mask_radius_param_t__bindgen_ty_1 {
-            pub rect: lv_area_t,
-            pub radius: lv_coord_t,
-            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-            pub __bindgen_padding_0: u8,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for
-         lv_draw_mask_radius_param_t__bindgen_ty_1 {
-            #[inline]
-            fn default() -> lv_draw_mask_radius_param_t__bindgen_ty_1 {
-                lv_draw_mask_radius_param_t__bindgen_ty_1{rect:
-                                                              ::core::default::Default::default(),
-                                                          radius:
-                                                              ::core::default::Default::default(),
-                                                          _bitfield_1:
-                                                              ::core::default::Default::default(),
-                                                          __bindgen_padding_0:
-                                                              ::core::default::Default::default(),}
-            }
-        }
-        impl lv_draw_mask_radius_param_t__bindgen_ty_1 {
-            #[inline]
-            pub fn outer(&self) -> u8 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
-                                               as u8)
-                }
-            }
-            #[inline]
-            pub fn set_outer(&mut self, val: u8) {
-                unsafe {
-                    let val: u8 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(0usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn new_bitfield_1(outer: u8)
-             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-                let mut __bindgen_bitfield_unit:
-                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
-                    Default::default();
-                __bindgen_bitfield_unit.set(0usize, 1u8,
-                                            {
-                                                let outer: u8 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(outer)
-                                                    };
-                                                outer as u64
-                                            });
-                __bindgen_bitfield_unit
-            }
-        }
-        #[repr(C)]
-        pub struct lv_draw_mask_fade_param_t {
-            pub dsc: lv_draw_mask_common_dsc_t,
-            pub cfg: lv_draw_mask_fade_param_t__bindgen_ty_1,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for lv_draw_mask_fade_param_t {
-            #[inline]
-            fn default() -> lv_draw_mask_fade_param_t {
-                lv_draw_mask_fade_param_t{dsc:
-                                              ::core::default::Default::default(),
-                                          cfg:
-                                              ::core::default::Default::default(),}
-            }
-        }
-        #[repr(C)]
-        pub struct lv_draw_mask_fade_param_t__bindgen_ty_1 {
-            pub coords: lv_area_t,
-            pub y_top: lv_coord_t,
-            pub y_bottom: lv_coord_t,
-            pub opa_top: lv_opa_t,
-            pub opa_bottom: lv_opa_t,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for
-         lv_draw_mask_fade_param_t__bindgen_ty_1 {
-            #[inline]
-            fn default() -> lv_draw_mask_fade_param_t__bindgen_ty_1 {
-                lv_draw_mask_fade_param_t__bindgen_ty_1{coords:
-                                                            ::core::default::Default::default(),
-                                                        y_top:
-                                                            ::core::default::Default::default(),
-                                                        y_bottom:
-                                                            ::core::default::Default::default(),
-                                                        opa_top:
-                                                            ::core::default::Default::default(),
-                                                        opa_bottom:
-                                                            ::core::default::Default::default(),}
-            }
-        }
-        #[repr(C)]
-        pub struct _lv_draw_mask_map_param_t {
-            pub dsc: lv_draw_mask_common_dsc_t,
-            pub cfg: _lv_draw_mask_map_param_t__bindgen_ty_1,
-        }
-        #[repr(C)]
-        pub struct _lv_draw_mask_map_param_t__bindgen_ty_1 {
-            pub coords: lv_area_t,
-            pub map: *const lv_opa_t,
-        }
-        impl Default for _lv_draw_mask_map_param_t__bindgen_ty_1 {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        impl Default for _lv_draw_mask_map_param_t {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        pub type lv_draw_mask_map_param_t = _lv_draw_mask_map_param_t;
-        #[doc =
-          " Add a draw mask. Everything drawn after it (until removing the mask) will be affected by the mask."]
-        #[doc =
-          " - __`param`__: an initialized mask parameter. Only the pointer is saved."]
-        #[doc =
-          " - __`custom_id`__: a custom pointer to identify the mask. Used in `lv_draw_mask_remove_custom`."]
-        #[doc =
-          " Return: the an integer, the ID of the mask. Can be used in `lv_draw_mask_remove_id`."]
-        pub fn mask_add(param: Ptr, custom_id: Ptr) -> MynewtResult<i16> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Add a draw mask. Everything drawn after it (until removing the mask) will be affected by the mask."]
-                #[doc =
-                  " - __`param`__: an initialized mask parameter. Only the pointer is saved."]
-                #[doc =
-                  " - __`custom_id`__: a custom pointer to identify the mask. Used in `lv_draw_mask_remove_custom`."]
-                #[doc =
-                  " Return: the an integer, the ID of the mask. Can be used in `lv_draw_mask_remove_id`."]
-                pub fn lv_draw_mask_add(param: *mut ::cty::c_void,
-                                        custom_id: *mut ::cty::c_void)
-                -> i16;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_draw_mask_add(param as *mut ::cty::c_void,
-                                     custom_id as *mut ::cty::c_void);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Apply the added buffers on a line. Used internally by the library's drawing routines."]
-        #[doc =
-          " - __`mask_buf`__: store the result mask here. Has to be `len` byte long. Should be initialized with `0xFF`."]
-        #[doc =
-          " - __`abs_x`__: absolute X coordinate where the line to calculate start"]
-        #[doc =
-          " - __`abs_y`__: absolute Y coordinate where the line to calculate start"]
-        #[doc =
-          " - __`len`__: length of the line to calculate (in pixel count)"]
-        #[doc = " Return: One of these values:"]
-        #[doc =
-          " - `LV_DRAW_MASK_RES_FULL_TRANSP`: the whole line is transparent. `mask_buf` is not set to zero"]
-        #[doc =
-          " - `LV_DRAW_MASK_RES_FULL_COVER`: the whole line is fully visible. `mask_buf` is unchanged"]
-        #[doc =
-          " - `LV_DRAW_MASK_RES_CHANGED`: `mask_buf` has changed, it shows the desired opacity of each pixel in the given line"]
-        pub fn mask_apply(mask_buf: *mut lv_opa_t, abs_x: lv_coord_t,
-                          abs_y: lv_coord_t, len: lv_coord_t)
-         -> MynewtResult<lv_draw_mask_res_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Apply the added buffers on a line. Used internally by the library's drawing routines."]
-                #[doc =
-                  " - __`mask_buf`__: store the result mask here. Has to be `len` byte long. Should be initialized with `0xFF`."]
-                #[doc =
-                  " - __`abs_x`__: absolute X coordinate where the line to calculate start"]
-                #[doc =
-                  " - __`abs_y`__: absolute Y coordinate where the line to calculate start"]
-                #[doc =
-                  " - __`len`__: length of the line to calculate (in pixel count)"]
-                #[doc = " Return: One of these values:"]
-                #[doc =
-                  " - `LV_DRAW_MASK_RES_FULL_TRANSP`: the whole line is transparent. `mask_buf` is not set to zero"]
-                #[doc =
-                  " - `LV_DRAW_MASK_RES_FULL_COVER`: the whole line is fully visible. `mask_buf` is unchanged"]
-                #[doc =
-                  " - `LV_DRAW_MASK_RES_CHANGED`: `mask_buf` has changed, it shows the desired opacity of each pixel in the given line"]
-                pub fn lv_draw_mask_apply(mask_buf: *mut lv_opa_t,
-                                          abs_x: lv_coord_t,
-                                          abs_y: lv_coord_t, len: lv_coord_t)
-                -> lv_draw_mask_res_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_draw_mask_apply(mask_buf as *mut lv_opa_t,
-                                       abs_x as lv_coord_t,
-                                       abs_y as lv_coord_t,
-                                       len as lv_coord_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Remove a mask with a given ID"]
-        #[doc =
-          " - __`id`__: the ID of the mask.  Returned by `lv_draw_mask_add`"]
-        #[doc = " Return: the parameter of the removed mask."]
-        #[doc =
-          " If more masks have `custom_id` ID then the last mask's parameter will be returned"]
-        pub fn mask_remove_id(id: i16) -> MynewtResult<*mut ::cty::c_void> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Remove a mask with a given ID"]
-                #[doc =
-                  " - __`id`__: the ID of the mask.  Returned by `lv_draw_mask_add`"]
-                #[doc = " Return: the parameter of the removed mask."]
-                #[doc =
-                  " If more masks have `custom_id` ID then the last mask's parameter will be returned"]
-                pub fn lv_draw_mask_remove_id(id: i16)
-                -> *mut ::cty::c_void;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_draw_mask_remove_id(id as i16);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Remove all mask with a given custom ID"]
-        #[doc = " - __`custom_id`__: a pointer used in `lv_draw_mask_add`"]
-        #[doc = " Return: return the parameter of the removed mask."]
-        #[doc =
-          " If more masks have `custom_id` ID then the last mask's parameter will be returned"]
-        pub fn mask_remove_custom(custom_id: Ptr)
-         -> MynewtResult<*mut ::cty::c_void> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Remove all mask with a given custom ID"]
-                #[doc =
-                  " - __`custom_id`__: a pointer used in `lv_draw_mask_add`"]
-                #[doc = " Return: return the parameter of the removed mask."]
-                #[doc =
-                  " If more masks have `custom_id` ID then the last mask's parameter will be returned"]
-                pub fn lv_draw_mask_remove_custom(custom_id:
-                                                      *mut ::cty::c_void)
-                -> *mut ::cty::c_void;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_draw_mask_remove_custom(custom_id as
-                                                   *mut ::cty::c_void);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Count the currently added masks"]
-        #[doc = " Return: number of active masks"]
-        pub fn mask_get_cnt() -> MynewtResult<u8> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Count the currently added masks"]
-                #[doc = " Return: number of active masks"]
-                pub fn lv_draw_mask_get_cnt()
-                -> u8;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_draw_mask_get_cnt();
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = "Initialize a line mask from two points."]
-        #[doc =
-          " - __`param`__: pointer to a `lv_draw_mask_param_t` to initialize"]
-        #[doc = " - __`p1x`__: X coordinate of the first point of the line"]
-        #[doc = " - __`p1y`__: Y coordinate of the first point of the line"]
-        #[doc = " - __`p2x`__: X coordinate of the second point of the line"]
-        #[doc = " - __`p2y`__: y coordinate of the second point of the line"]
-        #[doc =
-          " - __`side`__: and element of `lv_draw_mask_line_side_t` to describe which side to keep."]
-        #[doc =
-          " With `LV_DRAW_MASK_LINE_SIDE_LEFT/RIGHT` and horizontal line all pixels are kept"]
-        #[doc =
-          " With `LV_DRAW_MASK_LINE_SIDE_TOP/BOTTOM` and vertical line all pixels are kept"]
-        pub fn mask_line_points_init(param: *mut lv_draw_mask_line_param_t,
-                                     p1x: lv_coord_t, p1y: lv_coord_t,
-                                     p2x: lv_coord_t, p2y: lv_coord_t,
-                                     side: lv_draw_mask_line_side_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = "Initialize a line mask from two points."]
-                #[doc =
-                  " - __`param`__: pointer to a `lv_draw_mask_param_t` to initialize"]
-                #[doc =
-                  " - __`p1x`__: X coordinate of the first point of the line"]
-                #[doc =
-                  " - __`p1y`__: Y coordinate of the first point of the line"]
-                #[doc =
-                  " - __`p2x`__: X coordinate of the second point of the line"]
-                #[doc =
-                  " - __`p2y`__: y coordinate of the second point of the line"]
-                #[doc =
-                  " - __`side`__: and element of `lv_draw_mask_line_side_t` to describe which side to keep."]
-                #[doc =
-                  " With `LV_DRAW_MASK_LINE_SIDE_LEFT/RIGHT` and horizontal line all pixels are kept"]
-                #[doc =
-                  " With `LV_DRAW_MASK_LINE_SIDE_TOP/BOTTOM` and vertical line all pixels are kept"]
-                pub fn lv_draw_mask_line_points_init(param:
-                                                         *mut lv_draw_mask_line_param_t,
-                                                     p1x: lv_coord_t,
-                                                     p1y: lv_coord_t,
-                                                     p2x: lv_coord_t,
-                                                     p2y: lv_coord_t,
-                                                     side:
-                                                         lv_draw_mask_line_side_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_draw_mask_line_points_init(param as
-                                                  *mut lv_draw_mask_line_param_t,
-                                              p1x as lv_coord_t,
-                                              p1y as lv_coord_t,
-                                              p2x as lv_coord_t,
-                                              p2y as lv_coord_t,
-                                              side as
-                                                  lv_draw_mask_line_side_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = "Initialize a line mask from a point and an angle."]
-        #[doc =
-          " - __`param`__: pointer to a `lv_draw_mask_param_t` to initialize"]
-        #[doc = " - __`px`__: X coordinate of a point of the line"]
-        #[doc = " - __`py`__: X coordinate of a point of the line"]
-        #[doc = " - __`angle`__: right 0 deg, bottom: 90"]
-        #[doc =
-          " - __`side`__: and element of `lv_draw_mask_line_side_t` to describe which side to keep."]
-        #[doc =
-          " With `LV_DRAW_MASK_LINE_SIDE_LEFT/RIGHT` and horizontal line all pixels are kept"]
-        #[doc =
-          " With `LV_DRAW_MASK_LINE_SIDE_TOP/BOTTOM` and vertical line all pixels are kept"]
-        pub fn mask_line_angle_init(param: *mut lv_draw_mask_line_param_t,
-                                    p1x: lv_coord_t, py: lv_coord_t,
-                                    angle: i16,
-                                    side: lv_draw_mask_line_side_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = "Initialize a line mask from a point and an angle."]
-                #[doc =
-                  " - __`param`__: pointer to a `lv_draw_mask_param_t` to initialize"]
-                #[doc = " - __`px`__: X coordinate of a point of the line"]
-                #[doc = " - __`py`__: X coordinate of a point of the line"]
-                #[doc = " - __`angle`__: right 0 deg, bottom: 90"]
-                #[doc =
-                  " - __`side`__: and element of `lv_draw_mask_line_side_t` to describe which side to keep."]
-                #[doc =
-                  " With `LV_DRAW_MASK_LINE_SIDE_LEFT/RIGHT` and horizontal line all pixels are kept"]
-                #[doc =
-                  " With `LV_DRAW_MASK_LINE_SIDE_TOP/BOTTOM` and vertical line all pixels are kept"]
-                pub fn lv_draw_mask_line_angle_init(param:
-                                                        *mut lv_draw_mask_line_param_t,
-                                                    p1x: lv_coord_t,
-                                                    py: lv_coord_t,
-                                                    angle: i16,
-                                                    side:
-                                                        lv_draw_mask_line_side_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_draw_mask_line_angle_init(param as
-                                                 *mut lv_draw_mask_line_param_t,
-                                             p1x as lv_coord_t,
-                                             py as lv_coord_t, angle as i16,
-                                             side as
-                                                 lv_draw_mask_line_side_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Initialize an angle mask."]
-        #[doc =
-          " - __`param`__: pointer to a `lv_draw_mask_param_t` to initialize"]
-        #[doc =
-          " - __`vertex_x`__: X coordinate of the angle vertex (absolute coordinates)"]
-        #[doc =
-          " - __`vertex_y`__: Y coordinate of the angle vertex (absolute coordinates)"]
-        #[doc =
-          " - __`start_angle`__: start angle in degrees. 0 deg on the right, 90 deg, on the bottom"]
-        #[doc = " - __`end_angle`__: end angle"]
-        pub fn mask_angle_init(param: *mut lv_draw_mask_angle_param_t,
-                               vertex_x: lv_coord_t, vertex_y: lv_coord_t,
-                               start_angle: lv_coord_t, end_angle: lv_coord_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Initialize an angle mask."]
-                #[doc =
-                  " - __`param`__: pointer to a `lv_draw_mask_param_t` to initialize"]
-                #[doc =
-                  " - __`vertex_x`__: X coordinate of the angle vertex (absolute coordinates)"]
-                #[doc =
-                  " - __`vertex_y`__: Y coordinate of the angle vertex (absolute coordinates)"]
-                #[doc =
-                  " - __`start_angle`__: start angle in degrees. 0 deg on the right, 90 deg, on the bottom"]
-                #[doc = " - __`end_angle`__: end angle"]
-                pub fn lv_draw_mask_angle_init(param:
-                                                   *mut lv_draw_mask_angle_param_t,
-                                               vertex_x: lv_coord_t,
-                                               vertex_y: lv_coord_t,
-                                               start_angle: lv_coord_t,
-                                               end_angle: lv_coord_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_draw_mask_angle_init(param as
-                                            *mut lv_draw_mask_angle_param_t,
-                                        vertex_x as lv_coord_t,
-                                        vertex_y as lv_coord_t,
-                                        start_angle as lv_coord_t,
-                                        end_angle as lv_coord_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Initialize a fade mask."]
-        #[doc =
-          " - __`param`__: param pointer to a `lv_draw_mask_param_t` to initialize"]
-        #[doc =
-          " - __`rect`__: coordinates of the rectangle to affect (absolute coordinates)"]
-        #[doc = " - __`radius`__: radius of the rectangle"]
-        #[doc =
-          " - __`inv:`__: true: keep the pixels inside the rectangle; keep the pixels outside of the rectangle"]
-        pub fn mask_radius_init(param: *mut lv_draw_mask_radius_param_t,
-                                rect: *const lv_area_t, radius: lv_coord_t,
-                                inv: bool) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Initialize a fade mask."]
-                #[doc =
-                  " - __`param`__: param pointer to a `lv_draw_mask_param_t` to initialize"]
-                #[doc =
-                  " - __`rect`__: coordinates of the rectangle to affect (absolute coordinates)"]
-                #[doc = " - __`radius`__: radius of the rectangle"]
-                #[doc =
-                  " - __`inv:`__: true: keep the pixels inside the rectangle; keep the pixels outside of the rectangle"]
-                pub fn lv_draw_mask_radius_init(param:
-                                                    *mut lv_draw_mask_radius_param_t,
-                                                rect: *const lv_area_t,
-                                                radius: lv_coord_t,
-                                                inv: bool);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_draw_mask_radius_init(param as
-                                             *mut lv_draw_mask_radius_param_t,
-                                         rect as *const lv_area_t,
-                                         radius as lv_coord_t, inv as bool);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Initialize a fade mask."]
-        #[doc =
-          " - __`param`__: pointer to a `lv_draw_mask_param_t` to initialize"]
-        #[doc =
-          " - __`coords`__: coordinates of the area to affect (absolute coordinates)"]
-        #[doc = " - __`opa_top`__: opacity on the top"]
-        #[doc =
-          " - __`y_top`__: at which coordinate start to change to opacity to `opa_bottom`"]
-        #[doc = " - __`opa_bottom`__: opacity at the bottom"]
-        #[doc = " - __`y_bottom`__: at which coordinate reach `opa_bottom`."]
-        pub fn mask_fade_init(param: *mut lv_draw_mask_fade_param_t,
-                              coords: *const lv_area_t, opa_top: lv_opa_t,
-                              y_top: lv_coord_t, opa_bottom: lv_opa_t,
-                              y_bottom: lv_coord_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Initialize a fade mask."]
-                #[doc =
-                  " - __`param`__: pointer to a `lv_draw_mask_param_t` to initialize"]
-                #[doc =
-                  " - __`coords`__: coordinates of the area to affect (absolute coordinates)"]
-                #[doc = " - __`opa_top`__: opacity on the top"]
-                #[doc =
-                  " - __`y_top`__: at which coordinate start to change to opacity to `opa_bottom`"]
-                #[doc = " - __`opa_bottom`__: opacity at the bottom"]
-                #[doc =
-                  " - __`y_bottom`__: at which coordinate reach `opa_bottom`."]
-                pub fn lv_draw_mask_fade_init(param:
-                                                  *mut lv_draw_mask_fade_param_t,
-                                              coords: *const lv_area_t,
-                                              opa_top: lv_opa_t,
-                                              y_top: lv_coord_t,
-                                              opa_bottom: lv_opa_t,
-                                              y_bottom: lv_coord_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_draw_mask_fade_init(param as
-                                           *mut lv_draw_mask_fade_param_t,
-                                       coords as *const lv_area_t,
-                                       opa_top as lv_opa_t,
-                                       y_top as lv_coord_t,
-                                       opa_bottom as lv_opa_t,
-                                       y_bottom as lv_coord_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Initialize a map mask."]
-        #[doc =
-          " - __`param`__: pointer to a `lv_draw_mask_param_t` to initialize"]
-        #[doc =
-          " - __`coords`__: coordinates of the map (absolute coordinates)"]
-        #[doc = " - __`map`__: array of bytes with the mask values"]
-        pub fn mask_map_init(param: *mut lv_draw_mask_map_param_t,
-                             coords: *const lv_area_t, map: *const lv_opa_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Initialize a map mask."]
-                #[doc =
-                  " - __`param`__: pointer to a `lv_draw_mask_param_t` to initialize"]
-                #[doc =
-                  " - __`coords`__: coordinates of the map (absolute coordinates)"]
-                #[doc = " - __`map`__: array of bytes with the mask values"]
-                pub fn lv_draw_mask_map_init(param:
-                                                 *mut lv_draw_mask_map_param_t,
-                                             coords: *const lv_area_t,
-                                             map: *const lv_opa_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_draw_mask_map_init(param as *mut lv_draw_mask_map_param_t,
-                                      coords as *const lv_area_t,
-                                      map as *const lv_opa_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub const LV_BLEND_MODE_NORMAL: _bindgen_ty_10 = 0;
-        pub const LV_BLEND_MODE_ADDITIVE: _bindgen_ty_10 = 1;
-        pub const LV_BLEND_MODE_SUBTRACTIVE: _bindgen_ty_10 = 2;
-        #[doc = "      TYPEDEFS"]
-        pub type _bindgen_ty_10 = u32;
-        pub type lv_blend_mode_t = u8;
-        pub const LV_BORDER_SIDE_NONE: _bindgen_ty_11 = 0;
-        pub const LV_BORDER_SIDE_BOTTOM: _bindgen_ty_11 = 1;
-        pub const LV_BORDER_SIDE_TOP: _bindgen_ty_11 = 2;
-        pub const LV_BORDER_SIDE_LEFT: _bindgen_ty_11 = 4;
-        pub const LV_BORDER_SIDE_RIGHT: _bindgen_ty_11 = 8;
-        pub const LV_BORDER_SIDE_FULL: _bindgen_ty_11 = 15;
-        #[doc = "< FOR matrix-like objects (e.g. Button matrix)"]
-        pub const LV_BORDER_SIDE_INTERNAL: _bindgen_ty_11 = 16;
-        pub const _LV_BORDER_SIDE_LAST: _bindgen_ty_11 = 17;
-        #[doc = "      TYPEDEFS"]
-        pub type _bindgen_ty_11 = u32;
-        pub type lv_border_side_t = u8;
-        pub const LV_GRAD_DIR_NONE: _bindgen_ty_12 = 0;
-        pub const LV_GRAD_DIR_VER: _bindgen_ty_12 = 1;
-        pub const LV_GRAD_DIR_HOR: _bindgen_ty_12 = 2;
-        pub const _LV_GRAD_DIR_LAST: _bindgen_ty_12 = 3;
-        pub type _bindgen_ty_12 = u32;
-        pub type lv_grad_dir_t = u8;
-        pub const LV_TEXT_DECOR_NONE: _bindgen_ty_13 = 0;
-        pub const LV_TEXT_DECOR_UNDERLINE: _bindgen_ty_13 = 1;
-        pub const LV_TEXT_DECOR_STRIKETHROUGH: _bindgen_ty_13 = 2;
-        pub const _LV_TEXT_DECOR_LAST: _bindgen_ty_13 = 3;
-        pub type _bindgen_ty_13 = u32;
-        pub type lv_text_decor_t = u8;
-        pub type lv_style_attr_t = u8;
-        pub const LV_STYLE_RADIUS: _bindgen_ty_14 = 1;
-        pub const LV_STYLE_CLIP_CORNER: _bindgen_ty_14 = 2;
-        pub const LV_STYLE_SIZE: _bindgen_ty_14 = 3;
-        pub const LV_STYLE_TRANSFORM_WIDTH: _bindgen_ty_14 = 4;
-        pub const LV_STYLE_TRANSFORM_HEIGHT: _bindgen_ty_14 = 5;
-        pub const LV_STYLE_TRANSFORM_ANGLE: _bindgen_ty_14 = 6;
-        pub const LV_STYLE_TRANSFORM_ZOOM: _bindgen_ty_14 = 7;
-        pub const LV_STYLE_OPA_SCALE: _bindgen_ty_14 = 32780;
-        pub const LV_STYLE_PAD_TOP: _bindgen_ty_14 = 16;
-        pub const LV_STYLE_PAD_BOTTOM: _bindgen_ty_14 = 17;
-        pub const LV_STYLE_PAD_LEFT: _bindgen_ty_14 = 18;
-        pub const LV_STYLE_PAD_RIGHT: _bindgen_ty_14 = 19;
-        pub const LV_STYLE_PAD_INNER: _bindgen_ty_14 = 20;
-        pub const LV_STYLE_MARGIN_TOP: _bindgen_ty_14 = 21;
-        pub const LV_STYLE_MARGIN_BOTTOM: _bindgen_ty_14 = 22;
-        pub const LV_STYLE_MARGIN_LEFT: _bindgen_ty_14 = 23;
-        pub const LV_STYLE_MARGIN_RIGHT: _bindgen_ty_14 = 24;
-        pub const LV_STYLE_BG_BLEND_MODE: _bindgen_ty_14 = 32;
-        pub const LV_STYLE_BG_MAIN_STOP: _bindgen_ty_14 = 33;
-        pub const LV_STYLE_BG_GRAD_STOP: _bindgen_ty_14 = 34;
-        pub const LV_STYLE_BG_GRAD_DIR: _bindgen_ty_14 = 35;
-        pub const LV_STYLE_BG_COLOR: _bindgen_ty_14 = 41;
-        pub const LV_STYLE_BG_GRAD_COLOR: _bindgen_ty_14 = 42;
-        pub const LV_STYLE_BG_OPA: _bindgen_ty_14 = 44;
-        pub const LV_STYLE_BORDER_WIDTH: _bindgen_ty_14 = 48;
-        pub const LV_STYLE_BORDER_SIDE: _bindgen_ty_14 = 49;
-        pub const LV_STYLE_BORDER_BLEND_MODE: _bindgen_ty_14 = 50;
-        pub const LV_STYLE_BORDER_POST: _bindgen_ty_14 = 51;
-        pub const LV_STYLE_BORDER_COLOR: _bindgen_ty_14 = 57;
-        pub const LV_STYLE_BORDER_OPA: _bindgen_ty_14 = 60;
-        pub const LV_STYLE_OUTLINE_WIDTH: _bindgen_ty_14 = 64;
-        pub const LV_STYLE_OUTLINE_PAD: _bindgen_ty_14 = 65;
-        pub const LV_STYLE_OUTLINE_BLEND_MODE: _bindgen_ty_14 = 66;
-        pub const LV_STYLE_OUTLINE_COLOR: _bindgen_ty_14 = 73;
-        pub const LV_STYLE_OUTLINE_OPA: _bindgen_ty_14 = 76;
-        pub const LV_STYLE_SHADOW_WIDTH: _bindgen_ty_14 = 80;
-        pub const LV_STYLE_SHADOW_OFS_X: _bindgen_ty_14 = 81;
-        pub const LV_STYLE_SHADOW_OFS_Y: _bindgen_ty_14 = 82;
-        pub const LV_STYLE_SHADOW_SPREAD: _bindgen_ty_14 = 83;
-        pub const LV_STYLE_SHADOW_BLEND_MODE: _bindgen_ty_14 = 84;
-        pub const LV_STYLE_SHADOW_COLOR: _bindgen_ty_14 = 89;
-        pub const LV_STYLE_SHADOW_OPA: _bindgen_ty_14 = 92;
-        pub const LV_STYLE_PATTERN_BLEND_MODE: _bindgen_ty_14 = 96;
-        pub const LV_STYLE_PATTERN_REPEAT: _bindgen_ty_14 = 97;
-        pub const LV_STYLE_PATTERN_RECOLOR: _bindgen_ty_14 = 105;
-        pub const LV_STYLE_PATTERN_OPA: _bindgen_ty_14 = 108;
-        pub const LV_STYLE_PATTERN_RECOLOR_OPA: _bindgen_ty_14 = 109;
-        pub const LV_STYLE_PATTERN_IMAGE: _bindgen_ty_14 = 110;
-        pub const LV_STYLE_VALUE_LETTER_SPACE: _bindgen_ty_14 = 112;
-        pub const LV_STYLE_VALUE_LINE_SPACE: _bindgen_ty_14 = 113;
-        pub const LV_STYLE_VALUE_BLEND_MODE: _bindgen_ty_14 = 114;
-        pub const LV_STYLE_VALUE_OFS_X: _bindgen_ty_14 = 115;
-        pub const LV_STYLE_VALUE_OFS_Y: _bindgen_ty_14 = 116;
-        pub const LV_STYLE_VALUE_ALIGN: _bindgen_ty_14 = 117;
-        pub const LV_STYLE_VALUE_COLOR: _bindgen_ty_14 = 121;
-        pub const LV_STYLE_VALUE_OPA: _bindgen_ty_14 = 124;
-        pub const LV_STYLE_VALUE_FONT: _bindgen_ty_14 = 126;
-        pub const LV_STYLE_VALUE_STR: _bindgen_ty_14 = 127;
-        pub const LV_STYLE_TEXT_LETTER_SPACE: _bindgen_ty_14 = 32896;
-        pub const LV_STYLE_TEXT_LINE_SPACE: _bindgen_ty_14 = 32897;
-        pub const LV_STYLE_TEXT_DECOR: _bindgen_ty_14 = 32898;
-        pub const LV_STYLE_TEXT_BLEND_MODE: _bindgen_ty_14 = 32899;
-        pub const LV_STYLE_TEXT_COLOR: _bindgen_ty_14 = 32905;
-        pub const LV_STYLE_TEXT_SEL_COLOR: _bindgen_ty_14 = 32906;
-        pub const LV_STYLE_TEXT_OPA: _bindgen_ty_14 = 32908;
-        pub const LV_STYLE_TEXT_FONT: _bindgen_ty_14 = 32910;
-        pub const LV_STYLE_LINE_WIDTH: _bindgen_ty_14 = 144;
-        pub const LV_STYLE_LINE_BLEND_MODE: _bindgen_ty_14 = 145;
-        pub const LV_STYLE_LINE_DASH_WIDTH: _bindgen_ty_14 = 146;
-        pub const LV_STYLE_LINE_DASH_GAP: _bindgen_ty_14 = 147;
-        pub const LV_STYLE_LINE_ROUNDED: _bindgen_ty_14 = 148;
-        pub const LV_STYLE_LINE_COLOR: _bindgen_ty_14 = 153;
-        pub const LV_STYLE_LINE_OPA: _bindgen_ty_14 = 156;
-        pub const LV_STYLE_IMAGE_BLEND_MODE: _bindgen_ty_14 = 32928;
-        pub const LV_STYLE_IMAGE_RECOLOR: _bindgen_ty_14 = 32937;
-        pub const LV_STYLE_IMAGE_OPA: _bindgen_ty_14 = 32940;
-        pub const LV_STYLE_IMAGE_RECOLOR_OPA: _bindgen_ty_14 = 32941;
-        pub const LV_STYLE_TRANSITION_TIME: _bindgen_ty_14 = 176;
-        pub const LV_STYLE_TRANSITION_DELAY: _bindgen_ty_14 = 177;
-        pub const LV_STYLE_TRANSITION_PROP_1: _bindgen_ty_14 = 178;
-        pub const LV_STYLE_TRANSITION_PROP_2: _bindgen_ty_14 = 179;
-        pub const LV_STYLE_TRANSITION_PROP_3: _bindgen_ty_14 = 180;
-        pub const LV_STYLE_TRANSITION_PROP_4: _bindgen_ty_14 = 181;
-        pub const LV_STYLE_TRANSITION_PROP_5: _bindgen_ty_14 = 182;
-        pub const LV_STYLE_TRANSITION_PROP_6: _bindgen_ty_14 = 183;
-        pub const LV_STYLE_TRANSITION_PATH: _bindgen_ty_14 = 190;
-        pub const LV_STYLE_SCALE_WIDTH: _bindgen_ty_14 = 192;
-        pub const LV_STYLE_SCALE_BORDER_WIDTH: _bindgen_ty_14 = 193;
-        pub const LV_STYLE_SCALE_END_BORDER_WIDTH: _bindgen_ty_14 = 194;
-        pub const LV_STYLE_SCALE_END_LINE_WIDTH: _bindgen_ty_14 = 195;
-        pub const LV_STYLE_SCALE_GRAD_COLOR: _bindgen_ty_14 = 201;
-        pub const LV_STYLE_SCALE_END_COLOR: _bindgen_ty_14 = 202;
-        pub type _bindgen_ty_14 = u32;
-        pub type lv_style_property_t = u16;
-        pub type lv_style_state_t = u16;
-        #[repr(C)]
-        pub struct lv_style_t {
-            pub map: *mut u8,
-        }
-        impl Default for lv_style_t {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        pub type lv_style_int_t = i16;
-        #[repr(C)]
-        pub struct lv_style_list_t {
-            pub style_list: *mut *mut lv_style_t,
-            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u8>,
-            pub __bindgen_padding_0: u32,
-        }
-        impl Default for lv_style_list_t {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        impl lv_style_list_t {
-            #[inline]
-            pub fn style_cnt(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(0usize, 6u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_style_cnt(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(0usize, 6u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn has_local(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_has_local(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(6usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn has_trans(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_has_trans(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(7usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn skip_trans(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_skip_trans(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(8usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn ignore_trans(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_ignore_trans(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(9usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn valid_cache(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_valid_cache(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(10usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn ignore_cache(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_ignore_cache(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(11usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn radius_zero(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_radius_zero(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(12usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn opa_scale_cover(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(13usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_opa_scale_cover(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(13usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn clip_corner_off(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(14usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_clip_corner_off(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(14usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn transform_all_zero(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(15usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_transform_all_zero(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(15usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn pad_all_zero(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(16usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_pad_all_zero(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(16usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn blend_mode_all_normal(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(17usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_blend_mode_all_normal(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(17usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn bg_opa_transp(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(18usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_bg_opa_transp(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(18usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn bg_opa_cover(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(19usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_bg_opa_cover(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(19usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn bg_grad_dir_none(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(20usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_bg_grad_dir_none(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(20usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn border_width_zero(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(21usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_border_width_zero(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(21usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn border_side_full(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(22usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_border_side_full(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(22usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn border_post_off(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(23usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_border_post_off(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(23usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn outline_width_zero(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(24usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_outline_width_zero(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(24usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn pattern_img_null(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(25usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_pattern_img_null(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(25usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn shadow_width_zero(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(26usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_shadow_width_zero(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(26usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn value_txt_str(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(27usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_value_txt_str(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(27usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn img_recolor_opa_transp(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(28usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_img_recolor_opa_transp(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(28usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn text_space_zero(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(29usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_text_space_zero(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(29usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn text_decor_none(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(30usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_text_decor_none(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(30usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn text_font_normal(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(31usize, 1u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_text_font_normal(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(31usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn new_bitfield_1(style_cnt: u32, has_local: u32,
-                                  has_trans: u32, skip_trans: u32,
-                                  ignore_trans: u32, valid_cache: u32,
-                                  ignore_cache: u32, radius_zero: u32,
-                                  opa_scale_cover: u32, clip_corner_off: u32,
-                                  transform_all_zero: u32, pad_all_zero: u32,
-                                  blend_mode_all_normal: u32,
-                                  bg_opa_transp: u32, bg_opa_cover: u32,
-                                  bg_grad_dir_none: u32,
-                                  border_width_zero: u32,
-                                  border_side_full: u32, border_post_off: u32,
-                                  outline_width_zero: u32,
-                                  pattern_img_null: u32,
-                                  shadow_width_zero: u32, value_txt_str: u32,
-                                  img_recolor_opa_transp: u32,
-                                  text_space_zero: u32, text_decor_none: u32,
-                                  text_font_normal: u32)
-             -> __BindgenBitfieldUnit<[u8; 4usize], u8> {
-                let mut __bindgen_bitfield_unit:
-                        __BindgenBitfieldUnit<[u8; 4usize], u8> =
-                    Default::default();
-                __bindgen_bitfield_unit.set(0usize, 6u8,
-                                            {
-                                                let style_cnt: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(style_cnt)
-                                                    };
-                                                style_cnt as u64
-                                            });
-                __bindgen_bitfield_unit.set(6usize, 1u8,
-                                            {
-                                                let has_local: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(has_local)
-                                                    };
-                                                has_local as u64
-                                            });
-                __bindgen_bitfield_unit.set(7usize, 1u8,
-                                            {
-                                                let has_trans: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(has_trans)
-                                                    };
-                                                has_trans as u64
-                                            });
-                __bindgen_bitfield_unit.set(8usize, 1u8,
-                                            {
-                                                let skip_trans: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(skip_trans)
-                                                    };
-                                                skip_trans as u64
-                                            });
-                __bindgen_bitfield_unit.set(9usize, 1u8,
-                                            {
-                                                let ignore_trans: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(ignore_trans)
-                                                    };
-                                                ignore_trans as u64
-                                            });
-                __bindgen_bitfield_unit.set(10usize, 1u8,
-                                            {
-                                                let valid_cache: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(valid_cache)
-                                                    };
-                                                valid_cache as u64
-                                            });
-                __bindgen_bitfield_unit.set(11usize, 1u8,
-                                            {
-                                                let ignore_cache: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(ignore_cache)
-                                                    };
-                                                ignore_cache as u64
-                                            });
-                __bindgen_bitfield_unit.set(12usize, 1u8,
-                                            {
-                                                let radius_zero: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(radius_zero)
-                                                    };
-                                                radius_zero as u64
-                                            });
-                __bindgen_bitfield_unit.set(13usize, 1u8,
-                                            {
-                                                let opa_scale_cover: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(opa_scale_cover)
-                                                    };
-                                                opa_scale_cover as u64
-                                            });
-                __bindgen_bitfield_unit.set(14usize, 1u8,
-                                            {
-                                                let clip_corner_off: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(clip_corner_off)
-                                                    };
-                                                clip_corner_off as u64
-                                            });
-                __bindgen_bitfield_unit.set(15usize, 1u8,
-                                            {
-                                                let transform_all_zero: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(transform_all_zero)
-                                                    };
-                                                transform_all_zero as u64
-                                            });
-                __bindgen_bitfield_unit.set(16usize, 1u8,
-                                            {
-                                                let pad_all_zero: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(pad_all_zero)
-                                                    };
-                                                pad_all_zero as u64
-                                            });
-                __bindgen_bitfield_unit.set(17usize, 1u8,
-                                            {
-                                                let blend_mode_all_normal:
-                                                        u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(blend_mode_all_normal)
-                                                    };
-                                                blend_mode_all_normal as u64
-                                            });
-                __bindgen_bitfield_unit.set(18usize, 1u8,
-                                            {
-                                                let bg_opa_transp: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(bg_opa_transp)
-                                                    };
-                                                bg_opa_transp as u64
-                                            });
-                __bindgen_bitfield_unit.set(19usize, 1u8,
-                                            {
-                                                let bg_opa_cover: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(bg_opa_cover)
-                                                    };
-                                                bg_opa_cover as u64
-                                            });
-                __bindgen_bitfield_unit.set(20usize, 1u8,
-                                            {
-                                                let bg_grad_dir_none: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(bg_grad_dir_none)
-                                                    };
-                                                bg_grad_dir_none as u64
-                                            });
-                __bindgen_bitfield_unit.set(21usize, 1u8,
-                                            {
-                                                let border_width_zero: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(border_width_zero)
-                                                    };
-                                                border_width_zero as u64
-                                            });
-                __bindgen_bitfield_unit.set(22usize, 1u8,
-                                            {
-                                                let border_side_full: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(border_side_full)
-                                                    };
-                                                border_side_full as u64
-                                            });
-                __bindgen_bitfield_unit.set(23usize, 1u8,
-                                            {
-                                                let border_post_off: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(border_post_off)
-                                                    };
-                                                border_post_off as u64
-                                            });
-                __bindgen_bitfield_unit.set(24usize, 1u8,
-                                            {
-                                                let outline_width_zero: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(outline_width_zero)
-                                                    };
-                                                outline_width_zero as u64
-                                            });
-                __bindgen_bitfield_unit.set(25usize, 1u8,
-                                            {
-                                                let pattern_img_null: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(pattern_img_null)
-                                                    };
-                                                pattern_img_null as u64
-                                            });
-                __bindgen_bitfield_unit.set(26usize, 1u8,
-                                            {
-                                                let shadow_width_zero: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(shadow_width_zero)
-                                                    };
-                                                shadow_width_zero as u64
-                                            });
-                __bindgen_bitfield_unit.set(27usize, 1u8,
-                                            {
-                                                let value_txt_str: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(value_txt_str)
-                                                    };
-                                                value_txt_str as u64
-                                            });
-                __bindgen_bitfield_unit.set(28usize, 1u8,
-                                            {
-                                                let img_recolor_opa_transp:
-                                                        u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(img_recolor_opa_transp)
-                                                    };
-                                                img_recolor_opa_transp as u64
-                                            });
-                __bindgen_bitfield_unit.set(29usize, 1u8,
-                                            {
-                                                let text_space_zero: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(text_space_zero)
-                                                    };
-                                                text_space_zero as u64
-                                            });
-                __bindgen_bitfield_unit.set(30usize, 1u8,
-                                            {
-                                                let text_decor_none: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(text_decor_none)
-                                                    };
-                                                text_decor_none as u64
-                                            });
-                __bindgen_bitfield_unit.set(31usize, 1u8,
-                                            {
-                                                let text_font_normal: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(text_font_normal)
-                                                    };
-                                                text_font_normal as u64
-                                            });
-                __bindgen_bitfield_unit
-            }
-        }
-        #[doc = " Initialize a style"]
-        #[doc = " - __`style`__: pointer to a style to initialize"]
-        pub fn style_init(style: *mut lv_style_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Initialize a style"]
-                #[doc = " - __`style`__: pointer to a style to initialize"]
-                pub fn lv_style_init(style: *mut lv_style_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_init(style as *mut lv_style_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Copy a style with all its properties"]
-        #[doc =
-          " - __`style_dest`__: pointer to the destination style. (Should be initialized with `lv_style_init()`)"]
-        #[doc = " - __`style_src`__: pointer to the source (to copy )style"]
-        pub fn style_copy(style_dest: *mut lv_style_t,
-                          style_src: *const lv_style_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Copy a style with all its properties"]
-                #[doc =
-                  " - __`style_dest`__: pointer to the destination style. (Should be initialized with `lv_style_init()`)"]
-                #[doc =
-                  " - __`style_src`__: pointer to the source (to copy )style"]
-                pub fn lv_style_copy(style_dest: *mut lv_style_t,
-                                     style_src: *const lv_style_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_copy(style_dest as *mut lv_style_t,
-                              style_src as *const lv_style_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Initialize a style list"]
-        #[doc = " - __`list`__: a style list to initialize"]
-        pub fn style_list_init(list: *mut lv_style_list_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Initialize a style list"]
-                #[doc = " - __`list`__: a style list to initialize"]
-                pub fn lv_style_list_init(list: *mut lv_style_list_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_list_init(list as *mut lv_style_list_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc =
-          " Copy a style list with all its styles and local style properties"]
-        #[doc =
-          " - __`list_dest`__: pointer to the destination style list. (should be initialized with `lv_style_list_init()`)"]
-        #[doc =
-          " - __`list_src`__: pointer to the source (to copy) style list."]
-        pub fn style_list_copy(list_dest: *mut lv_style_list_t,
-                               list_src: *const lv_style_list_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Copy a style list with all its styles and local style properties"]
-                #[doc =
-                  " - __`list_dest`__: pointer to the destination style list. (should be initialized with `lv_style_list_init()`)"]
-                #[doc =
-                  " - __`list_src`__: pointer to the source (to copy) style list."]
-                pub fn lv_style_list_copy(list_dest: *mut lv_style_list_t,
-                                          list_src: *const lv_style_list_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_list_copy(list_dest as *mut lv_style_list_t,
-                                   list_src as *const lv_style_list_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_list_get_style(list: *mut lv_style_list_t, id: u8)
-         -> MynewtResult<*mut lv_style_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_list_get_style(list: *mut lv_style_list_t,
-                                               id: u8)
-                -> *mut lv_style_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_style_list_get_style(list as *mut lv_style_list_t,
-                                            id as u8);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Clear all properties from a style and all allocated memories."]
-        #[doc = " - __`style`__: pointer to a style"]
-        pub fn style_reset(style: *mut lv_style_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Clear all properties from a style and all allocated memories."]
-                #[doc = " - __`style`__: pointer to a style"]
-                pub fn lv_style_reset(style: *mut lv_style_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_reset(style as *mut lv_style_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Remove a property from a style"]
-        #[doc = " - __`style`__: pointer to a style"]
-        #[doc = " - __`prop`__:  a style property ORed with a state."]
-        #[doc =
-          " E.g. `LV_STYLE_BORDER_WIDTH | (LV_STATE_PRESSED << LV_STYLE_STATE_POS)`"]
-        #[doc =
-          " Return: true: the property was found and removed; false: the property wasn't found"]
-        pub fn style_remove_prop(style: *mut lv_style_t,
-                                 prop: lv_style_property_t)
-         -> MynewtResult<bool> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Remove a property from a style"]
-                #[doc = " - __`style`__: pointer to a style"]
-                #[doc = " - __`prop`__:  a style property ORed with a state."]
-                #[doc =
-                  " E.g. `LV_STYLE_BORDER_WIDTH | (LV_STATE_PRESSED << LV_STYLE_STATE_POS)`"]
-                #[doc =
-                  " Return: true: the property was found and removed; false: the property wasn't found"]
-                pub fn lv_style_remove_prop(style: *mut lv_style_t,
-                                            prop: lv_style_property_t)
-                -> bool;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_style_remove_prop(style as *mut lv_style_t,
-                                         prop as lv_style_property_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Get the local style of a style list"]
-        #[doc =
-          " - __`list`__: pointer to a style list where the local property should be set"]
-        #[doc = " Return: pointer to the local style if exists else `NULL`."]
-        pub fn style_list_get_local_style(list: *mut lv_style_list_t)
-         -> MynewtResult<*mut lv_style_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Get the local style of a style list"]
-                #[doc =
-                  " - __`list`__: pointer to a style list where the local property should be set"]
-                #[doc =
-                  " Return: pointer to the local style if exists else `NULL`."]
-                pub fn lv_style_list_get_local_style(list:
-                                                         *mut lv_style_list_t)
-                -> *mut lv_style_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_style_list_get_local_style(list as
-                                                      *mut lv_style_list_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Check whether a style is valid (initialized correctly)"]
-        #[doc = " - __`style`__: pointer to a style"]
-        #[doc = " Return: true: valid"]
-        pub fn check_style(style: *const lv_style_t) -> MynewtResult<bool> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Check whether a style is valid (initialized correctly)"]
-                #[doc = " - __`style`__: pointer to a style"]
-                #[doc = " Return: true: valid"]
-                pub fn lv_debug_check_style(style: *const lv_style_t)
-                -> bool;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_debug_check_style(style as *const lv_style_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Check whether a style list is valid (initialized correctly)"]
-        #[doc = " - __`style`__: pointer to a style"]
-        #[doc = " Return: true: valid"]
-        pub fn check_style_list(list: *const lv_style_list_t)
-         -> MynewtResult<bool> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Check whether a style list is valid (initialized correctly)"]
-                #[doc = " - __`style`__: pointer to a style"]
-                #[doc = " Return: true: valid"]
-                pub fn lv_debug_check_style_list(list: *const lv_style_list_t)
-                -> bool;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_debug_check_style_list(list as *const lv_style_list_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
+        pub const LV_ALIGN_CENTER: lv_align_t = 0;
+        pub const LV_ALIGN_IN_TOP_LEFT: lv_align_t = 1;
+        pub const LV_ALIGN_IN_TOP_MID: lv_align_t = 2;
+        pub const LV_ALIGN_IN_TOP_RIGHT: lv_align_t = 3;
+        pub const LV_ALIGN_IN_BOTTOM_LEFT: lv_align_t = 4;
+        pub const LV_ALIGN_IN_BOTTOM_MID: lv_align_t = 5;
+        pub const LV_ALIGN_IN_BOTTOM_RIGHT: lv_align_t = 6;
+        pub const LV_ALIGN_IN_LEFT_MID: lv_align_t = 7;
+        pub const LV_ALIGN_IN_RIGHT_MID: lv_align_t = 8;
+        pub const LV_ALIGN_OUT_TOP_LEFT: lv_align_t = 9;
+        pub const LV_ALIGN_OUT_TOP_MID: lv_align_t = 10;
+        pub const LV_ALIGN_OUT_TOP_RIGHT: lv_align_t = 11;
+        pub const LV_ALIGN_OUT_BOTTOM_LEFT: lv_align_t = 12;
+        pub const LV_ALIGN_OUT_BOTTOM_MID: lv_align_t = 13;
+        pub const LV_ALIGN_OUT_BOTTOM_RIGHT: lv_align_t = 14;
+        pub const LV_ALIGN_OUT_LEFT_TOP: lv_align_t = 15;
+        pub const LV_ALIGN_OUT_LEFT_MID: lv_align_t = 16;
+        pub const LV_ALIGN_OUT_LEFT_BOTTOM: lv_align_t = 17;
+        pub const LV_ALIGN_OUT_RIGHT_TOP: lv_align_t = 18;
+        pub const LV_ALIGN_OUT_RIGHT_MID: lv_align_t = 19;
+        pub const LV_ALIGN_OUT_RIGHT_BOTTOM: lv_align_t = 20;
+        #[doc = " Alignments"]
+        pub type _bindgen_ty_3 = u32;
+        pub type lv_align_t = u8;
         #[doc = " Dummy type to make handling easier"]
         pub type lv_ll_node_t = u8;
         #[doc = " Description of a linked list"]
@@ -5112,16 +704,6 @@ pub mod core {
         #[doc = " Tasks execute this type type of functions."]
         pub type lv_task_cb_t =
          ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_task_t)>;
-        pub const LV_TASK_PRIO_OFF: _bindgen_ty_15 = 0;
-        pub const LV_TASK_PRIO_LOWEST: _bindgen_ty_15 = 1;
-        pub const LV_TASK_PRIO_LOW: _bindgen_ty_15 = 2;
-        pub const LV_TASK_PRIO_MID: _bindgen_ty_15 = 3;
-        pub const LV_TASK_PRIO_HIGH: _bindgen_ty_15 = 4;
-        pub const LV_TASK_PRIO_HIGHEST: _bindgen_ty_15 = 5;
-        pub const _LV_TASK_PRIO_NUM: _bindgen_ty_15 = 6;
-        #[doc = " Possible priorities for lv_tasks"]
-        pub type _bindgen_ty_15 = u32;
-        pub type lv_task_prio_t = u8;
         #[doc = "      TYPEDEFS"]
         #[repr(C)]
         pub struct _lv_task_t {
@@ -5175,297 +757,6 @@ pub mod core {
             }
         }
         pub type lv_task_t = _lv_task_t;
-        #[doc = " Call it  periodically to handle lv_tasks."]
-        #[doc = " Return: time till it needs to be run next (in ms)"]
-        pub fn task_handler() -> MynewtResult<u32> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Call it  periodically to handle lv_tasks."]
-                #[doc = " Return: time till it needs to be run next (in ms)"]
-                pub fn lv_task_handler()
-                -> u32;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_task_handler();
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Create an \"empty\" task. It needs to initialized with at least"]
-        #[doc = " `lv_task_set_cb` and `lv_task_set_period`"]
-        #[doc = " Return: pointer to the created task"]
-        pub fn task_create_basic() -> MynewtResult<*mut lv_task_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Create an \"empty\" task. It needs to initialized with at least"]
-                #[doc = " `lv_task_set_cb` and `lv_task_set_period`"]
-                #[doc = " Return: pointer to the created task"]
-                pub fn lv_task_create_basic()
-                -> *mut lv_task_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_task_create_basic();
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Create a new lv_task"]
-        #[doc =
-          " - __`task_xcb`__: a callback which is the task itself. It will be called periodically."]
-        #[doc =
-          "                 (the 'x' in the argument name indicates that its not a fully generic function because it not follows"]
-        #[doc =
-          "                  the `func_name(object, callback, ...)` convention)"]
-        #[doc = " - __`period`__: call period in ms unit"]
-        #[doc =
-          " - __`prio`__: priority of the task (LV_TASK_PRIO_OFF means the task is stopped)"]
-        #[doc = " - __`user_data`__: custom parameter"]
-        #[doc = " Return: pointer to the new task"]
-        pub fn task_create(task_xcb: lv_task_cb_t, period: u32,
-                           prio: lv_task_prio_t, user_data: Ptr)
-         -> MynewtResult<*mut lv_task_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Create a new lv_task"]
-                #[doc =
-                  " - __`task_xcb`__: a callback which is the task itself. It will be called periodically."]
-                #[doc =
-                  "                 (the 'x' in the argument name indicates that its not a fully generic function because it not follows"]
-                #[doc =
-                  "                  the `func_name(object, callback, ...)` convention)"]
-                #[doc = " - __`period`__: call period in ms unit"]
-                #[doc =
-                  " - __`prio`__: priority of the task (LV_TASK_PRIO_OFF means the task is stopped)"]
-                #[doc = " - __`user_data`__: custom parameter"]
-                #[doc = " Return: pointer to the new task"]
-                pub fn lv_task_create(task_xcb: lv_task_cb_t, period: u32,
-                                      prio: lv_task_prio_t,
-                                      user_data: *mut ::cty::c_void)
-                -> *mut lv_task_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_task_create(task_xcb as lv_task_cb_t, period as u32,
-                                   prio as lv_task_prio_t,
-                                   user_data as *mut ::cty::c_void);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Delete a lv_task"]
-        #[doc = " - __`task`__: pointer to task_cb created by task"]
-        pub fn task_del(task: *mut lv_task_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Delete a lv_task"]
-                #[doc = " - __`task`__: pointer to task_cb created by task"]
-                pub fn lv_task_del(task: *mut lv_task_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_task_del(task as *mut lv_task_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc =
-          " Set the callback the task (the function to call periodically)"]
-        #[doc = " - __`task`__: pointer to a task"]
-        #[doc = " - __`task_cb`__: the function to call periodically"]
-        pub fn task_set_cb(task: *mut lv_task_t, task_cb: lv_task_cb_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Set the callback the task (the function to call periodically)"]
-                #[doc = " - __`task`__: pointer to a task"]
-                #[doc = " - __`task_cb`__: the function to call periodically"]
-                pub fn lv_task_set_cb(task: *mut lv_task_t,
-                                      task_cb: lv_task_cb_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_task_set_cb(task as *mut lv_task_t,
-                               task_cb as lv_task_cb_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Set new priority for a lv_task"]
-        #[doc = " - __`task`__: pointer to a lv_task"]
-        #[doc = " - __`prio`__: the new priority"]
-        pub fn task_set_prio(task: *mut lv_task_t, prio: lv_task_prio_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set new priority for a lv_task"]
-                #[doc = " - __`task`__: pointer to a lv_task"]
-                #[doc = " - __`prio`__: the new priority"]
-                pub fn lv_task_set_prio(task: *mut lv_task_t,
-                                        prio: lv_task_prio_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_task_set_prio(task as *mut lv_task_t,
-                                 prio as lv_task_prio_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Set new period for a lv_task"]
-        #[doc = " - __`task`__: pointer to a lv_task"]
-        #[doc = " - __`period`__: the new period"]
-        pub fn task_set_period(task: *mut lv_task_t, period: u32)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set new period for a lv_task"]
-                #[doc = " - __`task`__: pointer to a lv_task"]
-                #[doc = " - __`period`__: the new period"]
-                pub fn lv_task_set_period(task: *mut lv_task_t, period: u32);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_task_set_period(task as *mut lv_task_t, period as u32);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Make a lv_task ready. It will not wait its period."]
-        #[doc = " - __`task`__: pointer to a lv_task."]
-        pub fn task_ready(task: *mut lv_task_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Make a lv_task ready. It will not wait its period."]
-                #[doc = " - __`task`__: pointer to a lv_task."]
-                pub fn lv_task_ready(task: *mut lv_task_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_task_ready(task as *mut lv_task_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Set the number of times a task will repeat."]
-        #[doc = " - __`task`__: pointer to a lv_task."]
-        #[doc =
-          " - __`repeat_count`__: -1 : infinity;  0 : stop ;  n>0: residual times"]
-        pub fn task_set_repeat_count(task: *mut lv_task_t, repeat_count: i32)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set the number of times a task will repeat."]
-                #[doc = " - __`task`__: pointer to a lv_task."]
-                #[doc =
-                  " - __`repeat_count`__: -1 : infinity;  0 : stop ;  n>0: residual times"]
-                pub fn lv_task_set_repeat_count(task: *mut lv_task_t,
-                                                repeat_count: i32);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_task_set_repeat_count(task as *mut lv_task_t,
-                                         repeat_count as i32);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Reset a lv_task."]
-        #[doc =
-          " It will be called the previously set period milliseconds later."]
-        #[doc = " - __`task`__: pointer to a lv_task."]
-        pub fn task_reset(task: *mut lv_task_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Reset a lv_task."]
-                #[doc =
-                  " It will be called the previously set period milliseconds later."]
-                #[doc = " - __`task`__: pointer to a lv_task."]
-                pub fn lv_task_reset(task: *mut lv_task_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_task_reset(task as *mut lv_task_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Enable or disable the whole  lv_task handling"]
-        #[doc =
-          " - __`en:`__: true: lv_task handling is running, false: lv_task handling is suspended"]
-        pub fn task_enable(en: bool) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Enable or disable the whole  lv_task handling"]
-                #[doc =
-                  " - __`en:`__: true: lv_task handling is running, false: lv_task handling is suspended"]
-                pub fn lv_task_enable(en: bool);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_task_enable(en as bool);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Get idle percentage"]
-        #[doc = " Return: the lv_task idle in percentage"]
-        pub fn task_get_idle() -> MynewtResult<u8> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Get idle percentage"]
-                #[doc = " Return: the lv_task idle in percentage"]
-                pub fn lv_task_get_idle()
-                -> u8;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_task_get_idle();
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Iterate through the tasks"]
-        #[doc =
-          " - __`task`__: NULL to start iteration or the previous return value to get the next task"]
-        #[doc = " Return: the next task or NULL if there is no more task"]
-        pub fn task_get_next(task: *mut lv_task_t)
-         -> MynewtResult<*mut lv_task_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Iterate through the tasks"]
-                #[doc =
-                  " - __`task`__: NULL to start iteration or the previous return value to get the next task"]
-                #[doc =
-                  " Return: the next task or NULL if there is no more task"]
-                pub fn lv_task_get_next(task: *mut lv_task_t)
-                -> *mut lv_task_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_task_get_next(task as *mut lv_task_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
         #[doc = " Structure for holding display buffer information."]
         #[repr(C)]
         pub struct lv_disp_buf_t {
@@ -6284,6 +1575,3020 @@ pub mod core {
                 Ok(result_value)
             }
         }
+        pub type lv_drag_dir_t = u8;
+        #[repr(C)]
+        pub struct lv_style_t {
+            pub map: *mut u8,
+        }
+        impl Default for lv_style_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        #[repr(C)]
+        pub struct lv_style_list_t {
+            pub style_list: *mut *mut lv_style_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u8>,
+            pub __bindgen_padding_0: u32,
+        }
+        impl Default for lv_style_list_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl lv_style_list_t {
+            #[inline]
+            pub fn style_cnt(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 6u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_style_cnt(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 6u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn has_local(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_has_local(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(6usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn has_trans(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_has_trans(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(7usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn skip_trans(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_skip_trans(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(8usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn ignore_trans(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_ignore_trans(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(9usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn valid_cache(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_valid_cache(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(10usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn ignore_cache(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_ignore_cache(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(11usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn radius_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_radius_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(12usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn opa_scale_cover(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(13usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_opa_scale_cover(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(13usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn clip_corner_off(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(14usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_clip_corner_off(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(14usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn transform_all_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(15usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_transform_all_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(15usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn pad_all_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(16usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_pad_all_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(16usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn blend_mode_all_normal(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(17usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_blend_mode_all_normal(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(17usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn bg_opa_transp(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(18usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_bg_opa_transp(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(18usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn bg_opa_cover(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(19usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_bg_opa_cover(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(19usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn bg_grad_dir_none(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(20usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_bg_grad_dir_none(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(20usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn border_width_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(21usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_border_width_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(21usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn border_side_full(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(22usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_border_side_full(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(22usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn border_post_off(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(23usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_border_post_off(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(23usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn outline_width_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(24usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_outline_width_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(24usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn pattern_img_null(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(25usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_pattern_img_null(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(25usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn shadow_width_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(26usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_shadow_width_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(26usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn value_txt_str(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(27usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_value_txt_str(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(27usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn img_recolor_opa_transp(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(28usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_img_recolor_opa_transp(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(28usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn text_space_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(29usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_text_space_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(29usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn text_decor_none(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(30usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_text_decor_none(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(30usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn text_font_normal(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(31usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_text_font_normal(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(31usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(style_cnt: u32, has_local: u32,
+                                  has_trans: u32, skip_trans: u32,
+                                  ignore_trans: u32, valid_cache: u32,
+                                  ignore_cache: u32, radius_zero: u32,
+                                  opa_scale_cover: u32, clip_corner_off: u32,
+                                  transform_all_zero: u32, pad_all_zero: u32,
+                                  blend_mode_all_normal: u32,
+                                  bg_opa_transp: u32, bg_opa_cover: u32,
+                                  bg_grad_dir_none: u32,
+                                  border_width_zero: u32,
+                                  border_side_full: u32, border_post_off: u32,
+                                  outline_width_zero: u32,
+                                  pattern_img_null: u32,
+                                  shadow_width_zero: u32, value_txt_str: u32,
+                                  img_recolor_opa_transp: u32,
+                                  text_space_zero: u32, text_decor_none: u32,
+                                  text_font_normal: u32)
+             -> __BindgenBitfieldUnit<[u8; 4usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 4usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 6u8,
+                                            {
+                                                let style_cnt: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(style_cnt)
+                                                    };
+                                                style_cnt as u64
+                                            });
+                __bindgen_bitfield_unit.set(6usize, 1u8,
+                                            {
+                                                let has_local: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(has_local)
+                                                    };
+                                                has_local as u64
+                                            });
+                __bindgen_bitfield_unit.set(7usize, 1u8,
+                                            {
+                                                let has_trans: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(has_trans)
+                                                    };
+                                                has_trans as u64
+                                            });
+                __bindgen_bitfield_unit.set(8usize, 1u8,
+                                            {
+                                                let skip_trans: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(skip_trans)
+                                                    };
+                                                skip_trans as u64
+                                            });
+                __bindgen_bitfield_unit.set(9usize, 1u8,
+                                            {
+                                                let ignore_trans: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(ignore_trans)
+                                                    };
+                                                ignore_trans as u64
+                                            });
+                __bindgen_bitfield_unit.set(10usize, 1u8,
+                                            {
+                                                let valid_cache: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(valid_cache)
+                                                    };
+                                                valid_cache as u64
+                                            });
+                __bindgen_bitfield_unit.set(11usize, 1u8,
+                                            {
+                                                let ignore_cache: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(ignore_cache)
+                                                    };
+                                                ignore_cache as u64
+                                            });
+                __bindgen_bitfield_unit.set(12usize, 1u8,
+                                            {
+                                                let radius_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(radius_zero)
+                                                    };
+                                                radius_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(13usize, 1u8,
+                                            {
+                                                let opa_scale_cover: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(opa_scale_cover)
+                                                    };
+                                                opa_scale_cover as u64
+                                            });
+                __bindgen_bitfield_unit.set(14usize, 1u8,
+                                            {
+                                                let clip_corner_off: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(clip_corner_off)
+                                                    };
+                                                clip_corner_off as u64
+                                            });
+                __bindgen_bitfield_unit.set(15usize, 1u8,
+                                            {
+                                                let transform_all_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(transform_all_zero)
+                                                    };
+                                                transform_all_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(16usize, 1u8,
+                                            {
+                                                let pad_all_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(pad_all_zero)
+                                                    };
+                                                pad_all_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(17usize, 1u8,
+                                            {
+                                                let blend_mode_all_normal:
+                                                        u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(blend_mode_all_normal)
+                                                    };
+                                                blend_mode_all_normal as u64
+                                            });
+                __bindgen_bitfield_unit.set(18usize, 1u8,
+                                            {
+                                                let bg_opa_transp: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(bg_opa_transp)
+                                                    };
+                                                bg_opa_transp as u64
+                                            });
+                __bindgen_bitfield_unit.set(19usize, 1u8,
+                                            {
+                                                let bg_opa_cover: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(bg_opa_cover)
+                                                    };
+                                                bg_opa_cover as u64
+                                            });
+                __bindgen_bitfield_unit.set(20usize, 1u8,
+                                            {
+                                                let bg_grad_dir_none: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(bg_grad_dir_none)
+                                                    };
+                                                bg_grad_dir_none as u64
+                                            });
+                __bindgen_bitfield_unit.set(21usize, 1u8,
+                                            {
+                                                let border_width_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(border_width_zero)
+                                                    };
+                                                border_width_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(22usize, 1u8,
+                                            {
+                                                let border_side_full: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(border_side_full)
+                                                    };
+                                                border_side_full as u64
+                                            });
+                __bindgen_bitfield_unit.set(23usize, 1u8,
+                                            {
+                                                let border_post_off: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(border_post_off)
+                                                    };
+                                                border_post_off as u64
+                                            });
+                __bindgen_bitfield_unit.set(24usize, 1u8,
+                                            {
+                                                let outline_width_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(outline_width_zero)
+                                                    };
+                                                outline_width_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(25usize, 1u8,
+                                            {
+                                                let pattern_img_null: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(pattern_img_null)
+                                                    };
+                                                pattern_img_null as u64
+                                            });
+                __bindgen_bitfield_unit.set(26usize, 1u8,
+                                            {
+                                                let shadow_width_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(shadow_width_zero)
+                                                    };
+                                                shadow_width_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(27usize, 1u8,
+                                            {
+                                                let value_txt_str: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(value_txt_str)
+                                                    };
+                                                value_txt_str as u64
+                                            });
+                __bindgen_bitfield_unit.set(28usize, 1u8,
+                                            {
+                                                let img_recolor_opa_transp:
+                                                        u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(img_recolor_opa_transp)
+                                                    };
+                                                img_recolor_opa_transp as u64
+                                            });
+                __bindgen_bitfield_unit.set(29usize, 1u8,
+                                            {
+                                                let text_space_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(text_space_zero)
+                                                    };
+                                                text_space_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(30usize, 1u8,
+                                            {
+                                                let text_decor_none: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(text_decor_none)
+                                                    };
+                                                text_decor_none as u64
+                                            });
+                __bindgen_bitfield_unit.set(31usize, 1u8,
+                                            {
+                                                let text_font_normal: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(text_font_normal)
+                                                    };
+                                                text_font_normal as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        pub type lv_bidi_dir_t = u8;
+        pub type lv_design_mode_t = u8;
+        pub type lv_design_res_t = u8;
+        #[doc =
+          " The design callback is used to draw the object on the screen."]
+        #[doc =
+          " It accepts the object, a mask area, and the mode in which to draw the object."]
+        pub type lv_design_cb_t =
+         ::core::option::Option<unsafe extern "C" fn(obj: *mut _lv_obj_t,
+                                                     clip_area:
+                                                         *const lv_area_t,
+                                                     mode: lv_design_mode_t)
+                                    -> lv_design_res_t>;
+        pub type lv_event_t = u8;
+        #[doc = " @brief Event callback."]
+        #[doc =
+          " Events are used to notify the user of some action being taken on the object."]
+        #[doc = " For details, see ::lv_event_t."]
+        pub type lv_event_cb_t =
+         ::core::option::Option<unsafe extern "C" fn(obj: *mut _lv_obj_t,
+                                                     event: lv_event_t)>;
+        pub type lv_signal_t = u8;
+        pub type lv_signal_cb_t =
+         ::core::option::Option<unsafe extern "C" fn(obj: *mut _lv_obj_t,
+                                                     sign: lv_signal_t,
+                                                     param:
+                                                         *mut ::cty::c_void)
+                                    -> lv_res_t>;
+        #[repr(C)]
+        pub struct lv_realign_t {
+            pub base: *const _lv_obj_t,
+            pub xofs: lv_coord_t,
+            pub yofs: lv_coord_t,
+            pub align: lv_align_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+            pub __bindgen_padding_0: u16,
+        }
+        impl Default for lv_realign_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl lv_realign_t {
+            #[inline]
+            pub fn auto_realign(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_auto_realign(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn mid_align(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_mid_align(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(1usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(auto_realign: u8, mid_align: u8)
+             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 1u8,
+                                            {
+                                                let auto_realign: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(auto_realign)
+                                                    };
+                                                auto_realign as u64
+                                            });
+                __bindgen_bitfield_unit.set(1usize, 1u8,
+                                            {
+                                                let mid_align: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(mid_align)
+                                                    };
+                                                mid_align as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        pub type lv_state_t = u8;
+        #[doc = "      TYPEDEFS"]
+        #[repr(C)]
+        pub struct _lv_obj_t {
+            #[doc = "< Pointer to the parent object"]
+            pub parent: *mut _lv_obj_t,
+            #[doc = "< Linked list to store the children objects"]
+            pub child_ll: lv_ll_t,
+            #[doc = "< Coordinates of the object (x1, y1, x2, y2)"]
+            pub coords: lv_area_t,
+            #[doc = "< Event callback function"]
+            pub event_cb: lv_event_cb_t,
+            #[doc = "< Object type specific signal function"]
+            pub signal_cb: lv_signal_cb_t,
+            #[doc = "< Object type specific design function"]
+            pub design_cb: lv_design_cb_t,
+            #[doc = "< Object type specific extended data"]
+            pub ext_attr: *mut ::cty::c_void,
+            pub style_list: lv_style_list_t,
+            #[doc = "< Extra click padding in horizontal direction"]
+            pub ext_click_pad_hor: u8,
+            #[doc = "< Extra click padding in vertical direction"]
+            pub ext_click_pad_ver: u8,
+            #[doc = "< EXTend the size in every direction for drawing."]
+            pub ext_draw_pad: lv_coord_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
+            #[doc = "< Automatically happening actions can be prevented."]
+            #[doc = "'OR'ed values from `lv_protect_t`"]
+            pub protect: u8,
+            pub state: lv_state_t,
+            #[doc = "< Information about the last call to ::lv_obj_align."]
+            pub realign: lv_realign_t,
+            #[doc = "< Custom user data for object."]
+            pub user_data: lv_obj_user_data_t,
+        }
+        impl Default for _lv_obj_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl _lv_obj_t {
+            #[inline]
+            pub fn click(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_click(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn drag(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_drag(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(1usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn drag_throw(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_drag_throw(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(2usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn drag_parent(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_drag_parent(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(3usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn hidden(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_hidden(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(4usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn top(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_top(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(5usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn parent_event(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_parent_event(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(6usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn adv_hittest(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_adv_hittest(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(7usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn gesture_parent(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_gesture_parent(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(8usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn focus_parent(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_focus_parent(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(9usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn drag_dir(&self) -> lv_drag_dir_t {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(10usize, 3u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_drag_dir(&mut self, val: lv_drag_dir_t) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(10usize, 3u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn base_dir(&self) -> lv_bidi_dir_t {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(13usize, 2u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_base_dir(&mut self, val: lv_bidi_dir_t) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(13usize, 2u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(click: u8, drag: u8, drag_throw: u8,
+                                  drag_parent: u8, hidden: u8, top: u8,
+                                  parent_event: u8, adv_hittest: u8,
+                                  gesture_parent: u8, focus_parent: u8,
+                                  drag_dir: lv_drag_dir_t,
+                                  base_dir: lv_bidi_dir_t)
+             -> __BindgenBitfieldUnit<[u8; 2usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 2usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 1u8,
+                                            {
+                                                let click: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(click)
+                                                    };
+                                                click as u64
+                                            });
+                __bindgen_bitfield_unit.set(1usize, 1u8,
+                                            {
+                                                let drag: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(drag)
+                                                    };
+                                                drag as u64
+                                            });
+                __bindgen_bitfield_unit.set(2usize, 1u8,
+                                            {
+                                                let drag_throw: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(drag_throw)
+                                                    };
+                                                drag_throw as u64
+                                            });
+                __bindgen_bitfield_unit.set(3usize, 1u8,
+                                            {
+                                                let drag_parent: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(drag_parent)
+                                                    };
+                                                drag_parent as u64
+                                            });
+                __bindgen_bitfield_unit.set(4usize, 1u8,
+                                            {
+                                                let hidden: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(hidden)
+                                                    };
+                                                hidden as u64
+                                            });
+                __bindgen_bitfield_unit.set(5usize, 1u8,
+                                            {
+                                                let top: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(top)
+                                                    };
+                                                top as u64
+                                            });
+                __bindgen_bitfield_unit.set(6usize, 1u8,
+                                            {
+                                                let parent_event: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(parent_event)
+                                                    };
+                                                parent_event as u64
+                                            });
+                __bindgen_bitfield_unit.set(7usize, 1u8,
+                                            {
+                                                let adv_hittest: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(adv_hittest)
+                                                    };
+                                                adv_hittest as u64
+                                            });
+                __bindgen_bitfield_unit.set(8usize, 1u8,
+                                            {
+                                                let gesture_parent: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(gesture_parent)
+                                                    };
+                                                gesture_parent as u64
+                                            });
+                __bindgen_bitfield_unit.set(9usize, 1u8,
+                                            {
+                                                let focus_parent: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(focus_parent)
+                                                    };
+                                                focus_parent as u64
+                                            });
+                __bindgen_bitfield_unit.set(10usize, 3u8,
+                                            {
+                                                let drag_dir: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(drag_dir)
+                                                    };
+                                                drag_dir as u64
+                                            });
+                __bindgen_bitfield_unit.set(13usize, 2u8,
+                                            {
+                                                let base_dir: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(base_dir)
+                                                    };
+                                                base_dir as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        pub type lv_obj_t = _lv_obj_t;
+        #[doc = " Return with a pointer to the active screen"]
+        #[doc =
+          " - __`disp`__: pointer to display which active screen should be get. (NULL to use the default"]
+        #[doc = " screen)"]
+        #[doc =
+          " Return: pointer to the active screen object (loaded by 'lv_scr_load()')"]
+        pub fn disp_get_scr_act(disp: *mut lv_disp_t)
+         -> MynewtResult<*mut lv_obj_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Return with a pointer to the active screen"]
+                #[doc =
+                  " - __`disp`__: pointer to display which active screen should be get. (NULL to use the default"]
+                #[doc = " screen)"]
+                #[doc =
+                  " Return: pointer to the active screen object (loaded by 'lv_scr_load()')"]
+                pub fn lv_disp_get_scr_act(disp: *mut lv_disp_t)
+                -> *mut lv_obj_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_disp_get_scr_act(disp as *mut lv_disp_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc =
+          " Return with a pointer to the previous screen. Only used during screen transitions."]
+        #[doc =
+          " - __`disp`__: pointer to display which previous screen should be get. (NULL to use the default"]
+        #[doc = " screen)"]
+        #[doc =
+          " Return: pointer to the previous screen object or NULL if not used now"]
+        pub fn disp_get_scr_prev(disp: *mut lv_disp_t)
+         -> MynewtResult<*mut lv_obj_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Return with a pointer to the previous screen. Only used during screen transitions."]
+                #[doc =
+                  " - __`disp`__: pointer to display which previous screen should be get. (NULL to use the default"]
+                #[doc = " screen)"]
+                #[doc =
+                  " Return: pointer to the previous screen object or NULL if not used now"]
+                pub fn lv_disp_get_scr_prev(disp: *mut lv_disp_t)
+                -> *mut lv_obj_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_disp_get_scr_prev(disp as *mut lv_disp_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc = " Make a screen active"]
+        #[doc = " - __`scr`__: pointer to a screen"]
+        pub fn disp_load_scr(scr: *mut lv_obj_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Make a screen active"]
+                #[doc = " - __`scr`__: pointer to a screen"]
+                pub fn lv_disp_load_scr(scr: *mut lv_obj_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_disp_load_scr(scr as *mut lv_obj_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc =
+          " Return with the top layer. (Same on every screen and it is above the normal screen layer)"]
+        #[doc =
+          " - __`disp`__: pointer to display which top layer should be get. (NULL to use the default screen)"]
+        #[doc =
+          " Return: pointer to the top layer object  (transparent screen sized lv_obj)"]
+        pub fn disp_get_layer_top(disp: *mut lv_disp_t)
+         -> MynewtResult<*mut lv_obj_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Return with the top layer. (Same on every screen and it is above the normal screen layer)"]
+                #[doc =
+                  " - __`disp`__: pointer to display which top layer should be get. (NULL to use the default screen)"]
+                #[doc =
+                  " Return: pointer to the top layer object  (transparent screen sized lv_obj)"]
+                pub fn lv_disp_get_layer_top(disp: *mut lv_disp_t)
+                -> *mut lv_obj_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_disp_get_layer_top(disp as *mut lv_disp_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc =
+          " Return with the sys. layer. (Same on every screen and it is above the normal screen and the top"]
+        #[doc = " layer)"]
+        #[doc =
+          " - __`disp`__: pointer to display which sys. layer  should be get. (NULL to use the default screen)"]
+        #[doc =
+          " Return: pointer to the sys layer object  (transparent screen sized lv_obj)"]
+        pub fn disp_get_layer_sys(disp: *mut lv_disp_t)
+         -> MynewtResult<*mut lv_obj_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Return with the sys. layer. (Same on every screen and it is above the normal screen and the top"]
+                #[doc = " layer)"]
+                #[doc =
+                  " - __`disp`__: pointer to display which sys. layer  should be get. (NULL to use the default screen)"]
+                #[doc =
+                  " Return: pointer to the sys layer object  (transparent screen sized lv_obj)"]
+                pub fn lv_disp_get_layer_sys(disp: *mut lv_disp_t)
+                -> *mut lv_obj_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_disp_get_layer_sys(disp as *mut lv_disp_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc = " Assign a screen to a display."]
+        #[doc =
+          " - __`disp`__: pointer to a display where to assign the screen"]
+        #[doc = " - __`scr`__: pointer to a screen object to assign"]
+        pub fn disp_assign_screen(disp: *mut lv_disp_t, scr: *mut lv_obj_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Assign a screen to a display."]
+                #[doc =
+                  " - __`disp`__: pointer to a display where to assign the screen"]
+                #[doc = " - __`scr`__: pointer to a screen object to assign"]
+                pub fn lv_disp_assign_screen(disp: *mut lv_disp_t,
+                                             scr: *mut lv_obj_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_disp_assign_screen(disp as *mut lv_disp_t,
+                                      scr as *mut lv_obj_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Set the background color of a display"]
+        #[doc = " - __`disp`__: pointer to a display"]
+        #[doc = " - __`color`__: color of the background"]
+        pub fn disp_set_bg_color(disp: *mut lv_disp_t, color: lv_color_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Set the background color of a display"]
+                #[doc = " - __`disp`__: pointer to a display"]
+                #[doc = " - __`color`__: color of the background"]
+                pub fn lv_disp_set_bg_color(disp: *mut lv_disp_t,
+                                            color: lv_color_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_disp_set_bg_color(disp as *mut lv_disp_t,
+                                     color as lv_color_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Set the background image of a display"]
+        #[doc = " - __`disp`__: pointer to a display"]
+        #[doc =
+          " - __`img_src`__: path to file or pointer to an `lv_img_dsc_t` variable"]
+        pub fn disp_set_bg_image(disp: *mut lv_disp_t,
+                                 img_src: *const ::cty::c_void)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Set the background image of a display"]
+                #[doc = " - __`disp`__: pointer to a display"]
+                #[doc =
+                  " - __`img_src`__: path to file or pointer to an `lv_img_dsc_t` variable"]
+                pub fn lv_disp_set_bg_image(disp: *mut lv_disp_t,
+                                            img_src: *const ::cty::c_void);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_disp_set_bg_image(disp as *mut lv_disp_t,
+                                     img_src as *const ::cty::c_void);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Opacity of the background"]
+        #[doc = " - __`disp`__: pointer to a display"]
+        #[doc = " - __`opa`__: opacity (0..255)"]
+        pub fn disp_set_bg_opa(disp: *mut lv_disp_t, opa: lv_opa_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Opacity of the background"]
+                #[doc = " - __`disp`__: pointer to a display"]
+                #[doc = " - __`opa`__: opacity (0..255)"]
+                pub fn lv_disp_set_bg_opa(disp: *mut lv_disp_t,
+                                          opa: lv_opa_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_disp_set_bg_opa(disp as *mut lv_disp_t, opa as lv_opa_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc =
+          " Get elapsed time since last user activity on a display (e.g. click)"]
+        #[doc =
+          " - __`disp`__: pointer to an display (NULL to get the overall smallest inactivity)"]
+        #[doc =
+          " Return: elapsed ticks (milliseconds) since the last activity"]
+        pub fn disp_get_inactive_time(disp: *const lv_disp_t)
+         -> MynewtResult<u32> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Get elapsed time since last user activity on a display (e.g. click)"]
+                #[doc =
+                  " - __`disp`__: pointer to an display (NULL to get the overall smallest inactivity)"]
+                #[doc =
+                  " Return: elapsed ticks (milliseconds) since the last activity"]
+                pub fn lv_disp_get_inactive_time(disp: *const lv_disp_t)
+                -> u32;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_disp_get_inactive_time(disp as *const lv_disp_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc = " Manually trigger an activity on a display"]
+        #[doc =
+          " - __`disp`__: pointer to an display (NULL to use the default display)"]
+        pub fn disp_trig_activity(disp: *mut lv_disp_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Manually trigger an activity on a display"]
+                #[doc =
+                  " - __`disp`__: pointer to an display (NULL to use the default display)"]
+                pub fn lv_disp_trig_activity(disp: *mut lv_disp_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_disp_trig_activity(disp as *mut lv_disp_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Clean any CPU cache that is related to the display."]
+        #[doc =
+          " - __`disp`__: pointer to an display (NULL to use the default display)"]
+        pub fn disp_clean_dcache(disp: *mut lv_disp_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Clean any CPU cache that is related to the display."]
+                #[doc =
+                  " - __`disp`__: pointer to an display (NULL to use the default display)"]
+                pub fn lv_disp_clean_dcache(disp: *mut lv_disp_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_disp_clean_dcache(disp as *mut lv_disp_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+    }
+    /// Contains Rust bindings for LVGL Core Group API `lv_group`
+    #[allow(non_camel_case_types)]
+    #[allow(non_upper_case_globals)]
+    #[allow(unused_imports)]
+    pub mod group {
+        use super::*;
+        pub const LV_ALIGN_CENTER: lv_align_t = 0;
+        pub const LV_ALIGN_IN_TOP_LEFT: lv_align_t = 1;
+        pub const LV_ALIGN_IN_TOP_MID: lv_align_t = 2;
+        pub const LV_ALIGN_IN_TOP_RIGHT: lv_align_t = 3;
+        pub const LV_ALIGN_IN_BOTTOM_LEFT: lv_align_t = 4;
+        pub const LV_ALIGN_IN_BOTTOM_MID: lv_align_t = 5;
+        pub const LV_ALIGN_IN_BOTTOM_RIGHT: lv_align_t = 6;
+        pub const LV_ALIGN_IN_LEFT_MID: lv_align_t = 7;
+        pub const LV_ALIGN_IN_RIGHT_MID: lv_align_t = 8;
+        pub const LV_ALIGN_OUT_TOP_LEFT: lv_align_t = 9;
+        pub const LV_ALIGN_OUT_TOP_MID: lv_align_t = 10;
+        pub const LV_ALIGN_OUT_TOP_RIGHT: lv_align_t = 11;
+        pub const LV_ALIGN_OUT_BOTTOM_LEFT: lv_align_t = 12;
+        pub const LV_ALIGN_OUT_BOTTOM_MID: lv_align_t = 13;
+        pub const LV_ALIGN_OUT_BOTTOM_RIGHT: lv_align_t = 14;
+        pub const LV_ALIGN_OUT_LEFT_TOP: lv_align_t = 15;
+        pub const LV_ALIGN_OUT_LEFT_MID: lv_align_t = 16;
+        pub const LV_ALIGN_OUT_LEFT_BOTTOM: lv_align_t = 17;
+        pub const LV_ALIGN_OUT_RIGHT_TOP: lv_align_t = 18;
+        pub const LV_ALIGN_OUT_RIGHT_MID: lv_align_t = 19;
+        pub const LV_ALIGN_OUT_RIGHT_BOTTOM: lv_align_t = 20;
+        #[doc = " Alignments"]
+        pub type _bindgen_ty_3 = u32;
+        pub type lv_align_t = u8;
+    }
+    /// Contains Rust bindings for LVGL Core Indev API `lv_indev`
+    #[allow(non_camel_case_types)]
+    #[allow(non_upper_case_globals)]
+    #[allow(unused_imports)]
+    pub mod indev {
+        use super::*;
+        #[repr(C)]
+        pub struct __BindgenBitfieldUnit<Storage, Align> where
+                   Storage: AsRef<[u8]> + AsMut<[u8]> {
+            storage: Storage,
+            align: [Align; 0],
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::marker::Copy, Align: ::core::marker::Copy>
+         ::core::marker::Copy for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::clone::Clone, Align: ::core::clone::Clone>
+         ::core::clone::Clone for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            fn clone(&self) -> __BindgenBitfieldUnit<Storage, Align> {
+                match *self {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_0_0, align: ref __self_0_1 } =>
+                    __BindgenBitfieldUnit{storage:
+                                              ::core::clone::Clone::clone(&(*__self_0_0)),
+                                          align:
+                                              ::core::clone::Clone::clone(&(*__self_0_1)),},
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::fmt::Debug, Align: ::core::fmt::Debug>
+         ::core::fmt::Debug for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            fn fmt(&self, f: &mut ::core::fmt::Formatter)
+             -> ::core::fmt::Result {
+                match *self {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_0_0, align: ref __self_0_1 } => {
+                        let mut debug_trait_builder =
+                            f.debug_struct("__BindgenBitfieldUnit");
+                        let _ =
+                            debug_trait_builder.field("storage",
+                                                      &&(*__self_0_0));
+                        let _ =
+                            debug_trait_builder.field("align",
+                                                      &&(*__self_0_1));
+                        debug_trait_builder.finish()
+                    }
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::default::Default,
+              Align: ::core::default::Default> ::core::default::Default for
+         __BindgenBitfieldUnit<Storage, Align> where Storage: AsRef<[u8]> +
+         AsMut<[u8]> {
+            #[inline]
+            fn default() -> __BindgenBitfieldUnit<Storage, Align> {
+                __BindgenBitfieldUnit{storage:
+                                          ::core::default::Default::default(),
+                                      align:
+                                          ::core::default::Default::default(),}
+            }
+        }
+        impl <Storage, Align> ::core::marker::StructuralEq for
+         __BindgenBitfieldUnit<Storage, Align> where Storage: AsRef<[u8]> +
+         AsMut<[u8]> {
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::cmp::Eq, Align: ::core::cmp::Eq>
+         ::core::cmp::Eq for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            #[doc(hidden)]
+            fn assert_receiver_is_total_eq(&self) -> () {
+                {
+                    let _: ::core::cmp::AssertParamIsEq<Storage>;
+                    let _: ::core::cmp::AssertParamIsEq<[Align; 0]>;
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::hash::Hash, Align: ::core::hash::Hash>
+         ::core::hash::Hash for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            fn hash<__H: ::core::hash::Hasher>(&self, state: &mut __H) -> () {
+                match *self {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_0_0, align: ref __self_0_1 } => {
+                        ::core::hash::Hash::hash(&(*__self_0_0), state);
+                        ::core::hash::Hash::hash(&(*__self_0_1), state)
+                    }
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::cmp::Ord, Align: ::core::cmp::Ord>
+         ::core::cmp::Ord for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            fn cmp(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> ::core::cmp::Ordering {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        match ::core::cmp::Ord::cmp(&(*__self_0_0),
+                                                    &(*__self_1_0)) {
+                            ::core::cmp::Ordering::Equal =>
+                            match ::core::cmp::Ord::cmp(&(*__self_0_1),
+                                                        &(*__self_1_1)) {
+                                ::core::cmp::Ordering::Equal =>
+                                ::core::cmp::Ordering::Equal,
+                                cmp => cmp,
+                            },
+                            cmp => cmp,
+                        },
+                    },
+                }
+            }
+        }
+        impl <Storage, Align> ::core::marker::StructuralPartialEq for
+         __BindgenBitfieldUnit<Storage, Align> where Storage: AsRef<[u8]> +
+         AsMut<[u8]> {
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::cmp::PartialEq, Align: ::core::cmp::PartialEq>
+         ::core::cmp::PartialEq for __BindgenBitfieldUnit<Storage, Align>
+         where Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            fn eq(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        (*__self_0_0) == (*__self_1_0) &&
+                            (*__self_0_1) == (*__self_1_1),
+                    },
+                }
+            }
+            #[inline]
+            fn ne(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        (*__self_0_0) != (*__self_1_0) ||
+                            (*__self_0_1) != (*__self_1_1),
+                    },
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::cmp::PartialOrd,
+              Align: ::core::cmp::PartialOrd> ::core::cmp::PartialOrd for
+         __BindgenBitfieldUnit<Storage, Align> where Storage: AsRef<[u8]> +
+         AsMut<[u8]> {
+            #[inline]
+            fn partial_cmp(&self,
+                           other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> ::core::option::Option<::core::cmp::Ordering> {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        match ::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                   &(*__self_1_0))
+                            {
+                            ::core::option::Option::Some(::core::cmp::Ordering::Equal)
+                            =>
+                            match ::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                       &(*__self_1_1))
+                                {
+                                ::core::option::Option::Some(::core::cmp::Ordering::Equal)
+                                =>
+                                ::core::option::Option::Some(::core::cmp::Ordering::Equal),
+                                cmp => cmp,
+                            },
+                            cmp => cmp,
+                        },
+                    },
+                }
+            }
+            #[inline]
+            fn lt(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        ::core::cmp::Ordering::then_with(::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                                                                                &(*__self_1_0)),
+                                                                                           ::core::cmp::Ordering::Equal),
+                                                         ||
+                                                             ::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                                                                                    &(*__self_1_1)),
+                                                                                               ::core::cmp::Ordering::Greater))
+                            == ::core::cmp::Ordering::Less,
+                    },
+                }
+            }
+            #[inline]
+            fn le(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        ::core::cmp::Ordering::then_with(::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                                                                                &(*__self_1_0)),
+                                                                                           ::core::cmp::Ordering::Equal),
+                                                         ||
+                                                             ::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                                                                                    &(*__self_1_1)),
+                                                                                               ::core::cmp::Ordering::Greater))
+                            != ::core::cmp::Ordering::Greater,
+                    },
+                }
+            }
+            #[inline]
+            fn gt(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        ::core::cmp::Ordering::then_with(::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                                                                                &(*__self_1_0)),
+                                                                                           ::core::cmp::Ordering::Equal),
+                                                         ||
+                                                             ::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                                                                                    &(*__self_1_1)),
+                                                                                               ::core::cmp::Ordering::Less))
+                            == ::core::cmp::Ordering::Greater,
+                    },
+                }
+            }
+            #[inline]
+            fn ge(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        ::core::cmp::Ordering::then_with(::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                                                                                &(*__self_1_0)),
+                                                                                           ::core::cmp::Ordering::Equal),
+                                                         ||
+                                                             ::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                                                                                    &(*__self_1_1)),
+                                                                                               ::core::cmp::Ordering::Less))
+                            != ::core::cmp::Ordering::Less,
+                    },
+                }
+            }
+        }
+        impl <Storage, Align> __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            pub fn new(storage: Storage) -> Self { Self{storage, align: [],} }
+            #[inline]
+            pub fn get_bit(&self, index: usize) -> bool {
+                if true {
+                    if !(index / 8 < self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: index / 8 < self.storage.as_ref().len()")
+                    };
+                };
+                let byte_index = index / 8;
+                let byte = self.storage.as_ref()[byte_index];
+                let bit_index =
+                    if false { 7 - (index % 8) } else { index % 8 };
+                let mask = 1 << bit_index;
+                byte & mask == mask
+            }
+            #[inline]
+            pub fn set_bit(&mut self, index: usize, val: bool) {
+                if true {
+                    if !(index / 8 < self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: index / 8 < self.storage.as_ref().len()")
+                    };
+                };
+                let byte_index = index / 8;
+                let byte = &mut self.storage.as_mut()[byte_index];
+                let bit_index =
+                    if false { 7 - (index % 8) } else { index % 8 };
+                let mask = 1 << bit_index;
+                if val { *byte |= mask; } else { *byte &= !mask; }
+            }
+            #[inline]
+            pub fn get(&self, bit_offset: usize, bit_width: u8) -> u64 {
+                if true {
+                    if !(bit_width <= 64) {
+                        ::core::panicking::panic("assertion failed: bit_width <= 64")
+                    };
+                };
+                if true {
+                    if !(bit_offset / 8 < self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: bit_offset / 8 < self.storage.as_ref().len()")
+                    };
+                };
+                if true {
+                    if !((bit_offset + (bit_width as usize)) / 8 <=
+                             self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: (bit_offset + (bit_width as usize)) / 8 <= self.storage.as_ref().len()")
+                    };
+                };
+                let mut val = 0;
+                for i in 0..(bit_width as usize) {
+                    if self.get_bit(i + bit_offset) {
+                        let index =
+                            if false {
+                                bit_width as usize - 1 - i
+                            } else { i };
+                        val |= 1 << index;
+                    }
+                }
+                val
+            }
+            #[inline]
+            pub fn set(&mut self, bit_offset: usize, bit_width: u8,
+                       val: u64) {
+                if true {
+                    if !(bit_width <= 64) {
+                        ::core::panicking::panic("assertion failed: bit_width <= 64")
+                    };
+                };
+                if true {
+                    if !(bit_offset / 8 < self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: bit_offset / 8 < self.storage.as_ref().len()")
+                    };
+                };
+                if true {
+                    if !((bit_offset + (bit_width as usize)) / 8 <=
+                             self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: (bit_offset + (bit_width as usize)) / 8 <= self.storage.as_ref().len()")
+                    };
+                };
+                for i in 0..(bit_width as usize) {
+                    let mask = 1 << i;
+                    let val_bit_is_set = val & mask == mask;
+                    let index =
+                        if false { bit_width as usize - 1 - i } else { i };
+                    self.set_bit(index + bit_offset, val_bit_is_set);
+                }
+            }
+        }
+        #[repr(C)]
+        pub struct __BindgenUnionField<T>(::core::marker::PhantomData<T>);
+        impl <T> __BindgenUnionField<T> {
+            #[inline]
+            pub fn new() -> Self {
+                __BindgenUnionField(::core::marker::PhantomData)
+            }
+            #[inline]
+            pub unsafe fn as_ref(&self) -> &T { ::core::mem::transmute(self) }
+            #[inline]
+            pub unsafe fn as_mut(&mut self) -> &mut T {
+                ::core::mem::transmute(self)
+            }
+        }
+        impl <T> ::core::default::Default for __BindgenUnionField<T> {
+            #[inline]
+            fn default() -> Self { Self::new() }
+        }
+        impl <T> ::core::clone::Clone for __BindgenUnionField<T> {
+            #[inline]
+            fn clone(&self) -> Self { Self::new() }
+        }
+        impl <T> ::core::marker::Copy for __BindgenUnionField<T> { }
+        impl <T> ::core::fmt::Debug for __BindgenUnionField<T> {
+            fn fmt(&self, fmt: &mut ::core::fmt::Formatter<'_>)
+             -> ::core::fmt::Result {
+                fmt.write_str("__BindgenUnionField")
+            }
+        }
+        impl <T> ::core::hash::Hash for __BindgenUnionField<T> {
+            fn hash<H: ::core::hash::Hasher>(&self, _state: &mut H) { }
+        }
+        impl <T> ::core::cmp::PartialEq for __BindgenUnionField<T> {
+            fn eq(&self, _other: &__BindgenUnionField<T>) -> bool { true }
+        }
+        impl <T> ::core::cmp::Eq for __BindgenUnionField<T> { }
+        pub const LV_INDEV_DEF_READ_PERIOD: u32 = 30;
+        pub const LV_INDEV_DEF_DRAG_LIMIT: u32 = 10;
+        pub const LV_INDEV_DEF_DRAG_THROW: u32 = 20;
+        pub const LV_INDEV_DEF_LONG_PRESS_TIME: u32 = 400;
+        pub const LV_INDEV_DEF_LONG_PRESS_REP_TIME: u32 = 100;
+        pub const LV_INDEV_DEF_GESTURE_LIMIT: u32 = 50;
+        pub const LV_INDEV_DEF_GESTURE_MIN_VELOCITY: u32 = 3;
+        pub type lv_coord_t = i16;
+        pub type lv_disp_drv_user_data_t = *mut ::cty::c_void;
+        pub type lv_indev_drv_user_data_t = *mut ::cty::c_void;
+        pub type lv_obj_user_data_t = *mut ::cty::c_void;
+        pub type lv_res_t = u8;
+        #[doc = " Represents a point on the screen."]
+        #[repr(C)]
+        pub struct lv_point_t {
+            pub x: lv_coord_t,
+            pub y: lv_coord_t,
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl ::core::default::Default for lv_point_t {
+            #[inline]
+            fn default() -> lv_point_t {
+                lv_point_t{x: ::core::default::Default::default(),
+                           y: ::core::default::Default::default(),}
+            }
+        }
+        #[doc = " Represents an area of the screen."]
+        #[repr(C)]
+        pub struct lv_area_t {
+            pub x1: lv_coord_t,
+            pub y1: lv_coord_t,
+            pub x2: lv_coord_t,
+            pub y2: lv_coord_t,
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl ::core::default::Default for lv_area_t {
+            #[inline]
+            fn default() -> lv_area_t {
+                lv_area_t{x1: ::core::default::Default::default(),
+                          y1: ::core::default::Default::default(),
+                          x2: ::core::default::Default::default(),
+                          y2: ::core::default::Default::default(),}
+            }
+        }
+        pub const LV_ALIGN_CENTER: lv_align_t = 0;
+        pub const LV_ALIGN_IN_TOP_LEFT: lv_align_t = 1;
+        pub const LV_ALIGN_IN_TOP_MID: lv_align_t = 2;
+        pub const LV_ALIGN_IN_TOP_RIGHT: lv_align_t = 3;
+        pub const LV_ALIGN_IN_BOTTOM_LEFT: lv_align_t = 4;
+        pub const LV_ALIGN_IN_BOTTOM_MID: lv_align_t = 5;
+        pub const LV_ALIGN_IN_BOTTOM_RIGHT: lv_align_t = 6;
+        pub const LV_ALIGN_IN_LEFT_MID: lv_align_t = 7;
+        pub const LV_ALIGN_IN_RIGHT_MID: lv_align_t = 8;
+        pub const LV_ALIGN_OUT_TOP_LEFT: lv_align_t = 9;
+        pub const LV_ALIGN_OUT_TOP_MID: lv_align_t = 10;
+        pub const LV_ALIGN_OUT_TOP_RIGHT: lv_align_t = 11;
+        pub const LV_ALIGN_OUT_BOTTOM_LEFT: lv_align_t = 12;
+        pub const LV_ALIGN_OUT_BOTTOM_MID: lv_align_t = 13;
+        pub const LV_ALIGN_OUT_BOTTOM_RIGHT: lv_align_t = 14;
+        pub const LV_ALIGN_OUT_LEFT_TOP: lv_align_t = 15;
+        pub const LV_ALIGN_OUT_LEFT_MID: lv_align_t = 16;
+        pub const LV_ALIGN_OUT_LEFT_BOTTOM: lv_align_t = 17;
+        pub const LV_ALIGN_OUT_RIGHT_TOP: lv_align_t = 18;
+        pub const LV_ALIGN_OUT_RIGHT_MID: lv_align_t = 19;
+        pub const LV_ALIGN_OUT_RIGHT_BOTTOM: lv_align_t = 20;
+        #[doc = " Alignments"]
+        pub type _bindgen_ty_3 = u32;
+        pub type lv_align_t = u8;
+        #[repr(C)]
+        pub struct lv_color16_t {
+            pub ch: __BindgenUnionField<lv_color16_t__bindgen_ty_1>,
+            pub full: __BindgenUnionField<u16>,
+            pub bindgen_union_field: u16,
+        }
+        #[repr(C)]
+        #[repr(align(2))]
+        pub struct lv_color16_t__bindgen_ty_1 {
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl ::core::default::Default for lv_color16_t__bindgen_ty_1 {
+            #[inline]
+            fn default() -> lv_color16_t__bindgen_ty_1 {
+                lv_color16_t__bindgen_ty_1{_bitfield_1:
+                                               ::core::default::Default::default(),}
+            }
+        }
+        impl lv_color16_t__bindgen_ty_1 {
+            #[inline]
+            pub fn green_h(&self) -> u16 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 3u8)
+                                               as u16)
+                }
+            }
+            #[inline]
+            pub fn set_green_h(&mut self, val: u16) {
+                unsafe {
+                    let val: u16 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 3u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn red(&self) -> u16 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(3usize, 5u8)
+                                               as u16)
+                }
+            }
+            #[inline]
+            pub fn set_red(&mut self, val: u16) {
+                unsafe {
+                    let val: u16 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(3usize, 5u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn blue(&self) -> u16 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(8usize, 5u8)
+                                               as u16)
+                }
+            }
+            #[inline]
+            pub fn set_blue(&mut self, val: u16) {
+                unsafe {
+                    let val: u16 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(8usize, 5u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn green_l(&self) -> u16 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(13usize, 3u8)
+                                               as u16)
+                }
+            }
+            #[inline]
+            pub fn set_green_l(&mut self, val: u16) {
+                unsafe {
+                    let val: u16 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(13usize, 3u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(green_h: u16, red: u16, blue: u16,
+                                  green_l: u16)
+             -> __BindgenBitfieldUnit<[u8; 2usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 2usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 3u8,
+                                            {
+                                                let green_h: u16 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(green_h)
+                                                    };
+                                                green_h as u64
+                                            });
+                __bindgen_bitfield_unit.set(3usize, 5u8,
+                                            {
+                                                let red: u16 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(red)
+                                                    };
+                                                red as u64
+                                            });
+                __bindgen_bitfield_unit.set(8usize, 5u8,
+                                            {
+                                                let blue: u16 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(blue)
+                                                    };
+                                                blue as u64
+                                            });
+                __bindgen_bitfield_unit.set(13usize, 3u8,
+                                            {
+                                                let green_l: u16 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(green_l)
+                                                    };
+                                                green_l as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        impl Default for lv_color16_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        pub type lv_color_t = lv_color16_t;
+        #[doc = "! @cond Doxygen_Suppress"]
+        pub type lv_opa_t = u8;
+        #[repr(C)]
+        pub struct lv_style_t {
+            pub map: *mut u8,
+        }
+        impl Default for lv_style_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        #[repr(C)]
+        pub struct lv_style_list_t {
+            pub style_list: *mut *mut lv_style_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u8>,
+            pub __bindgen_padding_0: u32,
+        }
+        impl Default for lv_style_list_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl lv_style_list_t {
+            #[inline]
+            pub fn style_cnt(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 6u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_style_cnt(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 6u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn has_local(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_has_local(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(6usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn has_trans(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_has_trans(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(7usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn skip_trans(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_skip_trans(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(8usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn ignore_trans(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_ignore_trans(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(9usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn valid_cache(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_valid_cache(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(10usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn ignore_cache(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_ignore_cache(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(11usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn radius_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_radius_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(12usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn opa_scale_cover(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(13usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_opa_scale_cover(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(13usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn clip_corner_off(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(14usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_clip_corner_off(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(14usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn transform_all_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(15usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_transform_all_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(15usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn pad_all_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(16usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_pad_all_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(16usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn blend_mode_all_normal(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(17usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_blend_mode_all_normal(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(17usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn bg_opa_transp(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(18usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_bg_opa_transp(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(18usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn bg_opa_cover(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(19usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_bg_opa_cover(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(19usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn bg_grad_dir_none(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(20usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_bg_grad_dir_none(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(20usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn border_width_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(21usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_border_width_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(21usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn border_side_full(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(22usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_border_side_full(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(22usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn border_post_off(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(23usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_border_post_off(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(23usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn outline_width_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(24usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_outline_width_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(24usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn pattern_img_null(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(25usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_pattern_img_null(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(25usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn shadow_width_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(26usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_shadow_width_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(26usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn value_txt_str(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(27usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_value_txt_str(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(27usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn img_recolor_opa_transp(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(28usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_img_recolor_opa_transp(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(28usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn text_space_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(29usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_text_space_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(29usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn text_decor_none(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(30usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_text_decor_none(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(30usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn text_font_normal(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(31usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_text_font_normal(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(31usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(style_cnt: u32, has_local: u32,
+                                  has_trans: u32, skip_trans: u32,
+                                  ignore_trans: u32, valid_cache: u32,
+                                  ignore_cache: u32, radius_zero: u32,
+                                  opa_scale_cover: u32, clip_corner_off: u32,
+                                  transform_all_zero: u32, pad_all_zero: u32,
+                                  blend_mode_all_normal: u32,
+                                  bg_opa_transp: u32, bg_opa_cover: u32,
+                                  bg_grad_dir_none: u32,
+                                  border_width_zero: u32,
+                                  border_side_full: u32, border_post_off: u32,
+                                  outline_width_zero: u32,
+                                  pattern_img_null: u32,
+                                  shadow_width_zero: u32, value_txt_str: u32,
+                                  img_recolor_opa_transp: u32,
+                                  text_space_zero: u32, text_decor_none: u32,
+                                  text_font_normal: u32)
+             -> __BindgenBitfieldUnit<[u8; 4usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 4usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 6u8,
+                                            {
+                                                let style_cnt: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(style_cnt)
+                                                    };
+                                                style_cnt as u64
+                                            });
+                __bindgen_bitfield_unit.set(6usize, 1u8,
+                                            {
+                                                let has_local: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(has_local)
+                                                    };
+                                                has_local as u64
+                                            });
+                __bindgen_bitfield_unit.set(7usize, 1u8,
+                                            {
+                                                let has_trans: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(has_trans)
+                                                    };
+                                                has_trans as u64
+                                            });
+                __bindgen_bitfield_unit.set(8usize, 1u8,
+                                            {
+                                                let skip_trans: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(skip_trans)
+                                                    };
+                                                skip_trans as u64
+                                            });
+                __bindgen_bitfield_unit.set(9usize, 1u8,
+                                            {
+                                                let ignore_trans: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(ignore_trans)
+                                                    };
+                                                ignore_trans as u64
+                                            });
+                __bindgen_bitfield_unit.set(10usize, 1u8,
+                                            {
+                                                let valid_cache: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(valid_cache)
+                                                    };
+                                                valid_cache as u64
+                                            });
+                __bindgen_bitfield_unit.set(11usize, 1u8,
+                                            {
+                                                let ignore_cache: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(ignore_cache)
+                                                    };
+                                                ignore_cache as u64
+                                            });
+                __bindgen_bitfield_unit.set(12usize, 1u8,
+                                            {
+                                                let radius_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(radius_zero)
+                                                    };
+                                                radius_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(13usize, 1u8,
+                                            {
+                                                let opa_scale_cover: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(opa_scale_cover)
+                                                    };
+                                                opa_scale_cover as u64
+                                            });
+                __bindgen_bitfield_unit.set(14usize, 1u8,
+                                            {
+                                                let clip_corner_off: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(clip_corner_off)
+                                                    };
+                                                clip_corner_off as u64
+                                            });
+                __bindgen_bitfield_unit.set(15usize, 1u8,
+                                            {
+                                                let transform_all_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(transform_all_zero)
+                                                    };
+                                                transform_all_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(16usize, 1u8,
+                                            {
+                                                let pad_all_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(pad_all_zero)
+                                                    };
+                                                pad_all_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(17usize, 1u8,
+                                            {
+                                                let blend_mode_all_normal:
+                                                        u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(blend_mode_all_normal)
+                                                    };
+                                                blend_mode_all_normal as u64
+                                            });
+                __bindgen_bitfield_unit.set(18usize, 1u8,
+                                            {
+                                                let bg_opa_transp: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(bg_opa_transp)
+                                                    };
+                                                bg_opa_transp as u64
+                                            });
+                __bindgen_bitfield_unit.set(19usize, 1u8,
+                                            {
+                                                let bg_opa_cover: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(bg_opa_cover)
+                                                    };
+                                                bg_opa_cover as u64
+                                            });
+                __bindgen_bitfield_unit.set(20usize, 1u8,
+                                            {
+                                                let bg_grad_dir_none: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(bg_grad_dir_none)
+                                                    };
+                                                bg_grad_dir_none as u64
+                                            });
+                __bindgen_bitfield_unit.set(21usize, 1u8,
+                                            {
+                                                let border_width_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(border_width_zero)
+                                                    };
+                                                border_width_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(22usize, 1u8,
+                                            {
+                                                let border_side_full: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(border_side_full)
+                                                    };
+                                                border_side_full as u64
+                                            });
+                __bindgen_bitfield_unit.set(23usize, 1u8,
+                                            {
+                                                let border_post_off: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(border_post_off)
+                                                    };
+                                                border_post_off as u64
+                                            });
+                __bindgen_bitfield_unit.set(24usize, 1u8,
+                                            {
+                                                let outline_width_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(outline_width_zero)
+                                                    };
+                                                outline_width_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(25usize, 1u8,
+                                            {
+                                                let pattern_img_null: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(pattern_img_null)
+                                                    };
+                                                pattern_img_null as u64
+                                            });
+                __bindgen_bitfield_unit.set(26usize, 1u8,
+                                            {
+                                                let shadow_width_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(shadow_width_zero)
+                                                    };
+                                                shadow_width_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(27usize, 1u8,
+                                            {
+                                                let value_txt_str: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(value_txt_str)
+                                                    };
+                                                value_txt_str as u64
+                                            });
+                __bindgen_bitfield_unit.set(28usize, 1u8,
+                                            {
+                                                let img_recolor_opa_transp:
+                                                        u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(img_recolor_opa_transp)
+                                                    };
+                                                img_recolor_opa_transp as u64
+                                            });
+                __bindgen_bitfield_unit.set(29usize, 1u8,
+                                            {
+                                                let text_space_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(text_space_zero)
+                                                    };
+                                                text_space_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(30usize, 1u8,
+                                            {
+                                                let text_decor_none: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(text_decor_none)
+                                                    };
+                                                text_decor_none as u64
+                                            });
+                __bindgen_bitfield_unit.set(31usize, 1u8,
+                                            {
+                                                let text_font_normal: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(text_font_normal)
+                                                    };
+                                                text_font_normal as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        #[doc = " Dummy type to make handling easier"]
+        pub type lv_ll_node_t = u8;
+        #[doc = " Description of a linked list"]
+        #[repr(C)]
+        pub struct lv_ll_t {
+            pub n_size: u32,
+            pub head: *mut lv_ll_node_t,
+            pub tail: *mut lv_ll_node_t,
+        }
+        impl Default for lv_ll_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        #[doc = " Tasks execute this type type of functions."]
+        pub type lv_task_cb_t =
+         ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_task_t)>;
+        #[doc = "      TYPEDEFS"]
+        #[repr(C)]
+        pub struct _lv_task_t {
+            #[doc = "< How often the task should run"]
+            pub period: u32,
+            #[doc = "< Last time the task ran"]
+            pub last_run: u32,
+            #[doc = "< Task function"]
+            pub task_cb: lv_task_cb_t,
+            #[doc = "< Custom user data"]
+            pub user_data: *mut ::cty::c_void,
+            #[doc =
+              "< 1: Task times;  -1 : infinity;  0 : stop ;  n>0: residual times"]
+            pub repeat_count: i32,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+            pub __bindgen_padding_0: [u8; 3usize],
+        }
+        impl Default for _lv_task_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl _lv_task_t {
+            #[inline]
+            pub fn prio(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 3u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_prio(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 3u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(prio: u8)
+             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 3u8,
+                                            {
+                                                let prio: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(prio)
+                                                    };
+                                                prio as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        pub type lv_task_t = _lv_task_t;
+        #[doc = " Structure for holding display buffer information."]
+        #[repr(C)]
+        pub struct lv_disp_buf_t {
+            #[doc = "< First display buffer."]
+            pub buf1: *mut ::cty::c_void,
+            #[doc = "< Second display buffer."]
+            pub buf2: *mut ::cty::c_void,
+            pub buf_act: *mut ::cty::c_void,
+            pub size: u32,
+            pub area: lv_area_t,
+            pub flushing: ::cty::c_int,
+            pub flushing_last: ::cty::c_int,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+            pub __bindgen_padding_0: [u8; 3usize],
+        }
+        impl Default for lv_disp_buf_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl lv_disp_buf_t {
+            #[inline]
+            pub fn last_area(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_last_area(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn last_part(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_last_part(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(1usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(last_area: u32, last_part: u32)
+             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 1u8,
+                                            {
+                                                let last_area: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(last_area)
+                                                    };
+                                                last_area as u64
+                                            });
+                __bindgen_bitfield_unit.set(1usize, 1u8,
+                                            {
+                                                let last_part: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(last_part)
+                                                    };
+                                                last_part as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        #[doc = " Display Driver structure to be registered by HAL"]
+        #[repr(C)]
+        pub struct _disp_drv_t {
+            #[doc = "< Horizontal resolution."]
+            pub hor_res: lv_coord_t,
+            #[doc = "< Vertical resolution."]
+            pub ver_res: lv_coord_t,
+            #[doc =
+              " Pointer to a buffer initialized with `lv_disp_buf_init()`."]
+            #[doc =
+              " LVGL will use this buffer(s) to draw the screens contents"]
+            pub buffer: *mut lv_disp_buf_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u16>,
+            #[doc =
+              " MANDATORY: Write the internal buffer (VDB) to the display. 'lv_disp_flush_ready()' has to be"]
+            #[doc = " called when finished"]
+            pub flush_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                          *mut _disp_drv_t,
+                                                                      area:
+                                                                          *const lv_area_t,
+                                                                      color_p:
+                                                                          *mut lv_color_t)>,
+            #[doc =
+              " OPTIONAL: Extend the invalidated areas to match with the display drivers requirements"]
+            #[doc = " E.g. round `y` to, 8, 16 ..) on a monochrome display"]
+            pub rounder_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                            *mut _disp_drv_t,
+                                                                        area:
+                                                                            *mut lv_area_t)>,
+            #[doc =
+              " OPTIONAL: Set a pixel in a buffer according to the special requirements of the display"]
+            #[doc =
+              " Can be used for color format not supported in LittelvGL. E.g. 2 bit -> 4 gray scales"]
+            #[doc =
+              " __Note:__ Much slower then drawing with supported color formats."]
+            pub set_px_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                           *mut _disp_drv_t,
+                                                                       buf:
+                                                                           *mut u8,
+                                                                       buf_w:
+                                                                           lv_coord_t,
+                                                                       x:
+                                                                           lv_coord_t,
+                                                                       y:
+                                                                           lv_coord_t,
+                                                                       color:
+                                                                           lv_color_t,
+                                                                       opa:
+                                                                           lv_opa_t)>,
+            #[doc =
+              " OPTIONAL: Called after every refresh cycle to tell the rendering and flushing time + the"]
+            #[doc = " number of flushed pixels"]
+            pub monitor_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                            *mut _disp_drv_t,
+                                                                        time:
+                                                                            u32,
+                                                                        px:
+                                                                            u32)>,
+            #[doc =
+              " OPTIONAL: Called periodically while lvgl waits for operation to be completed."]
+            #[doc = " For example flushing or GPU"]
+            #[doc =
+              " User can execute very simple tasks here or yield the task"]
+            pub wait_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                         *mut _disp_drv_t)>,
+            #[doc =
+              " OPTIONAL: Called when lvgl needs any CPU cache that affects rendering to be cleaned"]
+            pub clean_dcache_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                                 *mut _disp_drv_t)>,
+            #[doc = " OPTIONAL: called to wait while the gpu is working"]
+            pub gpu_wait_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                             *mut _disp_drv_t)>,
+            #[doc = " On CHROMA_KEYED images this color will be transparent."]
+            #[doc = " `LV_COLOR_TRANSP` by default. (lv_conf.h)"]
+            pub color_chroma_key: lv_color_t,
+            #[doc = "< Custom display driver user data"]
+            pub user_data: lv_disp_drv_user_data_t,
+        }
+        impl Default for _disp_drv_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl _disp_drv_t {
+            #[inline]
+            pub fn antialiasing(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_antialiasing(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn rotated(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_rotated(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(1usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn dpi(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(2usize, 10u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_dpi(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(2usize, 10u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(antialiasing: u32, rotated: u32, dpi: u32)
+             -> __BindgenBitfieldUnit<[u8; 2usize], u16> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 2usize], u16> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 1u8,
+                                            {
+                                                let antialiasing: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(antialiasing)
+                                                    };
+                                                antialiasing as u64
+                                            });
+                __bindgen_bitfield_unit.set(1usize, 1u8,
+                                            {
+                                                let rotated: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(rotated)
+                                                    };
+                                                rotated as u64
+                                            });
+                __bindgen_bitfield_unit.set(2usize, 10u8,
+                                            {
+                                                let dpi: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(dpi)
+                                                    };
+                                                dpi as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        pub type lv_disp_drv_t = _disp_drv_t;
+        #[doc = "      TYPEDEFS"]
+        #[repr(C)]
+        pub struct _disp_t {
+            pub driver: lv_disp_drv_t,
+            pub refr_task: *mut lv_task_t,
+            #[doc = " Screens of the display"]
+            pub scr_ll: lv_ll_t,
+            #[doc = "< Currently active screen on this display"]
+            pub act_scr: *mut _lv_obj_t,
+            #[doc = "< Previous screen. Used during screen animations"]
+            pub prev_scr: *mut _lv_obj_t,
+            #[doc = "< @see lv_disp_get_layer_top"]
+            pub top_layer: *mut _lv_obj_t,
+            #[doc = "< @see lv_disp_get_layer_sys"]
+            pub sys_layer: *mut _lv_obj_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+            #[doc = "< Default display color when screens are transparent"]
+            pub bg_color: lv_color_t,
+            #[doc = "< An image source to display as wallpaper"]
+            pub bg_img: *const ::cty::c_void,
+            #[doc = "<Opacity of the background color or wallpaper"]
+            pub bg_opa: lv_opa_t,
+            #[doc = " Invalidated (marked to redraw) areas"]
+            pub inv_areas: [lv_area_t; 32usize],
+            pub inv_area_joined: [u8; 32usize],
+            pub _bitfield_2: __BindgenBitfieldUnit<[u8; 2usize], u16>,
+            #[doc = "< Last time there was activity on this display"]
+            pub last_activity_time: u32,
+        }
+        impl Default for _disp_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl _disp_t {
+            #[inline]
+            pub fn del_prev(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_del_prev(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(del_prev: u8)
+             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 1u8,
+                                            {
+                                                let del_prev: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(del_prev)
+                                                    };
+                                                del_prev as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+            #[inline]
+            pub fn inv_p(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_2.get(0usize, 10u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_inv_p(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_2.set(0usize, 10u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_2(inv_p: u32)
+             -> __BindgenBitfieldUnit<[u8; 2usize], u16> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 2usize], u16> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 10u8,
+                                            {
+                                                let inv_p: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(inv_p)
+                                                    };
+                                                inv_p as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        pub type lv_disp_t = _disp_t;
         #[doc = "< Uninitialized state"]
         pub const LV_INDEV_TYPE_NONE: _bindgen_ty_16 = 0;
         #[doc = "< Touch pad, mouse, external button"]
@@ -6304,26 +4609,7 @@ pub mod core {
         #[doc = " States for input devices"]
         pub type _bindgen_ty_17 = u32;
         pub type lv_indev_state_t = u8;
-        #[doc = "< Object can be dragged horizontally."]
-        pub const LV_DRAG_DIR_HOR: _bindgen_ty_18 = 1;
-        #[doc = "< Object can be dragged vertically."]
-        pub const LV_DRAG_DIR_VER: _bindgen_ty_18 = 2;
-        #[doc = "< Object can be dragged in all directions."]
-        pub const LV_DRAG_DIR_BOTH: _bindgen_ty_18 = 3;
-        #[doc =
-          "< Object can be dragged only one direction (the first move)."]
-        pub const LV_DRAG_DIR_ONE: _bindgen_ty_18 = 4;
-        pub type _bindgen_ty_18 = u32;
         pub type lv_drag_dir_t = u8;
-        #[doc = "< Gesture dir up."]
-        pub const LV_GESTURE_DIR_TOP: _bindgen_ty_19 = 0;
-        #[doc = "< Gesture dir down."]
-        pub const LV_GESTURE_DIR_BOTTOM: _bindgen_ty_19 = 1;
-        #[doc = "< Gesture dir left."]
-        pub const LV_GESTURE_DIR_LEFT: _bindgen_ty_19 = 2;
-        #[doc = "< Gesture dir right."]
-        pub const LV_GESTURE_DIR_RIGHT: _bindgen_ty_19 = 3;
-        pub type _bindgen_ty_19 = u32;
         pub type lv_gesture_dir_t = u8;
         #[doc = " Data structure passed to an input driver to fill"]
         #[repr(C)]
@@ -6773,66 +5059,2743 @@ pub mod core {
                 Ok(result_value)
             }
         }
-        #[doc = " You have to call this function periodically"]
+        pub type lv_bidi_dir_t = u8;
+        pub type lv_design_mode_t = u8;
+        pub type lv_design_res_t = u8;
         #[doc =
-          " - __`tick_period`__: the call period of this function in milliseconds"]
-        pub fn tick_inc(tick_period: u32) -> MynewtResult<()> {
+          " The design callback is used to draw the object on the screen."]
+        #[doc =
+          " It accepts the object, a mask area, and the mode in which to draw the object."]
+        pub type lv_design_cb_t =
+         ::core::option::Option<unsafe extern "C" fn(obj: *mut _lv_obj_t,
+                                                     clip_area:
+                                                         *const lv_area_t,
+                                                     mode: lv_design_mode_t)
+                                    -> lv_design_res_t>;
+        pub type lv_event_t = u8;
+        #[doc = " @brief Event callback."]
+        #[doc =
+          " Events are used to notify the user of some action being taken on the object."]
+        #[doc = " For details, see ::lv_event_t."]
+        pub type lv_event_cb_t =
+         ::core::option::Option<unsafe extern "C" fn(obj: *mut _lv_obj_t,
+                                                     event: lv_event_t)>;
+        pub type lv_signal_t = u8;
+        pub type lv_signal_cb_t =
+         ::core::option::Option<unsafe extern "C" fn(obj: *mut _lv_obj_t,
+                                                     sign: lv_signal_t,
+                                                     param:
+                                                         *mut ::cty::c_void)
+                                    -> lv_res_t>;
+        #[repr(C)]
+        pub struct lv_realign_t {
+            pub base: *const _lv_obj_t,
+            pub xofs: lv_coord_t,
+            pub yofs: lv_coord_t,
+            pub align: lv_align_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+            pub __bindgen_padding_0: u16,
+        }
+        impl Default for lv_realign_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl lv_realign_t {
+            #[inline]
+            pub fn auto_realign(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_auto_realign(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn mid_align(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_mid_align(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(1usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(auto_realign: u8, mid_align: u8)
+             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 1u8,
+                                            {
+                                                let auto_realign: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(auto_realign)
+                                                    };
+                                                auto_realign as u64
+                                            });
+                __bindgen_bitfield_unit.set(1usize, 1u8,
+                                            {
+                                                let mid_align: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(mid_align)
+                                                    };
+                                                mid_align as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        pub type lv_state_t = u8;
+        #[doc = "      TYPEDEFS"]
+        #[repr(C)]
+        pub struct _lv_obj_t {
+            #[doc = "< Pointer to the parent object"]
+            pub parent: *mut _lv_obj_t,
+            #[doc = "< Linked list to store the children objects"]
+            pub child_ll: lv_ll_t,
+            #[doc = "< Coordinates of the object (x1, y1, x2, y2)"]
+            pub coords: lv_area_t,
+            #[doc = "< Event callback function"]
+            pub event_cb: lv_event_cb_t,
+            #[doc = "< Object type specific signal function"]
+            pub signal_cb: lv_signal_cb_t,
+            #[doc = "< Object type specific design function"]
+            pub design_cb: lv_design_cb_t,
+            #[doc = "< Object type specific extended data"]
+            pub ext_attr: *mut ::cty::c_void,
+            pub style_list: lv_style_list_t,
+            #[doc = "< Extra click padding in horizontal direction"]
+            pub ext_click_pad_hor: u8,
+            #[doc = "< Extra click padding in vertical direction"]
+            pub ext_click_pad_ver: u8,
+            #[doc = "< EXTend the size in every direction for drawing."]
+            pub ext_draw_pad: lv_coord_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
+            #[doc = "< Automatically happening actions can be prevented."]
+            #[doc = "'OR'ed values from `lv_protect_t`"]
+            pub protect: u8,
+            pub state: lv_state_t,
+            #[doc = "< Information about the last call to ::lv_obj_align."]
+            pub realign: lv_realign_t,
+            #[doc = "< Custom user data for object."]
+            pub user_data: lv_obj_user_data_t,
+        }
+        impl Default for _lv_obj_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl _lv_obj_t {
+            #[inline]
+            pub fn click(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_click(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn drag(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_drag(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(1usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn drag_throw(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_drag_throw(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(2usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn drag_parent(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_drag_parent(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(3usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn hidden(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_hidden(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(4usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn top(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_top(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(5usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn parent_event(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_parent_event(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(6usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn adv_hittest(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_adv_hittest(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(7usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn gesture_parent(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_gesture_parent(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(8usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn focus_parent(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_focus_parent(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(9usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn drag_dir(&self) -> lv_drag_dir_t {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(10usize, 3u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_drag_dir(&mut self, val: lv_drag_dir_t) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(10usize, 3u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn base_dir(&self) -> lv_bidi_dir_t {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(13usize, 2u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_base_dir(&mut self, val: lv_bidi_dir_t) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(13usize, 2u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(click: u8, drag: u8, drag_throw: u8,
+                                  drag_parent: u8, hidden: u8, top: u8,
+                                  parent_event: u8, adv_hittest: u8,
+                                  gesture_parent: u8, focus_parent: u8,
+                                  drag_dir: lv_drag_dir_t,
+                                  base_dir: lv_bidi_dir_t)
+             -> __BindgenBitfieldUnit<[u8; 2usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 2usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 1u8,
+                                            {
+                                                let click: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(click)
+                                                    };
+                                                click as u64
+                                            });
+                __bindgen_bitfield_unit.set(1usize, 1u8,
+                                            {
+                                                let drag: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(drag)
+                                                    };
+                                                drag as u64
+                                            });
+                __bindgen_bitfield_unit.set(2usize, 1u8,
+                                            {
+                                                let drag_throw: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(drag_throw)
+                                                    };
+                                                drag_throw as u64
+                                            });
+                __bindgen_bitfield_unit.set(3usize, 1u8,
+                                            {
+                                                let drag_parent: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(drag_parent)
+                                                    };
+                                                drag_parent as u64
+                                            });
+                __bindgen_bitfield_unit.set(4usize, 1u8,
+                                            {
+                                                let hidden: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(hidden)
+                                                    };
+                                                hidden as u64
+                                            });
+                __bindgen_bitfield_unit.set(5usize, 1u8,
+                                            {
+                                                let top: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(top)
+                                                    };
+                                                top as u64
+                                            });
+                __bindgen_bitfield_unit.set(6usize, 1u8,
+                                            {
+                                                let parent_event: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(parent_event)
+                                                    };
+                                                parent_event as u64
+                                            });
+                __bindgen_bitfield_unit.set(7usize, 1u8,
+                                            {
+                                                let adv_hittest: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(adv_hittest)
+                                                    };
+                                                adv_hittest as u64
+                                            });
+                __bindgen_bitfield_unit.set(8usize, 1u8,
+                                            {
+                                                let gesture_parent: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(gesture_parent)
+                                                    };
+                                                gesture_parent as u64
+                                            });
+                __bindgen_bitfield_unit.set(9usize, 1u8,
+                                            {
+                                                let focus_parent: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(focus_parent)
+                                                    };
+                                                focus_parent as u64
+                                            });
+                __bindgen_bitfield_unit.set(10usize, 3u8,
+                                            {
+                                                let drag_dir: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(drag_dir)
+                                                    };
+                                                drag_dir as u64
+                                            });
+                __bindgen_bitfield_unit.set(13usize, 2u8,
+                                            {
+                                                let base_dir: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(base_dir)
+                                                    };
+                                                base_dir as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        pub type lv_obj_t = _lv_obj_t;
+        #[doc =
+          " Get the currently processed input device. Can be used in action functions too."]
+        #[doc =
+          " Return: pointer to the currently processed input device or NULL if no input device processing"]
+        #[doc = " right now"]
+        pub fn indev_get_act() -> MynewtResult<*mut lv_indev_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
             extern "C" {
-                #[doc = " You have to call this function periodically"]
                 #[doc =
-                  " - __`tick_period`__: the call period of this function in milliseconds"]
-                pub fn lv_tick_inc(tick_period: u32);
+                  " Get the currently processed input device. Can be used in action functions too."]
+                #[doc =
+                  " Return: pointer to the currently processed input device or NULL if no input device processing"]
+                #[doc = " right now"]
+                pub fn lv_indev_get_act()
+                -> *mut lv_indev_t;
             }
             "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
             unsafe {
                 "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_tick_inc(tick_period as u32);
+                let result_value = lv_indev_get_act();
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc = " Get the type of an input device"]
+        #[doc = " - __`indev`__: pointer to an input device"]
+        #[doc =
+          " Return: the type of the input device from `lv_hal_indev_type_t` (`LV_INDEV_TYPE_...`)"]
+        pub fn indev_get_type(indev: *const lv_indev_t)
+         -> MynewtResult<lv_indev_type_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Get the type of an input device"]
+                #[doc = " - __`indev`__: pointer to an input device"]
+                #[doc =
+                  " Return: the type of the input device from `lv_hal_indev_type_t` (`LV_INDEV_TYPE_...`)"]
+                pub fn lv_indev_get_type(indev: *const lv_indev_t)
+                -> lv_indev_type_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_indev_get_type(indev as *const lv_indev_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc = " Reset one or all input devices"]
+        #[doc =
+          " - __`indev`__: pointer to an input device to reset or NULL to reset all of them"]
+        #[doc =
+          " - __`obj`__: pointer to an object which triggers the reset."]
+        pub fn indev_reset(indev: *mut lv_indev_t, obj: *mut lv_obj_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Reset one or all input devices"]
+                #[doc =
+                  " - __`indev`__: pointer to an input device to reset or NULL to reset all of them"]
+                #[doc =
+                  " - __`obj`__: pointer to an object which triggers the reset."]
+                pub fn lv_indev_reset(indev: *mut lv_indev_t,
+                                      obj: *mut lv_obj_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_indev_reset(indev as *mut lv_indev_t,
+                               obj as *mut lv_obj_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
         }
-        #[doc = " Get the elapsed milliseconds since start up"]
-        #[doc = " Return: the elapsed milliseconds"]
-        pub fn tick_get() -> MynewtResult<u32> {
+        #[doc = " Reset the long press state of an input device"]
+        #[doc = " - __`indev_proc`__: pointer to an input device"]
+        pub fn indev_reset_long_press(indev: *mut lv_indev_t)
+         -> MynewtResult<()> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
             extern "C" {
-                #[doc = " Get the elapsed milliseconds since start up"]
-                #[doc = " Return: the elapsed milliseconds"]
-                pub fn lv_tick_get()
-                -> u32;
+                #[doc = " Reset the long press state of an input device"]
+                #[doc = " - __`indev_proc`__: pointer to an input device"]
+                pub fn lv_indev_reset_long_press(indev: *mut lv_indev_t);
             }
             "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
             unsafe {
                 "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_tick_get();
+                lv_indev_reset_long_press(indev as *mut lv_indev_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
+                Ok(())
             }
         }
-        #[doc = " Get the elapsed milliseconds since a previous time stamp"]
+        #[doc = " Enable or disable an input devices"]
+        #[doc = " - __`indev`__: pointer to an input device"]
+        #[doc = " - __`en`__: true: enable; false: disable"]
+        pub fn indev_enable(indev: *mut lv_indev_t, en: bool)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Enable or disable an input devices"]
+                #[doc = " - __`indev`__: pointer to an input device"]
+                #[doc = " - __`en`__: true: enable; false: disable"]
+                pub fn lv_indev_enable(indev: *mut lv_indev_t, en: bool);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_indev_enable(indev as *mut lv_indev_t, en as bool);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
         #[doc =
-          " - __`prev_tick`__: a previous time stamp (return value of systick_get() )"]
-        #[doc = " Return: the elapsed milliseconds since 'prev_tick'"]
-        pub fn tick_elaps(prev_tick: u32) -> MynewtResult<u32> {
+          " Set a cursor for a pointer input device (for LV_INPUT_TYPE_POINTER and LV_INPUT_TYPE_BUTTON)"]
+        #[doc = " - __`indev`__: pointer to an input device"]
+        #[doc = " - __`cur_obj`__: pointer to an object to be used as cursor"]
+        pub fn indev_set_cursor(indev: *mut lv_indev_t,
+                                cur_obj: *mut lv_obj_t) -> MynewtResult<()> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
             extern "C" {
                 #[doc =
-                  " Get the elapsed milliseconds since a previous time stamp"]
+                  " Set a cursor for a pointer input device (for LV_INPUT_TYPE_POINTER and LV_INPUT_TYPE_BUTTON)"]
+                #[doc = " - __`indev`__: pointer to an input device"]
                 #[doc =
-                  " - __`prev_tick`__: a previous time stamp (return value of systick_get() )"]
-                #[doc = " Return: the elapsed milliseconds since 'prev_tick'"]
-                pub fn lv_tick_elaps(prev_tick: u32)
+                  " - __`cur_obj`__: pointer to an object to be used as cursor"]
+                pub fn lv_indev_set_cursor(indev: *mut lv_indev_t,
+                                           cur_obj: *mut lv_obj_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_indev_set_cursor(indev as *mut lv_indev_t,
+                                    cur_obj as *mut lv_obj_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Set the an array of points for LV_INDEV_TYPE_BUTTON."]
+        #[doc =
+          " These points will be assigned to the buttons to press a specific point on the screen"]
+        #[doc = " - __`indev`__: pointer to an input device"]
+        #[doc = " - __`group`__: point to a group"]
+        pub fn indev_set_button_points(indev: *mut lv_indev_t,
+                                       points: *const lv_point_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Set the an array of points for LV_INDEV_TYPE_BUTTON."]
+                #[doc =
+                  " These points will be assigned to the buttons to press a specific point on the screen"]
+                #[doc = " - __`indev`__: pointer to an input device"]
+                #[doc = " - __`group`__: point to a group"]
+                pub fn lv_indev_set_button_points(indev: *mut lv_indev_t,
+                                                  points: *const lv_point_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_indev_set_button_points(indev as *mut lv_indev_t,
+                                           points as *const lv_point_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc =
+          " Get the last point of an input device (for LV_INDEV_TYPE_POINTER and LV_INDEV_TYPE_BUTTON)"]
+        #[doc = " - __`indev`__: pointer to an input device"]
+        #[doc = " - __`point`__: pointer to a point to store the result"]
+        pub fn indev_get_point(indev: *const lv_indev_t,
+                               point: *mut lv_point_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Get the last point of an input device (for LV_INDEV_TYPE_POINTER and LV_INDEV_TYPE_BUTTON)"]
+                #[doc = " - __`indev`__: pointer to an input device"]
+                #[doc =
+                  " - __`point`__: pointer to a point to store the result"]
+                pub fn lv_indev_get_point(indev: *const lv_indev_t,
+                                          point: *mut lv_point_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_indev_get_point(indev as *const lv_indev_t,
+                                   point as *mut lv_point_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Get the current gesture direct"]
+        #[doc = " - __`indev`__: pointer to an input device"]
+        #[doc = " Return: current gesture direct"]
+        pub fn indev_get_gesture_dir(indev: *const lv_indev_t)
+         -> MynewtResult<lv_gesture_dir_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Get the current gesture direct"]
+                #[doc = " - __`indev`__: pointer to an input device"]
+                #[doc = " Return: current gesture direct"]
+                pub fn lv_indev_get_gesture_dir(indev: *const lv_indev_t)
+                -> lv_gesture_dir_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_indev_get_gesture_dir(indev as *const lv_indev_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc =
+          " Get the last pressed key of an input device (for LV_INDEV_TYPE_KEYPAD)"]
+        #[doc = " - __`indev`__: pointer to an input device"]
+        #[doc = " Return: the last pressed key (0 on error)"]
+        pub fn indev_get_key(indev: *const lv_indev_t) -> MynewtResult<u32> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Get the last pressed key of an input device (for LV_INDEV_TYPE_KEYPAD)"]
+                #[doc = " - __`indev`__: pointer to an input device"]
+                #[doc = " Return: the last pressed key (0 on error)"]
+                pub fn lv_indev_get_key(indev: *const lv_indev_t)
                 -> u32;
             }
             "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
             unsafe {
                 "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_tick_elaps(prev_tick as u32);
+                let result_value =
+                    lv_indev_get_key(indev as *const lv_indev_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(result_value)
             }
         }
+        #[doc =
+          " Check if there is dragging with an input device or not (for LV_INDEV_TYPE_POINTER and"]
+        #[doc = " LV_INDEV_TYPE_BUTTON)"]
+        #[doc = " - __`indev`__: pointer to an input device"]
+        #[doc = " Return: true: drag is in progress"]
+        pub fn indev_is_dragging(indev: *const lv_indev_t)
+         -> MynewtResult<bool> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Check if there is dragging with an input device or not (for LV_INDEV_TYPE_POINTER and"]
+                #[doc = " LV_INDEV_TYPE_BUTTON)"]
+                #[doc = " - __`indev`__: pointer to an input device"]
+                #[doc = " Return: true: drag is in progress"]
+                pub fn lv_indev_is_dragging(indev: *const lv_indev_t)
+                -> bool;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_indev_is_dragging(indev as *const lv_indev_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc =
+          " Get the vector of dragging of an input device (for LV_INDEV_TYPE_POINTER and"]
+        #[doc = " LV_INDEV_TYPE_BUTTON)"]
+        #[doc = " - __`indev`__: pointer to an input device"]
+        #[doc = " - __`point`__: pointer to a point to store the vector"]
+        pub fn indev_get_vect(indev: *const lv_indev_t,
+                              point: *mut lv_point_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Get the vector of dragging of an input device (for LV_INDEV_TYPE_POINTER and"]
+                #[doc = " LV_INDEV_TYPE_BUTTON)"]
+                #[doc = " - __`indev`__: pointer to an input device"]
+                #[doc =
+                  " - __`point`__: pointer to a point to store the vector"]
+                pub fn lv_indev_get_vect(indev: *const lv_indev_t,
+                                         point: *mut lv_point_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_indev_get_vect(indev as *const lv_indev_t,
+                                  point as *mut lv_point_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Manually finish dragging."]
+        #[doc = " `LV_SIGNAL_DRAG_END` and `LV_EVENT_DRAG_END` will be sent."]
+        #[doc = " - __`indev`__: pointer to an input device"]
+        #[doc =
+          " Return: `LV_RES_INV` if the object being dragged was deleted. Else `LV_RES_OK`."]
+        pub fn indev_finish_drag(indev: *mut lv_indev_t)
+         -> MynewtResult<lv_res_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Manually finish dragging."]
+                #[doc =
+                  " `LV_SIGNAL_DRAG_END` and `LV_EVENT_DRAG_END` will be sent."]
+                #[doc = " - __`indev`__: pointer to an input device"]
+                #[doc =
+                  " Return: `LV_RES_INV` if the object being dragged was deleted. Else `LV_RES_OK`."]
+                pub fn lv_indev_finish_drag(indev: *mut lv_indev_t)
+                -> lv_res_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_indev_finish_drag(indev as *mut lv_indev_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc = " Do nothing until the next release"]
+        #[doc = " - __`indev`__: pointer to an input device"]
+        pub fn indev_wait_release(indev: *mut lv_indev_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Do nothing until the next release"]
+                #[doc = " - __`indev`__: pointer to an input device"]
+                pub fn lv_indev_wait_release(indev: *mut lv_indev_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_indev_wait_release(indev as *mut lv_indev_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc =
+          " Gets a pointer to the currently active object in indev proc functions."]
+        #[doc =
+          " NULL if no object is currently being handled or if groups aren't used."]
+        #[doc = " Return: pointer to currently active object"]
+        pub fn indev_get_obj_act() -> MynewtResult<*mut lv_obj_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Gets a pointer to the currently active object in indev proc functions."]
+                #[doc =
+                  " NULL if no object is currently being handled or if groups aren't used."]
+                #[doc = " Return: pointer to currently active object"]
+                pub fn lv_indev_get_obj_act()
+                -> *mut lv_obj_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value = lv_indev_get_obj_act();
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc = " Search the most top, clickable object by a point"]
+        #[doc =
+          " - __`obj`__: pointer to a start object, typically the screen"]
+        #[doc =
+          " - __`point`__: pointer to a point for searching the most top child"]
+        #[doc =
+          " Return: pointer to the found object or NULL if there was no suitable object"]
+        pub fn indev_search_obj(obj: *mut lv_obj_t, point: *mut lv_point_t)
+         -> MynewtResult<*mut lv_obj_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Search the most top, clickable object by a point"]
+                #[doc =
+                  " - __`obj`__: pointer to a start object, typically the screen"]
+                #[doc =
+                  " - __`point`__: pointer to a point for searching the most top child"]
+                #[doc =
+                  " Return: pointer to the found object or NULL if there was no suitable object"]
+                pub fn lv_indev_search_obj(obj: *mut lv_obj_t,
+                                           point: *mut lv_point_t)
+                -> *mut lv_obj_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_indev_search_obj(obj as *mut lv_obj_t,
+                                        point as *mut lv_point_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc = " Get a pointer to the indev read task to"]
+        #[doc = " modify its parameters with `lv_task_...` functions."]
+        #[doc = " - __`indev`__: pointer to an inout device"]
+        #[doc =
+          " Return: pointer to the indev read refresher task. (NULL on error)"]
+        pub fn indev_get_read_task(indev: *mut lv_disp_t)
+         -> MynewtResult<*mut lv_task_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Get a pointer to the indev read task to"]
+                #[doc =
+                  " modify its parameters with `lv_task_...` functions."]
+                #[doc = " - __`indev`__: pointer to an inout device"]
+                #[doc =
+                  " Return: pointer to the indev read refresher task. (NULL on error)"]
+                pub fn lv_indev_get_read_task(indev: *mut lv_disp_t)
+                -> *mut lv_task_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_indev_get_read_task(indev as *mut lv_disp_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+    }
+    /// Contains Rust bindings for LVGL Core Obj API `lv_obj`
+    #[allow(non_camel_case_types)]
+    #[allow(non_upper_case_globals)]
+    #[allow(unused_imports)]
+    pub mod obj {
+        use super::*;
+        #[repr(C)]
+        pub struct __BindgenBitfieldUnit<Storage, Align> where
+                   Storage: AsRef<[u8]> + AsMut<[u8]> {
+            storage: Storage,
+            align: [Align; 0],
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::marker::Copy, Align: ::core::marker::Copy>
+         ::core::marker::Copy for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::clone::Clone, Align: ::core::clone::Clone>
+         ::core::clone::Clone for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            fn clone(&self) -> __BindgenBitfieldUnit<Storage, Align> {
+                match *self {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_0_0, align: ref __self_0_1 } =>
+                    __BindgenBitfieldUnit{storage:
+                                              ::core::clone::Clone::clone(&(*__self_0_0)),
+                                          align:
+                                              ::core::clone::Clone::clone(&(*__self_0_1)),},
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::fmt::Debug, Align: ::core::fmt::Debug>
+         ::core::fmt::Debug for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            fn fmt(&self, f: &mut ::core::fmt::Formatter)
+             -> ::core::fmt::Result {
+                match *self {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_0_0, align: ref __self_0_1 } => {
+                        let mut debug_trait_builder =
+                            f.debug_struct("__BindgenBitfieldUnit");
+                        let _ =
+                            debug_trait_builder.field("storage",
+                                                      &&(*__self_0_0));
+                        let _ =
+                            debug_trait_builder.field("align",
+                                                      &&(*__self_0_1));
+                        debug_trait_builder.finish()
+                    }
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::default::Default,
+              Align: ::core::default::Default> ::core::default::Default for
+         __BindgenBitfieldUnit<Storage, Align> where Storage: AsRef<[u8]> +
+         AsMut<[u8]> {
+            #[inline]
+            fn default() -> __BindgenBitfieldUnit<Storage, Align> {
+                __BindgenBitfieldUnit{storage:
+                                          ::core::default::Default::default(),
+                                      align:
+                                          ::core::default::Default::default(),}
+            }
+        }
+        impl <Storage, Align> ::core::marker::StructuralEq for
+         __BindgenBitfieldUnit<Storage, Align> where Storage: AsRef<[u8]> +
+         AsMut<[u8]> {
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::cmp::Eq, Align: ::core::cmp::Eq>
+         ::core::cmp::Eq for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            #[doc(hidden)]
+            fn assert_receiver_is_total_eq(&self) -> () {
+                {
+                    let _: ::core::cmp::AssertParamIsEq<Storage>;
+                    let _: ::core::cmp::AssertParamIsEq<[Align; 0]>;
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::hash::Hash, Align: ::core::hash::Hash>
+         ::core::hash::Hash for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            fn hash<__H: ::core::hash::Hasher>(&self, state: &mut __H) -> () {
+                match *self {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_0_0, align: ref __self_0_1 } => {
+                        ::core::hash::Hash::hash(&(*__self_0_0), state);
+                        ::core::hash::Hash::hash(&(*__self_0_1), state)
+                    }
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::cmp::Ord, Align: ::core::cmp::Ord>
+         ::core::cmp::Ord for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            fn cmp(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> ::core::cmp::Ordering {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        match ::core::cmp::Ord::cmp(&(*__self_0_0),
+                                                    &(*__self_1_0)) {
+                            ::core::cmp::Ordering::Equal =>
+                            match ::core::cmp::Ord::cmp(&(*__self_0_1),
+                                                        &(*__self_1_1)) {
+                                ::core::cmp::Ordering::Equal =>
+                                ::core::cmp::Ordering::Equal,
+                                cmp => cmp,
+                            },
+                            cmp => cmp,
+                        },
+                    },
+                }
+            }
+        }
+        impl <Storage, Align> ::core::marker::StructuralPartialEq for
+         __BindgenBitfieldUnit<Storage, Align> where Storage: AsRef<[u8]> +
+         AsMut<[u8]> {
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::cmp::PartialEq, Align: ::core::cmp::PartialEq>
+         ::core::cmp::PartialEq for __BindgenBitfieldUnit<Storage, Align>
+         where Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            fn eq(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        (*__self_0_0) == (*__self_1_0) &&
+                            (*__self_0_1) == (*__self_1_1),
+                    },
+                }
+            }
+            #[inline]
+            fn ne(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        (*__self_0_0) != (*__self_1_0) ||
+                            (*__self_0_1) != (*__self_1_1),
+                    },
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::cmp::PartialOrd,
+              Align: ::core::cmp::PartialOrd> ::core::cmp::PartialOrd for
+         __BindgenBitfieldUnit<Storage, Align> where Storage: AsRef<[u8]> +
+         AsMut<[u8]> {
+            #[inline]
+            fn partial_cmp(&self,
+                           other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> ::core::option::Option<::core::cmp::Ordering> {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        match ::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                   &(*__self_1_0))
+                            {
+                            ::core::option::Option::Some(::core::cmp::Ordering::Equal)
+                            =>
+                            match ::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                       &(*__self_1_1))
+                                {
+                                ::core::option::Option::Some(::core::cmp::Ordering::Equal)
+                                =>
+                                ::core::option::Option::Some(::core::cmp::Ordering::Equal),
+                                cmp => cmp,
+                            },
+                            cmp => cmp,
+                        },
+                    },
+                }
+            }
+            #[inline]
+            fn lt(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        ::core::cmp::Ordering::then_with(::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                                                                                &(*__self_1_0)),
+                                                                                           ::core::cmp::Ordering::Equal),
+                                                         ||
+                                                             ::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                                                                                    &(*__self_1_1)),
+                                                                                               ::core::cmp::Ordering::Greater))
+                            == ::core::cmp::Ordering::Less,
+                    },
+                }
+            }
+            #[inline]
+            fn le(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        ::core::cmp::Ordering::then_with(::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                                                                                &(*__self_1_0)),
+                                                                                           ::core::cmp::Ordering::Equal),
+                                                         ||
+                                                             ::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                                                                                    &(*__self_1_1)),
+                                                                                               ::core::cmp::Ordering::Greater))
+                            != ::core::cmp::Ordering::Greater,
+                    },
+                }
+            }
+            #[inline]
+            fn gt(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        ::core::cmp::Ordering::then_with(::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                                                                                &(*__self_1_0)),
+                                                                                           ::core::cmp::Ordering::Equal),
+                                                         ||
+                                                             ::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                                                                                    &(*__self_1_1)),
+                                                                                               ::core::cmp::Ordering::Less))
+                            == ::core::cmp::Ordering::Greater,
+                    },
+                }
+            }
+            #[inline]
+            fn ge(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        ::core::cmp::Ordering::then_with(::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                                                                                &(*__self_1_0)),
+                                                                                           ::core::cmp::Ordering::Equal),
+                                                         ||
+                                                             ::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                                                                                    &(*__self_1_1)),
+                                                                                               ::core::cmp::Ordering::Less))
+                            != ::core::cmp::Ordering::Less,
+                    },
+                }
+            }
+        }
+        impl <Storage, Align> __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            pub fn new(storage: Storage) -> Self { Self{storage, align: [],} }
+            #[inline]
+            pub fn get_bit(&self, index: usize) -> bool {
+                if true {
+                    if !(index / 8 < self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: index / 8 < self.storage.as_ref().len()")
+                    };
+                };
+                let byte_index = index / 8;
+                let byte = self.storage.as_ref()[byte_index];
+                let bit_index =
+                    if false { 7 - (index % 8) } else { index % 8 };
+                let mask = 1 << bit_index;
+                byte & mask == mask
+            }
+            #[inline]
+            pub fn set_bit(&mut self, index: usize, val: bool) {
+                if true {
+                    if !(index / 8 < self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: index / 8 < self.storage.as_ref().len()")
+                    };
+                };
+                let byte_index = index / 8;
+                let byte = &mut self.storage.as_mut()[byte_index];
+                let bit_index =
+                    if false { 7 - (index % 8) } else { index % 8 };
+                let mask = 1 << bit_index;
+                if val { *byte |= mask; } else { *byte &= !mask; }
+            }
+            #[inline]
+            pub fn get(&self, bit_offset: usize, bit_width: u8) -> u64 {
+                if true {
+                    if !(bit_width <= 64) {
+                        ::core::panicking::panic("assertion failed: bit_width <= 64")
+                    };
+                };
+                if true {
+                    if !(bit_offset / 8 < self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: bit_offset / 8 < self.storage.as_ref().len()")
+                    };
+                };
+                if true {
+                    if !((bit_offset + (bit_width as usize)) / 8 <=
+                             self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: (bit_offset + (bit_width as usize)) / 8 <= self.storage.as_ref().len()")
+                    };
+                };
+                let mut val = 0;
+                for i in 0..(bit_width as usize) {
+                    if self.get_bit(i + bit_offset) {
+                        let index =
+                            if false {
+                                bit_width as usize - 1 - i
+                            } else { i };
+                        val |= 1 << index;
+                    }
+                }
+                val
+            }
+            #[inline]
+            pub fn set(&mut self, bit_offset: usize, bit_width: u8,
+                       val: u64) {
+                if true {
+                    if !(bit_width <= 64) {
+                        ::core::panicking::panic("assertion failed: bit_width <= 64")
+                    };
+                };
+                if true {
+                    if !(bit_offset / 8 < self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: bit_offset / 8 < self.storage.as_ref().len()")
+                    };
+                };
+                if true {
+                    if !((bit_offset + (bit_width as usize)) / 8 <=
+                             self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: (bit_offset + (bit_width as usize)) / 8 <= self.storage.as_ref().len()")
+                    };
+                };
+                for i in 0..(bit_width as usize) {
+                    let mask = 1 << i;
+                    let val_bit_is_set = val & mask == mask;
+                    let index =
+                        if false { bit_width as usize - 1 - i } else { i };
+                    self.set_bit(index + bit_offset, val_bit_is_set);
+                }
+            }
+        }
+        #[repr(C)]
+        pub struct __BindgenUnionField<T>(::core::marker::PhantomData<T>);
+        impl <T> __BindgenUnionField<T> {
+            #[inline]
+            pub fn new() -> Self {
+                __BindgenUnionField(::core::marker::PhantomData)
+            }
+            #[inline]
+            pub unsafe fn as_ref(&self) -> &T { ::core::mem::transmute(self) }
+            #[inline]
+            pub unsafe fn as_mut(&mut self) -> &mut T {
+                ::core::mem::transmute(self)
+            }
+        }
+        impl <T> ::core::default::Default for __BindgenUnionField<T> {
+            #[inline]
+            fn default() -> Self { Self::new() }
+        }
+        impl <T> ::core::clone::Clone for __BindgenUnionField<T> {
+            #[inline]
+            fn clone(&self) -> Self { Self::new() }
+        }
+        impl <T> ::core::marker::Copy for __BindgenUnionField<T> { }
+        impl <T> ::core::fmt::Debug for __BindgenUnionField<T> {
+            fn fmt(&self, fmt: &mut ::core::fmt::Formatter<'_>)
+             -> ::core::fmt::Result {
+                fmt.write_str("__BindgenUnionField")
+            }
+        }
+        impl <T> ::core::hash::Hash for __BindgenUnionField<T> {
+            fn hash<H: ::core::hash::Hasher>(&self, _state: &mut H) { }
+        }
+        impl <T> ::core::cmp::PartialEq for __BindgenUnionField<T> {
+            fn eq(&self, _other: &__BindgenUnionField<T>) -> bool { true }
+        }
+        impl <T> ::core::cmp::Eq for __BindgenUnionField<T> { }
+        pub type lv_coord_t = i16;
+        pub type lv_anim_user_data_t = *mut ::cty::c_void;
+        pub type lv_disp_drv_user_data_t = *mut ::cty::c_void;
+        pub type lv_font_user_data_t = *mut ::cty::c_void;
+        pub type lv_obj_user_data_t = *mut ::cty::c_void;
+        pub type lv_res_t = u8;
+        #[doc = " Represents a point on the screen."]
+        #[repr(C)]
+        pub struct lv_point_t {
+            pub x: lv_coord_t,
+            pub y: lv_coord_t,
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl ::core::default::Default for lv_point_t {
+            #[inline]
+            fn default() -> lv_point_t {
+                lv_point_t{x: ::core::default::Default::default(),
+                           y: ::core::default::Default::default(),}
+            }
+        }
+        #[doc = " Represents an area of the screen."]
+        #[repr(C)]
+        pub struct lv_area_t {
+            pub x1: lv_coord_t,
+            pub y1: lv_coord_t,
+            pub x2: lv_coord_t,
+            pub y2: lv_coord_t,
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl ::core::default::Default for lv_area_t {
+            #[inline]
+            fn default() -> lv_area_t {
+                lv_area_t{x1: ::core::default::Default::default(),
+                          y1: ::core::default::Default::default(),
+                          x2: ::core::default::Default::default(),
+                          y2: ::core::default::Default::default(),}
+            }
+        }
+        pub const LV_ALIGN_CENTER: lv_align_t = 0;
+        pub const LV_ALIGN_IN_TOP_LEFT: lv_align_t = 1;
+        pub const LV_ALIGN_IN_TOP_MID: lv_align_t = 2;
+        pub const LV_ALIGN_IN_TOP_RIGHT: lv_align_t = 3;
+        pub const LV_ALIGN_IN_BOTTOM_LEFT: lv_align_t = 4;
+        pub const LV_ALIGN_IN_BOTTOM_MID: lv_align_t = 5;
+        pub const LV_ALIGN_IN_BOTTOM_RIGHT: lv_align_t = 6;
+        pub const LV_ALIGN_IN_LEFT_MID: lv_align_t = 7;
+        pub const LV_ALIGN_IN_RIGHT_MID: lv_align_t = 8;
+        pub const LV_ALIGN_OUT_TOP_LEFT: lv_align_t = 9;
+        pub const LV_ALIGN_OUT_TOP_MID: lv_align_t = 10;
+        pub const LV_ALIGN_OUT_TOP_RIGHT: lv_align_t = 11;
+        pub const LV_ALIGN_OUT_BOTTOM_LEFT: lv_align_t = 12;
+        pub const LV_ALIGN_OUT_BOTTOM_MID: lv_align_t = 13;
+        pub const LV_ALIGN_OUT_BOTTOM_RIGHT: lv_align_t = 14;
+        pub const LV_ALIGN_OUT_LEFT_TOP: lv_align_t = 15;
+        pub const LV_ALIGN_OUT_LEFT_MID: lv_align_t = 16;
+        pub const LV_ALIGN_OUT_LEFT_BOTTOM: lv_align_t = 17;
+        pub const LV_ALIGN_OUT_RIGHT_TOP: lv_align_t = 18;
+        pub const LV_ALIGN_OUT_RIGHT_MID: lv_align_t = 19;
+        pub const LV_ALIGN_OUT_RIGHT_BOTTOM: lv_align_t = 20;
+        #[doc = " Alignments"]
+        pub type _bindgen_ty_3 = u32;
+        pub type lv_align_t = u8;
+        #[doc = " Describes the properties of a glyph."]
+        #[repr(C)]
+        pub struct lv_font_glyph_dsc_t {
+            #[doc =
+              "< The glyph needs this space. Draw the next glyph after this width. 8 bit integer, 4 bit fractional"]
+            pub adv_w: u16,
+            #[doc = "< Width of the glyph's bounding box"]
+            pub box_w: u16,
+            #[doc = "< Height of the glyph's bounding box"]
+            pub box_h: u16,
+            #[doc = "< x offset of the bounding box"]
+            pub ofs_x: i16,
+            #[doc = "< y offset of the bounding box"]
+            pub ofs_y: i16,
+            #[doc = "< Bit-per-pixel: 1, 2, 4, 8"]
+            pub bpp: u8,
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl ::core::default::Default for lv_font_glyph_dsc_t {
+            #[inline]
+            fn default() -> lv_font_glyph_dsc_t {
+                lv_font_glyph_dsc_t{adv_w:
+                                        ::core::default::Default::default(),
+                                    box_w:
+                                        ::core::default::Default::default(),
+                                    box_h:
+                                        ::core::default::Default::default(),
+                                    ofs_x:
+                                        ::core::default::Default::default(),
+                                    ofs_y:
+                                        ::core::default::Default::default(),
+                                    bpp: ::core::default::Default::default(),}
+            }
+        }
+        #[doc = " Describe the properties of a font"]
+        #[repr(C)]
+        pub struct _lv_font_struct {
+            #[doc = " Get a glyph's  descriptor from a font"]
+            pub get_glyph_dsc: ::core::option::Option<unsafe extern "C" fn(arg1:
+                                                                               *const _lv_font_struct,
+                                                                           arg2:
+                                                                               *mut lv_font_glyph_dsc_t,
+                                                                           letter:
+                                                                               u32,
+                                                                           letter_next:
+                                                                               u32)
+                                                          -> bool>,
+            #[doc = " Get a glyph's bitmap from a font"]
+            pub get_glyph_bitmap: ::core::option::Option<unsafe extern "C" fn(arg1:
+                                                                                  *const _lv_font_struct,
+                                                                              arg2:
+                                                                                  u32)
+                                                             -> *const u8>,
+            #[doc = "< The real line height where any text fits"]
+            pub line_height: lv_coord_t,
+            #[doc = "< Base line measured from the top of the line_height"]
+            pub base_line: lv_coord_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+            #[doc =
+              "< Distance between the top of the underline and base line (< 0 means below the base line)"]
+            pub underline_position: i8,
+            #[doc = "< Thickness of the underline"]
+            pub underline_thickness: i8,
+            #[doc =
+              "< Store implementation specific or run_time data or caching here"]
+            pub dsc: *mut ::cty::c_void,
+            #[doc = "< Custom user data for font."]
+            pub user_data: lv_font_user_data_t,
+        }
+        impl Default for _lv_font_struct {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl _lv_font_struct {
+            #[inline]
+            pub fn subpx(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 2u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_subpx(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 2u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(subpx: u8)
+             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 2u8,
+                                            {
+                                                let subpx: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(subpx)
+                                                    };
+                                                subpx as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        pub type lv_font_t = _lv_font_struct;
+        #[repr(C)]
+        pub struct lv_color16_t {
+            pub ch: __BindgenUnionField<lv_color16_t__bindgen_ty_1>,
+            pub full: __BindgenUnionField<u16>,
+            pub bindgen_union_field: u16,
+        }
+        #[repr(C)]
+        #[repr(align(2))]
+        pub struct lv_color16_t__bindgen_ty_1 {
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl ::core::default::Default for lv_color16_t__bindgen_ty_1 {
+            #[inline]
+            fn default() -> lv_color16_t__bindgen_ty_1 {
+                lv_color16_t__bindgen_ty_1{_bitfield_1:
+                                               ::core::default::Default::default(),}
+            }
+        }
+        impl lv_color16_t__bindgen_ty_1 {
+            #[inline]
+            pub fn green_h(&self) -> u16 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 3u8)
+                                               as u16)
+                }
+            }
+            #[inline]
+            pub fn set_green_h(&mut self, val: u16) {
+                unsafe {
+                    let val: u16 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 3u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn red(&self) -> u16 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(3usize, 5u8)
+                                               as u16)
+                }
+            }
+            #[inline]
+            pub fn set_red(&mut self, val: u16) {
+                unsafe {
+                    let val: u16 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(3usize, 5u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn blue(&self) -> u16 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(8usize, 5u8)
+                                               as u16)
+                }
+            }
+            #[inline]
+            pub fn set_blue(&mut self, val: u16) {
+                unsafe {
+                    let val: u16 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(8usize, 5u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn green_l(&self) -> u16 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(13usize, 3u8)
+                                               as u16)
+                }
+            }
+            #[inline]
+            pub fn set_green_l(&mut self, val: u16) {
+                unsafe {
+                    let val: u16 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(13usize, 3u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(green_h: u16, red: u16, blue: u16,
+                                  green_l: u16)
+             -> __BindgenBitfieldUnit<[u8; 2usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 2usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 3u8,
+                                            {
+                                                let green_h: u16 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(green_h)
+                                                    };
+                                                green_h as u64
+                                            });
+                __bindgen_bitfield_unit.set(3usize, 5u8,
+                                            {
+                                                let red: u16 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(red)
+                                                    };
+                                                red as u64
+                                            });
+                __bindgen_bitfield_unit.set(8usize, 5u8,
+                                            {
+                                                let blue: u16 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(blue)
+                                                    };
+                                                blue as u64
+                                            });
+                __bindgen_bitfield_unit.set(13usize, 3u8,
+                                            {
+                                                let green_l: u16 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(green_l)
+                                                    };
+                                                green_l as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        impl Default for lv_color16_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        pub type lv_color_t = lv_color16_t;
+        #[doc = "! @cond Doxygen_Suppress"]
+        pub type lv_opa_t = u8;
+        #[doc = " Type of the animated value"]
+        pub type lv_anim_value_t = lv_coord_t;
+        #[doc = " Get the current value during an animation"]
+        pub type lv_anim_path_cb_t =
+         ::core::option::Option<unsafe extern "C" fn(arg1:
+                                                         *const _lv_anim_path_t,
+                                                     arg2: *const _lv_anim_t)
+                                    -> lv_anim_value_t>;
+        #[repr(C)]
+        pub struct _lv_anim_path_t {
+            pub cb: lv_anim_path_cb_t,
+            pub user_data: *mut ::cty::c_void,
+        }
+        impl Default for _lv_anim_path_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        pub type lv_anim_path_t = _lv_anim_path_t;
+        #[doc = " Generic prototype of \"animator\" functions."]
+        #[doc = " First parameter is the variable to animate."]
+        #[doc = " Second parameter is the value to set."]
+        #[doc = " Compatible with `lv_xxx_set_yyy(obj, value)` functions"]
+        #[doc =
+          " The `x` in `_xcb_t` means its not a fully generic prototype because"]
+        #[doc = " it doesn't receive `lv_anim_t *` as its first argument"]
+        pub type lv_anim_exec_xcb_t =
+         ::core::option::Option<unsafe extern "C" fn(arg1: *mut ::cty::c_void,
+                                                     arg2: lv_anim_value_t)>;
+        #[doc = " Callback to call when the animation is ready"]
+        pub type lv_anim_ready_cb_t =
+         ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_anim_t)>;
+        #[doc =
+          " Callback to call when the animation really stars (considering `delay`)"]
+        pub type lv_anim_start_cb_t =
+         ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_anim_t)>;
+        #[doc = " Describes an animation"]
+        #[repr(C)]
+        pub struct _lv_anim_t {
+            #[doc = "<Variable to animate"]
+            pub var: *mut ::cty::c_void,
+            #[doc = "< Function to execute to animate"]
+            pub exec_cb: lv_anim_exec_xcb_t,
+            #[doc =
+              "< Call it when the animation is starts (considering `delay`)"]
+            pub start_cb: lv_anim_start_cb_t,
+            #[doc = "< Call it when the animation is ready"]
+            pub ready_cb: lv_anim_ready_cb_t,
+            #[doc = "< Describe the path (curve) of animations"]
+            pub path: lv_anim_path_t,
+            #[doc = "< Start value"]
+            pub start: i32,
+            #[doc = "< Current value"]
+            pub current: i32,
+            #[doc = "< End value"]
+            pub end: i32,
+            #[doc = "< Animation time in ms"]
+            pub time: i32,
+            #[doc =
+              "< Current time in animation. Set to negative to make delay."]
+            pub act_time: i32,
+            #[doc = "< Wait before play back"]
+            pub playback_delay: u32,
+            #[doc = "< Duration of playback animation"]
+            pub playback_time: u32,
+            #[doc = "< Wait before repeat"]
+            pub repeat_delay: u32,
+            #[doc = "< Repeat count for the animation"]
+            pub repeat_cnt: u16,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+            #[doc = "< Custom user data"]
+            pub user_data: lv_anim_user_data_t,
+            pub time_orig: u32,
+            pub _bitfield_2: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+            pub __bindgen_padding_0: [u8; 3usize],
+        }
+        impl Default for _lv_anim_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl _lv_anim_t {
+            #[inline]
+            pub fn early_apply(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_early_apply(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(early_apply: u8)
+             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 1u8,
+                                            {
+                                                let early_apply: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(early_apply)
+                                                    };
+                                                early_apply as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+            #[inline]
+            pub fn playback_now(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_2.get(0usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_playback_now(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_2.set(0usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn has_run(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_2.get(1usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_has_run(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_2.set(1usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_2(playback_now: u8, has_run: u32)
+             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 1u8,
+                                            {
+                                                let playback_now: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(playback_now)
+                                                    };
+                                                playback_now as u64
+                                            });
+                __bindgen_bitfield_unit.set(1usize, 1u8,
+                                            {
+                                                let has_run: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(has_run)
+                                                    };
+                                                has_run as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        pub type lv_anim_t = _lv_anim_t;
+        pub type lv_blend_mode_t = u8;
+        pub type lv_border_side_t = u8;
+        pub type lv_grad_dir_t = u8;
+        pub type lv_text_decor_t = u8;
+        pub type lv_style_property_t = u16;
+        #[repr(C)]
+        pub struct lv_style_t {
+            pub map: *mut u8,
+        }
+        impl Default for lv_style_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        pub type lv_style_int_t = i16;
+        #[repr(C)]
+        pub struct lv_style_list_t {
+            pub style_list: *mut *mut lv_style_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u8>,
+            pub __bindgen_padding_0: u32,
+        }
+        impl Default for lv_style_list_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl lv_style_list_t {
+            #[inline]
+            pub fn style_cnt(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 6u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_style_cnt(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 6u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn has_local(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_has_local(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(6usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn has_trans(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_has_trans(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(7usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn skip_trans(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_skip_trans(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(8usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn ignore_trans(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_ignore_trans(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(9usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn valid_cache(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_valid_cache(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(10usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn ignore_cache(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_ignore_cache(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(11usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn radius_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_radius_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(12usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn opa_scale_cover(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(13usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_opa_scale_cover(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(13usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn clip_corner_off(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(14usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_clip_corner_off(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(14usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn transform_all_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(15usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_transform_all_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(15usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn pad_all_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(16usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_pad_all_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(16usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn blend_mode_all_normal(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(17usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_blend_mode_all_normal(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(17usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn bg_opa_transp(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(18usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_bg_opa_transp(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(18usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn bg_opa_cover(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(19usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_bg_opa_cover(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(19usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn bg_grad_dir_none(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(20usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_bg_grad_dir_none(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(20usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn border_width_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(21usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_border_width_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(21usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn border_side_full(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(22usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_border_side_full(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(22usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn border_post_off(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(23usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_border_post_off(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(23usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn outline_width_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(24usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_outline_width_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(24usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn pattern_img_null(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(25usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_pattern_img_null(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(25usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn shadow_width_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(26usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_shadow_width_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(26usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn value_txt_str(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(27usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_value_txt_str(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(27usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn img_recolor_opa_transp(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(28usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_img_recolor_opa_transp(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(28usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn text_space_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(29usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_text_space_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(29usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn text_decor_none(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(30usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_text_decor_none(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(30usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn text_font_normal(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(31usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_text_font_normal(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(31usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(style_cnt: u32, has_local: u32,
+                                  has_trans: u32, skip_trans: u32,
+                                  ignore_trans: u32, valid_cache: u32,
+                                  ignore_cache: u32, radius_zero: u32,
+                                  opa_scale_cover: u32, clip_corner_off: u32,
+                                  transform_all_zero: u32, pad_all_zero: u32,
+                                  blend_mode_all_normal: u32,
+                                  bg_opa_transp: u32, bg_opa_cover: u32,
+                                  bg_grad_dir_none: u32,
+                                  border_width_zero: u32,
+                                  border_side_full: u32, border_post_off: u32,
+                                  outline_width_zero: u32,
+                                  pattern_img_null: u32,
+                                  shadow_width_zero: u32, value_txt_str: u32,
+                                  img_recolor_opa_transp: u32,
+                                  text_space_zero: u32, text_decor_none: u32,
+                                  text_font_normal: u32)
+             -> __BindgenBitfieldUnit<[u8; 4usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 4usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 6u8,
+                                            {
+                                                let style_cnt: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(style_cnt)
+                                                    };
+                                                style_cnt as u64
+                                            });
+                __bindgen_bitfield_unit.set(6usize, 1u8,
+                                            {
+                                                let has_local: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(has_local)
+                                                    };
+                                                has_local as u64
+                                            });
+                __bindgen_bitfield_unit.set(7usize, 1u8,
+                                            {
+                                                let has_trans: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(has_trans)
+                                                    };
+                                                has_trans as u64
+                                            });
+                __bindgen_bitfield_unit.set(8usize, 1u8,
+                                            {
+                                                let skip_trans: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(skip_trans)
+                                                    };
+                                                skip_trans as u64
+                                            });
+                __bindgen_bitfield_unit.set(9usize, 1u8,
+                                            {
+                                                let ignore_trans: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(ignore_trans)
+                                                    };
+                                                ignore_trans as u64
+                                            });
+                __bindgen_bitfield_unit.set(10usize, 1u8,
+                                            {
+                                                let valid_cache: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(valid_cache)
+                                                    };
+                                                valid_cache as u64
+                                            });
+                __bindgen_bitfield_unit.set(11usize, 1u8,
+                                            {
+                                                let ignore_cache: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(ignore_cache)
+                                                    };
+                                                ignore_cache as u64
+                                            });
+                __bindgen_bitfield_unit.set(12usize, 1u8,
+                                            {
+                                                let radius_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(radius_zero)
+                                                    };
+                                                radius_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(13usize, 1u8,
+                                            {
+                                                let opa_scale_cover: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(opa_scale_cover)
+                                                    };
+                                                opa_scale_cover as u64
+                                            });
+                __bindgen_bitfield_unit.set(14usize, 1u8,
+                                            {
+                                                let clip_corner_off: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(clip_corner_off)
+                                                    };
+                                                clip_corner_off as u64
+                                            });
+                __bindgen_bitfield_unit.set(15usize, 1u8,
+                                            {
+                                                let transform_all_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(transform_all_zero)
+                                                    };
+                                                transform_all_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(16usize, 1u8,
+                                            {
+                                                let pad_all_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(pad_all_zero)
+                                                    };
+                                                pad_all_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(17usize, 1u8,
+                                            {
+                                                let blend_mode_all_normal:
+                                                        u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(blend_mode_all_normal)
+                                                    };
+                                                blend_mode_all_normal as u64
+                                            });
+                __bindgen_bitfield_unit.set(18usize, 1u8,
+                                            {
+                                                let bg_opa_transp: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(bg_opa_transp)
+                                                    };
+                                                bg_opa_transp as u64
+                                            });
+                __bindgen_bitfield_unit.set(19usize, 1u8,
+                                            {
+                                                let bg_opa_cover: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(bg_opa_cover)
+                                                    };
+                                                bg_opa_cover as u64
+                                            });
+                __bindgen_bitfield_unit.set(20usize, 1u8,
+                                            {
+                                                let bg_grad_dir_none: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(bg_grad_dir_none)
+                                                    };
+                                                bg_grad_dir_none as u64
+                                            });
+                __bindgen_bitfield_unit.set(21usize, 1u8,
+                                            {
+                                                let border_width_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(border_width_zero)
+                                                    };
+                                                border_width_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(22usize, 1u8,
+                                            {
+                                                let border_side_full: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(border_side_full)
+                                                    };
+                                                border_side_full as u64
+                                            });
+                __bindgen_bitfield_unit.set(23usize, 1u8,
+                                            {
+                                                let border_post_off: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(border_post_off)
+                                                    };
+                                                border_post_off as u64
+                                            });
+                __bindgen_bitfield_unit.set(24usize, 1u8,
+                                            {
+                                                let outline_width_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(outline_width_zero)
+                                                    };
+                                                outline_width_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(25usize, 1u8,
+                                            {
+                                                let pattern_img_null: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(pattern_img_null)
+                                                    };
+                                                pattern_img_null as u64
+                                            });
+                __bindgen_bitfield_unit.set(26usize, 1u8,
+                                            {
+                                                let shadow_width_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(shadow_width_zero)
+                                                    };
+                                                shadow_width_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(27usize, 1u8,
+                                            {
+                                                let value_txt_str: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(value_txt_str)
+                                                    };
+                                                value_txt_str as u64
+                                            });
+                __bindgen_bitfield_unit.set(28usize, 1u8,
+                                            {
+                                                let img_recolor_opa_transp:
+                                                        u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(img_recolor_opa_transp)
+                                                    };
+                                                img_recolor_opa_transp as u64
+                                            });
+                __bindgen_bitfield_unit.set(29usize, 1u8,
+                                            {
+                                                let text_space_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(text_space_zero)
+                                                    };
+                                                text_space_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(30usize, 1u8,
+                                            {
+                                                let text_decor_none: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(text_decor_none)
+                                                    };
+                                                text_decor_none as u64
+                                            });
+                __bindgen_bitfield_unit.set(31usize, 1u8,
+                                            {
+                                                let text_font_normal: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(text_font_normal)
+                                                    };
+                                                text_font_normal as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        #[doc = " Dummy type to make handling easier"]
+        pub type lv_ll_node_t = u8;
+        #[doc = " Description of a linked list"]
+        #[repr(C)]
+        pub struct lv_ll_t {
+            pub n_size: u32,
+            pub head: *mut lv_ll_node_t,
+            pub tail: *mut lv_ll_node_t,
+        }
+        impl Default for lv_ll_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        #[doc = " Tasks execute this type type of functions."]
+        pub type lv_task_cb_t =
+         ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_task_t)>;
+        #[doc = "      TYPEDEFS"]
+        #[repr(C)]
+        pub struct _lv_task_t {
+            #[doc = "< How often the task should run"]
+            pub period: u32,
+            #[doc = "< Last time the task ran"]
+            pub last_run: u32,
+            #[doc = "< Task function"]
+            pub task_cb: lv_task_cb_t,
+            #[doc = "< Custom user data"]
+            pub user_data: *mut ::cty::c_void,
+            #[doc =
+              "< 1: Task times;  -1 : infinity;  0 : stop ;  n>0: residual times"]
+            pub repeat_count: i32,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+            pub __bindgen_padding_0: [u8; 3usize],
+        }
+        impl Default for _lv_task_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl _lv_task_t {
+            #[inline]
+            pub fn prio(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 3u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_prio(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 3u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(prio: u8)
+             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 3u8,
+                                            {
+                                                let prio: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(prio)
+                                                    };
+                                                prio as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        pub type lv_task_t = _lv_task_t;
+        #[doc = " Structure for holding display buffer information."]
+        #[repr(C)]
+        pub struct lv_disp_buf_t {
+            #[doc = "< First display buffer."]
+            pub buf1: *mut ::cty::c_void,
+            #[doc = "< Second display buffer."]
+            pub buf2: *mut ::cty::c_void,
+            pub buf_act: *mut ::cty::c_void,
+            pub size: u32,
+            pub area: lv_area_t,
+            pub flushing: ::cty::c_int,
+            pub flushing_last: ::cty::c_int,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+            pub __bindgen_padding_0: [u8; 3usize],
+        }
+        impl Default for lv_disp_buf_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl lv_disp_buf_t {
+            #[inline]
+            pub fn last_area(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_last_area(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn last_part(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_last_part(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(1usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(last_area: u32, last_part: u32)
+             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 1u8,
+                                            {
+                                                let last_area: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(last_area)
+                                                    };
+                                                last_area as u64
+                                            });
+                __bindgen_bitfield_unit.set(1usize, 1u8,
+                                            {
+                                                let last_part: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(last_part)
+                                                    };
+                                                last_part as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        #[doc = " Display Driver structure to be registered by HAL"]
+        #[repr(C)]
+        pub struct _disp_drv_t {
+            #[doc = "< Horizontal resolution."]
+            pub hor_res: lv_coord_t,
+            #[doc = "< Vertical resolution."]
+            pub ver_res: lv_coord_t,
+            #[doc =
+              " Pointer to a buffer initialized with `lv_disp_buf_init()`."]
+            #[doc =
+              " LVGL will use this buffer(s) to draw the screens contents"]
+            pub buffer: *mut lv_disp_buf_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u16>,
+            #[doc =
+              " MANDATORY: Write the internal buffer (VDB) to the display. 'lv_disp_flush_ready()' has to be"]
+            #[doc = " called when finished"]
+            pub flush_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                          *mut _disp_drv_t,
+                                                                      area:
+                                                                          *const lv_area_t,
+                                                                      color_p:
+                                                                          *mut lv_color_t)>,
+            #[doc =
+              " OPTIONAL: Extend the invalidated areas to match with the display drivers requirements"]
+            #[doc = " E.g. round `y` to, 8, 16 ..) on a monochrome display"]
+            pub rounder_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                            *mut _disp_drv_t,
+                                                                        area:
+                                                                            *mut lv_area_t)>,
+            #[doc =
+              " OPTIONAL: Set a pixel in a buffer according to the special requirements of the display"]
+            #[doc =
+              " Can be used for color format not supported in LittelvGL. E.g. 2 bit -> 4 gray scales"]
+            #[doc =
+              " __Note:__ Much slower then drawing with supported color formats."]
+            pub set_px_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                           *mut _disp_drv_t,
+                                                                       buf:
+                                                                           *mut u8,
+                                                                       buf_w:
+                                                                           lv_coord_t,
+                                                                       x:
+                                                                           lv_coord_t,
+                                                                       y:
+                                                                           lv_coord_t,
+                                                                       color:
+                                                                           lv_color_t,
+                                                                       opa:
+                                                                           lv_opa_t)>,
+            #[doc =
+              " OPTIONAL: Called after every refresh cycle to tell the rendering and flushing time + the"]
+            #[doc = " number of flushed pixels"]
+            pub monitor_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                            *mut _disp_drv_t,
+                                                                        time:
+                                                                            u32,
+                                                                        px:
+                                                                            u32)>,
+            #[doc =
+              " OPTIONAL: Called periodically while lvgl waits for operation to be completed."]
+            #[doc = " For example flushing or GPU"]
+            #[doc =
+              " User can execute very simple tasks here or yield the task"]
+            pub wait_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                         *mut _disp_drv_t)>,
+            #[doc =
+              " OPTIONAL: Called when lvgl needs any CPU cache that affects rendering to be cleaned"]
+            pub clean_dcache_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                                 *mut _disp_drv_t)>,
+            #[doc = " OPTIONAL: called to wait while the gpu is working"]
+            pub gpu_wait_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                             *mut _disp_drv_t)>,
+            #[doc = " On CHROMA_KEYED images this color will be transparent."]
+            #[doc = " `LV_COLOR_TRANSP` by default. (lv_conf.h)"]
+            pub color_chroma_key: lv_color_t,
+            #[doc = "< Custom display driver user data"]
+            pub user_data: lv_disp_drv_user_data_t,
+        }
+        impl Default for _disp_drv_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl _disp_drv_t {
+            #[inline]
+            pub fn antialiasing(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_antialiasing(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn rotated(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_rotated(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(1usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn dpi(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(2usize, 10u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_dpi(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(2usize, 10u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(antialiasing: u32, rotated: u32, dpi: u32)
+             -> __BindgenBitfieldUnit<[u8; 2usize], u16> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 2usize], u16> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 1u8,
+                                            {
+                                                let antialiasing: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(antialiasing)
+                                                    };
+                                                antialiasing as u64
+                                            });
+                __bindgen_bitfield_unit.set(1usize, 1u8,
+                                            {
+                                                let rotated: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(rotated)
+                                                    };
+                                                rotated as u64
+                                            });
+                __bindgen_bitfield_unit.set(2usize, 10u8,
+                                            {
+                                                let dpi: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(dpi)
+                                                    };
+                                                dpi as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        pub type lv_disp_drv_t = _disp_drv_t;
+        #[doc = "      TYPEDEFS"]
+        #[repr(C)]
+        pub struct _disp_t {
+            pub driver: lv_disp_drv_t,
+            pub refr_task: *mut lv_task_t,
+            #[doc = " Screens of the display"]
+            pub scr_ll: lv_ll_t,
+            #[doc = "< Currently active screen on this display"]
+            pub act_scr: *mut _lv_obj_t,
+            #[doc = "< Previous screen. Used during screen animations"]
+            pub prev_scr: *mut _lv_obj_t,
+            #[doc = "< @see lv_disp_get_layer_top"]
+            pub top_layer: *mut _lv_obj_t,
+            #[doc = "< @see lv_disp_get_layer_sys"]
+            pub sys_layer: *mut _lv_obj_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+            #[doc = "< Default display color when screens are transparent"]
+            pub bg_color: lv_color_t,
+            #[doc = "< An image source to display as wallpaper"]
+            pub bg_img: *const ::cty::c_void,
+            #[doc = "<Opacity of the background color or wallpaper"]
+            pub bg_opa: lv_opa_t,
+            #[doc = " Invalidated (marked to redraw) areas"]
+            pub inv_areas: [lv_area_t; 32usize],
+            pub inv_area_joined: [u8; 32usize],
+            pub _bitfield_2: __BindgenBitfieldUnit<[u8; 2usize], u16>,
+            #[doc = "< Last time there was activity on this display"]
+            pub last_activity_time: u32,
+        }
+        impl Default for _disp_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl _disp_t {
+            #[inline]
+            pub fn del_prev(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_del_prev(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(del_prev: u8)
+             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 1u8,
+                                            {
+                                                let del_prev: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(del_prev)
+                                                    };
+                                                del_prev as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+            #[inline]
+            pub fn inv_p(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_2.get(0usize, 10u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_inv_p(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_2.set(0usize, 10u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_2(inv_p: u32)
+             -> __BindgenBitfieldUnit<[u8; 2usize], u16> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 2usize], u16> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 10u8,
+                                            {
+                                                let inv_p: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(inv_p)
+                                                    };
+                                                inv_p as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        pub type lv_disp_t = _disp_t;
+        pub type lv_drag_dir_t = u8;
         #[doc = "      TYPEDEFS"]
         #[repr(C)]
         pub struct lv_draw_rect_dsc_t {
@@ -6945,114 +7908,8 @@ pub mod core {
                 __bindgen_bitfield_unit
             }
         }
-        #[doc = " GLOBAL PROTOTYPES"]
-        pub fn rect_dsc_init(dsc: *mut lv_draw_rect_dsc_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " GLOBAL PROTOTYPES"]
-                pub fn lv_draw_rect_dsc_init(dsc: *mut lv_draw_rect_dsc_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_draw_rect_dsc_init(dsc as *mut lv_draw_rect_dsc_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Draw a rectangle"]
-        #[doc = " - __`coords`__: the coordinates of the rectangle"]
-        #[doc =
-          " - __`mask`__: the rectangle will be drawn only in this mask"]
-        #[doc =
-          " - __`dsc`__: pointer to an initialized `lv_draw_rect_dsc_t` variable"]
-        pub fn rect(coords: *const lv_area_t, mask: *const lv_area_t,
-                    dsc: *const lv_draw_rect_dsc_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Draw a rectangle"]
-                #[doc = " - __`coords`__: the coordinates of the rectangle"]
-                #[doc =
-                  " - __`mask`__: the rectangle will be drawn only in this mask"]
-                #[doc =
-                  " - __`dsc`__: pointer to an initialized `lv_draw_rect_dsc_t` variable"]
-                pub fn lv_draw_rect(coords: *const lv_area_t,
-                                    mask: *const lv_area_t,
-                                    dsc: *const lv_draw_rect_dsc_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_draw_rect(coords as *const lv_area_t,
-                             mask as *const lv_area_t,
-                             dsc as *const lv_draw_rect_dsc_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Draw a pixel"]
-        #[doc = " - __`point`__: the coordinates of the point to draw"]
-        #[doc = " - __`mask`__: the pixel will be drawn only in this mask"]
-        #[doc = " - __`style`__: pointer to a style"]
-        pub fn px(point: *const lv_point_t, clip_area: *const lv_area_t,
-                  style: *const lv_style_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Draw a pixel"]
-                #[doc =
-                  " - __`point`__: the coordinates of the point to draw"]
-                #[doc =
-                  " - __`mask`__: the pixel will be drawn only in this mask"]
-                #[doc = " - __`style`__: pointer to a style"]
-                pub fn lv_draw_px(point: *const lv_point_t,
-                                  clip_area: *const lv_area_t,
-                                  style: *const lv_style_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_draw_px(point as *const lv_point_t,
-                           clip_area as *const lv_area_t,
-                           style as *const lv_style_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub const LV_BIDI_DIR_LTR: _bindgen_ty_20 = 0;
-        pub const LV_BIDI_DIR_RTL: _bindgen_ty_20 = 1;
-        pub const LV_BIDI_DIR_AUTO: _bindgen_ty_20 = 2;
-        pub const LV_BIDI_DIR_INHERIT: _bindgen_ty_20 = 3;
-        pub const LV_BIDI_DIR_NEUTRAL: _bindgen_ty_20 = 32;
-        pub const LV_BIDI_DIR_WEAK: _bindgen_ty_20 = 33;
-        #[doc = "      TYPEDEFS"]
-        pub type _bindgen_ty_20 = u32;
         pub type lv_bidi_dir_t = u8;
-        pub const LV_TXT_FLAG_NONE: _bindgen_ty_21 = 0;
-        #[doc = "< Enable parsing of recolor command"]
-        pub const LV_TXT_FLAG_RECOLOR: _bindgen_ty_21 = 1;
-        #[doc = "< Ignore max-width to avoid automatic word wrapping"]
-        pub const LV_TXT_FLAG_EXPAND: _bindgen_ty_21 = 2;
-        #[doc = "< Align the text to the middle"]
-        pub const LV_TXT_FLAG_CENTER: _bindgen_ty_21 = 4;
-        #[doc = "< Align the text to the right"]
-        pub const LV_TXT_FLAG_RIGHT: _bindgen_ty_21 = 8;
-        #[doc =
-          "< Max-width is already equal to the longest line. (Used to skip some calculation)"]
-        pub const LV_TXT_FLAG_FIT: _bindgen_ty_21 = 16;
-        #[doc = "      TYPEDEFS"]
-        #[doc = " Options for text rendering."]
-        pub type _bindgen_ty_21 = u32;
         pub type lv_txt_flag_t = u8;
-        #[doc = "< Waiting for command"]
-        pub const LV_TXT_CMD_STATE_WAIT: _bindgen_ty_22 = 0;
-        #[doc = "< Processing the parameter"]
-        pub const LV_TXT_CMD_STATE_PAR: _bindgen_ty_22 = 1;
-        #[doc = "< Processing the command"]
-        pub const LV_TXT_CMD_STATE_IN: _bindgen_ty_22 = 2;
-        #[doc = " State machine for text renderer."]
-        pub type _bindgen_ty_22 = u32;
-        pub type lv_txt_cmd_state_t = u8;
         #[doc = "      TYPEDEFS"]
         #[repr(C)]
         pub struct lv_draw_label_dsc_t {
@@ -7073,98 +7930,6 @@ pub mod core {
         }
         impl Default for lv_draw_label_dsc_t {
             fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        #[doc = " Store some info to speed up drawing of very large texts"]
-        #[doc =
-          " It takes a lot of time to get the first visible character because"]
-        #[doc =
-          " all the previous characters needs to be checked to calculate the positions."]
-        #[doc =
-          " This structure stores an earlier (e.g. at -1000 px) coordinate and the index of that line."]
-        #[doc = " Therefore the calculations can start from here."]
-        #[repr(C)]
-        pub struct lv_draw_label_hint_t {
-            #[doc = " Index of the line at `y` coordinate"]
-            pub line_start: i32,
-            #[doc =
-              " Give the `y` coordinate of the first letter at `line start` index. Relative to the label's coordinates"]
-            pub y: i32,
-            #[doc =
-              " The 'y1' coordinate of the label when the hint was saved."]
-            #[doc =
-              " Used to invalidate the hint if the label has moved too much."]
-            pub coord_y: i32,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for lv_draw_label_hint_t {
-            #[inline]
-            fn default() -> lv_draw_label_hint_t {
-                lv_draw_label_hint_t{line_start:
-                                         ::core::default::Default::default(),
-                                     y: ::core::default::Default::default(),
-                                     coord_y:
-                                         ::core::default::Default::default(),}
-            }
-        }
-        #[doc = "! @cond Doxygen_Suppress"]
-        pub fn label_dsc_init(dsc: *mut lv_draw_label_dsc_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = "! @cond Doxygen_Suppress"]
-                pub fn lv_draw_label_dsc_init(dsc: *mut lv_draw_label_dsc_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_draw_label_dsc_init(dsc as *mut lv_draw_label_dsc_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Write a text"]
-        #[doc = " - __`coords`__: coordinates of the label"]
-        #[doc = " - __`mask`__: the label will be drawn only in this area"]
-        #[doc = " - __`dsc`__: pointer to draw descriptor"]
-        #[doc = " - __`txt`__: `\\0` terminated text to write"]
-        #[doc =
-          " - __`hint`__: pointer to a `lv_draw_label_hint_t` variable."]
-        #[doc =
-          " It is managed by the drawer to speed up the drawing of very long texts (thousands of lines)."]
-        pub fn label(coords: *const lv_area_t, mask: *const lv_area_t,
-                     dsc: *const lv_draw_label_dsc_t, txt: &Strn,
-                     hint: *mut lv_draw_label_hint_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Write a text"]
-                #[doc = " - __`coords`__: coordinates of the label"]
-                #[doc =
-                  " - __`mask`__: the label will be drawn only in this area"]
-                #[doc = " - __`dsc`__: pointer to draw descriptor"]
-                #[doc = " - __`txt`__: `\\0` terminated text to write"]
-                #[doc =
-                  " - __`hint`__: pointer to a `lv_draw_label_hint_t` variable."]
-                #[doc =
-                  " It is managed by the drawer to speed up the drawing of very long texts (thousands of lines)."]
-                pub fn lv_draw_label(coords: *const lv_area_t,
-                                     mask: *const lv_area_t,
-                                     dsc: *const lv_draw_label_dsc_t,
-                                     txt: *const ::cty::c_char,
-                                     hint: *mut lv_draw_label_hint_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            txt.validate();
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_draw_label(coords as *const lv_area_t,
-                              mask as *const lv_area_t,
-                              dsc as *const lv_draw_label_dsc_t,
-                              txt.as_ptr() as *const ::cty::c_char,
-                              hint as *mut lv_draw_label_hint_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
         }
         #[doc = "      TYPEDEFS"]
         #[repr(C)]
@@ -7278,1242 +8043,6 @@ pub mod core {
                 __bindgen_bitfield_unit
             }
         }
-        #[doc = "! @cond Doxygen_Suppress"]
-        #[doc = "**"]
-        #[doc = "* Draw a line"]
-        #[doc = "* - __`point1`__: first point of the line"]
-        #[doc = "* - __`point2`__: second point of the line"]
-        #[doc = "* - __`clip`__: the line will be drawn only in this area"]
-        #[doc =
-          "* - __`dsc`__: pointer to an initialized `lv_draw_line_dsc_t` variable"]
-        #[doc = "*/"]
-        pub fn line(point1: *const lv_point_t, point2: *const lv_point_t,
-                    clip: *const lv_area_t, dsc: *const lv_draw_line_dsc_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = "! @cond Doxygen_Suppress"]
-                #[doc = "**"]
-                #[doc = "* Draw a line"]
-                #[doc = "* - __`point1`__: first point of the line"]
-                #[doc = "* - __`point2`__: second point of the line"]
-                #[doc =
-                  "* - __`clip`__: the line will be drawn only in this area"]
-                #[doc =
-                  "* - __`dsc`__: pointer to an initialized `lv_draw_line_dsc_t` variable"]
-                #[doc = "*/"]
-                pub fn lv_draw_line(point1: *const lv_point_t,
-                                    point2: *const lv_point_t,
-                                    clip: *const lv_area_t,
-                                    dsc: *const lv_draw_line_dsc_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_draw_line(point1 as *const lv_point_t,
-                             point2 as *const lv_point_t,
-                             clip as *const lv_area_t,
-                             dsc as *const lv_draw_line_dsc_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn line_dsc_init(dsc: *mut lv_draw_line_dsc_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_draw_line_dsc_init(dsc: *mut lv_draw_line_dsc_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_draw_line_dsc_init(dsc as *mut lv_draw_line_dsc_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub const LV_IMG_CF_UNKNOWN: _bindgen_ty_23 = 0;
-        #[doc = "< Contains the file as it is. Needs custom decoder function"]
-        pub const LV_IMG_CF_RAW: _bindgen_ty_23 = 1;
-        #[doc =
-          "< Contains the file as it is. The image has alpha. Needs custom decoder"]
-        #[doc = "function"]
-        pub const LV_IMG_CF_RAW_ALPHA: _bindgen_ty_23 = 2;
-        #[doc =
-          "< Contains the file as it is. The image is chroma keyed. Needs"]
-        #[doc = "custom decoder function"]
-        pub const LV_IMG_CF_RAW_CHROMA_KEYED: _bindgen_ty_23 = 3;
-        #[doc =
-          "< Color format and depth should match with LV_COLOR settings"]
-        pub const LV_IMG_CF_TRUE_COLOR: _bindgen_ty_23 = 4;
-        #[doc =
-          "< Same as `LV_IMG_CF_TRUE_COLOR` but every pixel has an alpha byte"]
-        pub const LV_IMG_CF_TRUE_COLOR_ALPHA: _bindgen_ty_23 = 5;
-        #[doc = "< Same as `LV_IMG_CF_TRUE_COLOR` but LV_COLOR_TRANSP pixels"]
-        #[doc = "will be transparent"]
-        pub const LV_IMG_CF_TRUE_COLOR_CHROMA_KEYED: _bindgen_ty_23 = 6;
-        #[doc =
-          "< Can have 2 different colors in a palette (always chroma keyed)"]
-        pub const LV_IMG_CF_INDEXED_1BIT: _bindgen_ty_23 = 7;
-        #[doc =
-          "< Can have 4 different colors in a palette (always chroma keyed)"]
-        pub const LV_IMG_CF_INDEXED_2BIT: _bindgen_ty_23 = 8;
-        #[doc =
-          "< Can have 16 different colors in a palette (always chroma keyed)"]
-        pub const LV_IMG_CF_INDEXED_4BIT: _bindgen_ty_23 = 9;
-        #[doc =
-          "< Can have 256 different colors in a palette (always chroma keyed)"]
-        pub const LV_IMG_CF_INDEXED_8BIT: _bindgen_ty_23 = 10;
-        #[doc = "< Can have one color and it can be drawn or not"]
-        pub const LV_IMG_CF_ALPHA_1BIT: _bindgen_ty_23 = 11;
-        #[doc = "< Can have one color but 4 different alpha value"]
-        pub const LV_IMG_CF_ALPHA_2BIT: _bindgen_ty_23 = 12;
-        #[doc = "< Can have one color but 16 different alpha value"]
-        pub const LV_IMG_CF_ALPHA_4BIT: _bindgen_ty_23 = 13;
-        #[doc = "< Can have one color but 256 different alpha value"]
-        pub const LV_IMG_CF_ALPHA_8BIT: _bindgen_ty_23 = 14;
-        #[doc = "< Reserved for further use."]
-        pub const LV_IMG_CF_RESERVED_15: _bindgen_ty_23 = 15;
-        #[doc = "< Reserved for further use."]
-        pub const LV_IMG_CF_RESERVED_16: _bindgen_ty_23 = 16;
-        #[doc = "< Reserved for further use."]
-        pub const LV_IMG_CF_RESERVED_17: _bindgen_ty_23 = 17;
-        #[doc = "< Reserved for further use."]
-        pub const LV_IMG_CF_RESERVED_18: _bindgen_ty_23 = 18;
-        #[doc = "< Reserved for further use."]
-        pub const LV_IMG_CF_RESERVED_19: _bindgen_ty_23 = 19;
-        #[doc = "< Reserved for further use."]
-        pub const LV_IMG_CF_RESERVED_20: _bindgen_ty_23 = 20;
-        #[doc = "< Reserved for further use."]
-        pub const LV_IMG_CF_RESERVED_21: _bindgen_ty_23 = 21;
-        #[doc = "< Reserved for further use."]
-        pub const LV_IMG_CF_RESERVED_22: _bindgen_ty_23 = 22;
-        #[doc = "< Reserved for further use."]
-        pub const LV_IMG_CF_RESERVED_23: _bindgen_ty_23 = 23;
-        #[doc = "< User holder encoding format."]
-        pub const LV_IMG_CF_USER_ENCODED_0: _bindgen_ty_23 = 24;
-        #[doc = "< User holder encoding format."]
-        pub const LV_IMG_CF_USER_ENCODED_1: _bindgen_ty_23 = 25;
-        #[doc = "< User holder encoding format."]
-        pub const LV_IMG_CF_USER_ENCODED_2: _bindgen_ty_23 = 26;
-        #[doc = "< User holder encoding format."]
-        pub const LV_IMG_CF_USER_ENCODED_3: _bindgen_ty_23 = 27;
-        #[doc = "< User holder encoding format."]
-        pub const LV_IMG_CF_USER_ENCODED_4: _bindgen_ty_23 = 28;
-        #[doc = "< User holder encoding format."]
-        pub const LV_IMG_CF_USER_ENCODED_5: _bindgen_ty_23 = 29;
-        #[doc = "< User holder encoding format."]
-        pub const LV_IMG_CF_USER_ENCODED_6: _bindgen_ty_23 = 30;
-        #[doc = "< User holder encoding format."]
-        pub const LV_IMG_CF_USER_ENCODED_7: _bindgen_ty_23 = 31;
-        #[doc = "      TYPEDEFS"]
-        pub type _bindgen_ty_23 = u32;
-        pub type lv_img_cf_t = u8;
-        #[repr(C)]
-        #[repr(align(4))]
-        pub struct lv_img_header_t {
-            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u16>,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for lv_img_header_t {
-            #[inline]
-            fn default() -> lv_img_header_t {
-                lv_img_header_t{_bitfield_1:
-                                    ::core::default::Default::default(),}
-            }
-        }
-        impl lv_img_header_t {
-            #[inline]
-            pub fn cf(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(0usize, 5u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_cf(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(0usize, 5u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn always_zero(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(5usize, 3u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_always_zero(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(5usize, 3u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn reserved(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(8usize, 2u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_reserved(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(8usize, 2u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn w(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(10usize, 11u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_w(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(10usize, 11u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn h(&self) -> u32 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(21usize, 11u8)
-                                               as u32)
-                }
-            }
-            #[inline]
-            pub fn set_h(&mut self, val: u32) {
-                unsafe {
-                    let val: u32 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(21usize, 11u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn new_bitfield_1(cf: u32, always_zero: u32, reserved: u32,
-                                  w: u32, h: u32)
-             -> __BindgenBitfieldUnit<[u8; 4usize], u16> {
-                let mut __bindgen_bitfield_unit:
-                        __BindgenBitfieldUnit<[u8; 4usize], u16> =
-                    Default::default();
-                __bindgen_bitfield_unit.set(0usize, 5u8,
-                                            {
-                                                let cf: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(cf)
-                                                    };
-                                                cf as u64
-                                            });
-                __bindgen_bitfield_unit.set(5usize, 3u8,
-                                            {
-                                                let always_zero: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(always_zero)
-                                                    };
-                                                always_zero as u64
-                                            });
-                __bindgen_bitfield_unit.set(8usize, 2u8,
-                                            {
-                                                let reserved: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(reserved)
-                                                    };
-                                                reserved as u64
-                                            });
-                __bindgen_bitfield_unit.set(10usize, 11u8,
-                                            {
-                                                let w: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(w)
-                                                    };
-                                                w as u64
-                                            });
-                __bindgen_bitfield_unit.set(21usize, 11u8,
-                                            {
-                                                let h: u32 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(h)
-                                                    };
-                                                h as u64
-                                            });
-                __bindgen_bitfield_unit
-            }
-        }
-        #[doc = " Image header it is compatible with"]
-        #[doc = " the result from image converter utility"]
-        #[repr(C)]
-        pub struct lv_img_dsc_t {
-            pub header: lv_img_header_t,
-            pub data_size: u32,
-            pub data: *const u8,
-        }
-        impl Default for lv_img_dsc_t {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        #[repr(C)]
-        pub struct lv_img_transform_dsc_t {
-            pub cfg: lv_img_transform_dsc_t__bindgen_ty_1,
-            pub res: lv_img_transform_dsc_t__bindgen_ty_2,
-            pub tmp: lv_img_transform_dsc_t__bindgen_ty_3,
-        }
-        #[repr(C)]
-        pub struct lv_img_transform_dsc_t__bindgen_ty_1 {
-            pub src: *const ::cty::c_void,
-            pub src_w: lv_coord_t,
-            pub src_h: lv_coord_t,
-            pub pivot_x: lv_coord_t,
-            pub pivot_y: lv_coord_t,
-            pub angle: i16,
-            pub zoom: u16,
-            pub color: lv_color_t,
-            pub cf: lv_img_cf_t,
-            pub antialias: bool,
-        }
-        impl Default for lv_img_transform_dsc_t__bindgen_ty_1 {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        #[repr(C)]
-        pub struct lv_img_transform_dsc_t__bindgen_ty_2 {
-            pub color: lv_color_t,
-            pub opa: lv_opa_t,
-        }
-        impl Default for lv_img_transform_dsc_t__bindgen_ty_2 {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        #[repr(C)]
-        pub struct lv_img_transform_dsc_t__bindgen_ty_3 {
-            pub img_dsc: lv_img_dsc_t,
-            pub pivot_x_256: i32,
-            pub pivot_y_256: i32,
-            pub sinma: i32,
-            pub cosma: i32,
-            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
-            pub zoom_inv: u32,
-            pub xs: lv_coord_t,
-            pub ys: lv_coord_t,
-            pub xs_int: lv_coord_t,
-            pub ys_int: lv_coord_t,
-            pub pxi: u32,
-            pub px_size: u8,
-        }
-        impl Default for lv_img_transform_dsc_t__bindgen_ty_3 {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        impl lv_img_transform_dsc_t__bindgen_ty_3 {
-            #[inline]
-            pub fn chroma_keyed(&self) -> u8 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
-                                               as u8)
-                }
-            }
-            #[inline]
-            pub fn set_chroma_keyed(&mut self, val: u8) {
-                unsafe {
-                    let val: u8 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(0usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn has_alpha(&self) -> u8 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8)
-                                               as u8)
-                }
-            }
-            #[inline]
-            pub fn set_has_alpha(&mut self, val: u8) {
-                unsafe {
-                    let val: u8 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(1usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn native_color(&self) -> u8 {
-                unsafe {
-                    ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8)
-                                               as u8)
-                }
-            }
-            #[inline]
-            pub fn set_native_color(&mut self, val: u8) {
-                unsafe {
-                    let val: u8 = ::core::mem::transmute(val);
-                    self._bitfield_1.set(2usize, 1u8, val as u64)
-                }
-            }
-            #[inline]
-            pub fn new_bitfield_1(chroma_keyed: u8, has_alpha: u8,
-                                  native_color: u8)
-             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
-                let mut __bindgen_bitfield_unit:
-                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
-                    Default::default();
-                __bindgen_bitfield_unit.set(0usize, 1u8,
-                                            {
-                                                let chroma_keyed: u8 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(chroma_keyed)
-                                                    };
-                                                chroma_keyed as u64
-                                            });
-                __bindgen_bitfield_unit.set(1usize, 1u8,
-                                            {
-                                                let has_alpha: u8 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(has_alpha)
-                                                    };
-                                                has_alpha as u64
-                                            });
-                __bindgen_bitfield_unit.set(2usize, 1u8,
-                                            {
-                                                let native_color: u8 =
-                                                    unsafe {
-                                                        ::core::mem::transmute(native_color)
-                                                    };
-                                                native_color as u64
-                                            });
-                __bindgen_bitfield_unit
-            }
-        }
-        impl Default for lv_img_transform_dsc_t {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        #[doc = " Allocate an image buffer in RAM"]
-        #[doc = " - __`w`__: width of image"]
-        #[doc = " - __`h`__: height of image"]
-        #[doc = " - __`cf`__: a color format (`LV_IMG_CF_...`)"]
-        #[doc = " Return: an allocated image, or NULL on failure"]
-        pub fn buf_alloc(w: lv_coord_t, h: lv_coord_t, cf: lv_img_cf_t)
-         -> MynewtResult<*mut lv_img_dsc_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Allocate an image buffer in RAM"]
-                #[doc = " - __`w`__: width of image"]
-                #[doc = " - __`h`__: height of image"]
-                #[doc = " - __`cf`__: a color format (`LV_IMG_CF_...`)"]
-                #[doc = " Return: an allocated image, or NULL on failure"]
-                pub fn lv_img_buf_alloc(w: lv_coord_t, h: lv_coord_t,
-                                        cf: lv_img_cf_t)
-                -> *mut lv_img_dsc_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_img_buf_alloc(w as lv_coord_t, h as lv_coord_t,
-                                     cf as lv_img_cf_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Get the color of an image's pixel"]
-        #[doc = " - __`dsc`__: an image descriptor"]
-        #[doc = " - __`x`__: x coordinate of the point to get"]
-        #[doc = " - __`y`__: x coordinate of the point to get"]
-        #[doc =
-          " - __`color`__: the color of the image. In case of `LV_IMG_CF_ALPHA_1/2/4/8` this color is used."]
-        #[doc = " Not used in other cases."]
-        #[doc = " - __`safe`__: true: check out of bounds"]
-        #[doc = " Return: color of the point"]
-        pub fn buf_get_px_color(dsc: *mut lv_img_dsc_t, x: lv_coord_t,
-                                y: lv_coord_t, color: lv_color_t)
-         -> MynewtResult<lv_color_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Get the color of an image's pixel"]
-                #[doc = " - __`dsc`__: an image descriptor"]
-                #[doc = " - __`x`__: x coordinate of the point to get"]
-                #[doc = " - __`y`__: x coordinate of the point to get"]
-                #[doc =
-                  " - __`color`__: the color of the image. In case of `LV_IMG_CF_ALPHA_1/2/4/8` this color is used."]
-                #[doc = " Not used in other cases."]
-                #[doc = " - __`safe`__: true: check out of bounds"]
-                #[doc = " Return: color of the point"]
-                pub fn lv_img_buf_get_px_color(dsc: *mut lv_img_dsc_t,
-                                               x: lv_coord_t, y: lv_coord_t,
-                                               color: lv_color_t)
-                -> lv_color_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_img_buf_get_px_color(dsc as *mut lv_img_dsc_t,
-                                            x as lv_coord_t, y as lv_coord_t,
-                                            color as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Get the alpha value of an image's pixel"]
-        #[doc = " - __`dsc`__: pointer to an image descriptor"]
-        #[doc = " - __`x`__: x coordinate of the point to set"]
-        #[doc = " - __`y`__: x coordinate of the point to set"]
-        #[doc = " - __`safe`__: true: check out of bounds"]
-        #[doc = " Return: alpha value of the point"]
-        pub fn buf_get_px_alpha(dsc: *mut lv_img_dsc_t, x: lv_coord_t,
-                                y: lv_coord_t) -> MynewtResult<lv_opa_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Get the alpha value of an image's pixel"]
-                #[doc = " - __`dsc`__: pointer to an image descriptor"]
-                #[doc = " - __`x`__: x coordinate of the point to set"]
-                #[doc = " - __`y`__: x coordinate of the point to set"]
-                #[doc = " - __`safe`__: true: check out of bounds"]
-                #[doc = " Return: alpha value of the point"]
-                pub fn lv_img_buf_get_px_alpha(dsc: *mut lv_img_dsc_t,
-                                               x: lv_coord_t, y: lv_coord_t)
-                -> lv_opa_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_img_buf_get_px_alpha(dsc as *mut lv_img_dsc_t,
-                                            x as lv_coord_t, y as lv_coord_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Set the color of a pixel of an image. The alpha channel won't be affected."]
-        #[doc = " - __`dsc`__: pointer to an image descriptor"]
-        #[doc = " - __`x`__: x coordinate of the point to set"]
-        #[doc = " - __`y`__: x coordinate of the point to set"]
-        #[doc = " - __`c`__: color of the point"]
-        #[doc = " - __`safe`__: true: check out of bounds"]
-        pub fn buf_set_px_color(dsc: *mut lv_img_dsc_t, x: lv_coord_t,
-                                y: lv_coord_t, c: lv_color_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Set the color of a pixel of an image. The alpha channel won't be affected."]
-                #[doc = " - __`dsc`__: pointer to an image descriptor"]
-                #[doc = " - __`x`__: x coordinate of the point to set"]
-                #[doc = " - __`y`__: x coordinate of the point to set"]
-                #[doc = " - __`c`__: color of the point"]
-                #[doc = " - __`safe`__: true: check out of bounds"]
-                pub fn lv_img_buf_set_px_color(dsc: *mut lv_img_dsc_t,
-                                               x: lv_coord_t, y: lv_coord_t,
-                                               c: lv_color_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_img_buf_set_px_color(dsc as *mut lv_img_dsc_t,
-                                        x as lv_coord_t, y as lv_coord_t,
-                                        c as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc =
-          " Set the alpha value of a pixel of an image. The color won't be affected"]
-        #[doc = " - __`dsc`__: pointer to an image descriptor"]
-        #[doc = " - __`x`__: x coordinate of the point to set"]
-        #[doc = " - __`y`__: x coordinate of the point to set"]
-        #[doc = " - __`opa`__: the desired opacity"]
-        #[doc = " - __`safe`__: true: check out of bounds"]
-        pub fn buf_set_px_alpha(dsc: *mut lv_img_dsc_t, x: lv_coord_t,
-                                y: lv_coord_t, opa: lv_opa_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Set the alpha value of a pixel of an image. The color won't be affected"]
-                #[doc = " - __`dsc`__: pointer to an image descriptor"]
-                #[doc = " - __`x`__: x coordinate of the point to set"]
-                #[doc = " - __`y`__: x coordinate of the point to set"]
-                #[doc = " - __`opa`__: the desired opacity"]
-                #[doc = " - __`safe`__: true: check out of bounds"]
-                pub fn lv_img_buf_set_px_alpha(dsc: *mut lv_img_dsc_t,
-                                               x: lv_coord_t, y: lv_coord_t,
-                                               opa: lv_opa_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_img_buf_set_px_alpha(dsc as *mut lv_img_dsc_t,
-                                        x as lv_coord_t, y as lv_coord_t,
-                                        opa as lv_opa_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc =
-          " Set the palette color of an indexed image. Valid only for `LV_IMG_CF_INDEXED1/2/4/8`"]
-        #[doc = " - __`dsc`__: pointer to an image descriptor"]
-        #[doc = " - __`id`__: the palette color to set:"]
-        #[doc = "   - for `LV_IMG_CF_INDEXED1`: 0..1"]
-        #[doc = "   - for `LV_IMG_CF_INDEXED2`: 0..3"]
-        #[doc = "   - for `LV_IMG_CF_INDEXED4`: 0..15"]
-        #[doc = "   - for `LV_IMG_CF_INDEXED8`: 0..255"]
-        #[doc = " - __`c`__: the color to set"]
-        pub fn buf_set_palette(dsc: *mut lv_img_dsc_t, id: u8, c: lv_color_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Set the palette color of an indexed image. Valid only for `LV_IMG_CF_INDEXED1/2/4/8`"]
-                #[doc = " - __`dsc`__: pointer to an image descriptor"]
-                #[doc = " - __`id`__: the palette color to set:"]
-                #[doc = "   - for `LV_IMG_CF_INDEXED1`: 0..1"]
-                #[doc = "   - for `LV_IMG_CF_INDEXED2`: 0..3"]
-                #[doc = "   - for `LV_IMG_CF_INDEXED4`: 0..15"]
-                #[doc = "   - for `LV_IMG_CF_INDEXED8`: 0..255"]
-                #[doc = " - __`c`__: the color to set"]
-                pub fn lv_img_buf_set_palette(dsc: *mut lv_img_dsc_t, id: u8,
-                                              c: lv_color_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_img_buf_set_palette(dsc as *mut lv_img_dsc_t, id as u8,
-                                       c as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Free an allocated image buffer"]
-        #[doc = " - __`dsc`__: image buffer to free"]
-        pub fn buf_free(dsc: *mut lv_img_dsc_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Free an allocated image buffer"]
-                #[doc = " - __`dsc`__: image buffer to free"]
-                pub fn lv_img_buf_free(dsc: *mut lv_img_dsc_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_img_buf_free(dsc as *mut lv_img_dsc_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc =
-          " Get the memory consumption of a raw bitmap, given color format and dimensions."]
-        #[doc = " - __`w`__: width"]
-        #[doc = " - __`h`__: height"]
-        #[doc = " - __`cf`__: color format"]
-        #[doc = " Return: size in bytes"]
-        pub fn buf_get_img_size(w: lv_coord_t, h: lv_coord_t, cf: lv_img_cf_t)
-         -> MynewtResult<u32> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Get the memory consumption of a raw bitmap, given color format and dimensions."]
-                #[doc = " - __`w`__: width"]
-                #[doc = " - __`h`__: height"]
-                #[doc = " - __`cf`__: color format"]
-                #[doc = " Return: size in bytes"]
-                pub fn lv_img_buf_get_img_size(w: lv_coord_t, h: lv_coord_t,
-                                               cf: lv_img_cf_t)
-                -> u32;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_img_buf_get_img_size(w as lv_coord_t, h as lv_coord_t,
-                                            cf as lv_img_cf_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        pub const LV_IMG_SRC_VARIABLE: _bindgen_ty_24 = 0;
-        #[doc = " Binary/C variable"]
-        pub const LV_IMG_SRC_FILE: _bindgen_ty_24 = 1;
-        #[doc = " File in filesystem"]
-        pub const LV_IMG_SRC_SYMBOL: _bindgen_ty_24 = 2;
-        #[doc = " Symbol (@ref lv_symbol_def.h)"]
-        pub const LV_IMG_SRC_UNKNOWN: _bindgen_ty_24 = 3;
-        #[doc = " Source of image."]
-        pub type _bindgen_ty_24 = u32;
-        pub type lv_img_src_t = u8;
-        #[doc = " Get info from an image and store in the `header`"]
-        #[doc =
-          " - __`src`__: the image source. Can be a pointer to a C array or a file name (Use"]
-        #[doc = " `lv_img_src_get_type` to determine the type)"]
-        #[doc = " - __`header`__: store the info here"]
-        #[doc =
-          " Return: LV_RES_OK: info written correctly; LV_RES_INV: failed"]
-        pub type lv_img_decoder_info_f_t =
-         ::core::option::Option<unsafe extern "C" fn(decoder:
-                                                         *mut _lv_img_decoder,
-                                                     src:
-                                                         *const ::cty::c_void,
-                                                     header:
-                                                         *mut lv_img_header_t)
-                                    -> lv_res_t>;
-        #[doc =
-          " Open an image for decoding. Prepare it as it is required to read it later"]
-        #[doc =
-          " - __`decoder`__: pointer to the decoder the function associated with"]
-        #[doc =
-          " - __`dsc`__: pointer to decoder descriptor. `src`, `style` are already initialized in it."]
-        pub type lv_img_decoder_open_f_t =
-         ::core::option::Option<unsafe extern "C" fn(decoder:
-                                                         *mut _lv_img_decoder,
-                                                     dsc:
-                                                         *mut _lv_img_decoder_dsc)
-                                    -> lv_res_t>;
-        #[doc =
-          " Decode `len` pixels starting from the given `x`, `y` coordinates and store them in `buf`."]
-        #[doc =
-          " Required only if the \"open\" function can't return with the whole decoded pixel array."]
-        #[doc =
-          " - __`decoder`__: pointer to the decoder the function associated with"]
-        #[doc = " - __`dsc`__: pointer to decoder descriptor"]
-        #[doc = " - __`x`__: start x coordinate"]
-        #[doc = " - __`y`__: start y coordinate"]
-        #[doc = " - __`len`__: number of pixels to decode"]
-        #[doc = " - __`buf`__: a buffer to store the decoded pixels"]
-        #[doc = " Return: LV_RES_OK: ok; LV_RES_INV: failed"]
-        pub type lv_img_decoder_read_line_f_t =
-         ::core::option::Option<unsafe extern "C" fn(decoder:
-                                                         *mut _lv_img_decoder,
-                                                     dsc:
-                                                         *mut _lv_img_decoder_dsc,
-                                                     x: lv_coord_t,
-                                                     y: lv_coord_t,
-                                                     len: lv_coord_t,
-                                                     buf: *mut u8)
-                                    -> lv_res_t>;
-        #[doc = " Close the pending decoding. Free resources etc."]
-        #[doc =
-          " - __`decoder`__: pointer to the decoder the function associated with"]
-        #[doc = " - __`dsc`__: pointer to decoder descriptor"]
-        pub type lv_img_decoder_close_f_t =
-         ::core::option::Option<unsafe extern "C" fn(decoder:
-                                                         *mut _lv_img_decoder,
-                                                     dsc:
-                                                         *mut _lv_img_decoder_dsc)>;
-        #[repr(C)]
-        pub struct _lv_img_decoder {
-            pub info_cb: lv_img_decoder_info_f_t,
-            pub open_cb: lv_img_decoder_open_f_t,
-            pub read_line_cb: lv_img_decoder_read_line_f_t,
-            pub close_cb: lv_img_decoder_close_f_t,
-            pub user_data: lv_img_decoder_user_data_t,
-        }
-        impl Default for _lv_img_decoder {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        pub type lv_img_decoder_t = _lv_img_decoder;
-        #[doc =
-          "Describe an image decoding session. Stores data about the decoding"]
-        #[repr(C)]
-        pub struct _lv_img_decoder_dsc {
-            #[doc = "The decoder which was able to open the image source"]
-            pub decoder: *mut lv_img_decoder_t,
-            #[doc =
-              "The image source. A file path like \"S:my_img.png\" or pointer to an `lv_img_dsc_t` variable"]
-            pub src: *const ::cty::c_void,
-            #[doc = "Style to draw the image."]
-            pub color: lv_color_t,
-            #[doc =
-              "Type of the source: file or variable. Can be set in `open` function if required"]
-            pub src_type: lv_img_src_t,
-            #[doc =
-              "Info about the opened image: color format, size, etc. MUST be set in `open` function"]
-            pub header: lv_img_header_t,
-            #[doc =
-              " Pointer to a buffer where the image's data (pixels) are stored in a decoded, plain format."]
-            #[doc = "  MUST be set in `open` function"]
-            pub img_data: *const u8,
-            #[doc = " How much time did it take to open the image. [ms]"]
-            #[doc =
-              "  If not set `lv_img_cache` will measure and set the time to open"]
-            pub time_to_open: u32,
-            #[doc =
-              "A text to display instead of the image when the image can't be opened."]
-            #[doc = " Can be set in `open` function or set NULL."]
-            pub error_msg: *const ::cty::c_char,
-            #[doc = "Store any custom data here is required"]
-            pub user_data: *mut ::cty::c_void,
-        }
-        impl Default for _lv_img_decoder_dsc {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        pub type lv_img_decoder_dsc_t = _lv_img_decoder_dsc;
-        #[doc = " Get information about an image."]
-        #[doc =
-          " Try the created image decoder one by one. Once one is able to get info that info will be used."]
-        #[doc = " - __`src`__: the image source. Can be"]
-        #[doc =
-          "  1) File name: E.g. \"S:folder/img1.png\" (The drivers needs to registered via `lv_fs_add_drv()`)"]
-        #[doc = "  2) Variable: Pointer to an `lv_img_dsc_t` variable"]
-        #[doc = "  3) Symbol: E.g. `LV_SYMBOL_OK`"]
-        #[doc = " - __`header`__: the image info will be stored here"]
-        #[doc =
-          " Return: LV_RES_OK: success; LV_RES_INV: wasn't able to get info about the image"]
-        pub fn decoder_get_info(src: &Strn, header: *mut lv_img_header_t)
-         -> MynewtResult<lv_res_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Get information about an image."]
-                #[doc =
-                  " Try the created image decoder one by one. Once one is able to get info that info will be used."]
-                #[doc = " - __`src`__: the image source. Can be"]
-                #[doc =
-                  "  1) File name: E.g. \"S:folder/img1.png\" (The drivers needs to registered via `lv_fs_add_drv()`)"]
-                #[doc =
-                  "  2) Variable: Pointer to an `lv_img_dsc_t` variable"]
-                #[doc = "  3) Symbol: E.g. `LV_SYMBOL_OK`"]
-                #[doc = " - __`header`__: the image info will be stored here"]
-                #[doc =
-                  " Return: LV_RES_OK: success; LV_RES_INV: wasn't able to get info about the image"]
-                pub fn lv_img_decoder_get_info(src: *const ::cty::c_char,
-                                               header: *mut lv_img_header_t)
-                -> lv_res_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            src.validate();
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_img_decoder_get_info(src.as_ptr() as
-                                                *const ::cty::c_char,
-                                            header as *mut lv_img_header_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Open an image."]
-        #[doc =
-          " Try the created image decoder one by one. Once one is able to open the image that decoder is save in `dsc`"]
-        #[doc =
-          " - __`dsc`__: describe a decoding session. Simply a pointer to an `lv_img_decoder_dsc_t` variable."]
-        #[doc = " - __`src`__: the image source. Can be"]
-        #[doc =
-          "  1) File name: E.g. \"S:folder/img1.png\" (The drivers needs to registered via `lv_fs_add_drv()`)"]
-        #[doc = "  2) Variable: Pointer to an `lv_img_dsc_t` variable"]
-        #[doc = "  3) Symbol: E.g. `LV_SYMBOL_OK`"]
-        #[doc =
-          " - __`color`__: The color of the image with `LV_IMG_CF_ALPHA_...`"]
-        #[doc =
-          " Return: LV_RES_OK: opened the image. `dsc->img_data` and `dsc->header` are set."]
-        #[doc =
-          "         LV_RES_INV: none of the registered image decoders were able to open the image."]
-        pub fn decoder_open(dsc: *mut lv_img_decoder_dsc_t,
-                            src: *const ::cty::c_void, color: lv_color_t)
-         -> MynewtResult<lv_res_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Open an image."]
-                #[doc =
-                  " Try the created image decoder one by one. Once one is able to open the image that decoder is save in `dsc`"]
-                #[doc =
-                  " - __`dsc`__: describe a decoding session. Simply a pointer to an `lv_img_decoder_dsc_t` variable."]
-                #[doc = " - __`src`__: the image source. Can be"]
-                #[doc =
-                  "  1) File name: E.g. \"S:folder/img1.png\" (The drivers needs to registered via `lv_fs_add_drv()`)"]
-                #[doc =
-                  "  2) Variable: Pointer to an `lv_img_dsc_t` variable"]
-                #[doc = "  3) Symbol: E.g. `LV_SYMBOL_OK`"]
-                #[doc =
-                  " - __`color`__: The color of the image with `LV_IMG_CF_ALPHA_...`"]
-                #[doc =
-                  " Return: LV_RES_OK: opened the image. `dsc->img_data` and `dsc->header` are set."]
-                #[doc =
-                  "         LV_RES_INV: none of the registered image decoders were able to open the image."]
-                pub fn lv_img_decoder_open(dsc: *mut lv_img_decoder_dsc_t,
-                                           src: *const ::cty::c_void,
-                                           color: lv_color_t)
-                -> lv_res_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_img_decoder_open(dsc as *mut lv_img_decoder_dsc_t,
-                                        src as *const ::cty::c_void,
-                                        color as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Read a line from an opened image"]
-        #[doc =
-          " - __`dsc`__: pointer to `lv_img_decoder_dsc_t` used in `lv_img_decoder_open`"]
-        #[doc = " - __`x`__: start X coordinate (from left)"]
-        #[doc = " - __`y`__: start Y coordinate (from top)"]
-        #[doc = " - __`len`__: number of pixels to read"]
-        #[doc = " - __`buf`__: store the data here"]
-        #[doc = " Return: LV_RES_OK: success; LV_RES_INV: an error occurred"]
-        pub fn decoder_read_line(dsc: *mut lv_img_decoder_dsc_t,
-                                 x: lv_coord_t, y: lv_coord_t,
-                                 len: lv_coord_t, buf: *mut u8)
-         -> MynewtResult<lv_res_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Read a line from an opened image"]
-                #[doc =
-                  " - __`dsc`__: pointer to `lv_img_decoder_dsc_t` used in `lv_img_decoder_open`"]
-                #[doc = " - __`x`__: start X coordinate (from left)"]
-                #[doc = " - __`y`__: start Y coordinate (from top)"]
-                #[doc = " - __`len`__: number of pixels to read"]
-                #[doc = " - __`buf`__: store the data here"]
-                #[doc =
-                  " Return: LV_RES_OK: success; LV_RES_INV: an error occurred"]
-                pub fn lv_img_decoder_read_line(dsc:
-                                                    *mut lv_img_decoder_dsc_t,
-                                                x: lv_coord_t, y: lv_coord_t,
-                                                len: lv_coord_t, buf: *mut u8)
-                -> lv_res_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_img_decoder_read_line(dsc as *mut lv_img_decoder_dsc_t,
-                                             x as lv_coord_t, y as lv_coord_t,
-                                             len as lv_coord_t,
-                                             buf as *mut u8);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Close a decoding session"]
-        #[doc =
-          " - __`dsc`__: pointer to `lv_img_decoder_dsc_t` used in `lv_img_decoder_open`"]
-        pub fn decoder_close(dsc: *mut lv_img_decoder_dsc_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Close a decoding session"]
-                #[doc =
-                  " - __`dsc`__: pointer to `lv_img_decoder_dsc_t` used in `lv_img_decoder_open`"]
-                pub fn lv_img_decoder_close(dsc: *mut lv_img_decoder_dsc_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_img_decoder_close(dsc as *mut lv_img_decoder_dsc_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Create a new image decoder"]
-        #[doc = " Return: pointer to the new image decoder"]
-        pub fn decoder_create() -> MynewtResult<*mut lv_img_decoder_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Create a new image decoder"]
-                #[doc = " Return: pointer to the new image decoder"]
-                pub fn lv_img_decoder_create()
-                -> *mut lv_img_decoder_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_img_decoder_create();
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Delete an image decoder"]
-        #[doc = " - __`decoder`__: pointer to an image decoder"]
-        pub fn decoder_delete(decoder: *mut lv_img_decoder_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Delete an image decoder"]
-                #[doc = " - __`decoder`__: pointer to an image decoder"]
-                pub fn lv_img_decoder_delete(decoder: *mut lv_img_decoder_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_img_decoder_delete(decoder as *mut lv_img_decoder_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Set a callback to get information about the image"]
-        #[doc = " - __`decoder`__: pointer to an image decoder"]
-        #[doc =
-          " - __`info_cb`__: a function to collect info about an image (fill an `lv_img_header_t` struct)"]
-        pub fn decoder_set_info_cb(decoder: *mut lv_img_decoder_t,
-                                   info_cb: lv_img_decoder_info_f_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set a callback to get information about the image"]
-                #[doc = " - __`decoder`__: pointer to an image decoder"]
-                #[doc =
-                  " - __`info_cb`__: a function to collect info about an image (fill an `lv_img_header_t` struct)"]
-                pub fn lv_img_decoder_set_info_cb(decoder:
-                                                      *mut lv_img_decoder_t,
-                                                  info_cb:
-                                                      lv_img_decoder_info_f_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_img_decoder_set_info_cb(decoder as *mut lv_img_decoder_t,
-                                           info_cb as
-                                               lv_img_decoder_info_f_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Set a callback to open an image"]
-        #[doc = " - __`decoder`__: pointer to an image decoder"]
-        #[doc = " - __`open_cb`__: a function to open an image"]
-        pub fn decoder_set_open_cb(decoder: *mut lv_img_decoder_t,
-                                   open_cb: lv_img_decoder_open_f_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set a callback to open an image"]
-                #[doc = " - __`decoder`__: pointer to an image decoder"]
-                #[doc = " - __`open_cb`__: a function to open an image"]
-                pub fn lv_img_decoder_set_open_cb(decoder:
-                                                      *mut lv_img_decoder_t,
-                                                  open_cb:
-                                                      lv_img_decoder_open_f_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_img_decoder_set_open_cb(decoder as *mut lv_img_decoder_t,
-                                           open_cb as
-                                               lv_img_decoder_open_f_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Set a callback to a decoded line of an image"]
-        #[doc = " - __`decoder`__: pointer to an image decoder"]
-        #[doc =
-          " - __`read_line_cb`__: a function to read a line of an image"]
-        pub fn decoder_set_read_line_cb(decoder: *mut lv_img_decoder_t,
-                                        read_line_cb:
-                                            lv_img_decoder_read_line_f_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Set a callback to a decoded line of an image"]
-                #[doc = " - __`decoder`__: pointer to an image decoder"]
-                #[doc =
-                  " - __`read_line_cb`__: a function to read a line of an image"]
-                pub fn lv_img_decoder_set_read_line_cb(decoder:
-                                                           *mut lv_img_decoder_t,
-                                                       read_line_cb:
-                                                           lv_img_decoder_read_line_f_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_img_decoder_set_read_line_cb(decoder as
-                                                    *mut lv_img_decoder_t,
-                                                read_line_cb as
-                                                    lv_img_decoder_read_line_f_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc =
-          " Set a callback to close a decoding session. E.g. close files and free other resources."]
-        #[doc = " - __`decoder`__: pointer to an image decoder"]
-        #[doc = " - __`close_cb`__: a function to close a decoding session"]
-        pub fn decoder_set_close_cb(decoder: *mut lv_img_decoder_t,
-                                    close_cb: lv_img_decoder_close_f_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Set a callback to close a decoding session. E.g. close files and free other resources."]
-                #[doc = " - __`decoder`__: pointer to an image decoder"]
-                #[doc =
-                  " - __`close_cb`__: a function to close a decoding session"]
-                pub fn lv_img_decoder_set_close_cb(decoder:
-                                                       *mut lv_img_decoder_t,
-                                                   close_cb:
-                                                       lv_img_decoder_close_f_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_img_decoder_set_close_cb(decoder as *mut lv_img_decoder_t,
-                                            close_cb as
-                                                lv_img_decoder_close_f_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Get info about a built-in image"]
-        #[doc = " - __`decoder`__: the decoder where this function belongs"]
-        #[doc =
-          " - __`src`__: the image source: pointer to an `lv_img_dsc_t` variable, a file path or a symbol"]
-        #[doc = " - __`header`__: store the image data here"]
-        #[doc =
-          " Return: LV_RES_OK: the info is successfully stored in `header`; LV_RES_INV: unknown format or other error."]
-        pub fn decoder_built_in_info(decoder: *mut lv_img_decoder_t,
-                                     src: *const ::cty::c_void,
-                                     header: *mut lv_img_header_t)
-         -> MynewtResult<lv_res_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Get info about a built-in image"]
-                #[doc =
-                  " - __`decoder`__: the decoder where this function belongs"]
-                #[doc =
-                  " - __`src`__: the image source: pointer to an `lv_img_dsc_t` variable, a file path or a symbol"]
-                #[doc = " - __`header`__: store the image data here"]
-                #[doc =
-                  " Return: LV_RES_OK: the info is successfully stored in `header`; LV_RES_INV: unknown format or other error."]
-                pub fn lv_img_decoder_built_in_info(decoder:
-                                                        *mut lv_img_decoder_t,
-                                                    src: *const ::cty::c_void,
-                                                    header:
-                                                        *mut lv_img_header_t)
-                -> lv_res_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_img_decoder_built_in_info(decoder as
-                                                     *mut lv_img_decoder_t,
-                                                 src as *const ::cty::c_void,
-                                                 header as
-                                                     *mut lv_img_header_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Open a built in image"]
-        #[doc = " - __`decoder`__: the decoder where this function belongs"]
-        #[doc =
-          " - __`dsc`__: pointer to decoder descriptor. `src`, `style` are already initialized in it."]
-        #[doc =
-          " Return: LV_RES_OK: the info is successfully stored in `header`; LV_RES_INV: unknown format or other error."]
-        pub fn decoder_built_in_open(decoder: *mut lv_img_decoder_t,
-                                     dsc: *mut lv_img_decoder_dsc_t)
-         -> MynewtResult<lv_res_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Open a built in image"]
-                #[doc =
-                  " - __`decoder`__: the decoder where this function belongs"]
-                #[doc =
-                  " - __`dsc`__: pointer to decoder descriptor. `src`, `style` are already initialized in it."]
-                #[doc =
-                  " Return: LV_RES_OK: the info is successfully stored in `header`; LV_RES_INV: unknown format or other error."]
-                pub fn lv_img_decoder_built_in_open(decoder:
-                                                        *mut lv_img_decoder_t,
-                                                    dsc:
-                                                        *mut lv_img_decoder_dsc_t)
-                -> lv_res_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_img_decoder_built_in_open(decoder as
-                                                     *mut lv_img_decoder_t,
-                                                 dsc as
-                                                     *mut lv_img_decoder_dsc_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Decode `len` pixels starting from the given `x`, `y` coordinates and store them in `buf`."]
-        #[doc =
-          " Required only if the \"open\" function can't return with the whole decoded pixel array."]
-        #[doc =
-          " - __`decoder`__: pointer to the decoder the function associated with"]
-        #[doc = " - __`dsc`__: pointer to decoder descriptor"]
-        #[doc = " - __`x`__: start x coordinate"]
-        #[doc = " - __`y`__: start y coordinate"]
-        #[doc = " - __`len`__: number of pixels to decode"]
-        #[doc = " - __`buf`__: a buffer to store the decoded pixels"]
-        #[doc = " Return: LV_RES_OK: ok; LV_RES_INV: failed"]
-        pub fn decoder_built_in_read_line(decoder: *mut lv_img_decoder_t,
-                                          dsc: *mut lv_img_decoder_dsc_t,
-                                          x: lv_coord_t, y: lv_coord_t,
-                                          len: lv_coord_t, buf: *mut u8)
-         -> MynewtResult<lv_res_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Decode `len` pixels starting from the given `x`, `y` coordinates and store them in `buf`."]
-                #[doc =
-                  " Required only if the \"open\" function can't return with the whole decoded pixel array."]
-                #[doc =
-                  " - __`decoder`__: pointer to the decoder the function associated with"]
-                #[doc = " - __`dsc`__: pointer to decoder descriptor"]
-                #[doc = " - __`x`__: start x coordinate"]
-                #[doc = " - __`y`__: start y coordinate"]
-                #[doc = " - __`len`__: number of pixels to decode"]
-                #[doc = " - __`buf`__: a buffer to store the decoded pixels"]
-                #[doc = " Return: LV_RES_OK: ok; LV_RES_INV: failed"]
-                pub fn lv_img_decoder_built_in_read_line(decoder:
-                                                             *mut lv_img_decoder_t,
-                                                         dsc:
-                                                             *mut lv_img_decoder_dsc_t,
-                                                         x: lv_coord_t,
-                                                         y: lv_coord_t,
-                                                         len: lv_coord_t,
-                                                         buf: *mut u8)
-                -> lv_res_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_img_decoder_built_in_read_line(decoder as
-                                                          *mut lv_img_decoder_t,
-                                                      dsc as
-                                                          *mut lv_img_decoder_dsc_t,
-                                                      x as lv_coord_t,
-                                                      y as lv_coord_t,
-                                                      len as lv_coord_t,
-                                                      buf as *mut u8);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Close the pending decoding. Free resources etc."]
-        #[doc =
-          " - __`decoder`__: pointer to the decoder the function associated with"]
-        #[doc = " - __`dsc`__: pointer to decoder descriptor"]
-        pub fn decoder_built_in_close(decoder: *mut lv_img_decoder_t,
-                                      dsc: *mut lv_img_decoder_dsc_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Close the pending decoding. Free resources etc."]
-                #[doc =
-                  " - __`decoder`__: pointer to the decoder the function associated with"]
-                #[doc = " - __`dsc`__: pointer to decoder descriptor"]
-                pub fn lv_img_decoder_built_in_close(decoder:
-                                                         *mut lv_img_decoder_t,
-                                                     dsc:
-                                                         *mut lv_img_decoder_dsc_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_img_decoder_built_in_close(decoder as
-                                                  *mut lv_img_decoder_t,
-                                              dsc as
-                                                  *mut lv_img_decoder_dsc_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         #[doc = "      TYPEDEFS"]
         #[repr(C)]
         pub struct lv_draw_img_dsc_t {
@@ -8561,175 +8090,7 @@ pub mod core {
                 __bindgen_bitfield_unit
             }
         }
-        #[doc = " GLOBAL PROTOTYPES"]
-        pub fn img_dsc_init(dsc: *mut lv_draw_img_dsc_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " GLOBAL PROTOTYPES"]
-                pub fn lv_draw_img_dsc_init(dsc: *mut lv_draw_img_dsc_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_draw_img_dsc_init(dsc as *mut lv_draw_img_dsc_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Draw an image"]
-        #[doc = " - __`coords`__: the coordinates of the image"]
-        #[doc = " - __`mask`__: the image will be drawn only in this area"]
-        #[doc =
-          " - __`src`__: pointer to a lv_color_t array which contains the pixels of the image"]
-        #[doc =
-          " - __`dsc`__: pointer to an initialized `lv_draw_img_dsc_t` variable"]
-        pub fn img(coords: *const lv_area_t, mask: *const lv_area_t,
-                   src: *const ::cty::c_void, dsc: *const lv_draw_img_dsc_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Draw an image"]
-                #[doc = " - __`coords`__: the coordinates of the image"]
-                #[doc =
-                  " - __`mask`__: the image will be drawn only in this area"]
-                #[doc =
-                  " - __`src`__: pointer to a lv_color_t array which contains the pixels of the image"]
-                #[doc =
-                  " - __`dsc`__: pointer to an initialized `lv_draw_img_dsc_t` variable"]
-                pub fn lv_draw_img(coords: *const lv_area_t,
-                                   mask: *const lv_area_t,
-                                   src: *const ::cty::c_void,
-                                   dsc: *const lv_draw_img_dsc_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_draw_img(coords as *const lv_area_t,
-                            mask as *const lv_area_t,
-                            src as *const ::cty::c_void,
-                            dsc as *const lv_draw_img_dsc_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Get the type of an image source"]
-        #[doc = " - __`src`__: pointer to an image source:"]
-        #[doc =
-          "  - pointer to an 'lv_img_t' variable (image stored internally and compiled into the code)"]
-        #[doc = "  - a path to a file (e.g. \"S:/folder/image.bin\")"]
-        #[doc = "  - or a symbol (e.g. LV_SYMBOL_CLOSE)"]
-        #[doc =
-          " Return: type of the image source LV_IMG_SRC_VARIABLE/FILE/SYMBOL/UNKNOWN"]
-        pub fn src_get_type(src: *const ::cty::c_void)
-         -> MynewtResult<lv_img_src_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Get the type of an image source"]
-                #[doc = " - __`src`__: pointer to an image source:"]
-                #[doc =
-                  "  - pointer to an 'lv_img_t' variable (image stored internally and compiled into the code)"]
-                #[doc = "  - a path to a file (e.g. \"S:/folder/image.bin\")"]
-                #[doc = "  - or a symbol (e.g. LV_SYMBOL_CLOSE)"]
-                #[doc =
-                  " Return: type of the image source LV_IMG_SRC_VARIABLE/FILE/SYMBOL/UNKNOWN"]
-                pub fn lv_img_src_get_type(src: *const ::cty::c_void)
-                -> lv_img_src_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_img_src_get_type(src as *const ::cty::c_void);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Get the pixel size of a color format in bits"]
-        #[doc = " - __`cf`__: a color format (`LV_IMG_CF_...`)"]
-        #[doc = " Return: the pixel size in bits"]
-        pub fn cf_get_px_size(cf: lv_img_cf_t) -> MynewtResult<u8> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Get the pixel size of a color format in bits"]
-                #[doc = " - __`cf`__: a color format (`LV_IMG_CF_...`)"]
-                #[doc = " Return: the pixel size in bits"]
-                pub fn lv_img_cf_get_px_size(cf: lv_img_cf_t)
-                -> u8;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_img_cf_get_px_size(cf as lv_img_cf_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Check if a color format is chroma keyed or not"]
-        #[doc = " - __`cf`__: a color format (`LV_IMG_CF_...`)"]
-        #[doc = " Return: true: chroma keyed; false: not chroma keyed"]
-        pub fn cf_is_chroma_keyed(cf: lv_img_cf_t) -> MynewtResult<bool> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Check if a color format is chroma keyed or not"]
-                #[doc = " - __`cf`__: a color format (`LV_IMG_CF_...`)"]
-                #[doc =
-                  " Return: true: chroma keyed; false: not chroma keyed"]
-                pub fn lv_img_cf_is_chroma_keyed(cf: lv_img_cf_t)
-                -> bool;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_img_cf_is_chroma_keyed(cf as lv_img_cf_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Check if a color format has alpha channel or not"]
-        #[doc = " - __`cf`__: a color format (`LV_IMG_CF_...`)"]
-        #[doc =
-          " Return: true: has alpha channel; false: doesn't have alpha channel"]
-        pub fn cf_has_alpha(cf: lv_img_cf_t) -> MynewtResult<bool> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Check if a color format has alpha channel or not"]
-                #[doc = " - __`cf`__: a color format (`LV_IMG_CF_...`)"]
-                #[doc =
-                  " Return: true: has alpha channel; false: doesn't have alpha channel"]
-                pub fn lv_img_cf_has_alpha(cf: lv_img_cf_t)
-                -> bool;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_img_cf_has_alpha(cf as lv_img_cf_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = "< Draw the main portion of the object"]
-        pub const LV_DESIGN_DRAW_MAIN: _bindgen_ty_25 = 0;
-        #[doc = "< Draw extras on the object"]
-        pub const LV_DESIGN_DRAW_POST: _bindgen_ty_25 = 1;
-        #[doc = "< Check if the object fully covers the 'mask_p' area"]
-        pub const LV_DESIGN_COVER_CHK: _bindgen_ty_25 = 2;
-        #[doc = " Design modes"]
-        pub type _bindgen_ty_25 = u32;
         pub type lv_design_mode_t = u8;
-        #[doc = "< Draw ready"]
-        pub const LV_DESIGN_RES_OK: _bindgen_ty_26 = 0;
-        #[doc =
-          "< Returned on `LV_DESIGN_COVER_CHK` if the areas is fully covered"]
-        pub const LV_DESIGN_RES_COVER: _bindgen_ty_26 = 1;
-        #[doc =
-          "< Returned on `LV_DESIGN_COVER_CHK` if the areas is not covered"]
-        pub const LV_DESIGN_RES_NOT_COVER: _bindgen_ty_26 = 2;
-        #[doc =
-          "< Returned on `LV_DESIGN_COVER_CHK` if the areas is masked out (children also not cover)"]
-        pub const LV_DESIGN_RES_MASKED: _bindgen_ty_26 = 3;
-        #[doc = " Design results"]
-        pub type _bindgen_ty_26 = u32;
         pub type lv_design_res_t = u8;
         #[doc =
           " The design callback is used to draw the object on the screen."]
@@ -8741,50 +8102,6 @@ pub mod core {
                                                          *const lv_area_t,
                                                      mode: lv_design_mode_t)
                                     -> lv_design_res_t>;
-        #[doc = "< The object has been pressed"]
-        pub const LV_EVENT_PRESSED: _bindgen_ty_27 = 0;
-        #[doc =
-          "< The object is being pressed (called continuously while pressing)"]
-        pub const LV_EVENT_PRESSING: _bindgen_ty_27 = 1;
-        #[doc =
-          "< User is still pressing but slid cursor/finger off of the object"]
-        pub const LV_EVENT_PRESS_LOST: _bindgen_ty_27 = 2;
-        #[doc =
-          "< User pressed object for a short period of time, then released it. Not called if dragged."]
-        pub const LV_EVENT_SHORT_CLICKED: _bindgen_ty_27 = 3;
-        #[doc =
-          "< Object has been pressed for at least `LV_INDEV_LONG_PRESS_TIME`.  Not called if dragged."]
-        pub const LV_EVENT_LONG_PRESSED: _bindgen_ty_27 = 4;
-        #[doc = "< Called after `LV_INDEV_LONG_PRESS_TIME` in every"]
-        #[doc = "`LV_INDEV_LONG_PRESS_REP_TIME` ms.  Not called if dragged."]
-        pub const LV_EVENT_LONG_PRESSED_REPEAT: _bindgen_ty_27 = 5;
-        #[doc =
-          "< Called on release if not dragged (regardless to long press)"]
-        pub const LV_EVENT_CLICKED: _bindgen_ty_27 = 6;
-        #[doc = "< Called in every cases when the object has been released"]
-        pub const LV_EVENT_RELEASED: _bindgen_ty_27 = 7;
-        pub const LV_EVENT_DRAG_BEGIN: _bindgen_ty_27 = 8;
-        pub const LV_EVENT_DRAG_END: _bindgen_ty_27 = 9;
-        pub const LV_EVENT_DRAG_THROW_BEGIN: _bindgen_ty_27 = 10;
-        #[doc = "< The object has been gesture"]
-        pub const LV_EVENT_GESTURE: _bindgen_ty_27 = 11;
-        pub const LV_EVENT_KEY: _bindgen_ty_27 = 12;
-        pub const LV_EVENT_FOCUSED: _bindgen_ty_27 = 13;
-        pub const LV_EVENT_DEFOCUSED: _bindgen_ty_27 = 14;
-        pub const LV_EVENT_LEAVE: _bindgen_ty_27 = 15;
-        #[doc = "< The object's value has changed (i.e. slider moved)"]
-        pub const LV_EVENT_VALUE_CHANGED: _bindgen_ty_27 = 16;
-        pub const LV_EVENT_INSERT: _bindgen_ty_27 = 17;
-        pub const LV_EVENT_REFRESH: _bindgen_ty_27 = 18;
-        #[doc = "< \"Ok\", \"Apply\" or similar specific button has clicked"]
-        pub const LV_EVENT_APPLY: _bindgen_ty_27 = 19;
-        #[doc =
-          "< \"Close\", \"Cancel\" or similar specific button has clicked"]
-        pub const LV_EVENT_CANCEL: _bindgen_ty_27 = 20;
-        #[doc = "< Object is being deleted"]
-        pub const LV_EVENT_DELETE: _bindgen_ty_27 = 21;
-        pub const _LV_EVENT_LAST: _bindgen_ty_27 = 22;
-        pub type _bindgen_ty_27 = u32;
         pub type lv_event_t = u8;
         #[doc = " @brief Event callback."]
         #[doc =
@@ -8793,62 +8110,6 @@ pub mod core {
         pub type lv_event_cb_t =
          ::core::option::Option<unsafe extern "C" fn(obj: *mut _lv_obj_t,
                                                      event: lv_event_t)>;
-        #[doc = "< Object is being deleted"]
-        pub const LV_SIGNAL_CLEANUP: _bindgen_ty_28 = 0;
-        #[doc = "< Child was removed/added"]
-        pub const LV_SIGNAL_CHILD_CHG: _bindgen_ty_28 = 1;
-        #[doc = "< Object coordinates/size have changed"]
-        pub const LV_SIGNAL_COORD_CHG: _bindgen_ty_28 = 2;
-        #[doc = "< Parent's size has changed"]
-        pub const LV_SIGNAL_PARENT_SIZE_CHG: _bindgen_ty_28 = 3;
-        #[doc = "< Object's style has changed"]
-        pub const LV_SIGNAL_STYLE_CHG: _bindgen_ty_28 = 4;
-        #[doc = "<The base dir has changed"]
-        pub const LV_SIGNAL_BASE_DIR_CHG: _bindgen_ty_28 = 5;
-        #[doc = "< Object's extra padding has changed"]
-        pub const LV_SIGNAL_REFR_EXT_DRAW_PAD: _bindgen_ty_28 = 6;
-        #[doc = "< LVGL needs to retrieve the object's type"]
-        pub const LV_SIGNAL_GET_TYPE: _bindgen_ty_28 = 7;
-        #[doc = "<Get the style of an object"]
-        pub const LV_SIGNAL_GET_STYLE: _bindgen_ty_28 = 8;
-        #[doc = "<Get the state of the object"]
-        pub const LV_SIGNAL_GET_STATE_DSC: _bindgen_ty_28 = 9;
-        #[doc = "< Advanced hit-testing"]
-        pub const LV_SIGNAL_HIT_TEST: _bindgen_ty_28 = 10;
-        #[doc = "< The object has been pressed"]
-        pub const LV_SIGNAL_PRESSED: _bindgen_ty_28 = 11;
-        #[doc =
-          "< The object is being pressed (called continuously while pressing)"]
-        pub const LV_SIGNAL_PRESSING: _bindgen_ty_28 = 12;
-        #[doc =
-          "< User is still pressing but slid cursor/finger off of the object"]
-        pub const LV_SIGNAL_PRESS_LOST: _bindgen_ty_28 = 13;
-        #[doc =
-          "< User pressed object for a short period of time, then released it. Not called if dragged."]
-        pub const LV_SIGNAL_RELEASED: _bindgen_ty_28 = 14;
-        #[doc =
-          "< Object has been pressed for at least `LV_INDEV_LONG_PRESS_TIME`.  Not called if dragged."]
-        pub const LV_SIGNAL_LONG_PRESS: _bindgen_ty_28 = 15;
-        #[doc =
-          "< Called after `LV_INDEV_LONG_PRESS_TIME` in every `LV_INDEV_LONG_PRESS_REP_TIME` ms.  Not called if dragged."]
-        pub const LV_SIGNAL_LONG_PRESS_REP: _bindgen_ty_28 = 16;
-        pub const LV_SIGNAL_DRAG_BEGIN: _bindgen_ty_28 = 17;
-        pub const LV_SIGNAL_DRAG_THROW_BEGIN: _bindgen_ty_28 = 18;
-        pub const LV_SIGNAL_DRAG_END: _bindgen_ty_28 = 19;
-        #[doc = "< The object has been gesture"]
-        pub const LV_SIGNAL_GESTURE: _bindgen_ty_28 = 20;
-        #[doc = "< Another object is clicked or chosen via an input device"]
-        pub const LV_SIGNAL_LEAVE: _bindgen_ty_28 = 21;
-        pub const LV_SIGNAL_FOCUS: _bindgen_ty_28 = 22;
-        pub const LV_SIGNAL_DEFOCUS: _bindgen_ty_28 = 23;
-        pub const LV_SIGNAL_CONTROL: _bindgen_ty_28 = 24;
-        pub const LV_SIGNAL_GET_EDITABLE: _bindgen_ty_28 = 25;
-        #[doc =
-          " Signals are for use by the object itself or to extend the object's functionality."]
-        #[doc =
-          " Applications should use ::lv_obj_set_event_cb to be notified of events that occur"]
-        #[doc = " on the object."]
-        pub type _bindgen_ty_28 = u32;
         pub type lv_signal_t = u8;
         pub type lv_signal_cb_t =
          ::core::option::Option<unsafe extern "C" fn(obj: *mut _lv_obj_t,
@@ -8922,33 +8183,6 @@ pub mod core {
                 __bindgen_bitfield_unit
             }
         }
-        pub const LV_PROTECT_NONE: _bindgen_ty_29 = 0;
-        #[doc = "< Disable the child change signal. Used by the library"]
-        pub const LV_PROTECT_CHILD_CHG: _bindgen_ty_29 = 1;
-        #[doc = "< Prevent automatic parent change (e.g. in lv_page)"]
-        pub const LV_PROTECT_PARENT: _bindgen_ty_29 = 2;
-        #[doc = "< Prevent automatic positioning (e.g. in lv_cont layout)"]
-        pub const LV_PROTECT_POS: _bindgen_ty_29 = 4;
-        #[doc =
-          "< Prevent the object be followed in automatic ordering (e.g. in"]
-        #[doc = "lv_cont PRETTY layout)"]
-        pub const LV_PROTECT_FOLLOW: _bindgen_ty_29 = 8;
-        #[doc =
-          "< If the `indev` was pressing this object but swiped out while"]
-        #[doc = "pressing do not search other object."]
-        pub const LV_PROTECT_PRESS_LOST: _bindgen_ty_29 = 16;
-        #[doc = "< Prevent focusing the object by clicking on it"]
-        pub const LV_PROTECT_CLICK_FOCUS: _bindgen_ty_29 = 32;
-        pub type _bindgen_ty_29 = u32;
-        pub type lv_protect_t = u8;
-        pub const LV_STATE_DEFAULT: _bindgen_ty_30 = 0;
-        pub const LV_STATE_CHECKED: _bindgen_ty_30 = 1;
-        pub const LV_STATE_FOCUSED: _bindgen_ty_30 = 2;
-        pub const LV_STATE_EDITED: _bindgen_ty_30 = 4;
-        pub const LV_STATE_HOVERED: _bindgen_ty_30 = 8;
-        pub const LV_STATE_PRESSED: _bindgen_ty_30 = 16;
-        pub const LV_STATE_DISABLED: _bindgen_ty_30 = 32;
-        pub type _bindgen_ty_30 = u32;
         pub type lv_state_t = u8;
         #[doc = "      TYPEDEFS"]
         #[repr(C)]
@@ -9284,65 +8518,6 @@ pub mod core {
         }
         impl Default for lv_obj_type_t {
             fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        #[repr(C)]
-        pub struct lv_hit_test_info_t {
-            pub point: *mut lv_point_t,
-            pub result: bool,
-        }
-        impl Default for lv_hit_test_info_t {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        #[repr(C)]
-        pub struct lv_get_style_info_t {
-            pub part: u8,
-            pub result: *mut lv_style_list_t,
-        }
-        impl Default for lv_get_style_info_t {
-            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
-        }
-        #[repr(C)]
-        pub struct lv_get_state_info_t {
-            pub part: u8,
-            pub result: lv_state_t,
-        }
-        #[automatically_derived]
-        #[allow(unused_qualifications)]
-        impl ::core::default::Default for lv_get_state_info_t {
-            #[inline]
-            fn default() -> lv_get_state_info_t {
-                lv_get_state_info_t{part: ::core::default::Default::default(),
-                                    result:
-                                        ::core::default::Default::default(),}
-            }
-        }
-        #[doc = " Init. the 'lv' library."]
-        pub fn lv_init() -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Init. the 'lv' library."]
-                pub fn lv_init();
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_init();
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn lv_deinit() -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_deinit();
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_deinit();
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
         }
         #[doc = " Create a basic object"]
         #[doc = " - __`parent`__: pointer to a parent object."]
@@ -10801,153 +9976,6 @@ pub mod core {
                 Ok(())
             }
         }
-        #[doc = " Send an event to the object"]
-        #[doc = " - __`obj`__: pointer to an object"]
-        #[doc = " - __`event`__: the type of the event from `lv_event_t`."]
-        #[doc =
-          " - __`data`__: arbitrary data depending on the object type and the event. (Usually `NULL`)"]
-        #[doc =
-          " Return: LV_RES_OK: `obj` was not deleted in the event; LV_RES_INV: `obj` was deleted in the event"]
-        pub fn event_send(obj: *mut lv_obj_t, event: lv_event_t,
-                          data: *const ::cty::c_void)
-         -> MynewtResult<lv_res_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Send an event to the object"]
-                #[doc = " - __`obj`__: pointer to an object"]
-                #[doc =
-                  " - __`event`__: the type of the event from `lv_event_t`."]
-                #[doc =
-                  " - __`data`__: arbitrary data depending on the object type and the event. (Usually `NULL`)"]
-                #[doc =
-                  " Return: LV_RES_OK: `obj` was not deleted in the event; LV_RES_INV: `obj` was deleted in the event"]
-                pub fn lv_event_send(obj: *mut lv_obj_t, event: lv_event_t,
-                                     data: *const ::cty::c_void)
-                -> lv_res_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_event_send(obj as *mut lv_obj_t, event as lv_event_t,
-                                  data as *const ::cty::c_void);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Send LV_EVENT_REFRESH event to an object"]
-        #[doc = " - __`obj`__: point to an obejct. (Can NOT be NULL)"]
-        #[doc =
-          " Return: LV_RES_OK: success, LV_RES_INV: to object become invalid (e.g. deleted) due to this event."]
-        pub fn event_send_refresh(obj: *mut lv_obj_t)
-         -> MynewtResult<lv_res_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Send LV_EVENT_REFRESH event to an object"]
-                #[doc = " - __`obj`__: point to an obejct. (Can NOT be NULL)"]
-                #[doc =
-                  " Return: LV_RES_OK: success, LV_RES_INV: to object become invalid (e.g. deleted) due to this event."]
-                pub fn lv_event_send_refresh(obj: *mut lv_obj_t)
-                -> lv_res_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_event_send_refresh(obj as *mut lv_obj_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc =
-          " Send LV_EVENT_REFRESH event to an object and all of its children"]
-        #[doc =
-          " - __`obj`__: pointer to an object or NULL to refresh all objects of all displays"]
-        pub fn event_send_refresh_recursive(obj: *mut lv_obj_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Send LV_EVENT_REFRESH event to an object and all of its children"]
-                #[doc =
-                  " - __`obj`__: pointer to an object or NULL to refresh all objects of all displays"]
-                pub fn lv_event_send_refresh_recursive(obj: *mut lv_obj_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_event_send_refresh_recursive(obj as *mut lv_obj_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        #[doc = " Call an event function with an object, event, and data."]
-        #[doc =
-          " - __`event_xcb`__: an event callback function. If `NULL` `LV_RES_OK` will return without any actions."]
-        #[doc =
-          "        (the 'x' in the argument name indicates that its not a fully generic function because it not follows"]
-        #[doc = "         the `func_name(object, callback, ...)` convention)"]
-        #[doc =
-          " - __`obj`__: pointer to an object to associate with the event (can be `NULL` to simply call the `event_cb`)"]
-        #[doc = " - __`event`__: an event"]
-        #[doc = " - __`data`__: pointer to a custom data"]
-        #[doc =
-          " Return: LV_RES_OK: `obj` was not deleted in the event; LV_RES_INV: `obj` was deleted in the event"]
-        pub fn event_send_func(event_xcb: lv_event_cb_t, obj: *mut lv_obj_t,
-                               event: lv_event_t, data: *const ::cty::c_void)
-         -> MynewtResult<lv_res_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc =
-                  " Call an event function with an object, event, and data."]
-                #[doc =
-                  " - __`event_xcb`__: an event callback function. If `NULL` `LV_RES_OK` will return without any actions."]
-                #[doc =
-                  "        (the 'x' in the argument name indicates that its not a fully generic function because it not follows"]
-                #[doc =
-                  "         the `func_name(object, callback, ...)` convention)"]
-                #[doc =
-                  " - __`obj`__: pointer to an object to associate with the event (can be `NULL` to simply call the `event_cb`)"]
-                #[doc = " - __`event`__: an event"]
-                #[doc = " - __`data`__: pointer to a custom data"]
-                #[doc =
-                  " Return: LV_RES_OK: `obj` was not deleted in the event; LV_RES_INV: `obj` was deleted in the event"]
-                pub fn lv_event_send_func(event_xcb: lv_event_cb_t,
-                                          obj: *mut lv_obj_t,
-                                          event: lv_event_t,
-                                          data: *const ::cty::c_void)
-                -> lv_res_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_event_send_func(event_xcb as lv_event_cb_t,
-                                       obj as *mut lv_obj_t,
-                                       event as lv_event_t,
-                                       data as *const ::cty::c_void);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
-        #[doc = " Get the `data` parameter of the current event"]
-        #[doc = " Return: the `data` parameter"]
-        pub fn event_get_data() -> MynewtResult<*const ::cty::c_void> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Get the `data` parameter of the current event"]
-                #[doc = " Return: the `data` parameter"]
-                pub fn lv_event_get_data()
-                -> *const ::cty::c_void;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value = lv_event_get_data();
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
-            }
-        }
         #[doc =
           " Set the a signal function of an object. Used internally by the library."]
         #[doc = " Always call the previous signal function in the new."]
@@ -10973,34 +10001,6 @@ pub mod core {
                                      signal_cb as lv_signal_cb_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
-            }
-        }
-        #[doc = " Send an event to the object"]
-        #[doc = " - __`obj`__: pointer to an object"]
-        #[doc = " - __`event`__: the type of the event from `lv_event_t`."]
-        #[doc = " Return: LV_RES_OK or LV_RES_INV"]
-        pub fn signal_send(obj: *mut lv_obj_t, signal: lv_signal_t,
-                           param: Ptr) -> MynewtResult<lv_res_t> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                #[doc = " Send an event to the object"]
-                #[doc = " - __`obj`__: pointer to an object"]
-                #[doc =
-                  " - __`event`__: the type of the event from `lv_event_t`."]
-                #[doc = " Return: LV_RES_OK or LV_RES_INV"]
-                pub fn lv_signal_send(obj: *mut lv_obj_t, signal: lv_signal_t,
-                                      param: *mut ::cty::c_void)
-                -> lv_res_t;
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                let result_value =
-                    lv_signal_send(obj as *mut lv_obj_t,
-                                   signal as lv_signal_t,
-                                   param as *mut ::cty::c_void);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(result_value)
             }
         }
         #[doc = " Set a new design function for an object"]
@@ -11803,24 +10803,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_radius(style: *mut lv_style_t, state: lv_state_t,
-                                value: lv_style_int_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_radius(style: *mut lv_style_t,
-                                           state: lv_state_t,
-                                           value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_radius(style as *mut lv_style_t,
-                                    state as lv_state_t,
-                                    value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_clip_corner(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<bool> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -11860,24 +10842,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_clip_corner(style: *mut lv_style_t,
-                                     state: lv_state_t, value: bool)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_clip_corner(style: *mut lv_style_t,
-                                                state: lv_state_t,
-                                                value: bool);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_clip_corner(style as *mut lv_style_t,
-                                         state as lv_state_t, value as bool);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_size(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -11910,24 +10874,6 @@ pub mod core {
                 lv_obj_set_style_local_size(obj as *mut lv_obj_t, part as u8,
                                             state as lv_state_t,
                                             value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_size(style: *mut lv_style_t, state: lv_state_t,
-                              value: lv_style_int_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_size(style: *mut lv_style_t,
-                                         state: lv_state_t,
-                                         value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_size(style as *mut lv_style_t,
-                                  state as lv_state_t,
-                                  value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -11976,26 +10922,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_transform_width(style: *mut lv_style_t,
-                                         state: lv_state_t,
-                                         value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_transform_width(style: *mut lv_style_t,
-                                                    state: lv_state_t,
-                                                    value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_transform_width(style as *mut lv_style_t,
-                                             state as lv_state_t,
-                                             value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_transform_height(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -12036,26 +10962,6 @@ pub mod core {
                                                         state as lv_state_t,
                                                         value as
                                                             lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_transform_height(style: *mut lv_style_t,
-                                          state: lv_state_t,
-                                          value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_transform_height(style: *mut lv_style_t,
-                                                     state: lv_state_t,
-                                                     value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_transform_height(style as *mut lv_style_t,
-                                              state as lv_state_t,
-                                              value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -12104,26 +11010,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_transform_angle(style: *mut lv_style_t,
-                                         state: lv_state_t,
-                                         value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_transform_angle(style: *mut lv_style_t,
-                                                    state: lv_state_t,
-                                                    value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_transform_angle(style as *mut lv_style_t,
-                                             state as lv_state_t,
-                                             value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_transform_zoom(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -12168,26 +11054,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_transform_zoom(style: *mut lv_style_t,
-                                        state: lv_state_t,
-                                        value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_transform_zoom(style: *mut lv_style_t,
-                                                   state: lv_state_t,
-                                                   value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_transform_zoom(style as *mut lv_style_t,
-                                            state as lv_state_t,
-                                            value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_opa_scale(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_opa_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -12223,24 +11089,6 @@ pub mod core {
                                                  part as u8,
                                                  state as lv_state_t,
                                                  value as lv_opa_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_opa_scale(style: *mut lv_style_t, state: lv_state_t,
-                                   value: lv_opa_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_opa_scale(style: *mut lv_style_t,
-                                              state: lv_state_t,
-                                              value: lv_opa_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_opa_scale(style as *mut lv_style_t,
-                                       state as lv_state_t,
-                                       value as lv_opa_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -12281,24 +11129,6 @@ pub mod core {
                                                part as u8,
                                                state as lv_state_t,
                                                value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_pad_top(style: *mut lv_style_t, state: lv_state_t,
-                                 value: lv_style_int_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_pad_top(style: *mut lv_style_t,
-                                            state: lv_state_t,
-                                            value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_pad_top(style as *mut lv_style_t,
-                                     state as lv_state_t,
-                                     value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -12344,25 +11174,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_pad_bottom(style: *mut lv_style_t, state: lv_state_t,
-                                    value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_pad_bottom(style: *mut lv_style_t,
-                                               state: lv_state_t,
-                                               value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_pad_bottom(style as *mut lv_style_t,
-                                        state as lv_state_t,
-                                        value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_pad_left(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -12399,24 +11210,6 @@ pub mod core {
                                                 part as u8,
                                                 state as lv_state_t,
                                                 value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_pad_left(style: *mut lv_style_t, state: lv_state_t,
-                                  value: lv_style_int_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_pad_left(style: *mut lv_style_t,
-                                             state: lv_state_t,
-                                             value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_pad_left(style as *mut lv_style_t,
-                                      state as lv_state_t,
-                                      value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -12462,25 +11255,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_pad_right(style: *mut lv_style_t, state: lv_state_t,
-                                   value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_pad_right(style: *mut lv_style_t,
-                                              state: lv_state_t,
-                                              value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_pad_right(style as *mut lv_style_t,
-                                       state as lv_state_t,
-                                       value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_pad_inner(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -12522,25 +11296,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_pad_inner(style: *mut lv_style_t, state: lv_state_t,
-                                   value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_pad_inner(style: *mut lv_style_t,
-                                              state: lv_state_t,
-                                              value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_pad_inner(style as *mut lv_style_t,
-                                       state as lv_state_t,
-                                       value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_margin_top(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -12578,25 +11333,6 @@ pub mod core {
                                                   part as u8,
                                                   state as lv_state_t,
                                                   value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_margin_top(style: *mut lv_style_t, state: lv_state_t,
-                                    value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_margin_top(style: *mut lv_style_t,
-                                               state: lv_state_t,
-                                               value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_margin_top(style as *mut lv_style_t,
-                                        state as lv_state_t,
-                                        value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -12643,26 +11379,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_margin_bottom(style: *mut lv_style_t,
-                                       state: lv_state_t,
-                                       value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_margin_bottom(style: *mut lv_style_t,
-                                                  state: lv_state_t,
-                                                  value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_margin_bottom(style as *mut lv_style_t,
-                                           state as lv_state_t,
-                                           value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_margin_left(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -12704,25 +11420,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_margin_left(style: *mut lv_style_t,
-                                     state: lv_state_t, value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_margin_left(style: *mut lv_style_t,
-                                                state: lv_state_t,
-                                                value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_margin_left(style as *mut lv_style_t,
-                                         state as lv_state_t,
-                                         value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_margin_right(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -12760,26 +11457,6 @@ pub mod core {
                                                     part as u8,
                                                     state as lv_state_t,
                                                     value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_margin_right(style: *mut lv_style_t,
-                                      state: lv_state_t,
-                                      value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_margin_right(style: *mut lv_style_t,
-                                                 state: lv_state_t,
-                                                 value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_margin_right(style as *mut lv_style_t,
-                                          state as lv_state_t,
-                                          value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -12827,26 +11504,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_bg_blend_mode(style: *mut lv_style_t,
-                                       state: lv_state_t,
-                                       value: lv_blend_mode_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_bg_blend_mode(style: *mut lv_style_t,
-                                                  state: lv_state_t,
-                                                  value: lv_blend_mode_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_bg_blend_mode(style as *mut lv_style_t,
-                                           state as lv_state_t,
-                                           value as lv_blend_mode_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_bg_main_stop(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -12884,26 +11541,6 @@ pub mod core {
                                                     part as u8,
                                                     state as lv_state_t,
                                                     value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_bg_main_stop(style: *mut lv_style_t,
-                                      state: lv_state_t,
-                                      value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_bg_main_stop(style: *mut lv_style_t,
-                                                 state: lv_state_t,
-                                                 value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_bg_main_stop(style as *mut lv_style_t,
-                                          state as lv_state_t,
-                                          value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -12949,26 +11586,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_bg_grad_stop(style: *mut lv_style_t,
-                                      state: lv_state_t,
-                                      value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_bg_grad_stop(style: *mut lv_style_t,
-                                                 state: lv_state_t,
-                                                 value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_bg_grad_stop(style as *mut lv_style_t,
-                                          state as lv_state_t,
-                                          value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_bg_grad_dir(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_grad_dir_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -13010,25 +11627,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_bg_grad_dir(style: *mut lv_style_t,
-                                     state: lv_state_t, value: lv_grad_dir_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_bg_grad_dir(style: *mut lv_style_t,
-                                                state: lv_state_t,
-                                                value: lv_grad_dir_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_bg_grad_dir(style as *mut lv_style_t,
-                                         state as lv_state_t,
-                                         value as lv_grad_dir_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_bg_color(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_color_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -13064,24 +11662,6 @@ pub mod core {
                                                 part as u8,
                                                 state as lv_state_t,
                                                 value as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_bg_color(style: *mut lv_style_t, state: lv_state_t,
-                                  value: lv_color_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_bg_color(style: *mut lv_style_t,
-                                             state: lv_state_t,
-                                             value: lv_color_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_bg_color(style as *mut lv_style_t,
-                                      state as lv_state_t,
-                                      value as lv_color_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -13128,25 +11708,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_bg_grad_color(style: *mut lv_style_t,
-                                       state: lv_state_t, value: lv_color_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_bg_grad_color(style: *mut lv_style_t,
-                                                  state: lv_state_t,
-                                                  value: lv_color_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_bg_grad_color(style as *mut lv_style_t,
-                                           state as lv_state_t,
-                                           value as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_bg_opa(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_opa_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -13180,23 +11741,6 @@ pub mod core {
                 lv_obj_set_style_local_bg_opa(obj as *mut lv_obj_t,
                                               part as u8, state as lv_state_t,
                                               value as lv_opa_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_bg_opa(style: *mut lv_style_t, state: lv_state_t,
-                                value: lv_opa_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_bg_opa(style: *mut lv_style_t,
-                                           state: lv_state_t,
-                                           value: lv_opa_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_bg_opa(style as *mut lv_style_t,
-                                    state as lv_state_t, value as lv_opa_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -13242,26 +11786,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_border_width(style: *mut lv_style_t,
-                                      state: lv_state_t,
-                                      value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_border_width(style: *mut lv_style_t,
-                                                 state: lv_state_t,
-                                                 value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_border_width(style as *mut lv_style_t,
-                                          state as lv_state_t,
-                                          value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_border_side(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_border_side_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -13299,26 +11823,6 @@ pub mod core {
                                                    part as u8,
                                                    state as lv_state_t,
                                                    value as lv_border_side_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_border_side(style: *mut lv_style_t,
-                                     state: lv_state_t,
-                                     value: lv_border_side_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_border_side(style: *mut lv_style_t,
-                                                state: lv_state_t,
-                                                value: lv_border_side_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_border_side(style as *mut lv_style_t,
-                                         state as lv_state_t,
-                                         value as lv_border_side_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -13368,26 +11872,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_border_blend_mode(style: *mut lv_style_t,
-                                           state: lv_state_t,
-                                           value: lv_blend_mode_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_border_blend_mode(style: *mut lv_style_t,
-                                                      state: lv_state_t,
-                                                      value: lv_blend_mode_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_border_blend_mode(style as *mut lv_style_t,
-                                               state as lv_state_t,
-                                               value as lv_blend_mode_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_border_post(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<bool> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -13423,24 +11907,6 @@ pub mod core {
                                                    part as u8,
                                                    state as lv_state_t,
                                                    value as bool);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_border_post(style: *mut lv_style_t,
-                                     state: lv_state_t, value: bool)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_border_post(style: *mut lv_style_t,
-                                                state: lv_state_t,
-                                                value: bool);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_border_post(style as *mut lv_style_t,
-                                         state as lv_state_t, value as bool);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -13485,25 +11951,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_border_color(style: *mut lv_style_t,
-                                      state: lv_state_t, value: lv_color_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_border_color(style: *mut lv_style_t,
-                                                 state: lv_state_t,
-                                                 value: lv_color_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_border_color(style as *mut lv_style_t,
-                                          state as lv_state_t,
-                                          value as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_border_opa(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_opa_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -13539,24 +11986,6 @@ pub mod core {
                                                   part as u8,
                                                   state as lv_state_t,
                                                   value as lv_opa_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_border_opa(style: *mut lv_style_t, state: lv_state_t,
-                                    value: lv_opa_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_border_opa(style: *mut lv_style_t,
-                                               state: lv_state_t,
-                                               value: lv_opa_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_border_opa(style as *mut lv_style_t,
-                                        state as lv_state_t,
-                                        value as lv_opa_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -13603,26 +12032,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_outline_width(style: *mut lv_style_t,
-                                       state: lv_state_t,
-                                       value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_outline_width(style: *mut lv_style_t,
-                                                  state: lv_state_t,
-                                                  value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_outline_width(style as *mut lv_style_t,
-                                           state as lv_state_t,
-                                           value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_outline_pad(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -13660,25 +12069,6 @@ pub mod core {
                                                    part as u8,
                                                    state as lv_state_t,
                                                    value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_outline_pad(style: *mut lv_style_t,
-                                     state: lv_state_t, value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_outline_pad(style: *mut lv_style_t,
-                                                state: lv_state_t,
-                                                value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_outline_pad(style as *mut lv_style_t,
-                                         state as lv_state_t,
-                                         value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -13730,27 +12120,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_outline_blend_mode(style: *mut lv_style_t,
-                                            state: lv_state_t,
-                                            value: lv_blend_mode_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_outline_blend_mode(style: *mut lv_style_t,
-                                                       state: lv_state_t,
-                                                       value:
-                                                           lv_blend_mode_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_outline_blend_mode(style as *mut lv_style_t,
-                                                state as lv_state_t,
-                                                value as lv_blend_mode_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_outline_color(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_color_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -13793,25 +12162,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_outline_color(style: *mut lv_style_t,
-                                       state: lv_state_t, value: lv_color_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_outline_color(style: *mut lv_style_t,
-                                                  state: lv_state_t,
-                                                  value: lv_color_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_outline_color(style as *mut lv_style_t,
-                                           state as lv_state_t,
-                                           value as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_outline_opa(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_opa_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -13847,25 +12197,6 @@ pub mod core {
                                                    part as u8,
                                                    state as lv_state_t,
                                                    value as lv_opa_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_outline_opa(style: *mut lv_style_t,
-                                     state: lv_state_t, value: lv_opa_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_outline_opa(style: *mut lv_style_t,
-                                                state: lv_state_t,
-                                                value: lv_opa_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_outline_opa(style as *mut lv_style_t,
-                                         state as lv_state_t,
-                                         value as lv_opa_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -13911,26 +12242,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_shadow_width(style: *mut lv_style_t,
-                                      state: lv_state_t,
-                                      value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_shadow_width(style: *mut lv_style_t,
-                                                 state: lv_state_t,
-                                                 value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_shadow_width(style as *mut lv_style_t,
-                                          state as lv_state_t,
-                                          value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_shadow_ofs_x(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -13968,26 +12279,6 @@ pub mod core {
                                                     part as u8,
                                                     state as lv_state_t,
                                                     value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_shadow_ofs_x(style: *mut lv_style_t,
-                                      state: lv_state_t,
-                                      value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_shadow_ofs_x(style: *mut lv_style_t,
-                                                 state: lv_state_t,
-                                                 value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_shadow_ofs_x(style as *mut lv_style_t,
-                                          state as lv_state_t,
-                                          value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -14033,26 +12324,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_shadow_ofs_y(style: *mut lv_style_t,
-                                      state: lv_state_t,
-                                      value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_shadow_ofs_y(style: *mut lv_style_t,
-                                                 state: lv_state_t,
-                                                 value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_shadow_ofs_y(style as *mut lv_style_t,
-                                          state as lv_state_t,
-                                          value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_shadow_spread(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -14091,26 +12362,6 @@ pub mod core {
                                                      part as u8,
                                                      state as lv_state_t,
                                                      value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_shadow_spread(style: *mut lv_style_t,
-                                       state: lv_state_t,
-                                       value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_shadow_spread(style: *mut lv_style_t,
-                                                  state: lv_state_t,
-                                                  value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_shadow_spread(style as *mut lv_style_t,
-                                           state as lv_state_t,
-                                           value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -14160,26 +12411,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_shadow_blend_mode(style: *mut lv_style_t,
-                                           state: lv_state_t,
-                                           value: lv_blend_mode_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_shadow_blend_mode(style: *mut lv_style_t,
-                                                      state: lv_state_t,
-                                                      value: lv_blend_mode_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_shadow_blend_mode(style as *mut lv_style_t,
-                                               state as lv_state_t,
-                                               value as lv_blend_mode_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_shadow_color(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_color_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -14216,25 +12447,6 @@ pub mod core {
                                                     part as u8,
                                                     state as lv_state_t,
                                                     value as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_shadow_color(style: *mut lv_style_t,
-                                      state: lv_state_t, value: lv_color_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_shadow_color(style: *mut lv_style_t,
-                                                 state: lv_state_t,
-                                                 value: lv_color_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_shadow_color(style as *mut lv_style_t,
-                                          state as lv_state_t,
-                                          value as lv_color_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -14278,24 +12490,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_shadow_opa(style: *mut lv_style_t, state: lv_state_t,
-                                    value: lv_opa_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_shadow_opa(style: *mut lv_style_t,
-                                               state: lv_state_t,
-                                               value: lv_opa_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_shadow_opa(style as *mut lv_style_t,
-                                        state as lv_state_t,
-                                        value as lv_opa_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_pattern_repeat(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<bool> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -14333,25 +12527,6 @@ pub mod core {
                                                       part as u8,
                                                       state as lv_state_t,
                                                       value as bool);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_pattern_repeat(style: *mut lv_style_t,
-                                        state: lv_state_t, value: bool)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_pattern_repeat(style: *mut lv_style_t,
-                                                   state: lv_state_t,
-                                                   value: bool);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_pattern_repeat(style as *mut lv_style_t,
-                                            state as lv_state_t,
-                                            value as bool);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -14403,27 +12578,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_pattern_blend_mode(style: *mut lv_style_t,
-                                            state: lv_state_t,
-                                            value: lv_blend_mode_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_pattern_blend_mode(style: *mut lv_style_t,
-                                                       state: lv_state_t,
-                                                       value:
-                                                           lv_blend_mode_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_pattern_blend_mode(style as *mut lv_style_t,
-                                                state as lv_state_t,
-                                                value as lv_blend_mode_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_pattern_recolor(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_color_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -14467,25 +12621,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_pattern_recolor(style: *mut lv_style_t,
-                                         state: lv_state_t, value: lv_color_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_pattern_recolor(style: *mut lv_style_t,
-                                                    state: lv_state_t,
-                                                    value: lv_color_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_pattern_recolor(style as *mut lv_style_t,
-                                             state as lv_state_t,
-                                             value as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_pattern_opa(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_opa_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -14521,25 +12656,6 @@ pub mod core {
                                                    part as u8,
                                                    state as lv_state_t,
                                                    value as lv_opa_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_pattern_opa(style: *mut lv_style_t,
-                                     state: lv_state_t, value: lv_opa_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_pattern_opa(style: *mut lv_style_t,
-                                                state: lv_state_t,
-                                                value: lv_opa_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_pattern_opa(style as *mut lv_style_t,
-                                         state as lv_state_t,
-                                         value as lv_opa_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -14592,27 +12708,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_pattern_recolor_opa(style: *mut lv_style_t,
-                                             state: lv_state_t,
-                                             value: lv_opa_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_pattern_recolor_opa(style:
-                                                            *mut lv_style_t,
-                                                        state: lv_state_t,
-                                                        value: lv_opa_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_pattern_recolor_opa(style as *mut lv_style_t,
-                                                 state as lv_state_t,
-                                                 value as lv_opa_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_pattern_image(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<*const ::cty::c_void> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -14652,27 +12747,6 @@ pub mod core {
                                                      state as lv_state_t,
                                                      value as
                                                          *const ::cty::c_void);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_pattern_image(style: *mut lv_style_t,
-                                       state: lv_state_t,
-                                       value: *const ::cty::c_void)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_pattern_image(style: *mut lv_style_t,
-                                                  state: lv_state_t,
-                                                  value:
-                                                      *const ::cty::c_void);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_pattern_image(style as *mut lv_style_t,
-                                           state as lv_state_t,
-                                           value as *const ::cty::c_void);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -14724,26 +12798,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_value_letter_space(style: *mut lv_style_t,
-                                            state: lv_state_t,
-                                            value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_value_letter_space(style: *mut lv_style_t,
-                                                       state: lv_state_t,
-                                                       value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_value_letter_space(style as *mut lv_style_t,
-                                                state as lv_state_t,
-                                                value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_value_line_space(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -14784,26 +12838,6 @@ pub mod core {
                                                         state as lv_state_t,
                                                         value as
                                                             lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_value_line_space(style: *mut lv_style_t,
-                                          state: lv_state_t,
-                                          value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_value_line_space(style: *mut lv_style_t,
-                                                     state: lv_state_t,
-                                                     value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_value_line_space(style as *mut lv_style_t,
-                                              state as lv_state_t,
-                                              value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -14852,26 +12886,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_value_blend_mode(style: *mut lv_style_t,
-                                          state: lv_state_t,
-                                          value: lv_blend_mode_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_value_blend_mode(style: *mut lv_style_t,
-                                                     state: lv_state_t,
-                                                     value: lv_blend_mode_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_value_blend_mode(style as *mut lv_style_t,
-                                              state as lv_state_t,
-                                              value as lv_blend_mode_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_value_ofs_x(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -14909,25 +12923,6 @@ pub mod core {
                                                    part as u8,
                                                    state as lv_state_t,
                                                    value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_value_ofs_x(style: *mut lv_style_t,
-                                     state: lv_state_t, value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_value_ofs_x(style: *mut lv_style_t,
-                                                state: lv_state_t,
-                                                value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_value_ofs_x(style as *mut lv_style_t,
-                                         state as lv_state_t,
-                                         value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -14973,25 +12968,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_value_ofs_y(style: *mut lv_style_t,
-                                     state: lv_state_t, value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_value_ofs_y(style: *mut lv_style_t,
-                                                state: lv_state_t,
-                                                value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_value_ofs_y(style as *mut lv_style_t,
-                                         state as lv_state_t,
-                                         value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_value_align(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_align_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -15028,25 +13004,6 @@ pub mod core {
                                                    part as u8,
                                                    state as lv_state_t,
                                                    value as lv_align_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_value_align(style: *mut lv_style_t,
-                                     state: lv_state_t, value: lv_align_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_value_align(style: *mut lv_style_t,
-                                                state: lv_state_t,
-                                                value: lv_align_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_value_align(style as *mut lv_style_t,
-                                         state as lv_state_t,
-                                         value as lv_align_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -15091,25 +13048,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_value_color(style: *mut lv_style_t,
-                                     state: lv_state_t, value: lv_color_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_value_color(style: *mut lv_style_t,
-                                                state: lv_state_t,
-                                                value: lv_color_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_value_color(style as *mut lv_style_t,
-                                         state as lv_state_t,
-                                         value as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_value_opa(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_opa_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -15145,24 +13083,6 @@ pub mod core {
                                                  part as u8,
                                                  state as lv_state_t,
                                                  value as lv_opa_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_value_opa(style: *mut lv_style_t, state: lv_state_t,
-                                   value: lv_opa_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_value_opa(style: *mut lv_style_t,
-                                              state: lv_state_t,
-                                              value: lv_opa_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_value_opa(style as *mut lv_style_t,
-                                       state as lv_state_t,
-                                       value as lv_opa_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -15208,25 +13128,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_value_font(style: *mut lv_style_t, state: lv_state_t,
-                                    value: *const lv_font_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_value_font(style: *mut lv_style_t,
-                                               state: lv_state_t,
-                                               value: *const lv_font_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_value_font(style as *mut lv_style_t,
-                                        state as lv_state_t,
-                                        value as *const lv_font_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn set_style_local_value_str(obj: *mut lv_obj_t, part: u8,
                                          state: lv_state_t, value: &Strn)
          -> MynewtResult<()> {
@@ -15247,26 +13148,6 @@ pub mod core {
                                                  state as lv_state_t,
                                                  value.as_ptr() as
                                                      *const ::cty::c_char);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_value_str(style: *mut lv_style_t, state: lv_state_t,
-                                   value: &Strn) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_value_str(style: *mut lv_style_t,
-                                              state: lv_state_t,
-                                              value: *const ::cty::c_char);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            value.validate();
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_value_str(style as *mut lv_style_t,
-                                       state as lv_state_t,
-                                       value.as_ptr() as
-                                           *const ::cty::c_char);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -15316,26 +13197,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_text_letter_space(style: *mut lv_style_t,
-                                           state: lv_state_t,
-                                           value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_text_letter_space(style: *mut lv_style_t,
-                                                      state: lv_state_t,
-                                                      value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_text_letter_space(style as *mut lv_style_t,
-                                               state as lv_state_t,
-                                               value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_text_line_space(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -15380,26 +13241,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_text_line_space(style: *mut lv_style_t,
-                                         state: lv_state_t,
-                                         value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_text_line_space(style: *mut lv_style_t,
-                                                    state: lv_state_t,
-                                                    value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_text_line_space(style as *mut lv_style_t,
-                                             state as lv_state_t,
-                                             value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_text_decor(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_text_decor_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -15437,25 +13278,6 @@ pub mod core {
                                                   part as u8,
                                                   state as lv_state_t,
                                                   value as lv_text_decor_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_text_decor(style: *mut lv_style_t, state: lv_state_t,
-                                    value: lv_text_decor_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_text_decor(style: *mut lv_style_t,
-                                               state: lv_state_t,
-                                               value: lv_text_decor_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_text_decor(style as *mut lv_style_t,
-                                        state as lv_state_t,
-                                        value as lv_text_decor_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -15504,26 +13326,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_text_blend_mode(style: *mut lv_style_t,
-                                         state: lv_state_t,
-                                         value: lv_blend_mode_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_text_blend_mode(style: *mut lv_style_t,
-                                                    state: lv_state_t,
-                                                    value: lv_blend_mode_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_text_blend_mode(style as *mut lv_style_t,
-                                             state as lv_state_t,
-                                             value as lv_blend_mode_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_text_color(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_color_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -15560,24 +13362,6 @@ pub mod core {
                                                   part as u8,
                                                   state as lv_state_t,
                                                   value as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_text_color(style: *mut lv_style_t, state: lv_state_t,
-                                    value: lv_color_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_text_color(style: *mut lv_style_t,
-                                               state: lv_state_t,
-                                               value: lv_color_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_text_color(style as *mut lv_style_t,
-                                        state as lv_state_t,
-                                        value as lv_color_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -15625,25 +13409,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_text_sel_color(style: *mut lv_style_t,
-                                        state: lv_state_t, value: lv_color_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_text_sel_color(style: *mut lv_style_t,
-                                                   state: lv_state_t,
-                                                   value: lv_color_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_text_sel_color(style as *mut lv_style_t,
-                                            state as lv_state_t,
-                                            value as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_text_opa(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_opa_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -15679,23 +13444,6 @@ pub mod core {
                                                 part as u8,
                                                 state as lv_state_t,
                                                 value as lv_opa_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_text_opa(style: *mut lv_style_t, state: lv_state_t,
-                                  value: lv_opa_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_text_opa(style: *mut lv_style_t,
-                                             state: lv_state_t,
-                                             value: lv_opa_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_text_opa(style as *mut lv_style_t,
-                                      state as lv_state_t, value as lv_opa_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -15741,25 +13489,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_text_font(style: *mut lv_style_t, state: lv_state_t,
-                                   value: *const lv_font_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_text_font(style: *mut lv_style_t,
-                                              state: lv_state_t,
-                                              value: *const lv_font_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_text_font(style as *mut lv_style_t,
-                                       state as lv_state_t,
-                                       value as *const lv_font_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_line_width(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -15797,25 +13526,6 @@ pub mod core {
                                                   part as u8,
                                                   state as lv_state_t,
                                                   value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_line_width(style: *mut lv_style_t, state: lv_state_t,
-                                    value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_line_width(style: *mut lv_style_t,
-                                               state: lv_state_t,
-                                               value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_line_width(style as *mut lv_style_t,
-                                        state as lv_state_t,
-                                        value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -15864,26 +13574,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_line_blend_mode(style: *mut lv_style_t,
-                                         state: lv_state_t,
-                                         value: lv_blend_mode_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_line_blend_mode(style: *mut lv_style_t,
-                                                    state: lv_state_t,
-                                                    value: lv_blend_mode_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_line_blend_mode(style as *mut lv_style_t,
-                                             state as lv_state_t,
-                                             value as lv_blend_mode_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_line_dash_width(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -15924,26 +13614,6 @@ pub mod core {
                                                        state as lv_state_t,
                                                        value as
                                                            lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_line_dash_width(style: *mut lv_style_t,
-                                         state: lv_state_t,
-                                         value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_line_dash_width(style: *mut lv_style_t,
-                                                    state: lv_state_t,
-                                                    value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_line_dash_width(style as *mut lv_style_t,
-                                             state as lv_state_t,
-                                             value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -15990,26 +13660,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_line_dash_gap(style: *mut lv_style_t,
-                                       state: lv_state_t,
-                                       value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_line_dash_gap(style: *mut lv_style_t,
-                                                  state: lv_state_t,
-                                                  value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_line_dash_gap(style as *mut lv_style_t,
-                                           state as lv_state_t,
-                                           value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_line_rounded(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<bool> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -16045,24 +13695,6 @@ pub mod core {
                                                     part as u8,
                                                     state as lv_state_t,
                                                     value as bool);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_line_rounded(style: *mut lv_style_t,
-                                      state: lv_state_t, value: bool)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_line_rounded(style: *mut lv_style_t,
-                                                 state: lv_state_t,
-                                                 value: bool);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_line_rounded(style as *mut lv_style_t,
-                                          state as lv_state_t, value as bool);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -16107,24 +13739,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_line_color(style: *mut lv_style_t, state: lv_state_t,
-                                    value: lv_color_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_line_color(style: *mut lv_style_t,
-                                               state: lv_state_t,
-                                               value: lv_color_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_line_color(style as *mut lv_style_t,
-                                        state as lv_state_t,
-                                        value as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_line_opa(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_opa_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -16160,23 +13774,6 @@ pub mod core {
                                                 part as u8,
                                                 state as lv_state_t,
                                                 value as lv_opa_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_line_opa(style: *mut lv_style_t, state: lv_state_t,
-                                  value: lv_opa_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_line_opa(style: *mut lv_style_t,
-                                             state: lv_state_t,
-                                             value: lv_opa_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_line_opa(style as *mut lv_style_t,
-                                      state as lv_state_t, value as lv_opa_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -16225,26 +13822,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_image_blend_mode(style: *mut lv_style_t,
-                                          state: lv_state_t,
-                                          value: lv_blend_mode_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_image_blend_mode(style: *mut lv_style_t,
-                                                     state: lv_state_t,
-                                                     value: lv_blend_mode_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_image_blend_mode(style as *mut lv_style_t,
-                                              state as lv_state_t,
-                                              value as lv_blend_mode_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_image_recolor(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_color_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -16287,25 +13864,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_image_recolor(style: *mut lv_style_t,
-                                       state: lv_state_t, value: lv_color_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_image_recolor(style: *mut lv_style_t,
-                                                  state: lv_state_t,
-                                                  value: lv_color_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_image_recolor(style as *mut lv_style_t,
-                                           state as lv_state_t,
-                                           value as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_image_opa(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_opa_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -16341,24 +13899,6 @@ pub mod core {
                                                  part as u8,
                                                  state as lv_state_t,
                                                  value as lv_opa_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_image_opa(style: *mut lv_style_t, state: lv_state_t,
-                                   value: lv_opa_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_image_opa(style: *mut lv_style_t,
-                                              state: lv_state_t,
-                                              value: lv_opa_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_image_opa(style as *mut lv_style_t,
-                                       state as lv_state_t,
-                                       value as lv_opa_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -16407,25 +13947,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_image_recolor_opa(style: *mut lv_style_t,
-                                           state: lv_state_t, value: lv_opa_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_image_recolor_opa(style: *mut lv_style_t,
-                                                      state: lv_state_t,
-                                                      value: lv_opa_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_image_recolor_opa(style as *mut lv_style_t,
-                                               state as lv_state_t,
-                                               value as lv_opa_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_transition_time(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -16470,26 +13991,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_transition_time(style: *mut lv_style_t,
-                                         state: lv_state_t,
-                                         value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_transition_time(style: *mut lv_style_t,
-                                                    state: lv_state_t,
-                                                    value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_transition_time(style as *mut lv_style_t,
-                                             state as lv_state_t,
-                                             value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_transition_delay(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -16530,26 +14031,6 @@ pub mod core {
                                                         state as lv_state_t,
                                                         value as
                                                             lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_transition_delay(style: *mut lv_style_t,
-                                          state: lv_state_t,
-                                          value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_transition_delay(style: *mut lv_style_t,
-                                                     state: lv_state_t,
-                                                     value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_transition_delay(style as *mut lv_style_t,
-                                              state as lv_state_t,
-                                              value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -16599,26 +14080,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_transition_prop_1(style: *mut lv_style_t,
-                                           state: lv_state_t,
-                                           value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_transition_prop_1(style: *mut lv_style_t,
-                                                      state: lv_state_t,
-                                                      value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_transition_prop_1(style as *mut lv_style_t,
-                                               state as lv_state_t,
-                                               value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_transition_prop_2(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -16660,26 +14121,6 @@ pub mod core {
                                                          state as lv_state_t,
                                                          value as
                                                              lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_transition_prop_2(style: *mut lv_style_t,
-                                           state: lv_state_t,
-                                           value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_transition_prop_2(style: *mut lv_style_t,
-                                                      state: lv_state_t,
-                                                      value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_transition_prop_2(style as *mut lv_style_t,
-                                               state as lv_state_t,
-                                               value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -16729,26 +14170,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_transition_prop_3(style: *mut lv_style_t,
-                                           state: lv_state_t,
-                                           value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_transition_prop_3(style: *mut lv_style_t,
-                                                      state: lv_state_t,
-                                                      value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_transition_prop_3(style as *mut lv_style_t,
-                                               state as lv_state_t,
-                                               value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_transition_prop_4(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -16790,26 +14211,6 @@ pub mod core {
                                                          state as lv_state_t,
                                                          value as
                                                              lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_transition_prop_4(style: *mut lv_style_t,
-                                           state: lv_state_t,
-                                           value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_transition_prop_4(style: *mut lv_style_t,
-                                                      state: lv_state_t,
-                                                      value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_transition_prop_4(style as *mut lv_style_t,
-                                               state as lv_state_t,
-                                               value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -16859,26 +14260,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_transition_prop_5(style: *mut lv_style_t,
-                                           state: lv_state_t,
-                                           value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_transition_prop_5(style: *mut lv_style_t,
-                                                      state: lv_state_t,
-                                                      value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_transition_prop_5(style as *mut lv_style_t,
-                                               state as lv_state_t,
-                                               value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_transition_prop_6(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -16920,26 +14301,6 @@ pub mod core {
                                                          state as lv_state_t,
                                                          value as
                                                              lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_transition_prop_6(style: *mut lv_style_t,
-                                           state: lv_state_t,
-                                           value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_transition_prop_6(style: *mut lv_style_t,
-                                                      state: lv_state_t,
-                                                      value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_transition_prop_6(style as *mut lv_style_t,
-                                               state as lv_state_t,
-                                               value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -16988,27 +14349,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_transition_path(style: *mut lv_style_t,
-                                         state: lv_state_t,
-                                         value: *mut lv_anim_path_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_transition_path(style: *mut lv_style_t,
-                                                    state: lv_state_t,
-                                                    value:
-                                                        *mut lv_anim_path_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_transition_path(style as *mut lv_style_t,
-                                             state as lv_state_t,
-                                             value as *mut lv_anim_path_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_scale_width(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -17046,25 +14386,6 @@ pub mod core {
                                                    part as u8,
                                                    state as lv_state_t,
                                                    value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_scale_width(style: *mut lv_style_t,
-                                     state: lv_state_t, value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_scale_width(style: *mut lv_style_t,
-                                                state: lv_state_t,
-                                                value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_scale_width(style as *mut lv_style_t,
-                                         state as lv_state_t,
-                                         value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -17112,26 +14433,6 @@ pub mod core {
                                                           state as lv_state_t,
                                                           value as
                                                               lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_scale_border_width(style: *mut lv_style_t,
-                                            state: lv_state_t,
-                                            value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_scale_border_width(style: *mut lv_style_t,
-                                                       state: lv_state_t,
-                                                       value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_scale_border_width(style as *mut lv_style_t,
-                                                state as lv_state_t,
-                                                value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -17186,28 +14487,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_scale_end_border_width(style: *mut lv_style_t,
-                                                state: lv_state_t,
-                                                value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_scale_end_border_width(style:
-                                                               *mut lv_style_t,
-                                                           state: lv_state_t,
-                                                           value:
-                                                               lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_scale_end_border_width(style as *mut lv_style_t,
-                                                    state as lv_state_t,
-                                                    value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_scale_end_line_width(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_style_int_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -17257,28 +14536,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_scale_end_line_width(style: *mut lv_style_t,
-                                              state: lv_state_t,
-                                              value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_scale_end_line_width(style:
-                                                             *mut lv_style_t,
-                                                         state: lv_state_t,
-                                                         value:
-                                                             lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_scale_end_line_width(style as *mut lv_style_t,
-                                                  state as lv_state_t,
-                                                  value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn get_style_scale_grad_color(obj: *const lv_obj_t, part: u8)
          -> MynewtResult<lv_color_t> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
@@ -17318,26 +14575,6 @@ pub mod core {
                                                         part as u8,
                                                         state as lv_state_t,
                                                         value as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_scale_grad_color(style: *mut lv_style_t,
-                                          state: lv_state_t,
-                                          value: lv_color_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_scale_grad_color(style: *mut lv_style_t,
-                                                     state: lv_state_t,
-                                                     value: lv_color_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_scale_grad_color(style as *mut lv_style_t,
-                                              state as lv_state_t,
-                                              value as lv_color_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -17385,25 +14622,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_scale_end_color(style: *mut lv_style_t,
-                                         state: lv_state_t, value: lv_color_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_scale_end_color(style: *mut lv_style_t,
-                                                    state: lv_state_t,
-                                                    value: lv_color_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_scale_end_color(style as *mut lv_style_t,
-                                             state as lv_state_t,
-                                             value as lv_color_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn set_style_local_pad_all(obj: *mut lv_obj_t, part: u8,
                                        state: lv_state_t,
                                        value: lv_style_int_t)
@@ -17422,24 +14640,6 @@ pub mod core {
                                                part as u8,
                                                state as lv_state_t,
                                                value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_pad_all(style: *mut lv_style_t, state: lv_state_t,
-                                 value: lv_style_int_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_pad_all(style: *mut lv_style_t,
-                                            state: lv_state_t,
-                                            value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_pad_all(style as *mut lv_style_t,
-                                     state as lv_state_t,
-                                     value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -17466,24 +14666,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_pad_hor(style: *mut lv_style_t, state: lv_state_t,
-                                 value: lv_style_int_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_pad_hor(style: *mut lv_style_t,
-                                            state: lv_state_t,
-                                            value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_pad_hor(style as *mut lv_style_t,
-                                     state as lv_state_t,
-                                     value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn set_style_local_pad_ver(obj: *mut lv_obj_t, part: u8,
                                        state: lv_state_t,
                                        value: lv_style_int_t)
@@ -17502,24 +14684,6 @@ pub mod core {
                                                part as u8,
                                                state as lv_state_t,
                                                value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_pad_ver(style: *mut lv_style_t, state: lv_state_t,
-                                 value: lv_style_int_t) -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_pad_ver(style: *mut lv_style_t,
-                                            state: lv_state_t,
-                                            value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_pad_ver(style as *mut lv_style_t,
-                                     state as lv_state_t,
-                                     value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -17547,25 +14711,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_margin_all(style: *mut lv_style_t, state: lv_state_t,
-                                    value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_margin_all(style: *mut lv_style_t,
-                                               state: lv_state_t,
-                                               value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_margin_all(style as *mut lv_style_t,
-                                        state as lv_state_t,
-                                        value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn set_style_local_margin_hor(obj: *mut lv_obj_t, part: u8,
                                           state: lv_state_t,
                                           value: lv_style_int_t)
@@ -17589,25 +14734,6 @@ pub mod core {
                 Ok(())
             }
         }
-        pub fn style_set_margin_hor(style: *mut lv_style_t, state: lv_state_t,
-                                    value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_margin_hor(style: *mut lv_style_t,
-                                               state: lv_state_t,
-                                               value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_margin_hor(style as *mut lv_style_t,
-                                        state as lv_state_t,
-                                        value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
         pub fn set_style_local_margin_ver(obj: *mut lv_obj_t, part: u8,
                                           state: lv_state_t,
                                           value: lv_style_int_t)
@@ -17627,25 +14753,6 @@ pub mod core {
                                                   part as u8,
                                                   state as lv_state_t,
                                                   value as lv_style_int_t);
-                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
-                Ok(())
-            }
-        }
-        pub fn style_set_margin_ver(style: *mut lv_style_t, state: lv_state_t,
-                                    value: lv_style_int_t)
-         -> MynewtResult<()> {
-            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
-            extern "C" {
-                pub fn lv_style_set_margin_ver(style: *mut lv_style_t,
-                                               state: lv_state_t,
-                                               value: lv_style_int_t);
-            }
-            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            unsafe {
-                "----------Insert Call: `let result_value = os_task_init(`----------";
-                lv_style_set_margin_ver(style as *mut lv_style_t,
-                                        state as lv_state_t,
-                                        value as lv_style_int_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(())
             }
@@ -18498,57 +15605,3397 @@ pub mod core {
                 Ok(())
             }
         }
-        #[doc = " Check if any object has a given type"]
-        #[doc = " - __`obj`__: pointer to an object"]
-        #[doc = " - __`obj_type`__: type of the object. (e.g. \"lv_btn\")"]
-        #[doc = " Return: true: valid"]
-        pub fn check_obj_type(obj: *const lv_obj_t, obj_type: &Strn)
-         -> MynewtResult<bool> {
+    }
+    /// Contains Rust bindings for LVGL Core Refr API `lv_refr`
+    #[allow(non_camel_case_types)]
+    #[allow(non_upper_case_globals)]
+    #[allow(unused_imports)]
+    pub mod refr {
+        use super::*;
+        #[repr(C)]
+        pub struct __BindgenBitfieldUnit<Storage, Align> where
+                   Storage: AsRef<[u8]> + AsMut<[u8]> {
+            storage: Storage,
+            align: [Align; 0],
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::marker::Copy, Align: ::core::marker::Copy>
+         ::core::marker::Copy for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::clone::Clone, Align: ::core::clone::Clone>
+         ::core::clone::Clone for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            fn clone(&self) -> __BindgenBitfieldUnit<Storage, Align> {
+                match *self {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_0_0, align: ref __self_0_1 } =>
+                    __BindgenBitfieldUnit{storage:
+                                              ::core::clone::Clone::clone(&(*__self_0_0)),
+                                          align:
+                                              ::core::clone::Clone::clone(&(*__self_0_1)),},
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::fmt::Debug, Align: ::core::fmt::Debug>
+         ::core::fmt::Debug for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            fn fmt(&self, f: &mut ::core::fmt::Formatter)
+             -> ::core::fmt::Result {
+                match *self {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_0_0, align: ref __self_0_1 } => {
+                        let mut debug_trait_builder =
+                            f.debug_struct("__BindgenBitfieldUnit");
+                        let _ =
+                            debug_trait_builder.field("storage",
+                                                      &&(*__self_0_0));
+                        let _ =
+                            debug_trait_builder.field("align",
+                                                      &&(*__self_0_1));
+                        debug_trait_builder.finish()
+                    }
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::default::Default,
+              Align: ::core::default::Default> ::core::default::Default for
+         __BindgenBitfieldUnit<Storage, Align> where Storage: AsRef<[u8]> +
+         AsMut<[u8]> {
+            #[inline]
+            fn default() -> __BindgenBitfieldUnit<Storage, Align> {
+                __BindgenBitfieldUnit{storage:
+                                          ::core::default::Default::default(),
+                                      align:
+                                          ::core::default::Default::default(),}
+            }
+        }
+        impl <Storage, Align> ::core::marker::StructuralEq for
+         __BindgenBitfieldUnit<Storage, Align> where Storage: AsRef<[u8]> +
+         AsMut<[u8]> {
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::cmp::Eq, Align: ::core::cmp::Eq>
+         ::core::cmp::Eq for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            #[doc(hidden)]
+            fn assert_receiver_is_total_eq(&self) -> () {
+                {
+                    let _: ::core::cmp::AssertParamIsEq<Storage>;
+                    let _: ::core::cmp::AssertParamIsEq<[Align; 0]>;
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::hash::Hash, Align: ::core::hash::Hash>
+         ::core::hash::Hash for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            fn hash<__H: ::core::hash::Hasher>(&self, state: &mut __H) -> () {
+                match *self {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_0_0, align: ref __self_0_1 } => {
+                        ::core::hash::Hash::hash(&(*__self_0_0), state);
+                        ::core::hash::Hash::hash(&(*__self_0_1), state)
+                    }
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::cmp::Ord, Align: ::core::cmp::Ord>
+         ::core::cmp::Ord for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            fn cmp(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> ::core::cmp::Ordering {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        match ::core::cmp::Ord::cmp(&(*__self_0_0),
+                                                    &(*__self_1_0)) {
+                            ::core::cmp::Ordering::Equal =>
+                            match ::core::cmp::Ord::cmp(&(*__self_0_1),
+                                                        &(*__self_1_1)) {
+                                ::core::cmp::Ordering::Equal =>
+                                ::core::cmp::Ordering::Equal,
+                                cmp => cmp,
+                            },
+                            cmp => cmp,
+                        },
+                    },
+                }
+            }
+        }
+        impl <Storage, Align> ::core::marker::StructuralPartialEq for
+         __BindgenBitfieldUnit<Storage, Align> where Storage: AsRef<[u8]> +
+         AsMut<[u8]> {
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::cmp::PartialEq, Align: ::core::cmp::PartialEq>
+         ::core::cmp::PartialEq for __BindgenBitfieldUnit<Storage, Align>
+         where Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            fn eq(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        (*__self_0_0) == (*__self_1_0) &&
+                            (*__self_0_1) == (*__self_1_1),
+                    },
+                }
+            }
+            #[inline]
+            fn ne(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        (*__self_0_0) != (*__self_1_0) ||
+                            (*__self_0_1) != (*__self_1_1),
+                    },
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::cmp::PartialOrd,
+              Align: ::core::cmp::PartialOrd> ::core::cmp::PartialOrd for
+         __BindgenBitfieldUnit<Storage, Align> where Storage: AsRef<[u8]> +
+         AsMut<[u8]> {
+            #[inline]
+            fn partial_cmp(&self,
+                           other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> ::core::option::Option<::core::cmp::Ordering> {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        match ::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                   &(*__self_1_0))
+                            {
+                            ::core::option::Option::Some(::core::cmp::Ordering::Equal)
+                            =>
+                            match ::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                       &(*__self_1_1))
+                                {
+                                ::core::option::Option::Some(::core::cmp::Ordering::Equal)
+                                =>
+                                ::core::option::Option::Some(::core::cmp::Ordering::Equal),
+                                cmp => cmp,
+                            },
+                            cmp => cmp,
+                        },
+                    },
+                }
+            }
+            #[inline]
+            fn lt(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        ::core::cmp::Ordering::then_with(::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                                                                                &(*__self_1_0)),
+                                                                                           ::core::cmp::Ordering::Equal),
+                                                         ||
+                                                             ::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                                                                                    &(*__self_1_1)),
+                                                                                               ::core::cmp::Ordering::Greater))
+                            == ::core::cmp::Ordering::Less,
+                    },
+                }
+            }
+            #[inline]
+            fn le(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        ::core::cmp::Ordering::then_with(::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                                                                                &(*__self_1_0)),
+                                                                                           ::core::cmp::Ordering::Equal),
+                                                         ||
+                                                             ::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                                                                                    &(*__self_1_1)),
+                                                                                               ::core::cmp::Ordering::Greater))
+                            != ::core::cmp::Ordering::Greater,
+                    },
+                }
+            }
+            #[inline]
+            fn gt(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        ::core::cmp::Ordering::then_with(::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                                                                                &(*__self_1_0)),
+                                                                                           ::core::cmp::Ordering::Equal),
+                                                         ||
+                                                             ::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                                                                                    &(*__self_1_1)),
+                                                                                               ::core::cmp::Ordering::Less))
+                            == ::core::cmp::Ordering::Greater,
+                    },
+                }
+            }
+            #[inline]
+            fn ge(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        ::core::cmp::Ordering::then_with(::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                                                                                &(*__self_1_0)),
+                                                                                           ::core::cmp::Ordering::Equal),
+                                                         ||
+                                                             ::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                                                                                    &(*__self_1_1)),
+                                                                                               ::core::cmp::Ordering::Less))
+                            != ::core::cmp::Ordering::Less,
+                    },
+                }
+            }
+        }
+        impl <Storage, Align> __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            pub fn new(storage: Storage) -> Self { Self{storage, align: [],} }
+            #[inline]
+            pub fn get_bit(&self, index: usize) -> bool {
+                if true {
+                    if !(index / 8 < self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: index / 8 < self.storage.as_ref().len()")
+                    };
+                };
+                let byte_index = index / 8;
+                let byte = self.storage.as_ref()[byte_index];
+                let bit_index =
+                    if false { 7 - (index % 8) } else { index % 8 };
+                let mask = 1 << bit_index;
+                byte & mask == mask
+            }
+            #[inline]
+            pub fn set_bit(&mut self, index: usize, val: bool) {
+                if true {
+                    if !(index / 8 < self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: index / 8 < self.storage.as_ref().len()")
+                    };
+                };
+                let byte_index = index / 8;
+                let byte = &mut self.storage.as_mut()[byte_index];
+                let bit_index =
+                    if false { 7 - (index % 8) } else { index % 8 };
+                let mask = 1 << bit_index;
+                if val { *byte |= mask; } else { *byte &= !mask; }
+            }
+            #[inline]
+            pub fn get(&self, bit_offset: usize, bit_width: u8) -> u64 {
+                if true {
+                    if !(bit_width <= 64) {
+                        ::core::panicking::panic("assertion failed: bit_width <= 64")
+                    };
+                };
+                if true {
+                    if !(bit_offset / 8 < self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: bit_offset / 8 < self.storage.as_ref().len()")
+                    };
+                };
+                if true {
+                    if !((bit_offset + (bit_width as usize)) / 8 <=
+                             self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: (bit_offset + (bit_width as usize)) / 8 <= self.storage.as_ref().len()")
+                    };
+                };
+                let mut val = 0;
+                for i in 0..(bit_width as usize) {
+                    if self.get_bit(i + bit_offset) {
+                        let index =
+                            if false {
+                                bit_width as usize - 1 - i
+                            } else { i };
+                        val |= 1 << index;
+                    }
+                }
+                val
+            }
+            #[inline]
+            pub fn set(&mut self, bit_offset: usize, bit_width: u8,
+                       val: u64) {
+                if true {
+                    if !(bit_width <= 64) {
+                        ::core::panicking::panic("assertion failed: bit_width <= 64")
+                    };
+                };
+                if true {
+                    if !(bit_offset / 8 < self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: bit_offset / 8 < self.storage.as_ref().len()")
+                    };
+                };
+                if true {
+                    if !((bit_offset + (bit_width as usize)) / 8 <=
+                             self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: (bit_offset + (bit_width as usize)) / 8 <= self.storage.as_ref().len()")
+                    };
+                };
+                for i in 0..(bit_width as usize) {
+                    let mask = 1 << i;
+                    let val_bit_is_set = val & mask == mask;
+                    let index =
+                        if false { bit_width as usize - 1 - i } else { i };
+                    self.set_bit(index + bit_offset, val_bit_is_set);
+                }
+            }
+        }
+        #[repr(C)]
+        pub struct __BindgenUnionField<T>(::core::marker::PhantomData<T>);
+        impl <T> __BindgenUnionField<T> {
+            #[inline]
+            pub fn new() -> Self {
+                __BindgenUnionField(::core::marker::PhantomData)
+            }
+            #[inline]
+            pub unsafe fn as_ref(&self) -> &T { ::core::mem::transmute(self) }
+            #[inline]
+            pub unsafe fn as_mut(&mut self) -> &mut T {
+                ::core::mem::transmute(self)
+            }
+        }
+        impl <T> ::core::default::Default for __BindgenUnionField<T> {
+            #[inline]
+            fn default() -> Self { Self::new() }
+        }
+        impl <T> ::core::clone::Clone for __BindgenUnionField<T> {
+            #[inline]
+            fn clone(&self) -> Self { Self::new() }
+        }
+        impl <T> ::core::marker::Copy for __BindgenUnionField<T> { }
+        impl <T> ::core::fmt::Debug for __BindgenUnionField<T> {
+            fn fmt(&self, fmt: &mut ::core::fmt::Formatter<'_>)
+             -> ::core::fmt::Result {
+                fmt.write_str("__BindgenUnionField")
+            }
+        }
+        impl <T> ::core::hash::Hash for __BindgenUnionField<T> {
+            fn hash<H: ::core::hash::Hasher>(&self, _state: &mut H) { }
+        }
+        impl <T> ::core::cmp::PartialEq for __BindgenUnionField<T> {
+            fn eq(&self, _other: &__BindgenUnionField<T>) -> bool { true }
+        }
+        impl <T> ::core::cmp::Eq for __BindgenUnionField<T> { }
+        pub type lv_coord_t = i16;
+        pub type lv_disp_drv_user_data_t = *mut ::cty::c_void;
+        pub type lv_obj_user_data_t = *mut ::cty::c_void;
+        pub type lv_res_t = u8;
+        #[doc = " Represents an area of the screen."]
+        #[repr(C)]
+        pub struct lv_area_t {
+            pub x1: lv_coord_t,
+            pub y1: lv_coord_t,
+            pub x2: lv_coord_t,
+            pub y2: lv_coord_t,
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl ::core::default::Default for lv_area_t {
+            #[inline]
+            fn default() -> lv_area_t {
+                lv_area_t{x1: ::core::default::Default::default(),
+                          y1: ::core::default::Default::default(),
+                          x2: ::core::default::Default::default(),
+                          y2: ::core::default::Default::default(),}
+            }
+        }
+        pub const LV_ALIGN_CENTER: lv_align_t = 0;
+        pub const LV_ALIGN_IN_TOP_LEFT: lv_align_t = 1;
+        pub const LV_ALIGN_IN_TOP_MID: lv_align_t = 2;
+        pub const LV_ALIGN_IN_TOP_RIGHT: lv_align_t = 3;
+        pub const LV_ALIGN_IN_BOTTOM_LEFT: lv_align_t = 4;
+        pub const LV_ALIGN_IN_BOTTOM_MID: lv_align_t = 5;
+        pub const LV_ALIGN_IN_BOTTOM_RIGHT: lv_align_t = 6;
+        pub const LV_ALIGN_IN_LEFT_MID: lv_align_t = 7;
+        pub const LV_ALIGN_IN_RIGHT_MID: lv_align_t = 8;
+        pub const LV_ALIGN_OUT_TOP_LEFT: lv_align_t = 9;
+        pub const LV_ALIGN_OUT_TOP_MID: lv_align_t = 10;
+        pub const LV_ALIGN_OUT_TOP_RIGHT: lv_align_t = 11;
+        pub const LV_ALIGN_OUT_BOTTOM_LEFT: lv_align_t = 12;
+        pub const LV_ALIGN_OUT_BOTTOM_MID: lv_align_t = 13;
+        pub const LV_ALIGN_OUT_BOTTOM_RIGHT: lv_align_t = 14;
+        pub const LV_ALIGN_OUT_LEFT_TOP: lv_align_t = 15;
+        pub const LV_ALIGN_OUT_LEFT_MID: lv_align_t = 16;
+        pub const LV_ALIGN_OUT_LEFT_BOTTOM: lv_align_t = 17;
+        pub const LV_ALIGN_OUT_RIGHT_TOP: lv_align_t = 18;
+        pub const LV_ALIGN_OUT_RIGHT_MID: lv_align_t = 19;
+        pub const LV_ALIGN_OUT_RIGHT_BOTTOM: lv_align_t = 20;
+        #[doc = " Alignments"]
+        pub type _bindgen_ty_3 = u32;
+        pub type lv_align_t = u8;
+        #[repr(C)]
+        pub struct lv_color16_t {
+            pub ch: __BindgenUnionField<lv_color16_t__bindgen_ty_1>,
+            pub full: __BindgenUnionField<u16>,
+            pub bindgen_union_field: u16,
+        }
+        #[repr(C)]
+        #[repr(align(2))]
+        pub struct lv_color16_t__bindgen_ty_1 {
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl ::core::default::Default for lv_color16_t__bindgen_ty_1 {
+            #[inline]
+            fn default() -> lv_color16_t__bindgen_ty_1 {
+                lv_color16_t__bindgen_ty_1{_bitfield_1:
+                                               ::core::default::Default::default(),}
+            }
+        }
+        impl lv_color16_t__bindgen_ty_1 {
+            #[inline]
+            pub fn green_h(&self) -> u16 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 3u8)
+                                               as u16)
+                }
+            }
+            #[inline]
+            pub fn set_green_h(&mut self, val: u16) {
+                unsafe {
+                    let val: u16 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 3u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn red(&self) -> u16 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(3usize, 5u8)
+                                               as u16)
+                }
+            }
+            #[inline]
+            pub fn set_red(&mut self, val: u16) {
+                unsafe {
+                    let val: u16 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(3usize, 5u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn blue(&self) -> u16 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(8usize, 5u8)
+                                               as u16)
+                }
+            }
+            #[inline]
+            pub fn set_blue(&mut self, val: u16) {
+                unsafe {
+                    let val: u16 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(8usize, 5u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn green_l(&self) -> u16 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(13usize, 3u8)
+                                               as u16)
+                }
+            }
+            #[inline]
+            pub fn set_green_l(&mut self, val: u16) {
+                unsafe {
+                    let val: u16 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(13usize, 3u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(green_h: u16, red: u16, blue: u16,
+                                  green_l: u16)
+             -> __BindgenBitfieldUnit<[u8; 2usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 2usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 3u8,
+                                            {
+                                                let green_h: u16 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(green_h)
+                                                    };
+                                                green_h as u64
+                                            });
+                __bindgen_bitfield_unit.set(3usize, 5u8,
+                                            {
+                                                let red: u16 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(red)
+                                                    };
+                                                red as u64
+                                            });
+                __bindgen_bitfield_unit.set(8usize, 5u8,
+                                            {
+                                                let blue: u16 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(blue)
+                                                    };
+                                                blue as u64
+                                            });
+                __bindgen_bitfield_unit.set(13usize, 3u8,
+                                            {
+                                                let green_l: u16 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(green_l)
+                                                    };
+                                                green_l as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        impl Default for lv_color16_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        pub type lv_color_t = lv_color16_t;
+        #[doc = "! @cond Doxygen_Suppress"]
+        pub type lv_opa_t = u8;
+        #[repr(C)]
+        pub struct lv_style_t {
+            pub map: *mut u8,
+        }
+        impl Default for lv_style_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        #[repr(C)]
+        pub struct lv_style_list_t {
+            pub style_list: *mut *mut lv_style_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u8>,
+            pub __bindgen_padding_0: u32,
+        }
+        impl Default for lv_style_list_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl lv_style_list_t {
+            #[inline]
+            pub fn style_cnt(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 6u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_style_cnt(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 6u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn has_local(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_has_local(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(6usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn has_trans(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_has_trans(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(7usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn skip_trans(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_skip_trans(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(8usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn ignore_trans(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_ignore_trans(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(9usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn valid_cache(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_valid_cache(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(10usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn ignore_cache(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_ignore_cache(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(11usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn radius_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_radius_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(12usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn opa_scale_cover(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(13usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_opa_scale_cover(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(13usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn clip_corner_off(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(14usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_clip_corner_off(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(14usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn transform_all_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(15usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_transform_all_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(15usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn pad_all_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(16usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_pad_all_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(16usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn blend_mode_all_normal(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(17usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_blend_mode_all_normal(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(17usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn bg_opa_transp(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(18usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_bg_opa_transp(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(18usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn bg_opa_cover(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(19usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_bg_opa_cover(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(19usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn bg_grad_dir_none(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(20usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_bg_grad_dir_none(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(20usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn border_width_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(21usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_border_width_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(21usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn border_side_full(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(22usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_border_side_full(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(22usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn border_post_off(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(23usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_border_post_off(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(23usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn outline_width_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(24usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_outline_width_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(24usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn pattern_img_null(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(25usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_pattern_img_null(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(25usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn shadow_width_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(26usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_shadow_width_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(26usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn value_txt_str(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(27usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_value_txt_str(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(27usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn img_recolor_opa_transp(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(28usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_img_recolor_opa_transp(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(28usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn text_space_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(29usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_text_space_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(29usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn text_decor_none(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(30usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_text_decor_none(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(30usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn text_font_normal(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(31usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_text_font_normal(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(31usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(style_cnt: u32, has_local: u32,
+                                  has_trans: u32, skip_trans: u32,
+                                  ignore_trans: u32, valid_cache: u32,
+                                  ignore_cache: u32, radius_zero: u32,
+                                  opa_scale_cover: u32, clip_corner_off: u32,
+                                  transform_all_zero: u32, pad_all_zero: u32,
+                                  blend_mode_all_normal: u32,
+                                  bg_opa_transp: u32, bg_opa_cover: u32,
+                                  bg_grad_dir_none: u32,
+                                  border_width_zero: u32,
+                                  border_side_full: u32, border_post_off: u32,
+                                  outline_width_zero: u32,
+                                  pattern_img_null: u32,
+                                  shadow_width_zero: u32, value_txt_str: u32,
+                                  img_recolor_opa_transp: u32,
+                                  text_space_zero: u32, text_decor_none: u32,
+                                  text_font_normal: u32)
+             -> __BindgenBitfieldUnit<[u8; 4usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 4usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 6u8,
+                                            {
+                                                let style_cnt: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(style_cnt)
+                                                    };
+                                                style_cnt as u64
+                                            });
+                __bindgen_bitfield_unit.set(6usize, 1u8,
+                                            {
+                                                let has_local: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(has_local)
+                                                    };
+                                                has_local as u64
+                                            });
+                __bindgen_bitfield_unit.set(7usize, 1u8,
+                                            {
+                                                let has_trans: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(has_trans)
+                                                    };
+                                                has_trans as u64
+                                            });
+                __bindgen_bitfield_unit.set(8usize, 1u8,
+                                            {
+                                                let skip_trans: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(skip_trans)
+                                                    };
+                                                skip_trans as u64
+                                            });
+                __bindgen_bitfield_unit.set(9usize, 1u8,
+                                            {
+                                                let ignore_trans: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(ignore_trans)
+                                                    };
+                                                ignore_trans as u64
+                                            });
+                __bindgen_bitfield_unit.set(10usize, 1u8,
+                                            {
+                                                let valid_cache: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(valid_cache)
+                                                    };
+                                                valid_cache as u64
+                                            });
+                __bindgen_bitfield_unit.set(11usize, 1u8,
+                                            {
+                                                let ignore_cache: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(ignore_cache)
+                                                    };
+                                                ignore_cache as u64
+                                            });
+                __bindgen_bitfield_unit.set(12usize, 1u8,
+                                            {
+                                                let radius_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(radius_zero)
+                                                    };
+                                                radius_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(13usize, 1u8,
+                                            {
+                                                let opa_scale_cover: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(opa_scale_cover)
+                                                    };
+                                                opa_scale_cover as u64
+                                            });
+                __bindgen_bitfield_unit.set(14usize, 1u8,
+                                            {
+                                                let clip_corner_off: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(clip_corner_off)
+                                                    };
+                                                clip_corner_off as u64
+                                            });
+                __bindgen_bitfield_unit.set(15usize, 1u8,
+                                            {
+                                                let transform_all_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(transform_all_zero)
+                                                    };
+                                                transform_all_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(16usize, 1u8,
+                                            {
+                                                let pad_all_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(pad_all_zero)
+                                                    };
+                                                pad_all_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(17usize, 1u8,
+                                            {
+                                                let blend_mode_all_normal:
+                                                        u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(blend_mode_all_normal)
+                                                    };
+                                                blend_mode_all_normal as u64
+                                            });
+                __bindgen_bitfield_unit.set(18usize, 1u8,
+                                            {
+                                                let bg_opa_transp: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(bg_opa_transp)
+                                                    };
+                                                bg_opa_transp as u64
+                                            });
+                __bindgen_bitfield_unit.set(19usize, 1u8,
+                                            {
+                                                let bg_opa_cover: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(bg_opa_cover)
+                                                    };
+                                                bg_opa_cover as u64
+                                            });
+                __bindgen_bitfield_unit.set(20usize, 1u8,
+                                            {
+                                                let bg_grad_dir_none: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(bg_grad_dir_none)
+                                                    };
+                                                bg_grad_dir_none as u64
+                                            });
+                __bindgen_bitfield_unit.set(21usize, 1u8,
+                                            {
+                                                let border_width_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(border_width_zero)
+                                                    };
+                                                border_width_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(22usize, 1u8,
+                                            {
+                                                let border_side_full: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(border_side_full)
+                                                    };
+                                                border_side_full as u64
+                                            });
+                __bindgen_bitfield_unit.set(23usize, 1u8,
+                                            {
+                                                let border_post_off: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(border_post_off)
+                                                    };
+                                                border_post_off as u64
+                                            });
+                __bindgen_bitfield_unit.set(24usize, 1u8,
+                                            {
+                                                let outline_width_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(outline_width_zero)
+                                                    };
+                                                outline_width_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(25usize, 1u8,
+                                            {
+                                                let pattern_img_null: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(pattern_img_null)
+                                                    };
+                                                pattern_img_null as u64
+                                            });
+                __bindgen_bitfield_unit.set(26usize, 1u8,
+                                            {
+                                                let shadow_width_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(shadow_width_zero)
+                                                    };
+                                                shadow_width_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(27usize, 1u8,
+                                            {
+                                                let value_txt_str: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(value_txt_str)
+                                                    };
+                                                value_txt_str as u64
+                                            });
+                __bindgen_bitfield_unit.set(28usize, 1u8,
+                                            {
+                                                let img_recolor_opa_transp:
+                                                        u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(img_recolor_opa_transp)
+                                                    };
+                                                img_recolor_opa_transp as u64
+                                            });
+                __bindgen_bitfield_unit.set(29usize, 1u8,
+                                            {
+                                                let text_space_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(text_space_zero)
+                                                    };
+                                                text_space_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(30usize, 1u8,
+                                            {
+                                                let text_decor_none: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(text_decor_none)
+                                                    };
+                                                text_decor_none as u64
+                                            });
+                __bindgen_bitfield_unit.set(31usize, 1u8,
+                                            {
+                                                let text_font_normal: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(text_font_normal)
+                                                    };
+                                                text_font_normal as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        #[doc = " Dummy type to make handling easier"]
+        pub type lv_ll_node_t = u8;
+        #[doc = " Description of a linked list"]
+        #[repr(C)]
+        pub struct lv_ll_t {
+            pub n_size: u32,
+            pub head: *mut lv_ll_node_t,
+            pub tail: *mut lv_ll_node_t,
+        }
+        impl Default for lv_ll_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        #[doc = " Tasks execute this type type of functions."]
+        pub type lv_task_cb_t =
+         ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_task_t)>;
+        #[doc = "      TYPEDEFS"]
+        #[repr(C)]
+        pub struct _lv_task_t {
+            #[doc = "< How often the task should run"]
+            pub period: u32,
+            #[doc = "< Last time the task ran"]
+            pub last_run: u32,
+            #[doc = "< Task function"]
+            pub task_cb: lv_task_cb_t,
+            #[doc = "< Custom user data"]
+            pub user_data: *mut ::cty::c_void,
+            #[doc =
+              "< 1: Task times;  -1 : infinity;  0 : stop ;  n>0: residual times"]
+            pub repeat_count: i32,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+            pub __bindgen_padding_0: [u8; 3usize],
+        }
+        impl Default for _lv_task_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl _lv_task_t {
+            #[inline]
+            pub fn prio(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 3u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_prio(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 3u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(prio: u8)
+             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 3u8,
+                                            {
+                                                let prio: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(prio)
+                                                    };
+                                                prio as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        pub type lv_task_t = _lv_task_t;
+        #[doc = " Structure for holding display buffer information."]
+        #[repr(C)]
+        pub struct lv_disp_buf_t {
+            #[doc = "< First display buffer."]
+            pub buf1: *mut ::cty::c_void,
+            #[doc = "< Second display buffer."]
+            pub buf2: *mut ::cty::c_void,
+            pub buf_act: *mut ::cty::c_void,
+            pub size: u32,
+            pub area: lv_area_t,
+            pub flushing: ::cty::c_int,
+            pub flushing_last: ::cty::c_int,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+            pub __bindgen_padding_0: [u8; 3usize],
+        }
+        impl Default for lv_disp_buf_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl lv_disp_buf_t {
+            #[inline]
+            pub fn last_area(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_last_area(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn last_part(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_last_part(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(1usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(last_area: u32, last_part: u32)
+             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 1u8,
+                                            {
+                                                let last_area: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(last_area)
+                                                    };
+                                                last_area as u64
+                                            });
+                __bindgen_bitfield_unit.set(1usize, 1u8,
+                                            {
+                                                let last_part: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(last_part)
+                                                    };
+                                                last_part as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        #[doc = " Display Driver structure to be registered by HAL"]
+        #[repr(C)]
+        pub struct _disp_drv_t {
+            #[doc = "< Horizontal resolution."]
+            pub hor_res: lv_coord_t,
+            #[doc = "< Vertical resolution."]
+            pub ver_res: lv_coord_t,
+            #[doc =
+              " Pointer to a buffer initialized with `lv_disp_buf_init()`."]
+            #[doc =
+              " LVGL will use this buffer(s) to draw the screens contents"]
+            pub buffer: *mut lv_disp_buf_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u16>,
+            #[doc =
+              " MANDATORY: Write the internal buffer (VDB) to the display. 'lv_disp_flush_ready()' has to be"]
+            #[doc = " called when finished"]
+            pub flush_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                          *mut _disp_drv_t,
+                                                                      area:
+                                                                          *const lv_area_t,
+                                                                      color_p:
+                                                                          *mut lv_color_t)>,
+            #[doc =
+              " OPTIONAL: Extend the invalidated areas to match with the display drivers requirements"]
+            #[doc = " E.g. round `y` to, 8, 16 ..) on a monochrome display"]
+            pub rounder_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                            *mut _disp_drv_t,
+                                                                        area:
+                                                                            *mut lv_area_t)>,
+            #[doc =
+              " OPTIONAL: Set a pixel in a buffer according to the special requirements of the display"]
+            #[doc =
+              " Can be used for color format not supported in LittelvGL. E.g. 2 bit -> 4 gray scales"]
+            #[doc =
+              " __Note:__ Much slower then drawing with supported color formats."]
+            pub set_px_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                           *mut _disp_drv_t,
+                                                                       buf:
+                                                                           *mut u8,
+                                                                       buf_w:
+                                                                           lv_coord_t,
+                                                                       x:
+                                                                           lv_coord_t,
+                                                                       y:
+                                                                           lv_coord_t,
+                                                                       color:
+                                                                           lv_color_t,
+                                                                       opa:
+                                                                           lv_opa_t)>,
+            #[doc =
+              " OPTIONAL: Called after every refresh cycle to tell the rendering and flushing time + the"]
+            #[doc = " number of flushed pixels"]
+            pub monitor_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                            *mut _disp_drv_t,
+                                                                        time:
+                                                                            u32,
+                                                                        px:
+                                                                            u32)>,
+            #[doc =
+              " OPTIONAL: Called periodically while lvgl waits for operation to be completed."]
+            #[doc = " For example flushing or GPU"]
+            #[doc =
+              " User can execute very simple tasks here or yield the task"]
+            pub wait_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                         *mut _disp_drv_t)>,
+            #[doc =
+              " OPTIONAL: Called when lvgl needs any CPU cache that affects rendering to be cleaned"]
+            pub clean_dcache_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                                 *mut _disp_drv_t)>,
+            #[doc = " OPTIONAL: called to wait while the gpu is working"]
+            pub gpu_wait_cb: ::core::option::Option<unsafe extern "C" fn(disp_drv:
+                                                                             *mut _disp_drv_t)>,
+            #[doc = " On CHROMA_KEYED images this color will be transparent."]
+            #[doc = " `LV_COLOR_TRANSP` by default. (lv_conf.h)"]
+            pub color_chroma_key: lv_color_t,
+            #[doc = "< Custom display driver user data"]
+            pub user_data: lv_disp_drv_user_data_t,
+        }
+        impl Default for _disp_drv_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl _disp_drv_t {
+            #[inline]
+            pub fn antialiasing(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_antialiasing(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn rotated(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_rotated(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(1usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn dpi(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(2usize, 10u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_dpi(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(2usize, 10u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(antialiasing: u32, rotated: u32, dpi: u32)
+             -> __BindgenBitfieldUnit<[u8; 2usize], u16> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 2usize], u16> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 1u8,
+                                            {
+                                                let antialiasing: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(antialiasing)
+                                                    };
+                                                antialiasing as u64
+                                            });
+                __bindgen_bitfield_unit.set(1usize, 1u8,
+                                            {
+                                                let rotated: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(rotated)
+                                                    };
+                                                rotated as u64
+                                            });
+                __bindgen_bitfield_unit.set(2usize, 10u8,
+                                            {
+                                                let dpi: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(dpi)
+                                                    };
+                                                dpi as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        pub type lv_disp_drv_t = _disp_drv_t;
+        #[doc = "      TYPEDEFS"]
+        #[repr(C)]
+        pub struct _disp_t {
+            pub driver: lv_disp_drv_t,
+            pub refr_task: *mut lv_task_t,
+            #[doc = " Screens of the display"]
+            pub scr_ll: lv_ll_t,
+            #[doc = "< Currently active screen on this display"]
+            pub act_scr: *mut _lv_obj_t,
+            #[doc = "< Previous screen. Used during screen animations"]
+            pub prev_scr: *mut _lv_obj_t,
+            #[doc = "< @see lv_disp_get_layer_top"]
+            pub top_layer: *mut _lv_obj_t,
+            #[doc = "< @see lv_disp_get_layer_sys"]
+            pub sys_layer: *mut _lv_obj_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+            #[doc = "< Default display color when screens are transparent"]
+            pub bg_color: lv_color_t,
+            #[doc = "< An image source to display as wallpaper"]
+            pub bg_img: *const ::cty::c_void,
+            #[doc = "<Opacity of the background color or wallpaper"]
+            pub bg_opa: lv_opa_t,
+            #[doc = " Invalidated (marked to redraw) areas"]
+            pub inv_areas: [lv_area_t; 32usize],
+            pub inv_area_joined: [u8; 32usize],
+            pub _bitfield_2: __BindgenBitfieldUnit<[u8; 2usize], u16>,
+            #[doc = "< Last time there was activity on this display"]
+            pub last_activity_time: u32,
+        }
+        impl Default for _disp_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl _disp_t {
+            #[inline]
+            pub fn del_prev(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_del_prev(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(del_prev: u8)
+             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 1u8,
+                                            {
+                                                let del_prev: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(del_prev)
+                                                    };
+                                                del_prev as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+            #[inline]
+            pub fn inv_p(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_2.get(0usize, 10u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_inv_p(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_2.set(0usize, 10u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_2(inv_p: u32)
+             -> __BindgenBitfieldUnit<[u8; 2usize], u16> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 2usize], u16> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 10u8,
+                                            {
+                                                let inv_p: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(inv_p)
+                                                    };
+                                                inv_p as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        pub type lv_disp_t = _disp_t;
+        pub type lv_drag_dir_t = u8;
+        pub type lv_bidi_dir_t = u8;
+        pub type lv_design_mode_t = u8;
+        pub type lv_design_res_t = u8;
+        #[doc =
+          " The design callback is used to draw the object on the screen."]
+        #[doc =
+          " It accepts the object, a mask area, and the mode in which to draw the object."]
+        pub type lv_design_cb_t =
+         ::core::option::Option<unsafe extern "C" fn(obj: *mut _lv_obj_t,
+                                                     clip_area:
+                                                         *const lv_area_t,
+                                                     mode: lv_design_mode_t)
+                                    -> lv_design_res_t>;
+        pub type lv_event_t = u8;
+        #[doc = " @brief Event callback."]
+        #[doc =
+          " Events are used to notify the user of some action being taken on the object."]
+        #[doc = " For details, see ::lv_event_t."]
+        pub type lv_event_cb_t =
+         ::core::option::Option<unsafe extern "C" fn(obj: *mut _lv_obj_t,
+                                                     event: lv_event_t)>;
+        pub type lv_signal_t = u8;
+        pub type lv_signal_cb_t =
+         ::core::option::Option<unsafe extern "C" fn(obj: *mut _lv_obj_t,
+                                                     sign: lv_signal_t,
+                                                     param:
+                                                         *mut ::cty::c_void)
+                                    -> lv_res_t>;
+        #[repr(C)]
+        pub struct lv_realign_t {
+            pub base: *const _lv_obj_t,
+            pub xofs: lv_coord_t,
+            pub yofs: lv_coord_t,
+            pub align: lv_align_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+            pub __bindgen_padding_0: u16,
+        }
+        impl Default for lv_realign_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl lv_realign_t {
+            #[inline]
+            pub fn auto_realign(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_auto_realign(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn mid_align(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_mid_align(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(1usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(auto_realign: u8, mid_align: u8)
+             -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 1usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 1u8,
+                                            {
+                                                let auto_realign: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(auto_realign)
+                                                    };
+                                                auto_realign as u64
+                                            });
+                __bindgen_bitfield_unit.set(1usize, 1u8,
+                                            {
+                                                let mid_align: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(mid_align)
+                                                    };
+                                                mid_align as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        pub type lv_state_t = u8;
+        #[doc = "      TYPEDEFS"]
+        #[repr(C)]
+        pub struct _lv_obj_t {
+            #[doc = "< Pointer to the parent object"]
+            pub parent: *mut _lv_obj_t,
+            #[doc = "< Linked list to store the children objects"]
+            pub child_ll: lv_ll_t,
+            #[doc = "< Coordinates of the object (x1, y1, x2, y2)"]
+            pub coords: lv_area_t,
+            #[doc = "< Event callback function"]
+            pub event_cb: lv_event_cb_t,
+            #[doc = "< Object type specific signal function"]
+            pub signal_cb: lv_signal_cb_t,
+            #[doc = "< Object type specific design function"]
+            pub design_cb: lv_design_cb_t,
+            #[doc = "< Object type specific extended data"]
+            pub ext_attr: *mut ::cty::c_void,
+            pub style_list: lv_style_list_t,
+            #[doc = "< Extra click padding in horizontal direction"]
+            pub ext_click_pad_hor: u8,
+            #[doc = "< Extra click padding in vertical direction"]
+            pub ext_click_pad_ver: u8,
+            #[doc = "< EXTend the size in every direction for drawing."]
+            pub ext_draw_pad: lv_coord_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
+            #[doc = "< Automatically happening actions can be prevented."]
+            #[doc = "'OR'ed values from `lv_protect_t`"]
+            pub protect: u8,
+            pub state: lv_state_t,
+            #[doc = "< Information about the last call to ::lv_obj_align."]
+            pub realign: lv_realign_t,
+            #[doc = "< Custom user data for object."]
+            pub user_data: lv_obj_user_data_t,
+        }
+        impl Default for _lv_obj_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl _lv_obj_t {
+            #[inline]
+            pub fn click(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_click(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn drag(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_drag(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(1usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn drag_throw(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_drag_throw(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(2usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn drag_parent(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_drag_parent(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(3usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn hidden(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_hidden(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(4usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn top(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_top(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(5usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn parent_event(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_parent_event(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(6usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn adv_hittest(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_adv_hittest(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(7usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn gesture_parent(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_gesture_parent(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(8usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn focus_parent(&self) -> u8 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_focus_parent(&mut self, val: u8) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(9usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn drag_dir(&self) -> lv_drag_dir_t {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(10usize, 3u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_drag_dir(&mut self, val: lv_drag_dir_t) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(10usize, 3u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn base_dir(&self) -> lv_bidi_dir_t {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(13usize, 2u8)
+                                               as u8)
+                }
+            }
+            #[inline]
+            pub fn set_base_dir(&mut self, val: lv_bidi_dir_t) {
+                unsafe {
+                    let val: u8 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(13usize, 2u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(click: u8, drag: u8, drag_throw: u8,
+                                  drag_parent: u8, hidden: u8, top: u8,
+                                  parent_event: u8, adv_hittest: u8,
+                                  gesture_parent: u8, focus_parent: u8,
+                                  drag_dir: lv_drag_dir_t,
+                                  base_dir: lv_bidi_dir_t)
+             -> __BindgenBitfieldUnit<[u8; 2usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 2usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 1u8,
+                                            {
+                                                let click: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(click)
+                                                    };
+                                                click as u64
+                                            });
+                __bindgen_bitfield_unit.set(1usize, 1u8,
+                                            {
+                                                let drag: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(drag)
+                                                    };
+                                                drag as u64
+                                            });
+                __bindgen_bitfield_unit.set(2usize, 1u8,
+                                            {
+                                                let drag_throw: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(drag_throw)
+                                                    };
+                                                drag_throw as u64
+                                            });
+                __bindgen_bitfield_unit.set(3usize, 1u8,
+                                            {
+                                                let drag_parent: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(drag_parent)
+                                                    };
+                                                drag_parent as u64
+                                            });
+                __bindgen_bitfield_unit.set(4usize, 1u8,
+                                            {
+                                                let hidden: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(hidden)
+                                                    };
+                                                hidden as u64
+                                            });
+                __bindgen_bitfield_unit.set(5usize, 1u8,
+                                            {
+                                                let top: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(top)
+                                                    };
+                                                top as u64
+                                            });
+                __bindgen_bitfield_unit.set(6usize, 1u8,
+                                            {
+                                                let parent_event: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(parent_event)
+                                                    };
+                                                parent_event as u64
+                                            });
+                __bindgen_bitfield_unit.set(7usize, 1u8,
+                                            {
+                                                let adv_hittest: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(adv_hittest)
+                                                    };
+                                                adv_hittest as u64
+                                            });
+                __bindgen_bitfield_unit.set(8usize, 1u8,
+                                            {
+                                                let gesture_parent: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(gesture_parent)
+                                                    };
+                                                gesture_parent as u64
+                                            });
+                __bindgen_bitfield_unit.set(9usize, 1u8,
+                                            {
+                                                let focus_parent: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(focus_parent)
+                                                    };
+                                                focus_parent as u64
+                                            });
+                __bindgen_bitfield_unit.set(10usize, 3u8,
+                                            {
+                                                let drag_dir: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(drag_dir)
+                                                    };
+                                                drag_dir as u64
+                                            });
+                __bindgen_bitfield_unit.set(13usize, 2u8,
+                                            {
+                                                let base_dir: u8 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(base_dir)
+                                                    };
+                                                base_dir as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        #[doc = " Redraw the invalidated areas now."]
+        #[doc =
+          " Normally the redrawing is periodically executed in `lv_task_handler` but a long blocking process"]
+        #[doc =
+          " can prevent the call of `lv_task_handler`. In this case if the the GUI is updated in the process"]
+        #[doc =
+          " (e.g. progress bar) this function can be called when the screen should be updated."]
+        #[doc =
+          " - __`disp`__: pointer to display to refresh. NULL to refresh all displays."]
+        pub fn now(disp: *mut lv_disp_t) -> MynewtResult<()> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
             extern "C" {
-                #[doc = " Check if any object has a given type"]
-                #[doc = " - __`obj`__: pointer to an object"]
+                #[doc = " Redraw the invalidated areas now."]
                 #[doc =
-                  " - __`obj_type`__: type of the object. (e.g. \"lv_btn\")"]
-                #[doc = " Return: true: valid"]
-                pub fn lv_debug_check_obj_type(obj: *const lv_obj_t,
-                                               obj_type: *const ::cty::c_char)
-                -> bool;
+                  " Normally the redrawing is periodically executed in `lv_task_handler` but a long blocking process"]
+                #[doc =
+                  " can prevent the call of `lv_task_handler`. In this case if the the GUI is updated in the process"]
+                #[doc =
+                  " (e.g. progress bar) this function can be called when the screen should be updated."]
+                #[doc =
+                  " - __`disp`__: pointer to display to refresh. NULL to refresh all displays."]
+                pub fn lv_refr_now(disp: *mut lv_disp_t);
             }
             "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
-            obj_type.validate();
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_refr_now(disp as *mut lv_disp_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+    }
+    /// Contains Rust bindings for LVGL Core Style API `lv_style`
+    #[allow(non_camel_case_types)]
+    #[allow(non_upper_case_globals)]
+    #[allow(unused_imports)]
+    pub mod style {
+        use super::*;
+        #[repr(C)]
+        pub struct __BindgenBitfieldUnit<Storage, Align> where
+                   Storage: AsRef<[u8]> + AsMut<[u8]> {
+            storage: Storage,
+            align: [Align; 0],
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::marker::Copy, Align: ::core::marker::Copy>
+         ::core::marker::Copy for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::clone::Clone, Align: ::core::clone::Clone>
+         ::core::clone::Clone for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            fn clone(&self) -> __BindgenBitfieldUnit<Storage, Align> {
+                match *self {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_0_0, align: ref __self_0_1 } =>
+                    __BindgenBitfieldUnit{storage:
+                                              ::core::clone::Clone::clone(&(*__self_0_0)),
+                                          align:
+                                              ::core::clone::Clone::clone(&(*__self_0_1)),},
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::fmt::Debug, Align: ::core::fmt::Debug>
+         ::core::fmt::Debug for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            fn fmt(&self, f: &mut ::core::fmt::Formatter)
+             -> ::core::fmt::Result {
+                match *self {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_0_0, align: ref __self_0_1 } => {
+                        let mut debug_trait_builder =
+                            f.debug_struct("__BindgenBitfieldUnit");
+                        let _ =
+                            debug_trait_builder.field("storage",
+                                                      &&(*__self_0_0));
+                        let _ =
+                            debug_trait_builder.field("align",
+                                                      &&(*__self_0_1));
+                        debug_trait_builder.finish()
+                    }
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::default::Default,
+              Align: ::core::default::Default> ::core::default::Default for
+         __BindgenBitfieldUnit<Storage, Align> where Storage: AsRef<[u8]> +
+         AsMut<[u8]> {
+            #[inline]
+            fn default() -> __BindgenBitfieldUnit<Storage, Align> {
+                __BindgenBitfieldUnit{storage:
+                                          ::core::default::Default::default(),
+                                      align:
+                                          ::core::default::Default::default(),}
+            }
+        }
+        impl <Storage, Align> ::core::marker::StructuralEq for
+         __BindgenBitfieldUnit<Storage, Align> where Storage: AsRef<[u8]> +
+         AsMut<[u8]> {
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::cmp::Eq, Align: ::core::cmp::Eq>
+         ::core::cmp::Eq for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            #[doc(hidden)]
+            fn assert_receiver_is_total_eq(&self) -> () {
+                {
+                    let _: ::core::cmp::AssertParamIsEq<Storage>;
+                    let _: ::core::cmp::AssertParamIsEq<[Align; 0]>;
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::hash::Hash, Align: ::core::hash::Hash>
+         ::core::hash::Hash for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            fn hash<__H: ::core::hash::Hasher>(&self, state: &mut __H) -> () {
+                match *self {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_0_0, align: ref __self_0_1 } => {
+                        ::core::hash::Hash::hash(&(*__self_0_0), state);
+                        ::core::hash::Hash::hash(&(*__self_0_1), state)
+                    }
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::cmp::Ord, Align: ::core::cmp::Ord>
+         ::core::cmp::Ord for __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            fn cmp(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> ::core::cmp::Ordering {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        match ::core::cmp::Ord::cmp(&(*__self_0_0),
+                                                    &(*__self_1_0)) {
+                            ::core::cmp::Ordering::Equal =>
+                            match ::core::cmp::Ord::cmp(&(*__self_0_1),
+                                                        &(*__self_1_1)) {
+                                ::core::cmp::Ordering::Equal =>
+                                ::core::cmp::Ordering::Equal,
+                                cmp => cmp,
+                            },
+                            cmp => cmp,
+                        },
+                    },
+                }
+            }
+        }
+        impl <Storage, Align> ::core::marker::StructuralPartialEq for
+         __BindgenBitfieldUnit<Storage, Align> where Storage: AsRef<[u8]> +
+         AsMut<[u8]> {
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::cmp::PartialEq, Align: ::core::cmp::PartialEq>
+         ::core::cmp::PartialEq for __BindgenBitfieldUnit<Storage, Align>
+         where Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            fn eq(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        (*__self_0_0) == (*__self_1_0) &&
+                            (*__self_0_1) == (*__self_1_1),
+                    },
+                }
+            }
+            #[inline]
+            fn ne(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        (*__self_0_0) != (*__self_1_0) ||
+                            (*__self_0_1) != (*__self_1_1),
+                    },
+                }
+            }
+        }
+        #[automatically_derived]
+        #[allow(unused_qualifications)]
+        impl <Storage: ::core::cmp::PartialOrd,
+              Align: ::core::cmp::PartialOrd> ::core::cmp::PartialOrd for
+         __BindgenBitfieldUnit<Storage, Align> where Storage: AsRef<[u8]> +
+         AsMut<[u8]> {
+            #[inline]
+            fn partial_cmp(&self,
+                           other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> ::core::option::Option<::core::cmp::Ordering> {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        match ::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                   &(*__self_1_0))
+                            {
+                            ::core::option::Option::Some(::core::cmp::Ordering::Equal)
+                            =>
+                            match ::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                       &(*__self_1_1))
+                                {
+                                ::core::option::Option::Some(::core::cmp::Ordering::Equal)
+                                =>
+                                ::core::option::Option::Some(::core::cmp::Ordering::Equal),
+                                cmp => cmp,
+                            },
+                            cmp => cmp,
+                        },
+                    },
+                }
+            }
+            #[inline]
+            fn lt(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        ::core::cmp::Ordering::then_with(::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                                                                                &(*__self_1_0)),
+                                                                                           ::core::cmp::Ordering::Equal),
+                                                         ||
+                                                             ::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                                                                                    &(*__self_1_1)),
+                                                                                               ::core::cmp::Ordering::Greater))
+                            == ::core::cmp::Ordering::Less,
+                    },
+                }
+            }
+            #[inline]
+            fn le(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        ::core::cmp::Ordering::then_with(::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                                                                                &(*__self_1_0)),
+                                                                                           ::core::cmp::Ordering::Equal),
+                                                         ||
+                                                             ::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                                                                                    &(*__self_1_1)),
+                                                                                               ::core::cmp::Ordering::Greater))
+                            != ::core::cmp::Ordering::Greater,
+                    },
+                }
+            }
+            #[inline]
+            fn gt(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        ::core::cmp::Ordering::then_with(::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                                                                                &(*__self_1_0)),
+                                                                                           ::core::cmp::Ordering::Equal),
+                                                         ||
+                                                             ::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                                                                                    &(*__self_1_1)),
+                                                                                               ::core::cmp::Ordering::Less))
+                            == ::core::cmp::Ordering::Greater,
+                    },
+                }
+            }
+            #[inline]
+            fn ge(&self, other: &__BindgenBitfieldUnit<Storage, Align>)
+             -> bool {
+                match *other {
+                    __BindgenBitfieldUnit {
+                    storage: ref __self_1_0, align: ref __self_1_1 } =>
+                    match *self {
+                        __BindgenBitfieldUnit {
+                        storage: ref __self_0_0, align: ref __self_0_1 } =>
+                        ::core::cmp::Ordering::then_with(::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_0),
+                                                                                                                                &(*__self_1_0)),
+                                                                                           ::core::cmp::Ordering::Equal),
+                                                         ||
+                                                             ::core::option::Option::unwrap_or(::core::cmp::PartialOrd::partial_cmp(&(*__self_0_1),
+                                                                                                                                    &(*__self_1_1)),
+                                                                                               ::core::cmp::Ordering::Less))
+                            != ::core::cmp::Ordering::Less,
+                    },
+                }
+            }
+        }
+        impl <Storage, Align> __BindgenBitfieldUnit<Storage, Align> where
+         Storage: AsRef<[u8]> + AsMut<[u8]> {
+            #[inline]
+            pub fn new(storage: Storage) -> Self { Self{storage, align: [],} }
+            #[inline]
+            pub fn get_bit(&self, index: usize) -> bool {
+                if true {
+                    if !(index / 8 < self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: index / 8 < self.storage.as_ref().len()")
+                    };
+                };
+                let byte_index = index / 8;
+                let byte = self.storage.as_ref()[byte_index];
+                let bit_index =
+                    if false { 7 - (index % 8) } else { index % 8 };
+                let mask = 1 << bit_index;
+                byte & mask == mask
+            }
+            #[inline]
+            pub fn set_bit(&mut self, index: usize, val: bool) {
+                if true {
+                    if !(index / 8 < self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: index / 8 < self.storage.as_ref().len()")
+                    };
+                };
+                let byte_index = index / 8;
+                let byte = &mut self.storage.as_mut()[byte_index];
+                let bit_index =
+                    if false { 7 - (index % 8) } else { index % 8 };
+                let mask = 1 << bit_index;
+                if val { *byte |= mask; } else { *byte &= !mask; }
+            }
+            #[inline]
+            pub fn get(&self, bit_offset: usize, bit_width: u8) -> u64 {
+                if true {
+                    if !(bit_width <= 64) {
+                        ::core::panicking::panic("assertion failed: bit_width <= 64")
+                    };
+                };
+                if true {
+                    if !(bit_offset / 8 < self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: bit_offset / 8 < self.storage.as_ref().len()")
+                    };
+                };
+                if true {
+                    if !((bit_offset + (bit_width as usize)) / 8 <=
+                             self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: (bit_offset + (bit_width as usize)) / 8 <= self.storage.as_ref().len()")
+                    };
+                };
+                let mut val = 0;
+                for i in 0..(bit_width as usize) {
+                    if self.get_bit(i + bit_offset) {
+                        let index =
+                            if false {
+                                bit_width as usize - 1 - i
+                            } else { i };
+                        val |= 1 << index;
+                    }
+                }
+                val
+            }
+            #[inline]
+            pub fn set(&mut self, bit_offset: usize, bit_width: u8,
+                       val: u64) {
+                if true {
+                    if !(bit_width <= 64) {
+                        ::core::panicking::panic("assertion failed: bit_width <= 64")
+                    };
+                };
+                if true {
+                    if !(bit_offset / 8 < self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: bit_offset / 8 < self.storage.as_ref().len()")
+                    };
+                };
+                if true {
+                    if !((bit_offset + (bit_width as usize)) / 8 <=
+                             self.storage.as_ref().len()) {
+                        ::core::panicking::panic("assertion failed: (bit_offset + (bit_width as usize)) / 8 <= self.storage.as_ref().len()")
+                    };
+                };
+                for i in 0..(bit_width as usize) {
+                    let mask = 1 << i;
+                    let val_bit_is_set = val & mask == mask;
+                    let index =
+                        if false { bit_width as usize - 1 - i } else { i };
+                    self.set_bit(index + bit_offset, val_bit_is_set);
+                }
+            }
+        }
+        pub const LV_STYLE_ID_MASK: u32 = 255;
+        pub const LV_STYLE_ATTR_NONE: u32 = 0;
+        pub const LV_STYLE_ATTR_INHERIT: u32 = 128;
+        pub const LV_STYLE_TRANS_NUM_MAX: u32 = 6;
+        pub const LV_STYLE_PROP_ALL: u32 = 255;
+        pub const LV_STYLE_ID_VALUE: u32 = 0;
+        pub const LV_STYLE_ID_COLOR: u32 = 9;
+        pub const LV_STYLE_ID_OPA: u32 = 12;
+        pub const LV_STYLE_ID_PTR: u32 = 14;
+        pub const LV_STYLE_STATE_POS: u32 = 8;
+        pub const LV_STYLE_STATE_MASK: u32 = 32512;
+        pub const LV_STYLE_INHERIT_MASK: u32 = 32768;
+        pub const LV_ALIGN_CENTER: lv_align_t = 0;
+        pub const LV_ALIGN_IN_TOP_LEFT: lv_align_t = 1;
+        pub const LV_ALIGN_IN_TOP_MID: lv_align_t = 2;
+        pub const LV_ALIGN_IN_TOP_RIGHT: lv_align_t = 3;
+        pub const LV_ALIGN_IN_BOTTOM_LEFT: lv_align_t = 4;
+        pub const LV_ALIGN_IN_BOTTOM_MID: lv_align_t = 5;
+        pub const LV_ALIGN_IN_BOTTOM_RIGHT: lv_align_t = 6;
+        pub const LV_ALIGN_IN_LEFT_MID: lv_align_t = 7;
+        pub const LV_ALIGN_IN_RIGHT_MID: lv_align_t = 8;
+        pub const LV_ALIGN_OUT_TOP_LEFT: lv_align_t = 9;
+        pub const LV_ALIGN_OUT_TOP_MID: lv_align_t = 10;
+        pub const LV_ALIGN_OUT_TOP_RIGHT: lv_align_t = 11;
+        pub const LV_ALIGN_OUT_BOTTOM_LEFT: lv_align_t = 12;
+        pub const LV_ALIGN_OUT_BOTTOM_MID: lv_align_t = 13;
+        pub const LV_ALIGN_OUT_BOTTOM_RIGHT: lv_align_t = 14;
+        pub const LV_ALIGN_OUT_LEFT_TOP: lv_align_t = 15;
+        pub const LV_ALIGN_OUT_LEFT_MID: lv_align_t = 16;
+        pub const LV_ALIGN_OUT_LEFT_BOTTOM: lv_align_t = 17;
+        pub const LV_ALIGN_OUT_RIGHT_TOP: lv_align_t = 18;
+        pub const LV_ALIGN_OUT_RIGHT_MID: lv_align_t = 19;
+        pub const LV_ALIGN_OUT_RIGHT_BOTTOM: lv_align_t = 20;
+        #[doc = " Alignments"]
+        pub type _bindgen_ty_3 = u32;
+        pub type lv_align_t = u8;
+        pub type lv_style_attr_t = u8;
+        pub const LV_STYLE_RADIUS: _bindgen_ty_14 = 1;
+        pub const LV_STYLE_CLIP_CORNER: _bindgen_ty_14 = 2;
+        pub const LV_STYLE_SIZE: _bindgen_ty_14 = 3;
+        pub const LV_STYLE_TRANSFORM_WIDTH: _bindgen_ty_14 = 4;
+        pub const LV_STYLE_TRANSFORM_HEIGHT: _bindgen_ty_14 = 5;
+        pub const LV_STYLE_TRANSFORM_ANGLE: _bindgen_ty_14 = 6;
+        pub const LV_STYLE_TRANSFORM_ZOOM: _bindgen_ty_14 = 7;
+        pub const LV_STYLE_OPA_SCALE: _bindgen_ty_14 = 32780;
+        pub const LV_STYLE_PAD_TOP: _bindgen_ty_14 = 16;
+        pub const LV_STYLE_PAD_BOTTOM: _bindgen_ty_14 = 17;
+        pub const LV_STYLE_PAD_LEFT: _bindgen_ty_14 = 18;
+        pub const LV_STYLE_PAD_RIGHT: _bindgen_ty_14 = 19;
+        pub const LV_STYLE_PAD_INNER: _bindgen_ty_14 = 20;
+        pub const LV_STYLE_MARGIN_TOP: _bindgen_ty_14 = 21;
+        pub const LV_STYLE_MARGIN_BOTTOM: _bindgen_ty_14 = 22;
+        pub const LV_STYLE_MARGIN_LEFT: _bindgen_ty_14 = 23;
+        pub const LV_STYLE_MARGIN_RIGHT: _bindgen_ty_14 = 24;
+        pub const LV_STYLE_BG_BLEND_MODE: _bindgen_ty_14 = 32;
+        pub const LV_STYLE_BG_MAIN_STOP: _bindgen_ty_14 = 33;
+        pub const LV_STYLE_BG_GRAD_STOP: _bindgen_ty_14 = 34;
+        pub const LV_STYLE_BG_GRAD_DIR: _bindgen_ty_14 = 35;
+        pub const LV_STYLE_BG_COLOR: _bindgen_ty_14 = 41;
+        pub const LV_STYLE_BG_GRAD_COLOR: _bindgen_ty_14 = 42;
+        pub const LV_STYLE_BG_OPA: _bindgen_ty_14 = 44;
+        pub const LV_STYLE_BORDER_WIDTH: _bindgen_ty_14 = 48;
+        pub const LV_STYLE_BORDER_SIDE: _bindgen_ty_14 = 49;
+        pub const LV_STYLE_BORDER_BLEND_MODE: _bindgen_ty_14 = 50;
+        pub const LV_STYLE_BORDER_POST: _bindgen_ty_14 = 51;
+        pub const LV_STYLE_BORDER_COLOR: _bindgen_ty_14 = 57;
+        pub const LV_STYLE_BORDER_OPA: _bindgen_ty_14 = 60;
+        pub const LV_STYLE_OUTLINE_WIDTH: _bindgen_ty_14 = 64;
+        pub const LV_STYLE_OUTLINE_PAD: _bindgen_ty_14 = 65;
+        pub const LV_STYLE_OUTLINE_BLEND_MODE: _bindgen_ty_14 = 66;
+        pub const LV_STYLE_OUTLINE_COLOR: _bindgen_ty_14 = 73;
+        pub const LV_STYLE_OUTLINE_OPA: _bindgen_ty_14 = 76;
+        pub const LV_STYLE_SHADOW_WIDTH: _bindgen_ty_14 = 80;
+        pub const LV_STYLE_SHADOW_OFS_X: _bindgen_ty_14 = 81;
+        pub const LV_STYLE_SHADOW_OFS_Y: _bindgen_ty_14 = 82;
+        pub const LV_STYLE_SHADOW_SPREAD: _bindgen_ty_14 = 83;
+        pub const LV_STYLE_SHADOW_BLEND_MODE: _bindgen_ty_14 = 84;
+        pub const LV_STYLE_SHADOW_COLOR: _bindgen_ty_14 = 89;
+        pub const LV_STYLE_SHADOW_OPA: _bindgen_ty_14 = 92;
+        pub const LV_STYLE_PATTERN_BLEND_MODE: _bindgen_ty_14 = 96;
+        pub const LV_STYLE_PATTERN_REPEAT: _bindgen_ty_14 = 97;
+        pub const LV_STYLE_PATTERN_RECOLOR: _bindgen_ty_14 = 105;
+        pub const LV_STYLE_PATTERN_OPA: _bindgen_ty_14 = 108;
+        pub const LV_STYLE_PATTERN_RECOLOR_OPA: _bindgen_ty_14 = 109;
+        pub const LV_STYLE_PATTERN_IMAGE: _bindgen_ty_14 = 110;
+        pub const LV_STYLE_VALUE_LETTER_SPACE: _bindgen_ty_14 = 112;
+        pub const LV_STYLE_VALUE_LINE_SPACE: _bindgen_ty_14 = 113;
+        pub const LV_STYLE_VALUE_BLEND_MODE: _bindgen_ty_14 = 114;
+        pub const LV_STYLE_VALUE_OFS_X: _bindgen_ty_14 = 115;
+        pub const LV_STYLE_VALUE_OFS_Y: _bindgen_ty_14 = 116;
+        pub const LV_STYLE_VALUE_ALIGN: _bindgen_ty_14 = 117;
+        pub const LV_STYLE_VALUE_COLOR: _bindgen_ty_14 = 121;
+        pub const LV_STYLE_VALUE_OPA: _bindgen_ty_14 = 124;
+        pub const LV_STYLE_VALUE_FONT: _bindgen_ty_14 = 126;
+        pub const LV_STYLE_VALUE_STR: _bindgen_ty_14 = 127;
+        pub const LV_STYLE_TEXT_LETTER_SPACE: _bindgen_ty_14 = 32896;
+        pub const LV_STYLE_TEXT_LINE_SPACE: _bindgen_ty_14 = 32897;
+        pub const LV_STYLE_TEXT_DECOR: _bindgen_ty_14 = 32898;
+        pub const LV_STYLE_TEXT_BLEND_MODE: _bindgen_ty_14 = 32899;
+        pub const LV_STYLE_TEXT_COLOR: _bindgen_ty_14 = 32905;
+        pub const LV_STYLE_TEXT_SEL_COLOR: _bindgen_ty_14 = 32906;
+        pub const LV_STYLE_TEXT_OPA: _bindgen_ty_14 = 32908;
+        pub const LV_STYLE_TEXT_FONT: _bindgen_ty_14 = 32910;
+        pub const LV_STYLE_LINE_WIDTH: _bindgen_ty_14 = 144;
+        pub const LV_STYLE_LINE_BLEND_MODE: _bindgen_ty_14 = 145;
+        pub const LV_STYLE_LINE_DASH_WIDTH: _bindgen_ty_14 = 146;
+        pub const LV_STYLE_LINE_DASH_GAP: _bindgen_ty_14 = 147;
+        pub const LV_STYLE_LINE_ROUNDED: _bindgen_ty_14 = 148;
+        pub const LV_STYLE_LINE_COLOR: _bindgen_ty_14 = 153;
+        pub const LV_STYLE_LINE_OPA: _bindgen_ty_14 = 156;
+        pub const LV_STYLE_IMAGE_BLEND_MODE: _bindgen_ty_14 = 32928;
+        pub const LV_STYLE_IMAGE_RECOLOR: _bindgen_ty_14 = 32937;
+        pub const LV_STYLE_IMAGE_OPA: _bindgen_ty_14 = 32940;
+        pub const LV_STYLE_IMAGE_RECOLOR_OPA: _bindgen_ty_14 = 32941;
+        pub const LV_STYLE_TRANSITION_TIME: _bindgen_ty_14 = 176;
+        pub const LV_STYLE_TRANSITION_DELAY: _bindgen_ty_14 = 177;
+        pub const LV_STYLE_TRANSITION_PROP_1: _bindgen_ty_14 = 178;
+        pub const LV_STYLE_TRANSITION_PROP_2: _bindgen_ty_14 = 179;
+        pub const LV_STYLE_TRANSITION_PROP_3: _bindgen_ty_14 = 180;
+        pub const LV_STYLE_TRANSITION_PROP_4: _bindgen_ty_14 = 181;
+        pub const LV_STYLE_TRANSITION_PROP_5: _bindgen_ty_14 = 182;
+        pub const LV_STYLE_TRANSITION_PROP_6: _bindgen_ty_14 = 183;
+        pub const LV_STYLE_TRANSITION_PATH: _bindgen_ty_14 = 190;
+        pub const LV_STYLE_SCALE_WIDTH: _bindgen_ty_14 = 192;
+        pub const LV_STYLE_SCALE_BORDER_WIDTH: _bindgen_ty_14 = 193;
+        pub const LV_STYLE_SCALE_END_BORDER_WIDTH: _bindgen_ty_14 = 194;
+        pub const LV_STYLE_SCALE_END_LINE_WIDTH: _bindgen_ty_14 = 195;
+        pub const LV_STYLE_SCALE_GRAD_COLOR: _bindgen_ty_14 = 201;
+        pub const LV_STYLE_SCALE_END_COLOR: _bindgen_ty_14 = 202;
+        pub type _bindgen_ty_14 = u32;
+        pub type lv_style_property_t = u16;
+        pub type lv_style_state_t = u16;
+        #[repr(C)]
+        pub struct lv_style_t {
+            pub map: *mut u8,
+        }
+        impl Default for lv_style_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        pub type lv_style_int_t = i16;
+        #[repr(C)]
+        pub struct lv_style_list_t {
+            pub style_list: *mut *mut lv_style_t,
+            pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u8>,
+            pub __bindgen_padding_0: u32,
+        }
+        impl Default for lv_style_list_t {
+            fn default() -> Self { unsafe { ::core::mem::zeroed() } }
+        }
+        impl lv_style_list_t {
+            #[inline]
+            pub fn style_cnt(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(0usize, 6u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_style_cnt(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(0usize, 6u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn has_local(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_has_local(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(6usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn has_trans(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_has_trans(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(7usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn skip_trans(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_skip_trans(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(8usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn ignore_trans(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_ignore_trans(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(9usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn valid_cache(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_valid_cache(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(10usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn ignore_cache(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_ignore_cache(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(11usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn radius_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_radius_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(12usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn opa_scale_cover(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(13usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_opa_scale_cover(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(13usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn clip_corner_off(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(14usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_clip_corner_off(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(14usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn transform_all_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(15usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_transform_all_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(15usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn pad_all_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(16usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_pad_all_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(16usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn blend_mode_all_normal(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(17usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_blend_mode_all_normal(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(17usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn bg_opa_transp(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(18usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_bg_opa_transp(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(18usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn bg_opa_cover(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(19usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_bg_opa_cover(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(19usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn bg_grad_dir_none(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(20usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_bg_grad_dir_none(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(20usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn border_width_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(21usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_border_width_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(21usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn border_side_full(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(22usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_border_side_full(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(22usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn border_post_off(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(23usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_border_post_off(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(23usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn outline_width_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(24usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_outline_width_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(24usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn pattern_img_null(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(25usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_pattern_img_null(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(25usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn shadow_width_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(26usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_shadow_width_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(26usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn value_txt_str(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(27usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_value_txt_str(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(27usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn img_recolor_opa_transp(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(28usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_img_recolor_opa_transp(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(28usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn text_space_zero(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(29usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_text_space_zero(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(29usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn text_decor_none(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(30usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_text_decor_none(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(30usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn text_font_normal(&self) -> u32 {
+                unsafe {
+                    ::core::mem::transmute(self._bitfield_1.get(31usize, 1u8)
+                                               as u32)
+                }
+            }
+            #[inline]
+            pub fn set_text_font_normal(&mut self, val: u32) {
+                unsafe {
+                    let val: u32 = ::core::mem::transmute(val);
+                    self._bitfield_1.set(31usize, 1u8, val as u64)
+                }
+            }
+            #[inline]
+            pub fn new_bitfield_1(style_cnt: u32, has_local: u32,
+                                  has_trans: u32, skip_trans: u32,
+                                  ignore_trans: u32, valid_cache: u32,
+                                  ignore_cache: u32, radius_zero: u32,
+                                  opa_scale_cover: u32, clip_corner_off: u32,
+                                  transform_all_zero: u32, pad_all_zero: u32,
+                                  blend_mode_all_normal: u32,
+                                  bg_opa_transp: u32, bg_opa_cover: u32,
+                                  bg_grad_dir_none: u32,
+                                  border_width_zero: u32,
+                                  border_side_full: u32, border_post_off: u32,
+                                  outline_width_zero: u32,
+                                  pattern_img_null: u32,
+                                  shadow_width_zero: u32, value_txt_str: u32,
+                                  img_recolor_opa_transp: u32,
+                                  text_space_zero: u32, text_decor_none: u32,
+                                  text_font_normal: u32)
+             -> __BindgenBitfieldUnit<[u8; 4usize], u8> {
+                let mut __bindgen_bitfield_unit:
+                        __BindgenBitfieldUnit<[u8; 4usize], u8> =
+                    Default::default();
+                __bindgen_bitfield_unit.set(0usize, 6u8,
+                                            {
+                                                let style_cnt: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(style_cnt)
+                                                    };
+                                                style_cnt as u64
+                                            });
+                __bindgen_bitfield_unit.set(6usize, 1u8,
+                                            {
+                                                let has_local: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(has_local)
+                                                    };
+                                                has_local as u64
+                                            });
+                __bindgen_bitfield_unit.set(7usize, 1u8,
+                                            {
+                                                let has_trans: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(has_trans)
+                                                    };
+                                                has_trans as u64
+                                            });
+                __bindgen_bitfield_unit.set(8usize, 1u8,
+                                            {
+                                                let skip_trans: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(skip_trans)
+                                                    };
+                                                skip_trans as u64
+                                            });
+                __bindgen_bitfield_unit.set(9usize, 1u8,
+                                            {
+                                                let ignore_trans: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(ignore_trans)
+                                                    };
+                                                ignore_trans as u64
+                                            });
+                __bindgen_bitfield_unit.set(10usize, 1u8,
+                                            {
+                                                let valid_cache: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(valid_cache)
+                                                    };
+                                                valid_cache as u64
+                                            });
+                __bindgen_bitfield_unit.set(11usize, 1u8,
+                                            {
+                                                let ignore_cache: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(ignore_cache)
+                                                    };
+                                                ignore_cache as u64
+                                            });
+                __bindgen_bitfield_unit.set(12usize, 1u8,
+                                            {
+                                                let radius_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(radius_zero)
+                                                    };
+                                                radius_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(13usize, 1u8,
+                                            {
+                                                let opa_scale_cover: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(opa_scale_cover)
+                                                    };
+                                                opa_scale_cover as u64
+                                            });
+                __bindgen_bitfield_unit.set(14usize, 1u8,
+                                            {
+                                                let clip_corner_off: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(clip_corner_off)
+                                                    };
+                                                clip_corner_off as u64
+                                            });
+                __bindgen_bitfield_unit.set(15usize, 1u8,
+                                            {
+                                                let transform_all_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(transform_all_zero)
+                                                    };
+                                                transform_all_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(16usize, 1u8,
+                                            {
+                                                let pad_all_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(pad_all_zero)
+                                                    };
+                                                pad_all_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(17usize, 1u8,
+                                            {
+                                                let blend_mode_all_normal:
+                                                        u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(blend_mode_all_normal)
+                                                    };
+                                                blend_mode_all_normal as u64
+                                            });
+                __bindgen_bitfield_unit.set(18usize, 1u8,
+                                            {
+                                                let bg_opa_transp: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(bg_opa_transp)
+                                                    };
+                                                bg_opa_transp as u64
+                                            });
+                __bindgen_bitfield_unit.set(19usize, 1u8,
+                                            {
+                                                let bg_opa_cover: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(bg_opa_cover)
+                                                    };
+                                                bg_opa_cover as u64
+                                            });
+                __bindgen_bitfield_unit.set(20usize, 1u8,
+                                            {
+                                                let bg_grad_dir_none: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(bg_grad_dir_none)
+                                                    };
+                                                bg_grad_dir_none as u64
+                                            });
+                __bindgen_bitfield_unit.set(21usize, 1u8,
+                                            {
+                                                let border_width_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(border_width_zero)
+                                                    };
+                                                border_width_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(22usize, 1u8,
+                                            {
+                                                let border_side_full: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(border_side_full)
+                                                    };
+                                                border_side_full as u64
+                                            });
+                __bindgen_bitfield_unit.set(23usize, 1u8,
+                                            {
+                                                let border_post_off: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(border_post_off)
+                                                    };
+                                                border_post_off as u64
+                                            });
+                __bindgen_bitfield_unit.set(24usize, 1u8,
+                                            {
+                                                let outline_width_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(outline_width_zero)
+                                                    };
+                                                outline_width_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(25usize, 1u8,
+                                            {
+                                                let pattern_img_null: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(pattern_img_null)
+                                                    };
+                                                pattern_img_null as u64
+                                            });
+                __bindgen_bitfield_unit.set(26usize, 1u8,
+                                            {
+                                                let shadow_width_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(shadow_width_zero)
+                                                    };
+                                                shadow_width_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(27usize, 1u8,
+                                            {
+                                                let value_txt_str: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(value_txt_str)
+                                                    };
+                                                value_txt_str as u64
+                                            });
+                __bindgen_bitfield_unit.set(28usize, 1u8,
+                                            {
+                                                let img_recolor_opa_transp:
+                                                        u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(img_recolor_opa_transp)
+                                                    };
+                                                img_recolor_opa_transp as u64
+                                            });
+                __bindgen_bitfield_unit.set(29usize, 1u8,
+                                            {
+                                                let text_space_zero: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(text_space_zero)
+                                                    };
+                                                text_space_zero as u64
+                                            });
+                __bindgen_bitfield_unit.set(30usize, 1u8,
+                                            {
+                                                let text_decor_none: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(text_decor_none)
+                                                    };
+                                                text_decor_none as u64
+                                            });
+                __bindgen_bitfield_unit.set(31usize, 1u8,
+                                            {
+                                                let text_font_normal: u32 =
+                                                    unsafe {
+                                                        ::core::mem::transmute(text_font_normal)
+                                                    };
+                                                text_font_normal as u64
+                                            });
+                __bindgen_bitfield_unit
+            }
+        }
+        #[doc = " Initialize a style"]
+        #[doc = " - __`style`__: pointer to a style to initialize"]
+        pub fn style_init(style: *mut lv_style_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Initialize a style"]
+                #[doc = " - __`style`__: pointer to a style to initialize"]
+                pub fn lv_style_init(style: *mut lv_style_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_init(style as *mut lv_style_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Copy a style with all its properties"]
+        #[doc =
+          " - __`style_dest`__: pointer to the destination style. (Should be initialized with `lv_style_init()`)"]
+        #[doc = " - __`style_src`__: pointer to the source (to copy )style"]
+        pub fn style_copy(style_dest: *mut lv_style_t,
+                          style_src: *const lv_style_t) -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Copy a style with all its properties"]
+                #[doc =
+                  " - __`style_dest`__: pointer to the destination style. (Should be initialized with `lv_style_init()`)"]
+                #[doc =
+                  " - __`style_src`__: pointer to the source (to copy )style"]
+                pub fn lv_style_copy(style_dest: *mut lv_style_t,
+                                     style_src: *const lv_style_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_copy(style_dest as *mut lv_style_t,
+                              style_src as *const lv_style_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Initialize a style list"]
+        #[doc = " - __`list`__: a style list to initialize"]
+        pub fn style_list_init(list: *mut lv_style_list_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Initialize a style list"]
+                #[doc = " - __`list`__: a style list to initialize"]
+                pub fn lv_style_list_init(list: *mut lv_style_list_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_list_init(list as *mut lv_style_list_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc =
+          " Copy a style list with all its styles and local style properties"]
+        #[doc =
+          " - __`list_dest`__: pointer to the destination style list. (should be initialized with `lv_style_list_init()`)"]
+        #[doc =
+          " - __`list_src`__: pointer to the source (to copy) style list."]
+        pub fn style_list_copy(list_dest: *mut lv_style_list_t,
+                               list_src: *const lv_style_list_t)
+         -> MynewtResult<()> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc =
+                  " Copy a style list with all its styles and local style properties"]
+                #[doc =
+                  " - __`list_dest`__: pointer to the destination style list. (should be initialized with `lv_style_list_init()`)"]
+                #[doc =
+                  " - __`list_src`__: pointer to the source (to copy) style list."]
+                pub fn lv_style_list_copy(list_dest: *mut lv_style_list_t,
+                                          list_src: *const lv_style_list_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_list_copy(list_dest as *mut lv_style_list_t,
+                                   list_src as *const lv_style_list_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        pub fn style_list_get_style(list: *mut lv_style_list_t, id: u8)
+         -> MynewtResult<*mut lv_style_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                pub fn lv_style_list_get_style(list: *mut lv_style_list_t,
+                                               id: u8)
+                -> *mut lv_style_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
             unsafe {
                 "----------Insert Call: `let result_value = os_task_init(`----------";
                 let result_value =
-                    lv_debug_check_obj_type(obj as *const lv_obj_t,
-                                            obj_type.as_ptr() as
-                                                *const ::cty::c_char);
+                    lv_style_list_get_style(list as *mut lv_style_list_t,
+                                            id as u8);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(result_value)
             }
         }
         #[doc =
-          " Check if any object is still \"alive\", and part of the hierarchy"]
-        #[doc = " - __`obj`__: pointer to an object"]
-        #[doc = " - __`obj_type`__: type of the object. (e.g. \"lv_btn\")"]
-        #[doc = " Return: true: valid"]
-        pub fn check_obj_valid(obj: *const lv_obj_t) -> MynewtResult<bool> {
+          " Clear all properties from a style and all allocated memories."]
+        #[doc = " - __`style`__: pointer to a style"]
+        pub fn style_reset(style: *mut lv_style_t) -> MynewtResult<()> {
             "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
             extern "C" {
                 #[doc =
-                  " Check if any object is still \"alive\", and part of the hierarchy"]
-                #[doc = " - __`obj`__: pointer to an object"]
+                  " Clear all properties from a style and all allocated memories."]
+                #[doc = " - __`style`__: pointer to a style"]
+                pub fn lv_style_reset(style: *mut lv_style_t);
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                lv_style_reset(style as *mut lv_style_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(())
+            }
+        }
+        #[doc = " Remove a property from a style"]
+        #[doc = " - __`style`__: pointer to a style"]
+        #[doc = " - __`prop`__:  a style property ORed with a state."]
+        #[doc =
+          " E.g. `LV_STYLE_BORDER_WIDTH | (LV_STATE_PRESSED << LV_STYLE_STATE_POS)`"]
+        #[doc =
+          " Return: true: the property was found and removed; false: the property wasn't found"]
+        pub fn style_remove_prop(style: *mut lv_style_t,
+                                 prop: lv_style_property_t)
+         -> MynewtResult<bool> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Remove a property from a style"]
+                #[doc = " - __`style`__: pointer to a style"]
+                #[doc = " - __`prop`__:  a style property ORed with a state."]
                 #[doc =
-                  " - __`obj_type`__: type of the object. (e.g. \"lv_btn\")"]
-                #[doc = " Return: true: valid"]
-                pub fn lv_debug_check_obj_valid(obj: *const lv_obj_t)
+                  " E.g. `LV_STYLE_BORDER_WIDTH | (LV_STATE_PRESSED << LV_STYLE_STATE_POS)`"]
+                #[doc =
+                  " Return: true: the property was found and removed; false: the property wasn't found"]
+                pub fn lv_style_remove_prop(style: *mut lv_style_t,
+                                            prop: lv_style_property_t)
                 -> bool;
             }
             "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
             unsafe {
                 "----------Insert Call: `let result_value = os_task_init(`----------";
                 let result_value =
-                    lv_debug_check_obj_valid(obj as *const lv_obj_t);
+                    lv_style_remove_prop(style as *mut lv_style_t,
+                                         prop as lv_style_property_t);
+                "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
+                Ok(result_value)
+            }
+        }
+        #[doc = " Get the local style of a style list"]
+        #[doc =
+          " - __`list`__: pointer to a style list where the local property should be set"]
+        #[doc = " Return: pointer to the local style if exists else `NULL`."]
+        pub fn style_list_get_local_style(list: *mut lv_style_list_t)
+         -> MynewtResult<*mut lv_style_t> {
+            "----------Insert Extern Decl: `extern C { pub fn ... }`----------";
+            extern "C" {
+                #[doc = " Get the local style of a style list"]
+                #[doc =
+                  " - __`list`__: pointer to a style list where the local property should be set"]
+                #[doc =
+                  " Return: pointer to the local style if exists else `NULL`."]
+                pub fn lv_style_list_get_local_style(list:
+                                                         *mut lv_style_list_t)
+                -> *mut lv_style_t;
+            }
+            "----------Insert Validation: `Strn::validate_bytestr(name.bytestr)`----------";
+            unsafe {
+                "----------Insert Call: `let result_value = os_task_init(`----------";
+                let result_value =
+                    lv_style_list_get_local_style(list as
+                                                      *mut lv_style_list_t);
                 "----------Insert Result: `Ok(Strn::from_cstr(result_value))`----------";
                 Ok(result_value)
             }
@@ -83699,4 +84146,5 @@ pub mod util {
         }
     }
 }
+///  Pointer to mutable LVGL object `lv_obj_t`
 pub type Ptr = *mut core::obj::lv_obj_t;

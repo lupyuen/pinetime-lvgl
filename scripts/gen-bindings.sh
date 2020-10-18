@@ -80,11 +80,11 @@ function generate_bindings() {
 }
 
 function generate_bindings_core() {
-    #  Add whitelist and blacklist for for lv_core/lv_obj
+    #  Add whitelist and blacklist for for lv_core/lv_*
     local modname=core
-    local submodname=obj
+    local submodname=$1  # Submodule name e.g. obj
     local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
-    local whitelistname=lv_
+    local whitelistname=lv_$submodname
     #  TODO: Fix returned string lifetime for lv_obj_get_style_value_str.
     #  This function is probably not essential because our Rust app should already have the string.
     local whitelist=`cat << EOF
@@ -93,6 +93,9 @@ function generate_bindings_core() {
         --whitelist-function (?i)${whitelistname}.* \
         --whitelist-type     (?i)${whitelistname}.* \
         --whitelist-var      (?i)${whitelistname}.* \
+        --whitelist-function (?i)lv_align.* \
+        --whitelist-type     (?i)lv_align.* \
+        --whitelist-var      (?i)lv_align.* \
         --blacklist-item     lv_obj_get_style_value_str
 EOF
 `
@@ -180,8 +183,7 @@ EOF
 }
 
 function generate_bindings_widgets() {
-    #  Add whitelist and blacklist for for lv_widgets/lv_label
-    #  TODO: Handle other widgets
+    #  Add whitelist and blacklist for for lv_widgets/lv_*
     local modname=widgets
     local submodname=$1  # Submodule name e.g. label
     local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
@@ -219,7 +221,12 @@ EOF
 }
 
 #  Generate bindings for lv_core
-generate_bindings_core
+generate_bindings_core disp
+generate_bindings_core group
+generate_bindings_core indev
+generate_bindings_core obj
+generate_bindings_core refr
+generate_bindings_core style
 
 #  Generate bindings for lv_draw
 generate_bindings_draw
@@ -277,6 +284,9 @@ cargo rustc -- -Z unstable-options --pretty expanded >logs/expanded.rs
 
 #  Build the bindings
 cargo build
+
+#  Generate the doc for inspection
+cargo doc
 
 exit
 
