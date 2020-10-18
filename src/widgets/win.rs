@@ -761,12 +761,6 @@ pub type _bindgen_ty_45 = u32;
     pub fn lv_win_set_drag(win: *mut lv_obj_t, en: bool);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the title of a window"]
-    #[doc = " - __`win`__: pointer to a window object"]
-    #[doc = " Return: title string of the window"]
-    pub fn lv_win_get_title(win: *const lv_obj_t) -> *const ::cty::c_char;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the content holder object of window (`lv_page`) to allow additional customization"]
     #[doc = " - __`win`__: pointer to a window object"]
     #[doc = " Return: the Page object where the window's content is"]

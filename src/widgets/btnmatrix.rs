@@ -862,25 +862,10 @@ pub type lv_btnmatrix_part_t = u8;
     pub fn lv_btnmatrix_get_active_btn(btnm: *const lv_obj_t) -> u16;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the text of the lastly \"activated\" button by the user (pressed, released etc)"]
-    #[doc = " Useful in the the `event_cb`"]
-    #[doc = " - __`btnm`__: pointer to button matrix object"]
-    #[doc = " Return: text of the last released button (NULL: if unset)"]
-    pub fn lv_btnmatrix_get_active_btn_text(btnm: *const lv_obj_t) -> *const ::cty::c_char;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the focused button's index."]
     #[doc = " - __`btnm`__: pointer to button matrix object"]
     #[doc = " Return:  index of the focused button (LV_BTNMATRIX_BTN_NONE: if unset)"]
     pub fn lv_btnmatrix_get_focused_btn(btnm: *const lv_obj_t) -> u16;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the button's text"]
-    #[doc = " - __`btnm`__: pointer to button matrix object"]
-    #[doc = " - __`btn_id`__: the index a button not counting new line characters. (The return value of"]
-    #[doc = " lv_btnmatrix_get_pressed/released)"]
-    #[doc = " Return:  text of btn_index` button"]
-    pub fn lv_btnmatrix_get_btn_text(btnm: *const lv_obj_t, btn_id: u16) -> *const ::cty::c_char;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the whether a control value is enabled or disabled for button of a button matrix"]

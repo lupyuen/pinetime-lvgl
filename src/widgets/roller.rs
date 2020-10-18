@@ -1116,12 +1116,6 @@ pub type lv_roller_part_t = u8;
     pub fn lv_roller_get_auto_fit(roller: *mut lv_obj_t) -> bool;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the options of a roller"]
-    #[doc = " - __`roller`__: pointer to roller object"]
-    #[doc = " Return: the options separated by '\\n'-s (E.g. \"Option1\\nOption2\\nOption3\")"]
-    pub fn lv_roller_get_options(roller: *const lv_obj_t) -> *const ::cty::c_char;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the open/close animation time."]
     #[doc = " - __`roller`__: pointer to a roller"]
     #[doc = " Return: open/close animation time [ms]"]

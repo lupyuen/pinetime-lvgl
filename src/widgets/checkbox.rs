@@ -838,12 +838,6 @@ pub type lv_checkbox_style_t = u8;
     pub fn lv_checkbox_set_state(cb: *mut lv_obj_t, state: lv_btn_state_t);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the text of a check box"]
-    #[doc = " - __`cb`__: pointer to check box object"]
-    #[doc = " Return: pointer to the text of the check box"]
-    pub fn lv_checkbox_get_text(cb: *const lv_obj_t) -> *const ::cty::c_char;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the current state of the check box"]
     #[doc = " - __`cb`__: pointer to a check box object"]
     #[doc = " Return: true: checked; false: not checked"]

@@ -810,24 +810,11 @@ pub type lv_msgbox_style_t = u8;
     pub fn lv_msgbox_set_recolor(mbox: *mut lv_obj_t, en: bool);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the text of the message box"]
-    #[doc = " - __`mbox`__: pointer to a message box object"]
-    #[doc = " Return: pointer to the text of the message box"]
-    pub fn lv_msgbox_get_text(mbox: *const lv_obj_t) -> *const ::cty::c_char;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the index of the lastly \"activated\" button by the user (pressed, released etc)"]
     #[doc = " Useful in the the `event_cb`."]
     #[doc = " - __`mbox`__: pointer to message box object"]
     #[doc = " Return:  index of the last released button (LV_BTNMATRIX_BTN_NONE: if unset)"]
     pub fn lv_msgbox_get_active_btn(mbox: *mut lv_obj_t) -> u16;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the text of the lastly \"activated\" button by the user (pressed, released etc)"]
-    #[doc = " Useful in the the `event_cb`."]
-    #[doc = " - __`mbox`__: pointer to message box object"]
-    #[doc = " Return: text of the last released button (NULL: if unset)"]
-    pub fn lv_msgbox_get_active_btn_text(mbox: *mut lv_obj_t) -> *const ::cty::c_char;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the animation duration (close animation time)"]

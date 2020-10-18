@@ -1623,12 +1623,6 @@ pub type lv_img_part_t = u8;
     pub fn lv_img_get_src(img: *mut lv_obj_t) -> *const ::cty::c_void;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the name of the file set for an image"]
-    #[doc = " - __`img`__: pointer to an image"]
-    #[doc = " Return: file name"]
-    pub fn lv_img_get_file_name(img: *const lv_obj_t) -> *const ::cty::c_char;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the auto size enable attribute"]
     #[doc = " - __`img`__: pointer to an image"]
     #[doc = " Return: true: auto size is enabled, false: auto size is disabled"]

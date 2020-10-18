@@ -13,10 +13,17 @@ pub use mynewt;                   //  Export Mynewt API
 #[allow(unused_imports)]          //  Allow unused imports
 pub mod core;                     //  Lvgl Core API. Export folder `core` as Rust module `lvgl::core`
 
-//  TODO: pub mod draw;           //  Lvgl Draw API. Export folder `draw` as Rust module `lvgl::draw`
-//  TODO: pub mod font;           //  Lvgl Font API. Export folder `font` as Rust module `lvgl::font`
+#[allow(unused_imports)]          //  Allow unused imports
+pub mod draw;                     //  Lvgl Draw API. Export folder `draw` as Rust module `lvgl::draw`
+
+#[allow(unused_imports)]          //  Allow unused imports
+pub mod font;                     //  Lvgl Font API. Export folder `font` as Rust module `lvgl::font`
+
 //  TODO: pub mod hal;            //  Lvgl HAL API. Export folder `hal` as Rust module `lvgl::hal`
 //  TODO: pub mod misc;           //  Lvgl Misc API. Export folder `misc` as Rust module `lvgl::misc`
+
+#[allow(unused_imports)]          //  Allow unused imports
+pub mod themes;                   //  Lvgl Themes API. Export folder `themes` as Rust module `lvgl::themes`
 
 #[allow(unused_imports)]          //  Allow unused imports
 pub mod widgets;                  //  Lvgl Widgets API. Export folder `widgets` as Rust module `lvgl::widgets`

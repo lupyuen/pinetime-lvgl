@@ -1056,12 +1056,6 @@ pub type lv_list_style_t = u8;
     pub fn lv_list_set_layout(list: *mut lv_obj_t, layout: lv_layout_t);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the text of a list element"]
-    #[doc = " - __`btn`__: pointer to list element"]
-    #[doc = " Return: pointer to the text"]
-    pub fn lv_list_get_btn_text(btn: *const lv_obj_t) -> *const ::cty::c_char;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the label object from a list element"]
     #[doc = " - __`btn`__: pointer to a list element (button)"]
     #[doc = " Return: pointer to the label from the list element or NULL if not found"]

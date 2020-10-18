@@ -1250,18 +1250,6 @@ pub type lv_textarea_style_t = u8;
     pub fn lv_textarea_set_cursor_blink_time(ta: *mut lv_obj_t, time: u16);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the text of a text area. In password mode it gives the real text (not '*'s)."]
-    #[doc = " - __`ta`__: pointer to a text area object"]
-    #[doc = " Return: pointer to the text"]
-    pub fn lv_textarea_get_text(ta: *const lv_obj_t) -> *const ::cty::c_char;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the placeholder text of a text area"]
-    #[doc = " - __`ta`__: pointer to a text area object"]
-    #[doc = " Return: pointer to the text"]
-    pub fn lv_textarea_get_placeholder_text(ta: *mut lv_obj_t) -> *const ::cty::c_char;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the label of a text area"]
     #[doc = " - __`ta`__: pointer to a text area object"]
     #[doc = " Return: pointer to the label object"]
@@ -1296,12 +1284,6 @@ pub type lv_textarea_style_t = u8;
     #[doc = " - __`ta`__: pointer to a text area object"]
     #[doc = " Return: true: one line configuration is enabled, false: disabled"]
     pub fn lv_textarea_get_one_line(ta: *const lv_obj_t) -> bool;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get a list of accepted characters."]
-    #[doc = " - __`ta`__: pointer to  Text Area"]
-    #[doc = " Return: list of accented characters."]
-    pub fn lv_textarea_get_accepted_chars(ta: *mut lv_obj_t) -> *const ::cty::c_char;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get max length of a Text Area."]

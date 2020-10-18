@@ -911,18 +911,6 @@ pub type _bindgen_ty_35 = u32;
     pub fn lv_table_set_cell_merge_right(table: *mut lv_obj_t, row: u16, col: u16, en: bool);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the value of a cell."]
-    #[doc = " - __`table`__: pointer to a Table object"]
-    #[doc = " - __`row`__: id of the row [0 .. row_cnt -1]"]
-    #[doc = " - __`col`__: id of the column [0 .. col_cnt -1]"]
-    #[doc = " Return: text in the cell"]
-    pub fn lv_table_get_cell_value(
-        table: *mut lv_obj_t,
-        row: u16,
-        col: u16,
-    ) -> *const ::cty::c_char;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the number of rows."]
     #[doc = " - __`table`__: table pointer to a Table object"]
     #[doc = " Return: number of rows."]

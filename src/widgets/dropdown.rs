@@ -815,18 +815,6 @@ pub type lv_dropdown_part_t = u8;
     pub fn lv_dropdown_set_show_selected(ddlist: *mut lv_obj_t, show: bool);
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get text of the ddlist (Displayed on the button if `show_selected = false`)"]
-    #[doc = " - __`ddlist`__: pointer to a drop down list object"]
-    #[doc = " Return: the text string"]
-    pub fn lv_dropdown_get_text(ddlist: *mut lv_obj_t) -> *const ::cty::c_char;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the options of a drop down list"]
-    #[doc = " - __`ddlist`__: pointer to drop down list object"]
-    #[doc = " Return: the options separated by '\\n'-s (E.g. \"Option1\\nOption2\\nOption3\")"]
-    pub fn lv_dropdown_get_options(ddlist: *const lv_obj_t) -> *const ::cty::c_char;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the selected option"]
     #[doc = " - __`ddlist`__: pointer to drop down list object"]
     #[doc = " Return: id of the selected option (0 ... number of option - 1);"]
@@ -854,12 +842,6 @@ pub type lv_dropdown_part_t = u8;
     #[doc = " - __`ddlist`__: pointer to a drop down list object"]
     #[doc = " Return: the height if the ddlist is opened (0: auto size)"]
     pub fn lv_dropdown_get_max_height(ddlist: *const lv_obj_t) -> lv_coord_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the symbol to draw when the drop-down list is closed"]
-    #[doc = " - __`ddlist`__: pointer to drop down list object"]
-    #[doc = " Return: the symbol or NULL if not enabled"]
-    pub fn lv_dropdown_get_symbol(ddlist: *mut lv_obj_t) -> *const ::cty::c_char;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the symbol to draw when the drop-down list is closed"]
