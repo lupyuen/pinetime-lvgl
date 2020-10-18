@@ -168,11 +168,11 @@ EOF
 }
 
 function generate_bindings_hal() {
-    #  Add whitelist and blacklist for for lv_hal/lv_hal
+    #  Add whitelist and blacklist for for lv_hal/lv_hal_*
     local modname=hal
-    local submodname=hal
-    local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
-    local whitelistname=lv_hal
+    local submodname=$1  # Submodule name e.g. disp
+    local headerfile=${headerprefix}/src/lv_${modname}/lv_${modname}_${submodname}.h
+    local whitelistname=lv_$submodname
     local whitelist=`cat << EOF
         --raw-line use \
         --raw-line super::*; \
@@ -278,8 +278,10 @@ generate_bindings_draw
 #  Generate bindings for lv_font
 generate_bindings_font
 
-#  TODO: Generate bindings for lv_hal
-#  generate_bindings_hal
+#  Generate bindings for lv_hal
+generate_bindings_hal disp
+generate_bindings_hal indev
+generate_bindings_hal tick
 
 #  Generate bindings for lv_misc
 generate_bindings_misc anim
