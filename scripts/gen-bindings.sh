@@ -100,10 +100,21 @@ function generate_bindings_core() {
     fi
     local whitelistname=lv_$submodname
     if [ "$submodname" == 'obj' ]; then
-        # For obj.rs, include the LV_ALIGN constants
-        local whitelistname2=lv_align
+        # For lv_obj.c, include the LV_ALIGN constants and the core types
+        local whitelisttypes=`cat << EOF
+        --whitelist-var      LV_ALIGN_.* \
+        --whitelist-type     lv_.*
+EOF
+`
+        local blacklist=
     else
-        local whitelistname2=$whitelistname
+        # For files other than lv_obj.c, exclude the core types
+        local whitelisttypes=
+        local blacklist=`cat << EOF
+            --blacklist-item     _lv_.* \
+            --blacklist-item     lv_.*_t
+EOF
+`
     fi
     #  TODO: Fix returned string lifetime for lv_obj_get_style_value_str.
     #  This function is probably not essential because our Rust app should already have the string.
@@ -113,12 +124,12 @@ function generate_bindings_core() {
         --whitelist-function (?i)${whitelistname}.* \
         --whitelist-type     (?i)${whitelistname}.* \
         --whitelist-var      (?i)${whitelistname}.* \
-        --whitelist-function (?i)${whitelistname2}.* \
-        --whitelist-type     (?i)${whitelistname2}.* \
-        --whitelist-var      (?i)${whitelistname2}.* \
-        --blacklist-item     lv_obj_get_style_value_str
+        ${whitelisttypes} \
+        --blacklist-item     lv_obj_get_style_value_str \
+        ${blacklist}
 EOF
-`    #  Generate the bindings for lv_core/lv_obj: libname, modname, submodname, headerfile, whitelist
+`    
+    #  Generate the bindings for lv_core/lv_obj: libname, modname, submodname, headerfile, whitelist
     generate_bindings $libname $modname $submodname $headerfile $whitelist
 
     #  Delete the combined lv_style.h and lv_obj_style_dec.h
