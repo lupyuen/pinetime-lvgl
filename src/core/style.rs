@@ -85,6 +85,49 @@ where
         }
     }
 }
+#[repr(C)]
+pub struct __BindgenUnionField<T>(::core::marker::PhantomData<T>);
+impl<T> __BindgenUnionField<T> {
+    #[inline]
+    pub fn new() -> Self {
+        __BindgenUnionField(::core::marker::PhantomData)
+    }
+    #[inline]
+    pub unsafe fn as_ref(&self) -> &T {
+        ::core::mem::transmute(self)
+    }
+    #[inline]
+    pub unsafe fn as_mut(&mut self) -> &mut T {
+        ::core::mem::transmute(self)
+    }
+}
+impl<T> ::core::default::Default for __BindgenUnionField<T> {
+    #[inline]
+    fn default() -> Self {
+        Self::new()
+    }
+}
+impl<T> ::core::clone::Clone for __BindgenUnionField<T> {
+    #[inline]
+    fn clone(&self) -> Self {
+        Self::new()
+    }
+}
+impl<T> ::core::marker::Copy for __BindgenUnionField<T> {}
+impl<T> ::core::fmt::Debug for __BindgenUnionField<T> {
+    fn fmt(&self, fmt: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        fmt.write_str("__BindgenUnionField")
+    }
+}
+impl<T> ::core::hash::Hash for __BindgenUnionField<T> {
+    fn hash<H: ::core::hash::Hasher>(&self, _state: &mut H) {}
+}
+impl<T> ::core::cmp::PartialEq for __BindgenUnionField<T> {
+    fn eq(&self, _other: &__BindgenUnionField<T>) -> bool {
+        true
+    }
+}
+impl<T> ::core::cmp::Eq for __BindgenUnionField<T> {}
 pub const LV_STYLE_ID_MASK: u32 = 255;
 pub const LV_STYLE_ATTR_NONE: u32 = 0;
 pub const LV_STYLE_ATTR_INHERIT: u32 = 128;
@@ -97,6 +140,317 @@ pub const LV_STYLE_ID_PTR: u32 = 14;
 pub const LV_STYLE_STATE_POS: u32 = 8;
 pub const LV_STYLE_STATE_MASK: u32 = 32512;
 pub const LV_STYLE_INHERIT_MASK: u32 = 32768;
+pub type lv_coord_t = i16;
+pub type lv_anim_user_data_t = *mut ::cty::c_void;
+pub type lv_font_user_data_t = *mut ::cty::c_void;
+pub type lv_align_t = u8;
+#[doc = " Describes the properties of a glyph."]
+#[repr(C)]
+#[derive(Default)]
+pub struct lv_font_glyph_dsc_t {
+    #[doc = "< The glyph needs this space. Draw the next glyph after this width. 8 bit integer, 4 bit fractional"]
+    pub adv_w: u16,
+    #[doc = "< Width of the glyph's bounding box"]
+    pub box_w: u16,
+    #[doc = "< Height of the glyph's bounding box"]
+    pub box_h: u16,
+    #[doc = "< x offset of the bounding box"]
+    pub ofs_x: i16,
+    #[doc = "< y offset of the bounding box"]
+    pub ofs_y: i16,
+    #[doc = "< Bit-per-pixel: 1, 2, 4, 8"]
+    pub bpp: u8,
+}
+#[doc = " Describe the properties of a font"]
+#[repr(C)]
+pub struct _lv_font_struct {
+    #[doc = " Get a glyph's  descriptor from a font"]
+    pub get_glyph_dsc: ::core::option::Option<
+        unsafe extern "C" fn(
+            arg1: *const _lv_font_struct,
+            arg2: *mut lv_font_glyph_dsc_t,
+            letter: u32,
+            letter_next: u32,
+        ) -> bool,
+    >,
+    #[doc = " Get a glyph's bitmap from a font"]
+    pub get_glyph_bitmap: ::core::option::Option<
+        unsafe extern "C" fn(arg1: *const _lv_font_struct, arg2: u32) -> *const u8,
+    >,
+    #[doc = "< The real line height where any text fits"]
+    pub line_height: lv_coord_t,
+    #[doc = "< Base line measured from the top of the line_height"]
+    pub base_line: lv_coord_t,
+    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+    #[doc = "< Distance between the top of the underline and base line (< 0 means below the base line)"]
+    pub underline_position: i8,
+    #[doc = "< Thickness of the underline"]
+    pub underline_thickness: i8,
+    #[doc = "< Store implementation specific or run_time data or caching here"]
+    pub dsc: *mut ::cty::c_void,
+    #[doc = "< Custom user data for font."]
+    pub user_data: lv_font_user_data_t,
+}
+impl Default for _lv_font_struct {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+impl _lv_font_struct {
+    #[inline]
+    pub fn subpx(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 2u8) as u8) }
+    }
+    #[inline]
+    pub fn set_subpx(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(0usize, 2u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn new_bitfield_1(subpx: u8) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
+            Default::default();
+        __bindgen_bitfield_unit.set(0usize, 2u8, {
+            let subpx: u8 = unsafe { ::core::mem::transmute(subpx) };
+            subpx as u64
+        });
+        __bindgen_bitfield_unit
+    }
+}
+pub type lv_font_t = _lv_font_struct;
+#[repr(C)]
+pub struct lv_color16_t {
+    pub ch: __BindgenUnionField<lv_color16_t__bindgen_ty_1>,
+    pub full: __BindgenUnionField<u16>,
+    pub bindgen_union_field: u16,
+}
+#[repr(C)]
+#[repr(align(2))]
+#[derive(Default)]
+pub struct lv_color16_t__bindgen_ty_1 {
+    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
+}
+impl lv_color16_t__bindgen_ty_1 {
+    #[inline]
+    pub fn green_h(&self) -> u16 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 3u8) as u16) }
+    }
+    #[inline]
+    pub fn set_green_h(&mut self, val: u16) {
+        unsafe {
+            let val: u16 = ::core::mem::transmute(val);
+            self._bitfield_1.set(0usize, 3u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn red(&self) -> u16 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 5u8) as u16) }
+    }
+    #[inline]
+    pub fn set_red(&mut self, val: u16) {
+        unsafe {
+            let val: u16 = ::core::mem::transmute(val);
+            self._bitfield_1.set(3usize, 5u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn blue(&self) -> u16 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 5u8) as u16) }
+    }
+    #[inline]
+    pub fn set_blue(&mut self, val: u16) {
+        unsafe {
+            let val: u16 = ::core::mem::transmute(val);
+            self._bitfield_1.set(8usize, 5u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn green_l(&self) -> u16 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(13usize, 3u8) as u16) }
+    }
+    #[inline]
+    pub fn set_green_l(&mut self, val: u16) {
+        unsafe {
+            let val: u16 = ::core::mem::transmute(val);
+            self._bitfield_1.set(13usize, 3u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn new_bitfield_1(
+        green_h: u16,
+        red: u16,
+        blue: u16,
+        green_l: u16,
+    ) -> __BindgenBitfieldUnit<[u8; 2usize], u8> {
+        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 2usize], u8> =
+            Default::default();
+        __bindgen_bitfield_unit.set(0usize, 3u8, {
+            let green_h: u16 = unsafe { ::core::mem::transmute(green_h) };
+            green_h as u64
+        });
+        __bindgen_bitfield_unit.set(3usize, 5u8, {
+            let red: u16 = unsafe { ::core::mem::transmute(red) };
+            red as u64
+        });
+        __bindgen_bitfield_unit.set(8usize, 5u8, {
+            let blue: u16 = unsafe { ::core::mem::transmute(blue) };
+            blue as u64
+        });
+        __bindgen_bitfield_unit.set(13usize, 3u8, {
+            let green_l: u16 = unsafe { ::core::mem::transmute(green_l) };
+            green_l as u64
+        });
+        __bindgen_bitfield_unit
+    }
+}
+impl Default for lv_color16_t {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+pub type lv_color_t = lv_color16_t;
+#[doc = "! @cond Doxygen_Suppress"]
+pub type lv_opa_t = u8;
+#[doc = " Type of the animated value"]
+pub type lv_anim_value_t = lv_coord_t;
+#[doc = " Get the current value during an animation"]
+pub type lv_anim_path_cb_t = ::core::option::Option<
+    unsafe extern "C" fn(arg1: *const _lv_anim_path_t, arg2: *const _lv_anim_t) -> lv_anim_value_t,
+>;
+#[repr(C)]
+pub struct _lv_anim_path_t {
+    pub cb: lv_anim_path_cb_t,
+    pub user_data: *mut ::cty::c_void,
+}
+impl Default for _lv_anim_path_t {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+pub type lv_anim_path_t = _lv_anim_path_t;
+#[doc = " Generic prototype of \"animator\" functions."]
+#[doc = " First parameter is the variable to animate."]
+#[doc = " Second parameter is the value to set."]
+#[doc = " Compatible with `lv_xxx_set_yyy(obj, value)` functions"]
+#[doc = " The `x` in `_xcb_t` means its not a fully generic prototype because"]
+#[doc = " it doesn't receive `lv_anim_t *` as its first argument"]
+pub type lv_anim_exec_xcb_t =
+    ::core::option::Option<unsafe extern "C" fn(arg1: *mut ::cty::c_void, arg2: lv_anim_value_t)>;
+#[doc = " Callback to call when the animation is ready"]
+pub type lv_anim_ready_cb_t = ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_anim_t)>;
+#[doc = " Callback to call when the animation really stars (considering `delay`)"]
+pub type lv_anim_start_cb_t = ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_anim_t)>;
+#[doc = " Describes an animation"]
+#[repr(C)]
+pub struct _lv_anim_t {
+    #[doc = "<Variable to animate"]
+    pub var: *mut ::cty::c_void,
+    #[doc = "< Function to execute to animate"]
+    pub exec_cb: lv_anim_exec_xcb_t,
+    #[doc = "< Call it when the animation is starts (considering `delay`)"]
+    pub start_cb: lv_anim_start_cb_t,
+    #[doc = "< Call it when the animation is ready"]
+    pub ready_cb: lv_anim_ready_cb_t,
+    #[doc = "< Describe the path (curve) of animations"]
+    pub path: lv_anim_path_t,
+    #[doc = "< Start value"]
+    pub start: i32,
+    #[doc = "< Current value"]
+    pub current: i32,
+    #[doc = "< End value"]
+    pub end: i32,
+    #[doc = "< Animation time in ms"]
+    pub time: i32,
+    #[doc = "< Current time in animation. Set to negative to make delay."]
+    pub act_time: i32,
+    #[doc = "< Wait before play back"]
+    pub playback_delay: u32,
+    #[doc = "< Duration of playback animation"]
+    pub playback_time: u32,
+    #[doc = "< Wait before repeat"]
+    pub repeat_delay: u32,
+    #[doc = "< Repeat count for the animation"]
+    pub repeat_cnt: u16,
+    pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+    #[doc = "< Custom user data"]
+    pub user_data: lv_anim_user_data_t,
+    pub time_orig: u32,
+    pub _bitfield_2: __BindgenBitfieldUnit<[u8; 1usize], u8>,
+    pub __bindgen_padding_0: [u8; 3usize],
+}
+impl Default for _lv_anim_t {
+    fn default() -> Self {
+        unsafe { ::core::mem::zeroed() }
+    }
+}
+impl _lv_anim_t {
+    #[inline]
+    pub fn early_apply(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_early_apply(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_1.set(0usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn new_bitfield_1(early_apply: u8) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
+            Default::default();
+        __bindgen_bitfield_unit.set(0usize, 1u8, {
+            let early_apply: u8 = unsafe { ::core::mem::transmute(early_apply) };
+            early_apply as u64
+        });
+        __bindgen_bitfield_unit
+    }
+    #[inline]
+    pub fn playback_now(&self) -> u8 {
+        unsafe { ::core::mem::transmute(self._bitfield_2.get(0usize, 1u8) as u8) }
+    }
+    #[inline]
+    pub fn set_playback_now(&mut self, val: u8) {
+        unsafe {
+            let val: u8 = ::core::mem::transmute(val);
+            self._bitfield_2.set(0usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn has_run(&self) -> u32 {
+        unsafe { ::core::mem::transmute(self._bitfield_2.get(1usize, 1u8) as u32) }
+    }
+    #[inline]
+    pub fn set_has_run(&mut self, val: u32) {
+        unsafe {
+            let val: u32 = ::core::mem::transmute(val);
+            self._bitfield_2.set(1usize, 1u8, val as u64)
+        }
+    }
+    #[inline]
+    pub fn new_bitfield_2(
+        playback_now: u8,
+        has_run: u32,
+    ) -> __BindgenBitfieldUnit<[u8; 1usize], u8> {
+        let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize], u8> =
+            Default::default();
+        __bindgen_bitfield_unit.set(0usize, 1u8, {
+            let playback_now: u8 = unsafe { ::core::mem::transmute(playback_now) };
+            playback_now as u64
+        });
+        __bindgen_bitfield_unit.set(1usize, 1u8, {
+            let has_run: u32 = unsafe { ::core::mem::transmute(has_run) };
+            has_run as u64
+        });
+        __bindgen_bitfield_unit
+    }
+}
+pub type lv_blend_mode_t = u8;
+pub type lv_border_side_t = u8;
+pub type lv_grad_dir_t = u8;
+pub type lv_text_decor_t = u8;
 pub type lv_style_attr_t = u8;
 pub const LV_STYLE_RADIUS: _bindgen_ty_14 = 1;
 pub const LV_STYLE_CLIP_CORNER: _bindgen_ty_14 = 2;
@@ -700,4 +1054,559 @@ impl lv_style_list_t {
     #[doc = " - __`list`__: pointer to a style list where the local property should be set"]
     #[doc = " Return: pointer to the local style if exists else `NULL`."]
     pub fn lv_style_list_get_local_style(list: *mut lv_style_list_t) -> *mut lv_style_t;
+}
+pub type lv_state_t = u8;
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_radius(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_clip_corner(style: *mut lv_style_t, state: lv_state_t, value: bool);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_size(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transform_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transform_height(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transform_angle(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transform_zoom(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_opa_scale(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pad_top(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pad_bottom(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pad_left(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pad_right(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pad_inner(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_margin_top(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_margin_bottom(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_margin_left(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_margin_right(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_bg_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_bg_main_stop(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_bg_grad_stop(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_bg_grad_dir(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_grad_dir_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_bg_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_bg_grad_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_bg_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_border_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_border_side(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_border_side_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_border_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_border_post(style: *mut lv_style_t, state: lv_state_t, value: bool);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_border_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_border_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_outline_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_outline_pad(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_outline_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_outline_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_outline_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_shadow_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_shadow_ofs_x(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_shadow_ofs_y(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_shadow_spread(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_shadow_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_shadow_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_shadow_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pattern_repeat(style: *mut lv_style_t, state: lv_state_t, value: bool);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pattern_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pattern_recolor(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pattern_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pattern_recolor_opa(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_opa_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pattern_image(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: *const ::cty::c_void,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_letter_space(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_line_space(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_ofs_x(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_ofs_y(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_align(style: *mut lv_style_t, state: lv_state_t, value: lv_align_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_font(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: *const lv_font_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_value_str(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: *const ::cty::c_char,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_text_letter_space(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_text_line_space(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_text_decor(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_text_decor_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_text_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_text_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_text_sel_color(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_text_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_text_font(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: *const lv_font_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_line_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_line_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_line_dash_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_line_dash_gap(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_line_rounded(style: *mut lv_style_t, state: lv_state_t, value: bool);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_line_color(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_line_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_image_blend_mode(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_blend_mode_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_image_recolor(style: *mut lv_style_t, state: lv_state_t, value: lv_color_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_image_opa(style: *mut lv_style_t, state: lv_state_t, value: lv_opa_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_image_recolor_opa(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_opa_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_time(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_delay(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_prop_1(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_prop_2(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_prop_3(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_prop_4(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_prop_5(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_prop_6(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_transition_path(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: *mut lv_anim_path_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_scale_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_scale_border_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_scale_end_border_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_scale_end_line_width(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_scale_grad_color(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_scale_end_color(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_color_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pad_all(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pad_hor(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_pad_ver(style: *mut lv_style_t, state: lv_state_t, value: lv_style_int_t);
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_margin_all(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_margin_hor(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
+}
+#[lvgl_macros::safe_wrap(attr)] extern "C" {
+    pub fn lv_style_set_margin_ver(
+        style: *mut lv_style_t,
+        state: lv_state_t,
+        value: lv_style_int_t,
+    );
 }

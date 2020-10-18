@@ -87,7 +87,17 @@ function generate_bindings_core() {
     #  Add whitelist and blacklist for for lv_core/lv_*
     local modname=core
     local submodname=$1  # Submodule name e.g. obj
-    local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
+    if [ "$submodname" == 'style' ]; then
+        #  Combine lv_style.h, lv_obj.h and lv_obj_style_dec.h for processing, because lv_obj_style_dec.h contains macros that define functions like "lv_style_set_text_font"
+        local headerfile=$headerprefix/src/lv_$modname/combined.h
+        cat \
+            $headerprefix/src/lv_$modname/lv_style.h \
+            $headerprefix/src/lv_$modname/lv_obj.h \
+            $headerprefix/src/lv_$modname/lv_obj_style_dec.h \
+            >$headerfile
+    else
+        local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
+    fi
     local whitelistname=lv_$submodname
     if [ "$submodname" == 'obj' ]; then
         # For obj.rs, include the LV_ALIGN constants
@@ -110,6 +120,11 @@ function generate_bindings_core() {
 EOF
 `    #  Generate the bindings for lv_core/lv_obj: libname, modname, submodname, headerfile, whitelist
     generate_bindings $libname $modname $submodname $headerfile $whitelist
+
+    #  Delete the combined lv_style.h and lv_obj_style_dec.h
+    if [ "$submodname" == 'style' ]; then
+        rm $headerfile
+    fi
 }
 
 function generate_bindings_draw() {
