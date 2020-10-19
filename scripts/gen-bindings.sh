@@ -121,11 +121,16 @@ EOF
 `
         local blacklist=
     else
-        # For files other than lv_obj.c, exclude the core types
+        # For files other than lv_obj.c, exclude the core types.
+        # lv_indev_drv_* functions should be defined under lv_hal. 
         local whitelisttypes=
         local blacklist=`cat << EOF
             --blacklist-item     _lv_.* \
-            --blacklist-item     lv_.*_t
+            --blacklist-item     lv_.*_t \
+            --blacklist-item     lv_indev_drv_init \
+            --blacklist-item     lv_indev_drv_register \
+            --blacklist-item     lv_indev_drv_update \
+            --blacklist-item     lv_indev_get_next
 EOF
 `
     fi

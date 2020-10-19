@@ -387,32 +387,6 @@ pub const LV_INDEV_STATE_PR: _bindgen_ty_17 = 1;
 #[doc = " States for input devices"]
 pub type _bindgen_ty_17 = u32;
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Initialize an input device driver with default values."]
-    #[doc = " It is used to surly have known values in the fields ant not memory junk."]
-    #[doc = " After it you can set the fields."]
-    #[doc = " - __`driver`__: pointer to driver variable to initialize"]
-    pub fn lv_indev_drv_init(driver: *mut lv_indev_drv_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Register an initialized input device driver."]
-    #[doc = " - __`driver`__: pointer to an initialized 'lv_indev_drv_t' variable (can be local variable)"]
-    #[doc = " Return: pointer to the new input device or NULL on error"]
-    pub fn lv_indev_drv_register(driver: *mut lv_indev_drv_t) -> *mut lv_indev_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Update the driver in run time."]
-    #[doc = " - __`indev`__: pointer to a input device. (return value of `lv_indev_drv_register`)"]
-    #[doc = " - __`new_drv`__: pointer to the new driver"]
-    pub fn lv_indev_drv_update(indev: *mut lv_indev_t, new_drv: *mut lv_indev_drv_t);
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
-    #[doc = " Get the next input device."]
-    #[doc = " - __`indev`__: pointer to the current input device. NULL to initialize."]
-    #[doc = " Return: the next input devise or NULL if no more. Give the first input device when the parameter"]
-    #[doc = " is NULL"]
-    pub fn lv_indev_get_next(indev: *mut lv_indev_t) -> *mut lv_indev_t;
-}
-#[lvgl_macros::safe_wrap(attr)] extern "C" {
     #[doc = " Get the currently processed input device. Can be used in action functions too."]
     #[doc = " Return: pointer to the currently processed input device or NULL if no input device processing"]
     #[doc = " right now"]
