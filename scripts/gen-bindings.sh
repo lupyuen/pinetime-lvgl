@@ -2,6 +2,10 @@
 #  Generate Rust bindings for LVGL C API. Install "bindgen" before running:
 #  cargo install bindgen
 #  Also install rustfmt when prompted
+#  Ignore any "unused option" errors
+#    unused option: --whitelist-function (?i)...
+#    unused option: --whitelist-var (?i)...
+#    unused option: --whitelist-type (?i)...
 #  TODO: Remove derive[Debug]
 
 set -e  #  Exit when any command fails.
@@ -13,7 +17,10 @@ libname=lvgl
 headerprefix=pinetime_lvgl_mynewt
 
 #  TODO: Sync gcc options with https://github.com/AppKaki/lvgl-wasm/blob/mynewt/mynewt/Makefile
-gcc_options=" -g -I $headerprefix/src/lv_core -D LV_USE_DEMO_WIDGETS"
+CCFLAGS=" -g -I $headerprefix/src/lv_core -D LV_USE_DEMO_WIDGETS "
+
+#  gcc options for bindgen only. We disable "static" and "inline" so that wrappers will be generated for static inline functions like "lv_style_set_text_font"
+CCFLAGS_BINDGEN=" -D static= -D inline= "
 
 function generate_bindings() {
     #  Generate bindings for the module.
@@ -43,7 +50,8 @@ function generate_bindings() {
         $headerfile \
         -- \
         -Ibaselibc/include/ \
-        $gcc_options
+        $CCFLAGS \
+        $CCFLAGS_BINDGEN
 
     # Change extern "C"
     # to     #[lvgl_macros::safe_wrap(attr)] extern "C"
@@ -69,37 +77,91 @@ function generate_bindings() {
         | sed 's/@endcode/```/' \
         | sed 's/@note/__Note:__/' \
         | sed 's/\(pub const LV_ALIGN_[^ ][^ ]*\): _[^ ]* /\1: lv_align_t /' \
+        | sed 's/\(pub const LV_DESIGN_[^ ][^ ]*\): _[^ ]* /\1: lv_design_res_t /' \
+        | sed 's/\(pub const LV_EVENT_[^ ][^ ]*\): _[^ ]* /\1: lv_event_t /' \
+        | sed 's/\(pub const _LV_OBJ_PART_[^ ][^ ]*\): _[^ ]* /\1: lv_obj_part_t /' \
+        | sed 's/\(pub const LV_OBJ_PART_[^ ][^ ]*\): _[^ ]* /\1: lv_obj_part_t /' \
+        | sed 's/\(pub const LV_PROTECT_[^ ][^ ]*\): _[^ ]* /\1: lv_protect_t /' \
+        | sed 's/\(pub const LV_SIGNAL_[^ ][^ ]*\): _[^ ]* /\1: lv_signal_t /' \
+        | sed 's/\(pub const LV_STATE_[^ ][^ ]*\): _[^ ]* /\1: lv_state_t /' \
         | sed 's/\(pub const LV_LABEL_ALIGN_[^ ][^ ]*\): _[^ ]* /\1: lv_label_align_t /' \
         | sed 's/\(pub const LV_LABEL_LONG_[^ ][^ ]*\): _[^ ]* /\1: lv_label_long_mode_t /' \
+        | sed 's/\(pub const LV_LABEL_PART_[^ ][^ ]*\): _[^ ]* /\1: lv_label_part_t /' \
         >$expandpath
     rm $tmpexpandpath
 }
 
 function generate_bindings_core() {
-    #  Add whitelist and blacklist for for lv_core/lv_obj
+    #  Add whitelist and blacklist for for lv_core/lv_*
     local modname=core
-    local submodname=obj
-    local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
-    local whitelistname=lv_
+    local submodname=$1  # Submodule name e.g. obj
+    if [ "$submodname" == 'style' ]; then
+        #  Combine lv_style.h, lv_obj.h and lv_obj_style_dec.h for processing, because lv_obj_style_dec.h contains macros that define functions like "lv_style_set_text_font"
+        local headerfile=$headerprefix/src/lv_$modname/combined.h
+        cat \
+            $headerprefix/src/lv_$modname/lv_style.h \
+            $headerprefix/src/lv_$modname/lv_obj.h \
+            $headerprefix/src/lv_$modname/lv_obj_style_dec.h \
+            >$headerfile
+    else
+        local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
+    fi
+    local whitelistname=lv_$submodname
+    if [ "$submodname" == 'obj' ]; then
+        # For lv_obj.c, include the core constants and the core types
+        local whitelisttypes=`cat << EOF
+        --whitelist-var      LV_ALIGN_.* \
+        --whitelist-var      LV_DESIGN_.* \
+        --whitelist-var      LV_EVENT_.* \
+        --whitelist-var      LV_PROTECT_.* \
+        --whitelist-var      LV_SIGNAL_.* \
+        --whitelist-var      LV_STATE_.* \
+        --whitelist-type     lv_.*
+EOF
+`
+        local blacklist=
+    else
+        # For files other than lv_obj.c, exclude the core types.
+        # lv_indev_drv_* functions should be defined under lv_hal. 
+        local whitelisttypes=
+        local blacklist=`cat << EOF
+            --blacklist-item     _lv_.* \
+            --blacklist-item     lv_.*_t \
+            --blacklist-item     lv_indev_drv_init \
+            --blacklist-item     lv_indev_drv_register \
+            --blacklist-item     lv_indev_drv_update \
+            --blacklist-item     lv_indev_get_next
+EOF
+`
+    fi
+    #  TODO: Fix returned string lifetime for lv_obj_get_style_value_str.
+    #  This function is probably not essential because our Rust app should already have the string.
     local whitelist=`cat << EOF
         --raw-line use \
         --raw-line super::*; \
         --whitelist-function (?i)${whitelistname}.* \
         --whitelist-type     (?i)${whitelistname}.* \
-        --whitelist-var      (?i)${whitelistname}.*
+        --whitelist-var      (?i)${whitelistname}.* \
+        ${whitelisttypes} \
+        --blacklist-item     lv_obj_get_style_value_str \
+        ${blacklist}
 EOF
-`
+`    
     #  Generate the bindings for lv_core/lv_obj: libname, modname, submodname, headerfile, whitelist
     generate_bindings $libname $modname $submodname $headerfile $whitelist
+
+    #  Delete the combined lv_style.h and lv_obj_style_dec.h
+    if [ "$submodname" == 'style' ]; then
+        rm $headerfile
+    fi
 }
 
-function generate_bindings_widgets() {
-    #  Add whitelist and blacklist for for lv_widgets/lv_label
-    #  TODO: Handle other widgets
-    local modname=widgets
-    local submodname=label
+function generate_bindings_draw() {
+    #  Add whitelist and blacklist for for lv_draw/lv_draw
+    local modname=draw
+    local submodname=draw
     local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
-    local whitelistname=lv_label
+    local whitelistname=lv_draw
     local whitelist=`cat << EOF
         --raw-line use \
         --raw-line super::*; \
@@ -110,36 +172,218 @@ function generate_bindings_widgets() {
         --blacklist-item     lv_style_t
 EOF
 `
-    #  Generate the bindings for lv_widgets/lv_label: libname, modname, submodname, headerfile, whitelist
+    #  Generate the bindings for lv_themes/lv_theme: libname, modname, submodname, headerfile, whitelist
+    generate_bindings $libname $modname $submodname $headerfile $whitelist
+}
+
+function generate_bindings_font() {
+    #  Add whitelist and blacklist for for lv_font/lv_font
+    local modname=font
+    local submodname=font
+    local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
+    local whitelistname=lv_font
+    local whitelist=`cat << EOF
+        --raw-line use \
+        --raw-line super::*; \
+        --whitelist-function (?i)${whitelistname}.* \
+        --whitelist-type     (?i)${whitelistname}.* \
+        --whitelist-var      (?i)${whitelistname}.* \
+        --blacklist-item     _lv_obj_t \
+        --blacklist-item     lv_style_t \
+        --blacklist-item     _lv_font_struct \
+        --blacklist-item     lv_font_glyph_dsc_t
+EOF
+`
+    #  Generate the bindings for lv_themes/lv_theme: libname, modname, submodname, headerfile, whitelist
+    generate_bindings $libname $modname $submodname $headerfile $whitelist
+}
+
+function generate_bindings_hal() {
+    #  Add whitelist and blacklist for for lv_hal/lv_hal_*
+    local modname=hal
+    local submodname=$1  # Submodule name e.g. disp
+    local headerfile=${headerprefix}/src/lv_${modname}/lv_${modname}_${submodname}.h
+    local whitelistname=lv_$submodname
+    local whitelist=`cat << EOF
+        --raw-line use \
+        --raw-line super::*; \
+        --whitelist-function (?i)${whitelistname}.* \
+        --whitelist-type     (?i)${whitelistname}.* \
+        --whitelist-var      (?i)${whitelistname}.* \
+        --blacklist-item     _lv_obj_t \
+        --blacklist-item     lv_style_t
+EOF
+`
+    #  Generate the bindings for lv_themes/lv_theme: libname, modname, submodname, headerfile, whitelist
+    generate_bindings $libname $modname $submodname $headerfile $whitelist
+}
+
+function generate_bindings_misc() {
+    #  Add whitelist and blacklist for for lv_misc/lv_*
+    local modname=misc
+    local submodname=$1  # Submodule name e.g. anim
+    local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
+    local whitelistname=lv_$submodname
+    local whitelist=`cat << EOF
+        --raw-line use \
+        --raw-line super::*; \
+        --whitelist-function (?i)${whitelistname}.* \
+        --whitelist-type     (?i)${whitelistname}.* \
+        --whitelist-var      (?i)${whitelistname}.* \
+        --blacklist-item     _lv_obj_t \
+        --blacklist-item     lv_style_t
+EOF
+`
+    #  Generate the bindings for lv_widgets/lv_*: libname, modname, submodname, headerfile, whitelist
+    generate_bindings $libname $modname $submodname $headerfile $whitelist
+}
+
+function generate_bindings_themes() {
+    #  Add whitelist and blacklist for for lv_themes/lv_theme
+    local modname=themes
+    local submodname=theme
+    local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
+    local whitelistname=lv_theme
+    local whitelist=`cat << EOF
+        --raw-line use \
+        --raw-line super::*; \
+        --whitelist-function (?i)${whitelistname}.* \
+        --whitelist-type     (?i)${whitelistname}.* \
+        --blacklist-item     _lv_obj_t \
+        --blacklist-item     lv_style_t \
+        --blacklist-item     _lv_font_struct \
+        --blacklist-item     lv_font_glyph_dsc_t
+EOF
+`
+    #  Generate the bindings for lv_themes/lv_theme: libname, modname, submodname, headerfile, whitelist
+    generate_bindings $libname $modname $submodname $headerfile $whitelist
+}
+
+function generate_bindings_widgets() {
+    #  Add whitelist and blacklist for for lv_widgets/lv_*
+    local modname=widgets
+    local submodname=$1  # Submodule name e.g. label
+    local headerfile=$headerprefix/src/lv_$modname/lv_$submodname.h
+    local whitelistname=lv_$submodname
+    #  TODO: Fix returned string lifetime for lv_btnmatrix_get_active_btn_text and the other functions below that return strings.
+    #  These functions (except text input) are probably not essential because our Rust app should already have these strings.
+    local whitelist=`cat << EOF
+        --raw-line use \
+        --raw-line super::*; \
+        --whitelist-function (?i)${whitelistname}.* \
+        --whitelist-type     (?i)${whitelistname}.* \
+        --whitelist-var      (?i)${whitelistname}.* \
+        --blacklist-item     _lv_obj_t \
+        --blacklist-item     lv_style_t \
+        --blacklist-item     lv_btnmatrix_get_active_btn_text \
+        --blacklist-item     lv_btnmatrix_get_btn_text \
+        --blacklist-item     lv_checkbox_get_text \
+        --blacklist-item     lv_dropdown_get_text \
+        --blacklist-item     lv_dropdown_get_options \
+        --blacklist-item     lv_dropdown_get_symbol \
+        --blacklist-item     lv_img_get_file_name \
+        --blacklist-item     lv_list_get_btn_text \
+        --blacklist-item     lv_msgbox_get_text \
+        --blacklist-item     lv_msgbox_get_active_btn_text \
+        --blacklist-item     lv_roller_get_options \
+        --blacklist-item     lv_table_get_cell_value \
+        --blacklist-item     lv_textarea_get_text \
+        --blacklist-item     lv_textarea_get_placeholder_text \
+        --blacklist-item     lv_textarea_get_accepted_chars \
+        --blacklist-item     lv_win_get_title
+EOF
+`
+    #  Generate the bindings for lv_widgets/lv_*: libname, modname, submodname, headerfile, whitelist
     generate_bindings $libname $modname $submodname $headerfile $whitelist
 }
 
 #  Generate bindings for lv_core
-generate_bindings_core
+generate_bindings_core disp
+generate_bindings_core group
+generate_bindings_core indev
+generate_bindings_core obj
+generate_bindings_core refr
+generate_bindings_core style
 
-#  TODO: Generate bindings for lv_draw
-#  generate_bindings_draw
+#  Generate bindings for lv_draw
+generate_bindings_draw
 
-#  TODO: Generate bindings for lv_font
-#  generate_bindings_font
+#  Generate bindings for lv_font
+generate_bindings_font
 
-#  TODO: Generate bindings for lv_hal
-#  generate_bindings_hal
+#  Generate bindings for lv_hal
+generate_bindings_hal disp
+generate_bindings_hal indev
+generate_bindings_hal tick
 
-#  TODO: Generate bindings for lv_misc
-#  generate_bindings_misc
+#  Generate bindings for lv_misc
+generate_bindings_misc anim
+generate_bindings_misc area
+generate_bindings_misc async
+generate_bindings_misc bidi
+generate_bindings_misc color
+generate_bindings_misc debug
+generate_bindings_misc fs
+generate_bindings_misc gc
+generate_bindings_misc ll
+generate_bindings_misc log
+generate_bindings_misc math
+generate_bindings_misc mem
+generate_bindings_misc printf
+generate_bindings_misc task
+generate_bindings_misc templ
+generate_bindings_misc txt
+generate_bindings_misc txt_ap
+generate_bindings_misc types
+generate_bindings_misc utils
+
+#  Generate bindings for lv_themes
+generate_bindings_themes
 
 #  Generate bindings for lv_widgets
-generate_bindings_widgets
-
-#  TODO: Generate bindings for lv_themes
-#  generate_bindings_themes
+generate_bindings_widgets arc
+generate_bindings_widgets bar
+generate_bindings_widgets btn
+generate_bindings_widgets btnmatrix
+generate_bindings_widgets calendar
+generate_bindings_widgets canvas
+generate_bindings_widgets chart
+generate_bindings_widgets checkbox
+generate_bindings_widgets cont
+generate_bindings_widgets cpicker
+generate_bindings_widgets dropdown
+generate_bindings_widgets gauge
+generate_bindings_widgets img
+generate_bindings_widgets imgbtn
+generate_bindings_widgets keyboard
+generate_bindings_widgets label
+generate_bindings_widgets led
+generate_bindings_widgets line
+generate_bindings_widgets linemeter
+generate_bindings_widgets list
+generate_bindings_widgets msgbox
+generate_bindings_widgets objmask
+generate_bindings_widgets objx_templ
+generate_bindings_widgets page
+generate_bindings_widgets roller
+generate_bindings_widgets slider
+generate_bindings_widgets spinbox
+generate_bindings_widgets spinner
+generate_bindings_widgets switch
+generate_bindings_widgets table
+generate_bindings_widgets tabview
+generate_bindings_widgets textarea
+generate_bindings_widgets tileview
+generate_bindings_widgets win
 
 #  Expand the safe wrapper macros
 cargo rustc -- -Z unstable-options --pretty expanded >logs/expanded.rs
 
 #  Build the bindings
 cargo build
+
+#  Generate the doc for inspection
+cargo doc
 
 exit
 
