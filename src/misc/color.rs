@@ -85,49 +85,6 @@ where
         }
     }
 }
-#[repr(C)]
-pub struct __BindgenUnionField<T>(::core::marker::PhantomData<T>);
-impl<T> __BindgenUnionField<T> {
-    #[inline]
-    pub fn new() -> Self {
-        __BindgenUnionField(::core::marker::PhantomData)
-    }
-    #[inline]
-    pub unsafe fn as_ref(&self) -> &T {
-        ::core::mem::transmute(self)
-    }
-    #[inline]
-    pub unsafe fn as_mut(&mut self) -> &mut T {
-        ::core::mem::transmute(self)
-    }
-}
-impl<T> ::core::default::Default for __BindgenUnionField<T> {
-    #[inline]
-    fn default() -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::clone::Clone for __BindgenUnionField<T> {
-    #[inline]
-    fn clone(&self) -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::marker::Copy for __BindgenUnionField<T> {}
-impl<T> ::core::fmt::Debug for __BindgenUnionField<T> {
-    fn fmt(&self, fmt: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        fmt.write_str("__BindgenUnionField")
-    }
-}
-impl<T> ::core::hash::Hash for __BindgenUnionField<T> {
-    fn hash<H: ::core::hash::Hasher>(&self, _state: &mut H) {}
-}
-impl<T> ::core::cmp::PartialEq for __BindgenUnionField<T> {
-    fn eq(&self, _other: &__BindgenUnionField<T>) -> bool {
-        true
-    }
-}
-impl<T> ::core::cmp::Eq for __BindgenUnionField<T> {}
 pub const LV_COLOR_DEPTH: u32 = 16;
 pub const LV_COLOR_16_SWAP: u32 = 1;
 pub const LV_COLOR_SCREEN_TRANSP: u32 = 0;
@@ -135,12 +92,14 @@ pub const LV_COLOR_SIZE: u32 = 16;
 pub const LV_COLOR_MIX_ROUND_OFS: u32 = 128;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
-pub struct lv_color1_t {
-    pub ch: __BindgenUnionField<lv_color1_t__bindgen_ty_1>,
-    pub full: __BindgenUnionField<u8>,
-    pub bindgen_union_field: u8,
+#[derive(Copy, Clone)]
+pub union lv_color1_t {
+    pub ch: lv_color1_t__bindgen_ty_1,
+    pub full: u8,
+    _bindgen_union_align: u8,
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub union lv_color1_t__bindgen_ty_1 {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
     _bindgen_union_align: u8,
@@ -209,13 +168,14 @@ impl Default for lv_color1_t {
     }
 }
 #[repr(C)]
-pub struct lv_color8_t {
-    pub ch: __BindgenUnionField<lv_color8_t__bindgen_ty_1>,
-    pub full: __BindgenUnionField<u8>,
-    pub bindgen_union_field: u8,
+#[derive(Copy, Clone)]
+pub union lv_color8_t {
+    pub ch: lv_color8_t__bindgen_ty_1,
+    pub full: u8,
+    _bindgen_union_align: u8,
 }
 #[repr(C, packed)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_color8_t__bindgen_ty_1 {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
 }
@@ -278,14 +238,15 @@ impl Default for lv_color8_t {
     }
 }
 #[repr(C)]
-pub struct lv_color16_t {
-    pub ch: __BindgenUnionField<lv_color16_t__bindgen_ty_1>,
-    pub full: __BindgenUnionField<u16>,
-    pub bindgen_union_field: u16,
+#[derive(Copy, Clone)]
+pub union lv_color16_t {
+    pub ch: lv_color16_t__bindgen_ty_1,
+    pub full: u16,
+    _bindgen_union_align: u16,
 }
 #[repr(C)]
 #[repr(align(2))]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_color16_t__bindgen_ty_1 {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
 }
@@ -368,13 +329,14 @@ impl Default for lv_color16_t {
     }
 }
 #[repr(C)]
-pub struct lv_color32_t {
-    pub ch: __BindgenUnionField<lv_color32_t__bindgen_ty_1>,
-    pub full: __BindgenUnionField<u32>,
-    pub bindgen_union_field: u32,
+#[derive(Copy, Clone)]
+pub union lv_color32_t {
+    pub ch: lv_color32_t__bindgen_ty_1,
+    pub full: u32,
+    _bindgen_union_align: u32,
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_color32_t__bindgen_ty_1 {
     pub blue: u8,
     pub green: u8,
@@ -389,7 +351,7 @@ impl Default for lv_color32_t {
 pub type lv_color_int_t = u16;
 pub type lv_color_t = lv_color16_t;
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_color_hsv_t {
     pub h: u16,
     pub s: u8,

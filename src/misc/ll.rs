@@ -7,6 +7,7 @@ super::*;
 pub type lv_ll_node_t = u8;
 #[doc = " Description of a linked list"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_ll_t {
     pub n_size: u32,
     pub head: *mut lv_ll_node_t,

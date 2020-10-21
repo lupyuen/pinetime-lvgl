@@ -85,49 +85,6 @@ where
         }
     }
 }
-#[repr(C)]
-pub struct __BindgenUnionField<T>(::core::marker::PhantomData<T>);
-impl<T> __BindgenUnionField<T> {
-    #[inline]
-    pub fn new() -> Self {
-        __BindgenUnionField(::core::marker::PhantomData)
-    }
-    #[inline]
-    pub unsafe fn as_ref(&self) -> &T {
-        ::core::mem::transmute(self)
-    }
-    #[inline]
-    pub unsafe fn as_mut(&mut self) -> &mut T {
-        ::core::mem::transmute(self)
-    }
-}
-impl<T> ::core::default::Default for __BindgenUnionField<T> {
-    #[inline]
-    fn default() -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::clone::Clone for __BindgenUnionField<T> {
-    #[inline]
-    fn clone(&self) -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::marker::Copy for __BindgenUnionField<T> {}
-impl<T> ::core::fmt::Debug for __BindgenUnionField<T> {
-    fn fmt(&self, fmt: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        fmt.write_str("__BindgenUnionField")
-    }
-}
-impl<T> ::core::hash::Hash for __BindgenUnionField<T> {
-    fn hash<H: ::core::hash::Hasher>(&self, _state: &mut H) {}
-}
-impl<T> ::core::cmp::PartialEq for __BindgenUnionField<T> {
-    fn eq(&self, _other: &__BindgenUnionField<T>) -> bool {
-        true
-    }
-}
-impl<T> ::core::cmp::Eq for __BindgenUnionField<T> {}
 pub type lv_coord_t = i16;
 pub type lv_anim_user_data_t = *mut ::cty::c_void;
 pub type lv_img_decoder_user_data_t = *mut ::cty::c_void;
@@ -140,7 +97,7 @@ pub type lv_res_t = u8;
 pub type lv_uintptr_t = usize;
 #[doc = " Heap information structure."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_mem_monitor_t {
     #[doc = "< Total heap size"]
     pub total_size: u32,
@@ -157,6 +114,7 @@ pub struct lv_mem_monitor_t {
     pub frag_pct: u8,
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_mem_buf_t {
     pub p: *mut ::cty::c_void,
     pub size: u16,
@@ -194,14 +152,14 @@ impl lv_mem_buf_t {
 pub type lv_mem_buf_arr_t = [lv_mem_buf_t; 16usize];
 #[doc = " Represents a point on the screen."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_point_t {
     pub x: lv_coord_t,
     pub y: lv_coord_t,
 }
 #[doc = " Represents an area of the screen."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_area_t {
     pub x1: lv_coord_t,
     pub y1: lv_coord_t,
@@ -234,7 +192,7 @@ pub type _bindgen_ty_3 = u32;
 pub type lv_align_t = u8;
 #[doc = " Describes the properties of a glyph."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_font_glyph_dsc_t {
     #[doc = "< The glyph needs this space. Draw the next glyph after this width. 8 bit integer, 4 bit fractional"]
     pub adv_w: u16,
@@ -252,6 +210,7 @@ pub struct lv_font_glyph_dsc_t {
 pub type lv_font_subpx_t = u8;
 #[doc = " Describe the properties of a font"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_font_struct {
     #[doc = " Get a glyph's  descriptor from a font"]
     pub get_glyph_dsc: ::core::option::Option<
@@ -311,19 +270,21 @@ impl _lv_font_struct {
 pub type lv_font_t = _lv_font_struct;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_sqrt_res_t {
     pub i: u16,
     pub f: u16,
 }
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
-pub struct lv_color1_t {
-    pub ch: __BindgenUnionField<lv_color1_t__bindgen_ty_1>,
-    pub full: __BindgenUnionField<u8>,
-    pub bindgen_union_field: u8,
+#[derive(Copy, Clone)]
+pub union lv_color1_t {
+    pub ch: lv_color1_t__bindgen_ty_1,
+    pub full: u8,
+    _bindgen_union_align: u8,
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub union lv_color1_t__bindgen_ty_1 {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
     _bindgen_union_align: u8,
@@ -392,13 +353,14 @@ impl Default for lv_color1_t {
     }
 }
 #[repr(C)]
-pub struct lv_color8_t {
-    pub ch: __BindgenUnionField<lv_color8_t__bindgen_ty_1>,
-    pub full: __BindgenUnionField<u8>,
-    pub bindgen_union_field: u8,
+#[derive(Copy, Clone)]
+pub union lv_color8_t {
+    pub ch: lv_color8_t__bindgen_ty_1,
+    pub full: u8,
+    _bindgen_union_align: u8,
 }
 #[repr(C, packed)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_color8_t__bindgen_ty_1 {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
 }
@@ -461,14 +423,15 @@ impl Default for lv_color8_t {
     }
 }
 #[repr(C)]
-pub struct lv_color16_t {
-    pub ch: __BindgenUnionField<lv_color16_t__bindgen_ty_1>,
-    pub full: __BindgenUnionField<u16>,
-    pub bindgen_union_field: u16,
+#[derive(Copy, Clone)]
+pub union lv_color16_t {
+    pub ch: lv_color16_t__bindgen_ty_1,
+    pub full: u16,
+    _bindgen_union_align: u16,
 }
 #[repr(C)]
 #[repr(align(2))]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_color16_t__bindgen_ty_1 {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
 }
@@ -551,13 +514,14 @@ impl Default for lv_color16_t {
     }
 }
 #[repr(C)]
-pub struct lv_color32_t {
-    pub ch: __BindgenUnionField<lv_color32_t__bindgen_ty_1>,
-    pub full: __BindgenUnionField<u32>,
-    pub bindgen_union_field: u32,
+#[derive(Copy, Clone)]
+pub union lv_color32_t {
+    pub ch: lv_color32_t__bindgen_ty_1,
+    pub full: u32,
+    _bindgen_union_align: u32,
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_color32_t__bindgen_ty_1 {
     pub blue: u8,
     pub green: u8,
@@ -572,7 +536,7 @@ impl Default for lv_color32_t {
 pub type lv_color_int_t = u16;
 pub type lv_color_t = lv_color16_t;
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_color_hsv_t {
     pub h: u16,
     pub s: u8,
@@ -588,6 +552,7 @@ pub type lv_anim_path_cb_t = ::core::option::Option<
     unsafe extern "C" fn(arg1: *const _lv_anim_path_t, arg2: *const _lv_anim_t) -> lv_anim_value_t,
 >;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_anim_path_t {
     pub cb: lv_anim_path_cb_t,
     pub user_data: *mut ::cty::c_void,
@@ -616,6 +581,7 @@ pub type lv_anim_ready_cb_t = ::core::option::Option<unsafe extern "C" fn(arg1: 
 pub type lv_anim_start_cb_t = ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_anim_t)>;
 #[doc = " Describes an animation"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_anim_t {
     #[doc = "<Variable to animate"]
     pub var: *mut ::cty::c_void,
@@ -735,13 +701,13 @@ pub type lv_draw_mask_xcb_t = ::core::option::Option<
 >;
 pub type lv_draw_mask_line_side_t = u8;
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_common_dsc_t {
     pub cb: lv_draw_mask_xcb_t,
     pub type_: lv_draw_mask_type_t,
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_line_param_t {
     pub dsc: lv_draw_mask_common_dsc_t,
     pub cfg: lv_draw_mask_line_param_t__bindgen_ty_1,
@@ -754,7 +720,7 @@ pub struct lv_draw_mask_line_param_t {
     pub __bindgen_padding_0: [u8; 7usize],
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_line_param_t__bindgen_ty_1 {
     pub p1: lv_point_t,
     pub p2: lv_point_t,
@@ -825,7 +791,7 @@ impl lv_draw_mask_line_param_t {
     }
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_angle_param_t {
     pub dsc: lv_draw_mask_common_dsc_t,
     pub cfg: lv_draw_mask_angle_param_t__bindgen_ty_1,
@@ -834,14 +800,14 @@ pub struct lv_draw_mask_angle_param_t {
     pub delta_deg: u16,
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_angle_param_t__bindgen_ty_1 {
     pub vertex_p: lv_point_t,
     pub start_angle: lv_coord_t,
     pub end_angle: lv_coord_t,
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_radius_param_t {
     pub dsc: lv_draw_mask_common_dsc_t,
     pub cfg: lv_draw_mask_radius_param_t__bindgen_ty_1,
@@ -849,7 +815,7 @@ pub struct lv_draw_mask_radius_param_t {
     pub y_prev_x: lv_sqrt_res_t,
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_radius_param_t__bindgen_ty_1 {
     pub rect: lv_area_t,
     pub radius: lv_coord_t,
@@ -880,13 +846,13 @@ impl lv_draw_mask_radius_param_t__bindgen_ty_1 {
     }
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_fade_param_t {
     pub dsc: lv_draw_mask_common_dsc_t,
     pub cfg: lv_draw_mask_fade_param_t__bindgen_ty_1,
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_fade_param_t__bindgen_ty_1 {
     pub coords: lv_area_t,
     pub y_top: lv_coord_t,
@@ -895,11 +861,13 @@ pub struct lv_draw_mask_fade_param_t__bindgen_ty_1 {
     pub opa_bottom: lv_opa_t,
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_draw_mask_map_param_t {
     pub dsc: lv_draw_mask_common_dsc_t,
     pub cfg: _lv_draw_mask_map_param_t__bindgen_ty_1,
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_draw_mask_map_param_t__bindgen_ty_1 {
     pub coords: lv_area_t,
     pub map: *const lv_opa_t,
@@ -923,6 +891,7 @@ pub type lv_style_attr_t = u8;
 pub type lv_style_property_t = u16;
 pub type lv_style_state_t = u16;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_style_t {
     pub map: *mut u8,
 }
@@ -933,6 +902,7 @@ impl Default for lv_style_t {
 }
 pub type lv_style_int_t = i16;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_style_list_t {
     pub style_list: *mut *mut lv_style_t,
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u8>,
@@ -1390,6 +1360,7 @@ impl lv_style_list_t {
 pub type lv_ll_node_t = u8;
 #[doc = " Description of a linked list"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_ll_t {
     pub n_size: u32,
     pub head: *mut lv_ll_node_t,
@@ -1405,6 +1376,7 @@ pub type lv_task_cb_t = ::core::option::Option<unsafe extern "C" fn(arg1: *mut _
 pub type lv_task_prio_t = u8;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_task_t {
     #[doc = "< How often the task should run"]
     pub period: u32,
@@ -1450,6 +1422,7 @@ impl _lv_task_t {
 pub type lv_task_t = _lv_task_t;
 #[doc = " Structure for holding display buffer information."]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_disp_buf_t {
     #[doc = "< First display buffer."]
     pub buf1: *mut ::cty::c_void,
@@ -1511,6 +1484,7 @@ impl lv_disp_buf_t {
 }
 #[doc = " Display Driver structure to be registered by HAL"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _disp_drv_t {
     #[doc = "< Horizontal resolution."]
     pub hor_res: lv_coord_t,
@@ -1632,6 +1606,7 @@ impl _disp_drv_t {
 pub type lv_disp_drv_t = _disp_drv_t;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _disp_t {
     pub driver: lv_disp_drv_t,
     pub refr_task: *mut lv_task_t,
@@ -1720,7 +1695,7 @@ pub type lv_drag_dir_t = u8;
 pub type lv_gesture_dir_t = u8;
 #[doc = " Data structure passed to an input driver to fill"]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_indev_data_t {
     #[doc = "< For LV_INDEV_TYPE_POINTER the currently pressed point"]
     pub point: lv_point_t,
@@ -1735,6 +1710,7 @@ pub struct lv_indev_data_t {
 }
 #[doc = " Initialized by the user and registered by 'lv_indev_add()'"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_indev_drv_t {
     pub type_: lv_indev_type_t,
     pub read_cb: ::core::option::Option<
@@ -1763,6 +1739,7 @@ pub type lv_indev_drv_t = _lv_indev_drv_t;
 #[doc = " Run time data of input devices"]
 #[doc = " Internally used by the library, you should not need to touch it."]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_indev_proc_t {
     #[doc = "< Current state of the input device."]
     pub state: lv_indev_state_t,
@@ -1775,12 +1752,14 @@ pub struct _lv_indev_proc_t {
     pub __bindgen_padding_0: [u8; 7usize],
 }
 #[repr(C)]
-pub struct _lv_indev_proc_t__bindgen_ty_1 {
-    pub pointer: __BindgenUnionField<_lv_indev_proc_t__bindgen_ty_1__bindgen_ty_1>,
-    pub keypad: __BindgenUnionField<_lv_indev_proc_t__bindgen_ty_1__bindgen_ty_2>,
-    pub bindgen_union_field: [u64; 7usize],
+#[derive(Copy, Clone)]
+pub union _lv_indev_proc_t__bindgen_ty_1 {
+    pub pointer: _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_1,
+    pub keypad: _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_2,
+    _bindgen_union_align: [u64; 7usize],
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_1 {
     #[doc = "< Current point of input device."]
     pub act_point: lv_point_t,
@@ -1877,7 +1856,7 @@ impl _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_1 {
     }
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_2 {
     pub last_state: lv_indev_state_t,
     pub last_key: u32,
@@ -1967,12 +1946,14 @@ impl _lv_indev_proc_t {
 }
 pub type lv_indev_proc_t = _lv_indev_proc_t;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_group_t {
     _unused: [u8; 0],
 }
 #[doc = " The main input device descriptor with driver, runtime data ('proc') and some additional"]
 #[doc = " information"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_indev_t {
     pub driver: lv_indev_drv_t,
     pub proc_: lv_indev_proc_t,
@@ -1992,6 +1973,7 @@ impl Default for _lv_indev_t {
 pub type lv_indev_t = _lv_indev_t;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_draw_rect_dsc_t {
     pub radius: lv_style_int_t,
     pub bg_color: lv_color_t,
@@ -2091,6 +2073,7 @@ pub type lv_txt_flag_t = u8;
 pub type lv_txt_cmd_state_t = u8;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_draw_label_dsc_t {
     pub color: lv_color_t,
     pub sel_color: lv_color_t,
@@ -2118,7 +2101,7 @@ impl Default for lv_draw_label_dsc_t {
 #[doc = " This structure stores an earlier (e.g. at -1000 px) coordinate and the index of that line."]
 #[doc = " Therefore the calculations can start from here."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_label_hint_t {
     #[doc = " Index of the line at `y` coordinate"]
     pub line_start: i32,
@@ -2130,6 +2113,7 @@ pub struct lv_draw_label_hint_t {
 }
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_draw_line_dsc_t {
     pub color: lv_color_t,
     pub width: lv_style_int_t,
@@ -2219,7 +2203,7 @@ impl lv_draw_line_dsc_t {
 pub type lv_img_cf_t = u8;
 #[repr(C)]
 #[repr(align(4))]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_img_header_t {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u16>,
 }
@@ -2315,6 +2299,7 @@ impl lv_img_header_t {
 #[doc = " Image header it is compatible with"]
 #[doc = " the result from image converter utility"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_img_dsc_t {
     pub header: lv_img_header_t,
     pub data_size: u32,
@@ -2326,12 +2311,14 @@ impl Default for lv_img_dsc_t {
     }
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_img_transform_dsc_t {
     pub cfg: lv_img_transform_dsc_t__bindgen_ty_1,
     pub res: lv_img_transform_dsc_t__bindgen_ty_2,
     pub tmp: lv_img_transform_dsc_t__bindgen_ty_3,
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_img_transform_dsc_t__bindgen_ty_1 {
     pub src: *const ::cty::c_void,
     pub src_w: lv_coord_t,
@@ -2350,6 +2337,7 @@ impl Default for lv_img_transform_dsc_t__bindgen_ty_1 {
     }
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_img_transform_dsc_t__bindgen_ty_2 {
     pub color: lv_color_t,
     pub opa: lv_opa_t,
@@ -2360,6 +2348,7 @@ impl Default for lv_img_transform_dsc_t__bindgen_ty_2 {
     }
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_img_transform_dsc_t__bindgen_ty_3 {
     pub img_dsc: lv_img_dsc_t,
     pub pivot_x_256: i32,
@@ -2487,6 +2476,7 @@ pub type lv_img_decoder_close_f_t = ::core::option::Option<
     unsafe extern "C" fn(decoder: *mut _lv_img_decoder, dsc: *mut _lv_img_decoder_dsc),
 >;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_img_decoder {
     pub info_cb: lv_img_decoder_info_f_t,
     pub open_cb: lv_img_decoder_open_f_t,
@@ -2502,6 +2492,7 @@ impl Default for _lv_img_decoder {
 pub type lv_img_decoder_t = _lv_img_decoder;
 #[doc = "Describe an image decoding session. Stores data about the decoding"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_img_decoder_dsc {
     #[doc = "The decoder which was able to open the image source"]
     pub decoder: *mut lv_img_decoder_t,
@@ -2533,6 +2524,7 @@ impl Default for _lv_img_decoder_dsc {
 pub type lv_img_decoder_dsc_t = _lv_img_decoder_dsc;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_draw_img_dsc_t {
     pub opa: lv_opa_t,
     pub angle: u16,
@@ -2702,6 +2694,7 @@ pub type lv_signal_cb_t = ::core::option::Option<
     ) -> lv_res_t,
 >;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_realign_t {
     pub base: *const _lv_obj_t,
     pub xofs: lv_coord_t,
@@ -2784,6 +2777,7 @@ pub type _bindgen_ty_30 = u32;
 pub type lv_state_t = u8;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_obj_t {
     #[doc = "< Pointer to the parent object"]
     pub parent: *mut _lv_obj_t,
@@ -3031,6 +3025,7 @@ pub type _bindgen_ty_31 = u32;
 pub type lv_obj_part_t = u8;
 #[doc = " Used by `lv_obj_get_type()`. The object's and its ancestor types are stored here"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_obj_type_t {
     #[doc = "< [0]: the actual type, [1]: ancestor, [2] #1's ancestor"]
     #[doc = "... [x]: \"lv_obj\""]
@@ -3042,6 +3037,7 @@ impl Default for lv_obj_type_t {
     }
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_hit_test_info_t {
     pub point: *mut lv_point_t,
     pub result: bool,
@@ -3052,6 +3048,7 @@ impl Default for lv_hit_test_info_t {
     }
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_get_style_info_t {
     pub part: u8,
     pub result: *mut lv_style_list_t,
@@ -3062,7 +3059,7 @@ impl Default for lv_get_style_info_t {
     }
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_get_state_info_t {
     pub part: u8,
     pub result: lv_state_t,

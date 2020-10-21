@@ -85,49 +85,6 @@ where
         }
     }
 }
-#[repr(C)]
-pub struct __BindgenUnionField<T>(::core::marker::PhantomData<T>);
-impl<T> __BindgenUnionField<T> {
-    #[inline]
-    pub fn new() -> Self {
-        __BindgenUnionField(::core::marker::PhantomData)
-    }
-    #[inline]
-    pub unsafe fn as_ref(&self) -> &T {
-        ::core::mem::transmute(self)
-    }
-    #[inline]
-    pub unsafe fn as_mut(&mut self) -> &mut T {
-        ::core::mem::transmute(self)
-    }
-}
-impl<T> ::core::default::Default for __BindgenUnionField<T> {
-    #[inline]
-    fn default() -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::clone::Clone for __BindgenUnionField<T> {
-    #[inline]
-    fn clone(&self) -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::marker::Copy for __BindgenUnionField<T> {}
-impl<T> ::core::fmt::Debug for __BindgenUnionField<T> {
-    fn fmt(&self, fmt: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        fmt.write_str("__BindgenUnionField")
-    }
-}
-impl<T> ::core::hash::Hash for __BindgenUnionField<T> {
-    fn hash<H: ::core::hash::Hasher>(&self, _state: &mut H) {}
-}
-impl<T> ::core::cmp::PartialEq for __BindgenUnionField<T> {
-    fn eq(&self, _other: &__BindgenUnionField<T>) -> bool {
-        true
-    }
-}
-impl<T> ::core::cmp::Eq for __BindgenUnionField<T> {}
 pub const LV_TABLE_COL_MAX: u32 = 12;
 pub const LV_TABLE_CELL_STYLE_CNT: u32 = 4;
 pub type lv_coord_t = i16;
@@ -135,7 +92,7 @@ pub type lv_obj_user_data_t = *mut ::cty::c_void;
 pub type lv_res_t = u8;
 #[doc = " Represents an area of the screen."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_area_t {
     pub x1: lv_coord_t,
     pub y1: lv_coord_t,
@@ -144,6 +101,7 @@ pub struct lv_area_t {
 }
 pub type lv_align_t = u8;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_style_list_t {
     pub style_list: *mut *mut lv_style_t,
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u8>,
@@ -601,6 +559,7 @@ impl lv_style_list_t {
 pub type lv_ll_node_t = u8;
 #[doc = " Description of a linked list"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_ll_t {
     pub n_size: u32,
     pub head: *mut lv_ll_node_t,
@@ -639,6 +598,7 @@ pub type lv_signal_cb_t = ::core::option::Option<
     ) -> lv_res_t,
 >;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_realign_t {
     pub base: *const _lv_obj_t,
     pub xofs: lv_coord_t,
@@ -700,13 +660,14 @@ pub type lv_label_align_t = u8;
 #[doc = ""]
 #[doc = " Use the `lv_table` APIs instead."]
 #[repr(C)]
-pub struct lv_table_cell_format_t {
-    pub s: __BindgenUnionField<lv_table_cell_format_t__bindgen_ty_1>,
-    pub format_byte: __BindgenUnionField<u8>,
-    pub bindgen_union_field: u8,
+#[derive(Copy, Clone)]
+pub union lv_table_cell_format_t {
+    pub s: lv_table_cell_format_t__bindgen_ty_1,
+    pub format_byte: u8,
+    _bindgen_union_align: u8,
 }
 #[repr(C, packed)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_table_cell_format_t__bindgen_ty_1 {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize], u8>,
 }
@@ -789,6 +750,7 @@ impl Default for lv_table_cell_format_t {
     }
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_table_ext_t {
     pub col_cnt: u16,
     pub row_cnt: u16,

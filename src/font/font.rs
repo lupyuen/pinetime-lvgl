@@ -13,7 +13,7 @@ pub const LV_FONT_MONTSERRAT_24: u32 = 1;
 pub const LV_FONT_MONTSERRAT_26: u32 = 0;
 pub const LV_FONT_MONTSERRAT_28: u32 = 0;
 pub const LV_FONT_MONTSERRAT_30: u32 = 0;
-pub const LV_FONT_MONTSERRAT_32: u32 = 1;
+pub const LV_FONT_MONTSERRAT_32: u32 = 0;
 pub const LV_FONT_MONTSERRAT_34: u32 = 0;
 pub const LV_FONT_MONTSERRAT_36: u32 = 0;
 pub const LV_FONT_MONTSERRAT_38: u32 = 0;
@@ -21,7 +21,7 @@ pub const LV_FONT_MONTSERRAT_40: u32 = 0;
 pub const LV_FONT_MONTSERRAT_42: u32 = 0;
 pub const LV_FONT_MONTSERRAT_44: u32 = 0;
 pub const LV_FONT_MONTSERRAT_46: u32 = 0;
-pub const LV_FONT_MONTSERRAT_48: u32 = 0;
+pub const LV_FONT_MONTSERRAT_48: u32 = 1;
 pub const LV_FONT_MONTSERRAT_12_SUBPX: u32 = 0;
 pub const LV_FONT_MONTSERRAT_28_COMPRESSED: u32 = 0;
 pub const LV_FONT_DEJAVU_16_PERSIAN_HEBREW: u32 = 0;
@@ -83,5 +83,5 @@ pub type lv_font_t = _lv_font_struct;
     pub static mut lv_font_montserrat_24: lv_font_t;
 }
 #[lvgl_macros::safe_wrap(attr)] extern "C" {
-    pub static mut lv_font_montserrat_32: lv_font_t;
+    pub static mut lv_font_montserrat_48: lv_font_t;
 }

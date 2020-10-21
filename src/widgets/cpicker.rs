@@ -85,62 +85,19 @@ where
         }
     }
 }
-#[repr(C)]
-pub struct __BindgenUnionField<T>(::core::marker::PhantomData<T>);
-impl<T> __BindgenUnionField<T> {
-    #[inline]
-    pub fn new() -> Self {
-        __BindgenUnionField(::core::marker::PhantomData)
-    }
-    #[inline]
-    pub unsafe fn as_ref(&self) -> &T {
-        ::core::mem::transmute(self)
-    }
-    #[inline]
-    pub unsafe fn as_mut(&mut self) -> &mut T {
-        ::core::mem::transmute(self)
-    }
-}
-impl<T> ::core::default::Default for __BindgenUnionField<T> {
-    #[inline]
-    fn default() -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::clone::Clone for __BindgenUnionField<T> {
-    #[inline]
-    fn clone(&self) -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::marker::Copy for __BindgenUnionField<T> {}
-impl<T> ::core::fmt::Debug for __BindgenUnionField<T> {
-    fn fmt(&self, fmt: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        fmt.write_str("__BindgenUnionField")
-    }
-}
-impl<T> ::core::hash::Hash for __BindgenUnionField<T> {
-    fn hash<H: ::core::hash::Hasher>(&self, _state: &mut H) {}
-}
-impl<T> ::core::cmp::PartialEq for __BindgenUnionField<T> {
-    fn eq(&self, _other: &__BindgenUnionField<T>) -> bool {
-        true
-    }
-}
-impl<T> ::core::cmp::Eq for __BindgenUnionField<T> {}
 pub type lv_coord_t = i16;
 pub type lv_obj_user_data_t = *mut ::cty::c_void;
 pub type lv_res_t = u8;
 #[doc = " Represents a point on the screen."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_point_t {
     pub x: lv_coord_t,
     pub y: lv_coord_t,
 }
 #[doc = " Represents an area of the screen."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_area_t {
     pub x1: lv_coord_t,
     pub y1: lv_coord_t,
@@ -149,14 +106,15 @@ pub struct lv_area_t {
 }
 pub type lv_align_t = u8;
 #[repr(C)]
-pub struct lv_color16_t {
-    pub ch: __BindgenUnionField<lv_color16_t__bindgen_ty_1>,
-    pub full: __BindgenUnionField<u16>,
-    pub bindgen_union_field: u16,
+#[derive(Copy, Clone)]
+pub union lv_color16_t {
+    pub ch: lv_color16_t__bindgen_ty_1,
+    pub full: u16,
+    _bindgen_union_align: u16,
 }
 #[repr(C)]
 #[repr(align(2))]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_color16_t__bindgen_ty_1 {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
 }
@@ -240,13 +198,14 @@ impl Default for lv_color16_t {
 }
 pub type lv_color_t = lv_color16_t;
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_color_hsv_t {
     pub h: u16,
     pub s: u8,
     pub v: u8,
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_style_list_t {
     pub style_list: *mut *mut lv_style_t,
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u8>,
@@ -704,6 +663,7 @@ impl lv_style_list_t {
 pub type lv_ll_node_t = u8;
 #[doc = " Description of a linked list"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_ll_t {
     pub n_size: u32,
     pub head: *mut lv_ll_node_t,
@@ -742,6 +702,7 @@ pub type lv_signal_cb_t = ::core::option::Option<
     ) -> lv_res_t,
 >;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_realign_t {
     pub base: *const _lv_obj_t,
     pub xofs: lv_coord_t,
@@ -809,6 +770,7 @@ pub const LV_CPICKER_COLOR_MODE_VALUE: _bindgen_ty_33 = 2;
 pub type _bindgen_ty_33 = u32;
 pub type lv_cpicker_color_mode_t = u8;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_cpicker_ext_t {
     pub hsv: lv_color_hsv_t,
     pub knob: lv_cpicker_ext_t__bindgen_ty_1,
@@ -819,6 +781,7 @@ pub struct lv_cpicker_ext_t {
     pub __bindgen_padding_0: [u8; 3usize],
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_cpicker_ext_t__bindgen_ty_1 {
     pub style_list: lv_style_list_t,
     pub pos: lv_point_t,

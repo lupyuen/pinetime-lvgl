@@ -94,7 +94,7 @@ pub const LV_MEM_BUF_MAX_NUM: u32 = 16;
 pub type lv_res_t = u8;
 #[doc = " Heap information structure."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_mem_monitor_t {
     #[doc = "< Total heap size"]
     pub total_size: u32,
@@ -111,6 +111,7 @@ pub struct lv_mem_monitor_t {
     pub frag_pct: u8,
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_mem_buf_t {
     pub p: *mut ::cty::c_void,
     pub size: u16,

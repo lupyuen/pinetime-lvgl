@@ -92,7 +92,7 @@ pub type lv_obj_user_data_t = *mut ::cty::c_void;
 pub type lv_res_t = u8;
 #[doc = " Represents an area of the screen."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_area_t {
     pub x1: lv_coord_t,
     pub y1: lv_coord_t,
@@ -101,6 +101,7 @@ pub struct lv_area_t {
 }
 pub type lv_align_t = u8;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_style_list_t {
     pub style_list: *mut *mut lv_style_t,
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u8>,
@@ -558,6 +559,7 @@ impl lv_style_list_t {
 pub type lv_ll_node_t = u8;
 #[doc = " Description of a linked list"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_ll_t {
     pub n_size: u32,
     pub head: *mut lv_ll_node_t,
@@ -596,6 +598,7 @@ pub type lv_signal_cb_t = ::core::option::Option<
     ) -> lv_res_t,
 >;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_realign_t {
     pub base: *const _lv_obj_t,
     pub xofs: lv_coord_t,
@@ -670,6 +673,7 @@ pub const LV_BTNMATRIX_CTRL_CLICK_TRIG: _bindgen_ty_41 = 256;
 pub type _bindgen_ty_41 = u32;
 pub type lv_btnmatrix_ctrl_t = u16;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_btnmatrix_ext_t {
     pub map_p: *mut *const ::cty::c_char,
     pub button_areas: *mut lv_area_t,

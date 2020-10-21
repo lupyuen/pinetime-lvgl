@@ -6,7 +6,7 @@ super::*;
 pub type lv_coord_t = i16;
 #[doc = " Represents an area of the screen."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_area_t {
     pub x1: lv_coord_t,
     pub y1: lv_coord_t,

@@ -99,7 +99,7 @@ pub const LV_STYLE_STATE_MASK: u32 = 32512;
 pub const LV_STYLE_INHERIT_MASK: u32 = 32768;
 #[repr(C)]
 #[repr(align(2))]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_color16_t__bindgen_ty_1 {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
 }

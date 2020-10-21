@@ -7,6 +7,7 @@ pub type lv_res_t = u8;
 #[doc = " Type for async callback."]
 pub type lv_async_cb_t = ::core::option::Option<unsafe extern "C" fn(arg1: *mut ::cty::c_void)>;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_async_info_t {
     pub cb: lv_async_cb_t,
     pub user_data: *mut ::cty::c_void,

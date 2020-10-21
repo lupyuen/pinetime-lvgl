@@ -85,62 +85,19 @@ where
         }
     }
 }
-#[repr(C)]
-pub struct __BindgenUnionField<T>(::core::marker::PhantomData<T>);
-impl<T> __BindgenUnionField<T> {
-    #[inline]
-    pub fn new() -> Self {
-        __BindgenUnionField(::core::marker::PhantomData)
-    }
-    #[inline]
-    pub unsafe fn as_ref(&self) -> &T {
-        ::core::mem::transmute(self)
-    }
-    #[inline]
-    pub unsafe fn as_mut(&mut self) -> &mut T {
-        ::core::mem::transmute(self)
-    }
-}
-impl<T> ::core::default::Default for __BindgenUnionField<T> {
-    #[inline]
-    fn default() -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::clone::Clone for __BindgenUnionField<T> {
-    #[inline]
-    fn clone(&self) -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::marker::Copy for __BindgenUnionField<T> {}
-impl<T> ::core::fmt::Debug for __BindgenUnionField<T> {
-    fn fmt(&self, fmt: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        fmt.write_str("__BindgenUnionField")
-    }
-}
-impl<T> ::core::hash::Hash for __BindgenUnionField<T> {
-    fn hash<H: ::core::hash::Hasher>(&self, _state: &mut H) {}
-}
-impl<T> ::core::cmp::PartialEq for __BindgenUnionField<T> {
-    fn eq(&self, _other: &__BindgenUnionField<T>) -> bool {
-        true
-    }
-}
-impl<T> ::core::cmp::Eq for __BindgenUnionField<T> {}
 pub const LV_DRAW_LABEL_NO_TXT_SEL: u32 = 65535;
 pub type lv_coord_t = i16;
 pub type lv_font_user_data_t = *mut ::cty::c_void;
 #[doc = " Represents a point on the screen."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_point_t {
     pub x: lv_coord_t,
     pub y: lv_coord_t,
 }
 #[doc = " Represents an area of the screen."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_area_t {
     pub x1: lv_coord_t,
     pub y1: lv_coord_t,
@@ -150,7 +107,7 @@ pub struct lv_area_t {
 pub type lv_align_t = u8;
 #[doc = " Describes the properties of a glyph."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_font_glyph_dsc_t {
     #[doc = "< The glyph needs this space. Draw the next glyph after this width. 8 bit integer, 4 bit fractional"]
     pub adv_w: u16,
@@ -167,6 +124,7 @@ pub struct lv_font_glyph_dsc_t {
 }
 #[doc = " Describe the properties of a font"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_font_struct {
     #[doc = " Get a glyph's  descriptor from a font"]
     pub get_glyph_dsc: ::core::option::Option<
@@ -226,20 +184,21 @@ impl _lv_font_struct {
 pub type lv_font_t = _lv_font_struct;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_sqrt_res_t {
     pub i: u16,
     pub f: u16,
 }
 #[repr(C)]
-pub struct lv_color16_t {
-    pub ch: __BindgenUnionField<lv_color16_t__bindgen_ty_1>,
-    pub full: __BindgenUnionField<u16>,
-    pub bindgen_union_field: u16,
+#[derive(Copy, Clone)]
+pub union lv_color16_t {
+    pub ch: lv_color16_t__bindgen_ty_1,
+    pub full: u16,
+    _bindgen_union_align: u16,
 }
 #[repr(C)]
 #[repr(align(2))]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_color16_t__bindgen_ty_1 {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
 }
@@ -356,13 +315,13 @@ pub type lv_draw_mask_xcb_t = ::core::option::Option<
 >;
 pub type lv_draw_mask_line_side_t = u8;
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_common_dsc_t {
     pub cb: lv_draw_mask_xcb_t,
     pub type_: lv_draw_mask_type_t,
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_line_param_t {
     pub dsc: lv_draw_mask_common_dsc_t,
     pub cfg: lv_draw_mask_line_param_t__bindgen_ty_1,
@@ -375,7 +334,7 @@ pub struct lv_draw_mask_line_param_t {
     pub __bindgen_padding_0: [u8; 7usize],
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_line_param_t__bindgen_ty_1 {
     pub p1: lv_point_t,
     pub p2: lv_point_t,
@@ -446,7 +405,7 @@ impl lv_draw_mask_line_param_t {
     }
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_angle_param_t {
     pub dsc: lv_draw_mask_common_dsc_t,
     pub cfg: lv_draw_mask_angle_param_t__bindgen_ty_1,
@@ -455,14 +414,14 @@ pub struct lv_draw_mask_angle_param_t {
     pub delta_deg: u16,
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_angle_param_t__bindgen_ty_1 {
     pub vertex_p: lv_point_t,
     pub start_angle: lv_coord_t,
     pub end_angle: lv_coord_t,
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_radius_param_t {
     pub dsc: lv_draw_mask_common_dsc_t,
     pub cfg: lv_draw_mask_radius_param_t__bindgen_ty_1,
@@ -470,7 +429,7 @@ pub struct lv_draw_mask_radius_param_t {
     pub y_prev_x: lv_sqrt_res_t,
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_radius_param_t__bindgen_ty_1 {
     pub rect: lv_area_t,
     pub radius: lv_coord_t,
@@ -501,13 +460,13 @@ impl lv_draw_mask_radius_param_t__bindgen_ty_1 {
     }
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_fade_param_t {
     pub dsc: lv_draw_mask_common_dsc_t,
     pub cfg: lv_draw_mask_fade_param_t__bindgen_ty_1,
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_mask_fade_param_t__bindgen_ty_1 {
     pub coords: lv_area_t,
     pub y_top: lv_coord_t,
@@ -516,11 +475,13 @@ pub struct lv_draw_mask_fade_param_t__bindgen_ty_1 {
     pub opa_bottom: lv_opa_t,
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_draw_mask_map_param_t {
     pub dsc: lv_draw_mask_common_dsc_t,
     pub cfg: _lv_draw_mask_map_param_t__bindgen_ty_1,
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_draw_mask_map_param_t__bindgen_ty_1 {
     pub coords: lv_area_t,
     pub map: *const lv_opa_t,
@@ -678,6 +639,7 @@ pub type lv_style_int_t = i16;
 pub type lv_txt_flag_t = u8;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_draw_rect_dsc_t {
     pub radius: lv_style_int_t,
     pub bg_color: lv_color_t,
@@ -801,6 +763,7 @@ impl lv_draw_rect_dsc_t {
 pub type lv_bidi_dir_t = u8;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_draw_label_dsc_t {
     pub color: lv_color_t,
     pub sel_color: lv_color_t,
@@ -828,7 +791,7 @@ impl Default for lv_draw_label_dsc_t {
 #[doc = " This structure stores an earlier (e.g. at -1000 px) coordinate and the index of that line."]
 #[doc = " Therefore the calculations can start from here."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_draw_label_hint_t {
     #[doc = " Index of the line at `y` coordinate"]
     pub line_start: i32,
@@ -860,6 +823,7 @@ pub struct lv_draw_label_hint_t {
 }
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_draw_img_dsc_t {
     pub opa: lv_opa_t,
     pub angle: u16,
@@ -917,6 +881,7 @@ impl lv_draw_img_dsc_t {
 }
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_draw_line_dsc_t {
     pub color: lv_color_t,
     pub width: lv_style_int_t,

@@ -91,7 +91,7 @@ pub const LV_DISP_MEDIUM_LIMIT: u32 = 50;
 pub const LV_DISP_LARGE_LIMIT: u32 = 70;
 #[repr(C)]
 #[repr(align(2))]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_color16_t__bindgen_ty_1 {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
 }

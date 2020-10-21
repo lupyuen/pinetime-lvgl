@@ -42,7 +42,6 @@ function generate_bindings() {
         --use-core \
         --ctypes-prefix "::cty" \
         --with-derive-default \
-        --no-derive-copy \
         --no-derive-debug \
         --no-layout-tests \
         $whitelist \

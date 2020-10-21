@@ -85,49 +85,6 @@ where
         }
     }
 }
-#[repr(C)]
-pub struct __BindgenUnionField<T>(::core::marker::PhantomData<T>);
-impl<T> __BindgenUnionField<T> {
-    #[inline]
-    pub fn new() -> Self {
-        __BindgenUnionField(::core::marker::PhantomData)
-    }
-    #[inline]
-    pub unsafe fn as_ref(&self) -> &T {
-        ::core::mem::transmute(self)
-    }
-    #[inline]
-    pub unsafe fn as_mut(&mut self) -> &mut T {
-        ::core::mem::transmute(self)
-    }
-}
-impl<T> ::core::default::Default for __BindgenUnionField<T> {
-    #[inline]
-    fn default() -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::clone::Clone for __BindgenUnionField<T> {
-    #[inline]
-    fn clone(&self) -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::marker::Copy for __BindgenUnionField<T> {}
-impl<T> ::core::fmt::Debug for __BindgenUnionField<T> {
-    fn fmt(&self, fmt: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        fmt.write_str("__BindgenUnionField")
-    }
-}
-impl<T> ::core::hash::Hash for __BindgenUnionField<T> {
-    fn hash<H: ::core::hash::Hasher>(&self, _state: &mut H) {}
-}
-impl<T> ::core::cmp::PartialEq for __BindgenUnionField<T> {
-    fn eq(&self, _other: &__BindgenUnionField<T>) -> bool {
-        true
-    }
-}
-impl<T> ::core::cmp::Eq for __BindgenUnionField<T> {}
 pub const LV_IMG_CF_INDEXED: u32 = 1;
 pub const LV_IMG_CF_ALPHA: u32 = 1;
 pub const LV_IMG_CACHE_DEF_SIZE: u32 = 1;
@@ -140,14 +97,14 @@ pub type lv_obj_user_data_t = *mut ::cty::c_void;
 pub type lv_res_t = u8;
 #[doc = " Represents a point on the screen."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_point_t {
     pub x: lv_coord_t,
     pub y: lv_coord_t,
 }
 #[doc = " Represents an area of the screen."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_area_t {
     pub x1: lv_coord_t,
     pub y1: lv_coord_t,
@@ -156,14 +113,15 @@ pub struct lv_area_t {
 }
 pub type lv_align_t = u8;
 #[repr(C)]
-pub struct lv_color16_t {
-    pub ch: __BindgenUnionField<lv_color16_t__bindgen_ty_1>,
-    pub full: __BindgenUnionField<u16>,
-    pub bindgen_union_field: u16,
+#[derive(Copy, Clone)]
+pub union lv_color16_t {
+    pub ch: lv_color16_t__bindgen_ty_1,
+    pub full: u16,
+    _bindgen_union_align: u16,
 }
 #[repr(C)]
 #[repr(align(2))]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_color16_t__bindgen_ty_1 {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
 }
@@ -249,6 +207,7 @@ pub type lv_color_t = lv_color16_t;
 #[doc = "! @cond Doxygen_Suppress"]
 pub type lv_opa_t = u8;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_style_list_t {
     pub style_list: *mut *mut lv_style_t,
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u8>,
@@ -706,6 +665,7 @@ impl lv_style_list_t {
 pub type lv_ll_node_t = u8;
 #[doc = " Description of a linked list"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_ll_t {
     pub n_size: u32,
     pub head: *mut lv_ll_node_t,
@@ -789,7 +749,7 @@ pub type _bindgen_ty_23 = u32;
 pub type lv_img_cf_t = u8;
 #[repr(C)]
 #[repr(align(4))]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_img_header_t {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u16>,
 }
@@ -885,6 +845,7 @@ impl lv_img_header_t {
 #[doc = " Image header it is compatible with"]
 #[doc = " the result from image converter utility"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_img_dsc_t {
     pub header: lv_img_header_t,
     pub data_size: u32,
@@ -896,12 +857,14 @@ impl Default for lv_img_dsc_t {
     }
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_img_transform_dsc_t {
     pub cfg: lv_img_transform_dsc_t__bindgen_ty_1,
     pub res: lv_img_transform_dsc_t__bindgen_ty_2,
     pub tmp: lv_img_transform_dsc_t__bindgen_ty_3,
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_img_transform_dsc_t__bindgen_ty_1 {
     pub src: *const ::cty::c_void,
     pub src_w: lv_coord_t,
@@ -920,6 +883,7 @@ impl Default for lv_img_transform_dsc_t__bindgen_ty_1 {
     }
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_img_transform_dsc_t__bindgen_ty_2 {
     pub color: lv_color_t,
     pub opa: lv_opa_t,
@@ -930,6 +894,7 @@ impl Default for lv_img_transform_dsc_t__bindgen_ty_2 {
     }
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_img_transform_dsc_t__bindgen_ty_3 {
     pub img_dsc: lv_img_dsc_t,
     pub pivot_x_256: i32,
@@ -1155,6 +1120,7 @@ pub type lv_img_decoder_close_f_t = ::core::option::Option<
     unsafe extern "C" fn(decoder: *mut _lv_img_decoder, dsc: *mut _lv_img_decoder_dsc),
 >;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_img_decoder {
     pub info_cb: lv_img_decoder_info_f_t,
     pub open_cb: lv_img_decoder_open_f_t,
@@ -1170,6 +1136,7 @@ impl Default for _lv_img_decoder {
 pub type lv_img_decoder_t = _lv_img_decoder;
 #[doc = "Describe an image decoding session. Stores data about the decoding"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_img_decoder_dsc {
     #[doc = "The decoder which was able to open the image source"]
     pub decoder: *mut lv_img_decoder_t,
@@ -1400,6 +1367,7 @@ pub type lv_signal_cb_t = ::core::option::Option<
     ) -> lv_res_t,
 >;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_realign_t {
     pub base: *const _lv_obj_t,
     pub xofs: lv_coord_t,
@@ -1458,6 +1426,7 @@ pub type lv_state_t = u8;
 pub type lv_obj_t = _lv_obj_t;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_img_ext_t {
     pub src: *const ::cty::c_void,
     pub offset: lv_point_t,

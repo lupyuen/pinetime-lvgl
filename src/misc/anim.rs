@@ -100,6 +100,7 @@ pub type lv_anim_path_cb_t = ::core::option::Option<
     unsafe extern "C" fn(arg1: *const _lv_anim_path_t, arg2: *const _lv_anim_t) -> lv_anim_value_t,
 >;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_anim_path_t {
     pub cb: lv_anim_path_cb_t,
     pub user_data: *mut ::cty::c_void,
@@ -128,6 +129,7 @@ pub type lv_anim_ready_cb_t = ::core::option::Option<unsafe extern "C" fn(arg1: 
 pub type lv_anim_start_cb_t = ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_anim_t)>;
 #[doc = " Describes an animation"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_anim_t {
     #[doc = "<Variable to animate"]
     pub var: *mut ::cty::c_void,

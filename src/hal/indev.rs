@@ -85,49 +85,6 @@ where
         }
     }
 }
-#[repr(C)]
-pub struct __BindgenUnionField<T>(::core::marker::PhantomData<T>);
-impl<T> __BindgenUnionField<T> {
-    #[inline]
-    pub fn new() -> Self {
-        __BindgenUnionField(::core::marker::PhantomData)
-    }
-    #[inline]
-    pub unsafe fn as_ref(&self) -> &T {
-        ::core::mem::transmute(self)
-    }
-    #[inline]
-    pub unsafe fn as_mut(&mut self) -> &mut T {
-        ::core::mem::transmute(self)
-    }
-}
-impl<T> ::core::default::Default for __BindgenUnionField<T> {
-    #[inline]
-    fn default() -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::clone::Clone for __BindgenUnionField<T> {
-    #[inline]
-    fn clone(&self) -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::marker::Copy for __BindgenUnionField<T> {}
-impl<T> ::core::fmt::Debug for __BindgenUnionField<T> {
-    fn fmt(&self, fmt: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        fmt.write_str("__BindgenUnionField")
-    }
-}
-impl<T> ::core::hash::Hash for __BindgenUnionField<T> {
-    fn hash<H: ::core::hash::Hasher>(&self, _state: &mut H) {}
-}
-impl<T> ::core::cmp::PartialEq for __BindgenUnionField<T> {
-    fn eq(&self, _other: &__BindgenUnionField<T>) -> bool {
-        true
-    }
-}
-impl<T> ::core::cmp::Eq for __BindgenUnionField<T> {}
 pub const LV_INDEV_DEF_READ_PERIOD: u32 = 30;
 pub const LV_INDEV_DEF_DRAG_LIMIT: u32 = 10;
 pub const LV_INDEV_DEF_DRAG_THROW: u32 = 20;
@@ -139,7 +96,7 @@ pub type lv_coord_t = i16;
 pub type lv_indev_drv_user_data_t = *mut ::cty::c_void;
 #[doc = " Represents a point on the screen."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_point_t {
     pub x: lv_coord_t,
     pub y: lv_coord_t,
@@ -148,6 +105,7 @@ pub struct lv_point_t {
 pub type lv_task_cb_t = ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_task_t)>;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_task_t {
     #[doc = "< How often the task should run"]
     pub period: u32,
@@ -192,6 +150,7 @@ impl _lv_task_t {
 }
 pub type lv_task_t = _lv_task_t;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _disp_t {
     _unused: [u8; 0],
 }
@@ -218,7 +177,7 @@ pub type lv_drag_dir_t = u8;
 pub type lv_gesture_dir_t = u8;
 #[doc = " Data structure passed to an input driver to fill"]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_indev_data_t {
     #[doc = "< For LV_INDEV_TYPE_POINTER the currently pressed point"]
     pub point: lv_point_t,
@@ -233,6 +192,7 @@ pub struct lv_indev_data_t {
 }
 #[doc = " Initialized by the user and registered by 'lv_indev_add()'"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_indev_drv_t {
     pub type_: lv_indev_type_t,
     pub read_cb: ::core::option::Option<
@@ -261,6 +221,7 @@ pub type lv_indev_drv_t = _lv_indev_drv_t;
 #[doc = " Run time data of input devices"]
 #[doc = " Internally used by the library, you should not need to touch it."]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_indev_proc_t {
     #[doc = "< Current state of the input device."]
     pub state: lv_indev_state_t,
@@ -273,12 +234,14 @@ pub struct _lv_indev_proc_t {
     pub __bindgen_padding_0: [u8; 7usize],
 }
 #[repr(C)]
-pub struct _lv_indev_proc_t__bindgen_ty_1 {
-    pub pointer: __BindgenUnionField<_lv_indev_proc_t__bindgen_ty_1__bindgen_ty_1>,
-    pub keypad: __BindgenUnionField<_lv_indev_proc_t__bindgen_ty_1__bindgen_ty_2>,
-    pub bindgen_union_field: [u64; 7usize],
+#[derive(Copy, Clone)]
+pub union _lv_indev_proc_t__bindgen_ty_1 {
+    pub pointer: _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_1,
+    pub keypad: _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_2,
+    _bindgen_union_align: [u64; 7usize],
 }
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_1 {
     #[doc = "< Current point of input device."]
     pub act_point: lv_point_t,
@@ -375,7 +338,7 @@ impl _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_1 {
     }
 }
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct _lv_indev_proc_t__bindgen_ty_1__bindgen_ty_2 {
     pub last_state: lv_indev_state_t,
     pub last_key: u32,
@@ -465,12 +428,14 @@ impl _lv_indev_proc_t {
 }
 pub type lv_indev_proc_t = _lv_indev_proc_t;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_group_t {
     _unused: [u8; 0],
 }
 #[doc = " The main input device descriptor with driver, runtime data ('proc') and some additional"]
 #[doc = " information"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_indev_t {
     pub driver: lv_indev_drv_t,
     pub proc_: lv_indev_proc_t,

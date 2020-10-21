@@ -90,7 +90,7 @@ pub type lv_obj_user_data_t = *mut ::cty::c_void;
 pub type lv_res_t = u8;
 #[doc = " Represents an area of the screen."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_area_t {
     pub x1: lv_coord_t,
     pub y1: lv_coord_t,
@@ -102,6 +102,7 @@ pub type lv_anim_enable_t = u8;
 #[doc = " Type of the animated value"]
 pub type lv_anim_value_t = lv_coord_t;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_style_list_t {
     pub style_list: *mut *mut lv_style_t,
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u8>,
@@ -559,6 +560,7 @@ impl lv_style_list_t {
 pub type lv_ll_node_t = u8;
 #[doc = " Description of a linked list"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_ll_t {
     pub n_size: u32,
     pub head: *mut lv_ll_node_t,
@@ -597,6 +599,7 @@ pub type lv_signal_cb_t = ::core::option::Option<
     ) -> lv_res_t,
 >;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_realign_t {
     pub base: *const _lv_obj_t,
     pub xofs: lv_coord_t,
@@ -654,6 +657,7 @@ impl lv_realign_t {
 pub type lv_state_t = u8;
 pub type lv_obj_t = _lv_obj_t;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_bar_anim_t {
     pub bar: *mut lv_obj_t,
     pub anim_start: lv_anim_value_t,
@@ -667,6 +671,7 @@ impl Default for lv_bar_anim_t {
 }
 #[doc = " Data of bar"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_bar_ext_t {
     pub cur_value: i16,
     pub min_value: i16,
@@ -714,6 +719,7 @@ pub const LV_SLIDER_TYPE_RANGE: _bindgen_ty_43 = 2;
 pub type _bindgen_ty_43 = u32;
 pub type lv_slider_type_t = u8;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_slider_ext_t {
     pub bar: lv_bar_ext_t,
     pub style_knob: lv_style_list_t,

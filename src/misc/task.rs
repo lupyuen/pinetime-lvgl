@@ -99,6 +99,7 @@ pub type _bindgen_ty_2 = u32;
 pub type lv_task_prio_t = u8;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_task_t {
     #[doc = "< How often the task should run"]
     pub period: u32,

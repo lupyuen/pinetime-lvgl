@@ -85,49 +85,6 @@ where
         }
     }
 }
-#[repr(C)]
-pub struct __BindgenUnionField<T>(::core::marker::PhantomData<T>);
-impl<T> __BindgenUnionField<T> {
-    #[inline]
-    pub fn new() -> Self {
-        __BindgenUnionField(::core::marker::PhantomData)
-    }
-    #[inline]
-    pub unsafe fn as_ref(&self) -> &T {
-        ::core::mem::transmute(self)
-    }
-    #[inline]
-    pub unsafe fn as_mut(&mut self) -> &mut T {
-        ::core::mem::transmute(self)
-    }
-}
-impl<T> ::core::default::Default for __BindgenUnionField<T> {
-    #[inline]
-    fn default() -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::clone::Clone for __BindgenUnionField<T> {
-    #[inline]
-    fn clone(&self) -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::marker::Copy for __BindgenUnionField<T> {}
-impl<T> ::core::fmt::Debug for __BindgenUnionField<T> {
-    fn fmt(&self, fmt: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        fmt.write_str("__BindgenUnionField")
-    }
-}
-impl<T> ::core::hash::Hash for __BindgenUnionField<T> {
-    fn hash<H: ::core::hash::Hasher>(&self, _state: &mut H) {}
-}
-impl<T> ::core::cmp::PartialEq for __BindgenUnionField<T> {
-    fn eq(&self, _other: &__BindgenUnionField<T>) -> bool {
-        true
-    }
-}
-impl<T> ::core::cmp::Eq for __BindgenUnionField<T> {}
 pub const LV_DISP_DEF_REFR_PERIOD: u32 = 30;
 pub const LV_DISP_SMALL_LIMIT: u32 = 30;
 pub const LV_DISP_MEDIUM_LIMIT: u32 = 50;
@@ -136,7 +93,7 @@ pub type lv_coord_t = i16;
 pub type lv_disp_drv_user_data_t = *mut ::cty::c_void;
 #[doc = " Represents an area of the screen."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_area_t {
     pub x1: lv_coord_t,
     pub y1: lv_coord_t,
@@ -147,6 +104,7 @@ pub struct lv_area_t {
 pub type lv_ll_node_t = u8;
 #[doc = " Description of a linked list"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_ll_t {
     pub n_size: u32,
     pub head: *mut lv_ll_node_t,
@@ -161,6 +119,7 @@ impl Default for lv_ll_t {
 pub type lv_task_cb_t = ::core::option::Option<unsafe extern "C" fn(arg1: *mut _lv_task_t)>;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_task_t {
     #[doc = "< How often the task should run"]
     pub period: u32,
@@ -205,14 +164,15 @@ impl _lv_task_t {
 }
 pub type lv_task_t = _lv_task_t;
 #[repr(C)]
-pub struct lv_color16_t {
-    pub ch: __BindgenUnionField<lv_color16_t__bindgen_ty_1>,
-    pub full: __BindgenUnionField<u16>,
-    pub bindgen_union_field: u16,
+#[derive(Copy, Clone)]
+pub union lv_color16_t {
+    pub ch: lv_color16_t__bindgen_ty_1,
+    pub full: u16,
+    _bindgen_union_align: u16,
 }
 #[repr(C)]
 #[repr(align(2))]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_color16_t__bindgen_ty_1 {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
 }
@@ -299,6 +259,7 @@ pub type lv_color_t = lv_color16_t;
 pub type lv_opa_t = u8;
 #[doc = " Structure for holding display buffer information."]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_disp_buf_t {
     #[doc = "< First display buffer."]
     pub buf1: *mut ::cty::c_void,
@@ -360,6 +321,7 @@ impl lv_disp_buf_t {
 }
 #[doc = " Display Driver structure to be registered by HAL"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _disp_drv_t {
     #[doc = "< Horizontal resolution."]
     pub hor_res: lv_coord_t,
@@ -482,6 +444,7 @@ pub type lv_disp_drv_t = _disp_drv_t;
 #[doc = " Display structure."]
 #[doc = " __Note:__ `lv_disp_drv_t` should be the first member of the structure."]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _disp_t {
     pub driver: lv_disp_drv_t,
     pub refr_task: *mut lv_task_t,

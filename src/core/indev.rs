@@ -94,7 +94,7 @@ pub const LV_INDEV_DEF_GESTURE_LIMIT: u32 = 50;
 pub const LV_INDEV_DEF_GESTURE_MIN_VELOCITY: u32 = 3;
 #[repr(C)]
 #[repr(align(2))]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_color16_t__bindgen_ty_1 {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
 }

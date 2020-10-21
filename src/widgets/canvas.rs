@@ -85,63 +85,20 @@ where
         }
     }
 }
-#[repr(C)]
-pub struct __BindgenUnionField<T>(::core::marker::PhantomData<T>);
-impl<T> __BindgenUnionField<T> {
-    #[inline]
-    pub fn new() -> Self {
-        __BindgenUnionField(::core::marker::PhantomData)
-    }
-    #[inline]
-    pub unsafe fn as_ref(&self) -> &T {
-        ::core::mem::transmute(self)
-    }
-    #[inline]
-    pub unsafe fn as_mut(&mut self) -> &mut T {
-        ::core::mem::transmute(self)
-    }
-}
-impl<T> ::core::default::Default for __BindgenUnionField<T> {
-    #[inline]
-    fn default() -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::clone::Clone for __BindgenUnionField<T> {
-    #[inline]
-    fn clone(&self) -> Self {
-        Self::new()
-    }
-}
-impl<T> ::core::marker::Copy for __BindgenUnionField<T> {}
-impl<T> ::core::fmt::Debug for __BindgenUnionField<T> {
-    fn fmt(&self, fmt: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-        fmt.write_str("__BindgenUnionField")
-    }
-}
-impl<T> ::core::hash::Hash for __BindgenUnionField<T> {
-    fn hash<H: ::core::hash::Hasher>(&self, _state: &mut H) {}
-}
-impl<T> ::core::cmp::PartialEq for __BindgenUnionField<T> {
-    fn eq(&self, _other: &__BindgenUnionField<T>) -> bool {
-        true
-    }
-}
-impl<T> ::core::cmp::Eq for __BindgenUnionField<T> {}
 pub type lv_coord_t = i16;
 pub type lv_font_user_data_t = *mut ::cty::c_void;
 pub type lv_obj_user_data_t = *mut ::cty::c_void;
 pub type lv_res_t = u8;
 #[doc = " Represents a point on the screen."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_point_t {
     pub x: lv_coord_t,
     pub y: lv_coord_t,
 }
 #[doc = " Represents an area of the screen."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_area_t {
     pub x1: lv_coord_t,
     pub y1: lv_coord_t,
@@ -151,7 +108,7 @@ pub struct lv_area_t {
 pub type lv_align_t = u8;
 #[doc = " Describes the properties of a glyph."]
 #[repr(C)]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_font_glyph_dsc_t {
     #[doc = "< The glyph needs this space. Draw the next glyph after this width. 8 bit integer, 4 bit fractional"]
     pub adv_w: u16,
@@ -168,6 +125,7 @@ pub struct lv_font_glyph_dsc_t {
 }
 #[doc = " Describe the properties of a font"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct _lv_font_struct {
     #[doc = " Get a glyph's  descriptor from a font"]
     pub get_glyph_dsc: ::core::option::Option<
@@ -226,14 +184,15 @@ impl _lv_font_struct {
 }
 pub type lv_font_t = _lv_font_struct;
 #[repr(C)]
-pub struct lv_color16_t {
-    pub ch: __BindgenUnionField<lv_color16_t__bindgen_ty_1>,
-    pub full: __BindgenUnionField<u16>,
-    pub bindgen_union_field: u16,
+#[derive(Copy, Clone)]
+pub union lv_color16_t {
+    pub ch: lv_color16_t__bindgen_ty_1,
+    pub full: u16,
+    _bindgen_union_align: u16,
 }
 #[repr(C)]
 #[repr(align(2))]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_color16_t__bindgen_ty_1 {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize], u8>,
 }
@@ -323,6 +282,7 @@ pub type lv_grad_dir_t = u8;
 pub type lv_text_decor_t = u8;
 pub type lv_style_int_t = i16;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_style_list_t {
     pub style_list: *mut *mut lv_style_t,
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u8>,
@@ -780,6 +740,7 @@ impl lv_style_list_t {
 pub type lv_ll_node_t = u8;
 #[doc = " Description of a linked list"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_ll_t {
     pub n_size: u32,
     pub head: *mut lv_ll_node_t,
@@ -793,6 +754,7 @@ impl Default for lv_ll_t {
 pub type lv_drag_dir_t = u8;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_draw_rect_dsc_t {
     pub radius: lv_style_int_t,
     pub bg_color: lv_color_t,
@@ -891,6 +853,7 @@ pub type lv_bidi_dir_t = u8;
 pub type lv_txt_flag_t = u8;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_draw_label_dsc_t {
     pub color: lv_color_t,
     pub sel_color: lv_color_t,
@@ -914,6 +877,7 @@ impl Default for lv_draw_label_dsc_t {
 }
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_draw_line_dsc_t {
     pub color: lv_color_t,
     pub width: lv_style_int_t,
@@ -1003,7 +967,7 @@ impl lv_draw_line_dsc_t {
 pub type lv_img_cf_t = u8;
 #[repr(C)]
 #[repr(align(4))]
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct lv_img_header_t {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 4usize], u16>,
 }
@@ -1099,6 +1063,7 @@ impl lv_img_header_t {
 #[doc = " Image header it is compatible with"]
 #[doc = " the result from image converter utility"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_img_dsc_t {
     pub header: lv_img_header_t,
     pub data_size: u32,
@@ -1111,6 +1076,7 @@ impl Default for lv_img_dsc_t {
 }
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_draw_img_dsc_t {
     pub opa: lv_opa_t,
     pub angle: u16,
@@ -1175,6 +1141,7 @@ pub type lv_signal_cb_t = ::core::option::Option<
     ) -> lv_res_t,
 >;
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_realign_t {
     pub base: *const _lv_obj_t,
     pub xofs: lv_coord_t,
@@ -1234,6 +1201,7 @@ pub type lv_obj_t = _lv_obj_t;
 pub type lv_label_align_t = u8;
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_img_ext_t {
     pub src: *const ::cty::c_void,
     pub offset: lv_point_t,
@@ -1325,6 +1293,7 @@ impl lv_img_ext_t {
 }
 #[doc = "      TYPEDEFS"]
 #[repr(C)]
+#[derive(Copy, Clone)]
 pub struct lv_canvas_ext_t {
     pub img: lv_img_ext_t,
     pub dsc: lv_img_dsc_t,
